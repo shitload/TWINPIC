@@ -49,4 +49,17 @@ iOS 端代码：https://github.com/QMUI/LookinServer
 
 ### 如何在 macOS 和 iOS 之间传输数据？
 
-当时觉得这个问题非常底层非常 geek，但后来惊喜地发现其实有大量的第三方库可以直接使用，比如：Peertalk、CocoaAsyncSocke
+当时觉得这个问题非常底层非常 geek，但后来惊喜地发现其实有大量的第三方库可以直接使用，比如：Peertalk、CocoaAsyncSocket、GCDWebServer、MultipeerConnectivity……
+
+由于时间关系，当时只尝试了 Peertalk，因此我无法比较它们的优劣。
+
+但 Peertalk 只能帮你单向传输数据而不保证送达，就像 UDP 一样。比如 Server 端处于后台、主线程卡住等情况就收不到数据。因此你需要在它的基础上封装一层类似 HTTP 风格的接口出来，还要处理 timeout、多台 iOS 设备同时连接、双端版本校验、断链重试、一个请求多个回复等各种细节。
+
+我在解决了上述部分细节问题后，把通讯部分独立出了一个组件：https://github.com/hughkli/KKConnector
+
+### 如何正确渲染展开/折叠图像？
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_5.png)
+
+如上图，我们在展开/折叠图层时，图像会跟随变化，直觉上很自然，但这个“变化”的规则到底是什么呢？
+ 
+最初的错误想法是：给每个 View 都截一张图片，那么“展开/折叠”就是改变这个图片的 Z-Index。换句话说，如果把全部节点都折叠起来只留下一个 UIWindow，那么就把所有图片的 Z-
