@@ -81,4 +81,21 @@ iOS 端代码：https://github.com/QMUI/LookinServer
 ![](https://cdnfile.lookin.work/static_images/doc0412/doc_7.gif)
 
 最初的 0.9.3 beta 版本的方案：
-*
+* 使用普通的 CALayer
+* 利用 layer.contents 属性来渲染图片
+* 利用 transform 属性来实现变换：移动、放大缩小、左右旋转
+
+上述方案效果其实不差。事实上，你目前在 iOS 端使用[[NSNotificationCenter defaultCenter] 
+postNotificationName:@"Lookin_3D" object:nil]触发的 3D 效果仍然是使用这个方案实现的。
+
+但它有三个问题：
+
+* 代码复杂晦涩
+
+试图单独实现”移动/放大缩小/左右旋转“里的某个效果很简单，但如果结合起来，则代码复杂度会指数级上升。你必须非常 tricky 地控制 transform、sublayerTransform、anchor 等属性以及各个图层之间的关系，才能模拟出符合直觉的“推拉摇移”的交互体验。如果再加上“上下旋转”（即目前 Lookin 的“自由旋转”），则代码就彻底到了无法维护的程度。
+
+* 边框闪烁问题
+
+如下图，图层都有 1pt 的 border，且这个 border 也会跟随 layer.transform 被放大和缩小，而当它被缩小到小于 1px 时就会消失。在用户的视角看来，就是边框会随着用户操作不停地闪烁。虽然不影响使用但是体验很粗糙。
+
+![](http
