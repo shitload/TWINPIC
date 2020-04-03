@@ -98,4 +98,18 @@ postNotificationName:@"Lookin_3D" object:nil]触发的 3D 效果仍然是使用�
 
 如下图，图层都有 1pt 的 border，且这个 border 也会跟随 layer.transform 被放大和缩小，而当它被缩小到小于 1px 时就会消失。在用户的视角看来，就是边框会随着用户操作不停地闪烁。虽然不影响使用但是体验很粗糙。
 
-![](http
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_8.png)
+
+* 没有好看的光影效果
+
+下图是目前最新版本 Lookin 里面的光影效果（不过文档这里受限于 GIF 所以色块比较明显），这是普通的 CALayer 无法实现的。
+
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_9.gif)
+
+那除了 CALayer 还有哪些可能的解决方案呢？
+
+OpenGL 和 Metal 这类 API 太过底层，Unity3d 之类的第三方框架又太过笨重，因此最终 Lookin 和 Reveal 都选择了 Apple 官方早于 2012 年引入的 SceneKit，它是一套专门用来构建 3D 场景的高层 API。它使得你在不接触 Shader 等底层概念的情况下，去操作光照、模型、材质、摄像机等对象。
+
+比如同样是改变视角，相比于上文提到的绞尽脑汁对 CALayer 的各种 transform 进行组合，这里只需要几行代码设置一个 Camera 对象并修改它的位置等属性即可：
+
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_10.png)
