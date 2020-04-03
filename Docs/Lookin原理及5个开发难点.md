@@ -62,4 +62,23 @@ iOS 端代码：https://github.com/QMUI/LookinServer
 
 如上图，我们在展开/折叠图层时，图像会跟随变化，直觉上很自然，但这个“变化”的规则到底是什么呢？
  
-最初的错误想法是：给每个 View 都截一张图片，那么“展开/折叠”就是改变这个图片的 Z-Index。换句话说，如果把全部节点都折叠起来只留下一个 UIWindow，那么就把所有图片的 Z-
+最初的错误想法是：给每个 View 都截一张图片，那么“展开/折叠”就是改变这个图片的 Z-Index。换句话说，如果把全部节点都折叠起来只留下一个 UIWindow，那么就把所有图片的 Z-Index 置为 0 即可。
+
+但实践发现行不通，如下图所示，界面的渲染并不是简单的“把每个图层叠放在一起”，还有 ClipsToBounds 等各种逻辑。 
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_6.png)
+
+对此，Lookin 和 Reveal 的最终做法是：利用 drawViewHierarchyInRect 或 renderInContext 这两个 API 给每个 UIView/CALayer 都生成两张截图：
+1. 包含所有 subviews 的截图，我们称之为 GroupScreenshot
+2. 把所有 subviews 都隐藏然后进行截图，我们称之为 SoloScreenshot
+
+然后：
+
+3. 当一个节点被展开时，使用 SoloScreenshot 去渲染这个节点
+4. 当一个节点被收起时，使用 GroupScreenshot 去渲染这个节点
+
+### 如何渲染 3D 图像？
+
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_7.gif)
+
+最初的 0.9.3 beta 版本的方案：
+*
