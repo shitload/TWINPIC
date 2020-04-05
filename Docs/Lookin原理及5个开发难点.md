@@ -113,3 +113,23 @@ OpenGL 和 Metal 这类 API 太过底层，Unity3d 之类的第三方框架又�
 比如同样是改变视角，相比于上文提到的绞尽脑汁对 CALayer 的各种 transform 进行组合，这里只需要几行代码设置一个 Camera 对象并修改它的位置等属性即可：
 
 ![](https://cdnfile.lookin.work/static_images/doc0412/doc_10.png)
+
+至于光影效果，则只需要添加一个灯光对象即可：
+
+![](https://cdnfile.lookin.work/static_images/doc0412/doc_11.png)
+
+关于 SceneKit 更加详细的介绍，可以查看官方文档，或者在 Lookin github 仓库中查看 LookinPreviewView.m 这个文件。
+
+但话说回来，相比于 CALayer，SceneKit 确实也有一个小小缺陷：不允许图层边长超过 16384px，因此需要对那些特别长的 iOS 页面做特殊处理，比如降采样或直接跳过。
+
+### 如何加快刷新速度？
+
+也就是如何缩短”从启动 Lookin 到界面渲染完成“的时间。
+
+首先我们要知道时间都花在了哪里，以下是一个典型耗时：
+
+* 0.1s —— Client 端的“刷新”指令传输到 Server 端
+* 0.2s —— Server 端预处理，主要是遍历 iVar 以实现“显示 view 变量名”，以及一些 AutoLayout Constraints 的处理
+* 0.4s —— Server 端对 500 个 views 的基本信息进行序列化
+* 0.4s —— Server 端对 500 个 views 的属性列表进行序列化
+* 6.0s ——
