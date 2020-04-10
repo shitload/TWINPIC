@@ -1,0 +1,60 @@
+
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		094E413CB04F29F94551D070 /* Pods_LookinClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A3B0CB06C22A05EDC913F3 /* Pods_LookinClient.framework */; };
+		113B2F55E5BE571AC938D898 /* Pods_LookinTestflight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89555EC46A276B7FD0CB65FA /* Pods_LookinTestflight.framework */; };
+		A213803D2821886B009BFE60 /* LKPerformanceReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A213803C2821886B009BFE60 /* LKPerformanceReporter.m */; };
+		A22370392828107400585509 /* LKStaticHierarchyController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C0CA21CC17670017A345 /* LKStaticHierarchyController.m */; };
+		A223703A2828107400585509 /* LookinPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF2C0D2308420300CFAC53 /* LookinPreviewView.m */; };
+		A223703B2828107400585509 /* LKExportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3D51A92289E57C00E4E6B7 /* LKExportManager.m */; };
+		A223703C2828107400585509 /* LKPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEE450621DF81C300BF2650 /* LKPreferenceWindowController.m */; };
+		A223703D2828107400585509 /* LKTutorialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA13691D22C3DA6F00B8AE87 /* LKTutorialManager.m */; };
+		A223703E2828107400585509 /* LKDashboardAttributeStringArrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAEB36D22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.m */; };
+		A223703F2828107400585509 /* LKOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB09024229D736F00159B15 /* LKOutlineView.m */; };
+		A22370402828107400585509 /* LKHierarchyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC5E2DD228034DC0081A810 /* LKHierarchyDataSource.m */; };
+		A22370412828107400585509 /* LKWindowToolbarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC1FB202282EDC6000A3653 /* LKWindowToolbarHelper.m */; };
+		A22370422828107400585509 /* ShortCocoa+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = A26EF68F27F89F83005A9E4E /* ShortCocoa+Layout.m */; };
+		A22370432828107400585509 /* LKDashboardAttributeSizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAED8ED722AFED490051242B /* LKDashboardAttributeSizeView.m */; };
+		A22370442828107400585509 /* LKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C09C21CC17670017A345 /* LKBaseViewController.m */; };
+		A22370452828107400585509 /* LKDashboardAttributeSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05CCD6221ED5E80086CDD1 /* LKDashboardAttributeSwitchView.m */; };
+		A22370462828107400585509 /* LKNavigationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C08E21CC17670017A345 /* LKNavigationManager.m */; };
+		A22370472828107400585509 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48F2A721CC0CA60032EC2C /* main.m */; };
+		A22370482828107400585509 /* LKConsoleSelectPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF418C122BA2AF000111554 /* LKConsoleSelectPopoverController.m */; };
+		A22370492828107400585509 /* LKHierarchyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA22A0EC2276D65B00356E70 /* LKHierarchyItem.m */; };
+		A223704A2828107400585509 /* NSString+Score.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66645D22DBBAC7009E05CC /* NSString+Score.m */; };
+		A223704B2828107400585509 /* LKConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C08C21CC17670017A345 /* LKConnectionManager.m */; };
+		A223704C2828107400585509 /* LKPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEE450A21DF820100BF2650 /* LKPreferenceViewController.m */; };
+		A223704D2828107400585509 /* LKTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAF21142226BD4D00975C95 /* LKTextFieldView.m */; };
+		A223704E2828107400585509 /* LKSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C11021CC17680017A345 /* LKSplitView.m */; };
+		A223704F2828107400585509 /* LKMethodTraceSelectMethodContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AABEE404229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.m */; };
+		A22370502828107400585509 /* LKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA01EF2522DD0D26002A2E06 /* LKHelper.m */; };
+		A22370512828107400585509 /* NSColor+LookinClient.m in Sources */ = {isa = PBXBuildFile; fileRef = AA356AF4228EE6A3005C3969 /* NSColor+LookinClient.m */; };
+		A22370522828107400585509 /* LKDashboardAttributeConstraintsItemControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0A2DCC233F6AE4008BF946 /* LKDashboardAttributeConstraintsItemControl.m */; };
+		A22370532828107400585509 /* LookinDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5AE70522C2B2E50064D41B /* LookinDocument.m */; };
+		A22370542828107400585509 /* LKDashboardAttributeConstraintsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA20A498232A2A2300AC80AA /* LKDashboardAttributeConstraintsView.m */; };
+		A22370552828107400585509 /* LKReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD387302288624600042229 /* LKReadViewController.m */; };
+		A22370562828107400585509 /* LKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C09221CC17670017A345 /* LKLabel.m */; };
+		A22370572828107400585509 /* LKAppMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE9004224169D200030361 /* LKAppMenuManager.m */; };
+		A22370582828107400585509 /* LKConsoleSelectPopoverItemControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF418C422BA2C9600111554 /* LKConsoleSelectPopoverItemControl.m */; };
+		A22370592828107400585509 /* LKImageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C09B21CC17670017A345 /* LKImageControl.m */; };
+		A223705A2828107400585509 /* ShortCocoa+UIToolkit.m in Sources */ = {isa = PBXBuildFile; fileRef = A26EF69127F89F83005A9E4E /* ShortCocoa+UIToolkit.m */; };
+		A223705B2828107400585509 /* LKInputSearchSuggestionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA50755D22A3EE4A00D2A5AC /* LKInputSearchSuggestionWindowController.m */; };
+		A223705C2828107400585509 /* LKDashboardAttributeOpenImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D41874D3234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.m */; };
+		A223705D2828107400585509 /* LKDashboardSearchPropView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB65C0B2320FCF0001E4299 /* LKDashboardSearchPropView.m */; };
+		A223705E2828107400585509 /* LKMethodTraceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8CFE242296DD7F00B98BA2 /* LKMethodTraceViewController.m */; };
+		A223705F2828107400585509 /* LKHierarchyController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD387332288632100042229 /* LKHierarchyController.m */; };
+		A22370602828107400585509 /* LKLaunchAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C11821CC17680017A345 /* LKLaunchAppView.m */; };
+		A22370612828107400585509 /* LKPreviewStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C10F21CC17680017A345 /* LKPreviewStageView.m */; };
+		A22370622828107400585509 /* LKColorIndicatorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA30215F21F32908000B0084 /* LKColorIndicatorLayer.m */; };
+		A22370632828107400585509 /* LKMeasureTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4052AC8235CBD090033C961 /* LKMeasureTutorialView.m */; };
+		A22370642828107400585509 /* LKMenuPopoverSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA049A1621E61B85008C6366 /* LKMenuPopoverSettingController.m */; };
+		A22370652828107400585509 /* LKPreferenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEC731F22A6E4820011B147 /* LKPreferenceManager.m */; };
+		A22370662828107400585509 /* LKMeasureResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4052ACB235CE2300033C961 /* LKMeasureResultView.m */; };
+		A22370672828107400585509 /* LKInspectableApp.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA8C08A21CC17670017A345 /* LKInspectableApp.m */; };
