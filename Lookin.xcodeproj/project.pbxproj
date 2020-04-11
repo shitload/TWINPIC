@@ -1143,3 +1143,610 @@
 				AAA8C0E621CC17680017A345 /* LKEnumListRegistry.m */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		AAA8C0F721CC17680017A345 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				AAC1FB1F2282EDC6000A3653 /* LKWindowToolbarHelper.h */,
+				AAC1FB202282EDC6000A3653 /* LKWindowToolbarHelper.m */,
+				D4D1B2D12353975A002A5071 /* LKWindowToolbarScaleView.h */,
+				D4D1B2D22353975A002A5071 /* LKWindowToolbarScaleView.m */,
+				A2C71CBC282165DB0056D991 /* LKWindowToolbarAppButton.h */,
+				A2C71CBD282165DB0056D991 /* LKWindowToolbarAppButton.m */,
+				AAA8C0F821CC17680017A345 /* LKMenuPopoverAppsListController.m */,
+				AA049A1521E61B85008C6366 /* LKMenuPopoverSettingController.h */,
+				AA049A1621E61B85008C6366 /* LKMenuPopoverSettingController.m */,
+				AAA8C10521CC17680017A345 /* LKMenuPopoverAppsListController.h */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		AAA8C10721CC17680017A345 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF2C132308421200CFAC53 /* WillShare */,
+				AAA8C10B21CC17680017A345 /* LKPreviewController.h */,
+				AAA8C10E21CC17680017A345 /* LKPreviewController.m */,
+				AAA8C10921CC17680017A345 /* LKPreviewPanGestureRecognizer.h */,
+				AAA8C10C21CC17680017A345 /* LKPreviewPanGestureRecognizer.m */,
+				AAA8C10A21CC17680017A345 /* LKPreviewStageView.h */,
+				AAA8C10F21CC17680017A345 /* LKPreviewStageView.m */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		AAA8C11421CC17680017A345 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				AAA8C11821CC17680017A345 /* LKLaunchAppView.m */,
+				AAA8C11521CC17680017A345 /* LKLaunchAppView.h */,
+				AAA8C11621CC17680017A345 /* LKLaunchViewController.m */,
+				AAA8C11921CC17680017A345 /* LKLaunchViewController.h */,
+				AAA8C11721CC17680017A345 /* LKLaunchWindowController.h */,
+				AAA8C11A21CC17680017A345 /* LKLaunchWindowController.m */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		AAB65C0D2320FCFA001E4299 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AAB65C072320FC30001E4299 /* LKDashboardSearchCardView.h */,
+				AAB65C082320FC30001E4299 /* LKDashboardSearchCardView.m */,
+				AAB65C0A2320FCF0001E4299 /* LKDashboardSearchPropView.h */,
+				AAB65C0B2320FCF0001E4299 /* LKDashboardSearchPropView.m */,
+				AA56062B2322A733008C82CF /* LKDashboardSearchMethodsView.h */,
+				AA56062C2322A733008C82CF /* LKDashboardSearchMethodsView.m */,
+				AAB65C042320ED56001E4299 /* LKDashboardSearchInputView.h */,
+				AAB65C052320ED56001E4299 /* LKDashboardSearchInputView.m */,
+				AA56062E2322AEA7008C82CF /* LKDashboardSearchMethodsDataSource.h */,
+				AA56062F2322AEA7008C82CF /* LKDashboardSearchMethodsDataSource.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		AAD3872E2288614B00042229 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				AAD8C02B22C60E06009253F4 /* LKReadHierarchyDataSource.h */,
+				AAD8C02A22C60E06009253F4 /* LKReadHierarchyDataSource.m */,
+				AA74B1CA22897C9400366865 /* LKReadHierarchyController.h */,
+				AA74B1CB22897C9400366865 /* LKReadHierarchyController.m */,
+				AAD3872B2288614300042229 /* LKReadWindowController.h */,
+				AAD3872C2288614300042229 /* LKReadWindowController.m */,
+				AAD3872F2288624600042229 /* LKReadViewController.h */,
+				AAD387302288624600042229 /* LKReadViewController.m */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		AAEE450821DF81C800BF2650 /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				AAEE450521DF81C300BF2650 /* LKPreferenceWindowController.h */,
+				AAEE450621DF81C300BF2650 /* LKPreferenceWindowController.m */,
+				AAEE450921DF820100BF2650 /* LKPreferenceViewController.h */,
+				AAEE450A21DF820100BF2650 /* LKPreferenceViewController.m */,
+				AA98EC94222703CC0083348D /* LKPreferenceSwitchView.h */,
+				AA98EC95222703CC0083348D /* LKPreferenceSwitchView.m */,
+				AA98EC9B22270B800083348D /* LKPreferencePopupView.h */,
+				AA98EC9A22270B800083348D /* LKPreferencePopupView.m */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
+		AAEF2C132308421200CFAC53 /* WillShare */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF2C102308420400CFAC53 /* LookinDisplayItemNode.h */,
+				AAEF2C0F2308420400CFAC53 /* LookinDisplayItemNode.m */,
+				AAEF2C0E2308420300CFAC53 /* LookinPreviewView.h */,
+				AAEF2C0D2308420300CFAC53 /* LookinPreviewView.m */,
+			);
+			path = WillShare;
+			sourceTree = "<group>";
+		};
+		D4224EF02358ED3A00ED9626 /* Measure */ = {
+			isa = PBXGroup;
+			children = (
+				D4224EED2358ED3400ED9626 /* LKMeasureController.h */,
+				D4224EEE2358ED3400ED9626 /* LKMeasureController.m */,
+				D4052AC7235CBD090033C961 /* LKMeasureTutorialView.h */,
+				D4052AC8235CBD090033C961 /* LKMeasureTutorialView.m */,
+				D4052ACA235CE2300033C961 /* LKMeasureResultView.h */,
+				D4052ACB235CE2300033C961 /* LKMeasureResultView.m */,
+				D4E1FD64236169130070DFB8 /* LKMeasureResultLineData.h */,
+				D4E1FD65236169130070DFB8 /* LKMeasureResultLineData.m */,
+			);
+			path = Measure;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A22370362828107400585509 /* LookinTestflight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A22370D82828107400585509 /* Build configuration list for PBXNativeTarget "LookinTestflight" */;
+			buildPhases = (
+				BEE29D3A1B7911FD026DDFD0 /* [CP] Check Pods Manifest.lock */,
+				A22370382828107400585509 /* Sources */,
+				A22370CB2828107400585509 /* Frameworks */,
+				A22370CE2828107400585509 /* Resources */,
+				A22370D42828107400585509 /* Embed App Extensions */,
+				A22370D52828107400585509 /* Embed Frameworks */,
+				A22370D62828107400585509 /* CopyFiles */,
+				17B6F8359B08F7AD9399869A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LookinTestflight;
+			productName = Lookin;
+			productReference = A22370DB2828107400585509 /* LookinTestflight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA48F29A21CC0CA50032EC2C /* LookinClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA48F2AC21CC0CA60032EC2C /* Build configuration list for PBXNativeTarget "LookinClient" */;
+			buildPhases = (
+				136E0BEAC94630788C7DEFBE /* [CP] Check Pods Manifest.lock */,
+				AA48F29721CC0CA50032EC2C /* Sources */,
+				AA48F29821CC0CA50032EC2C /* Frameworks */,
+				AA48F29921CC0CA50032EC2C /* Resources */,
+				AAB9518822C3AECA00A5F958 /* Embed App Extensions */,
+				AA1CAA3722E4713C006D9285 /* Embed Frameworks */,
+				AA4B08D322F7040C00BE3989 /* CopyFiles */,
+				FB8F4F190F8A8870A31070AE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LookinClient;
+			productName = Lookin;
+			productReference = AA48F29B21CC0CA50032EC2C /* Lookin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA48F29321CC0CA50032EC2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = hughkli;
+				TargetAttributes = {
+					AA48F29A21CC0CA50032EC2C = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AA48F29621CC0CA50032EC2C /* Build configuration list for PBXProject "Lookin" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = AA48F29221CC0CA50032EC2C;
+			productRefGroup = AA48F29C21CC0CA50032EC2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA48F29A21CC0CA50032EC2C /* LookinClient */,
+				A22370362828107400585509 /* LookinTestflight */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A22370CE2828107400585509 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A22370CF2828107400585509 /* Assets.xcassets in Resources */,
+				A22370D02828107400585509 /* Localizable.strings in Resources */,
+				A22370D12828107400585509 /* logo_jump.gif in Resources */,
+				A22370D22828107400585509 /* MainMenu.xib in Resources */,
+				A22370D32828107400585509 /* lookin_icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA48F29921CC0CA50032EC2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA48F2A221CC0CA60032EC2C /* Assets.xcassets in Resources */,
+				AA6E0D8122E1D5BD00948877 /* Localizable.strings in Resources */,
+				AA66488C23696D220043B50A /* logo_jump.gif in Resources */,
+				AA48F2A521CC0CA60032EC2C /* MainMenu.xib in Resources */,
+				AA77A32D22CE0E7100C73721 /* lookin_icon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		136E0BEAC94630788C7DEFBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LookinClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		17B6F8359B08F7AD9399869A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookinTestflight/Pods-LookinTestflight-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookinTestflight/Pods-LookinTestflight-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LookinTestflight/Pods-LookinTestflight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEE29D3A1B7911FD026DDFD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LookinTestflight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB8F4F190F8A8870A31070AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookinClient/Pods-LookinClient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookinClient/Pods-LookinClient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LookinClient/Pods-LookinClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A22370382828107400585509 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A22370392828107400585509 /* LKStaticHierarchyController.m in Sources */,
+				A223703A2828107400585509 /* LookinPreviewView.m in Sources */,
+				A223703B2828107400585509 /* LKExportManager.m in Sources */,
+				A223703C2828107400585509 /* LKPreferenceWindowController.m in Sources */,
+				A223703D2828107400585509 /* LKTutorialManager.m in Sources */,
+				A223703E2828107400585509 /* LKDashboardAttributeStringArrayView.m in Sources */,
+				A223703F2828107400585509 /* LKOutlineView.m in Sources */,
+				A22370402828107400585509 /* LKHierarchyDataSource.m in Sources */,
+				A22370412828107400585509 /* LKWindowToolbarHelper.m in Sources */,
+				A22370422828107400585509 /* ShortCocoa+Layout.m in Sources */,
+				A22370432828107400585509 /* LKDashboardAttributeSizeView.m in Sources */,
+				A22370442828107400585509 /* LKBaseViewController.m in Sources */,
+				A22370452828107400585509 /* LKDashboardAttributeSwitchView.m in Sources */,
+				A22370462828107400585509 /* LKNavigationManager.m in Sources */,
+				A22370472828107400585509 /* main.m in Sources */,
+				A22370482828107400585509 /* LKConsoleSelectPopoverController.m in Sources */,
+				A22370492828107400585509 /* LKHierarchyItem.m in Sources */,
+				A223704A2828107400585509 /* NSString+Score.m in Sources */,
+				A223704B2828107400585509 /* LKConnectionManager.m in Sources */,
+				A223704C2828107400585509 /* LKPreferenceViewController.m in Sources */,
+				A223704D2828107400585509 /* LKTextFieldView.m in Sources */,
+				A223704E2828107400585509 /* LKSplitView.m in Sources */,
+				A223704F2828107400585509 /* LKMethodTraceSelectMethodContentView.m in Sources */,
+				A22370502828107400585509 /* LKHelper.m in Sources */,
+				A22370512828107400585509 /* NSColor+LookinClient.m in Sources */,
+				A22370522828107400585509 /* LKDashboardAttributeConstraintsItemControl.m in Sources */,
+				A22370532828107400585509 /* LookinDocument.m in Sources */,
+				A22370542828107400585509 /* LKDashboardAttributeConstraintsView.m in Sources */,
+				A22370552828107400585509 /* LKReadViewController.m in Sources */,
+				A22370562828107400585509 /* LKLabel.m in Sources */,
+				A22370572828107400585509 /* LKAppMenuManager.m in Sources */,
+				A22370582828107400585509 /* LKConsoleSelectPopoverItemControl.m in Sources */,
+				A22370592828107400585509 /* LKImageControl.m in Sources */,
+				A223705A2828107400585509 /* ShortCocoa+UIToolkit.m in Sources */,
+				A223705B2828107400585509 /* LKInputSearchSuggestionWindowController.m in Sources */,
+				A223705C2828107400585509 /* LKDashboardAttributeOpenImageView.m in Sources */,
+				A223705D2828107400585509 /* LKDashboardSearchPropView.m in Sources */,
+				A223705E2828107400585509 /* LKMethodTraceViewController.m in Sources */,
+				A223705F2828107400585509 /* LKHierarchyController.m in Sources */,
+				A22370602828107400585509 /* LKLaunchAppView.m in Sources */,
+				A22370612828107400585509 /* LKPreviewStageView.m in Sources */,
+				A22370622828107400585509 /* LKColorIndicatorLayer.m in Sources */,
+				A22370632828107400585509 /* LKMeasureTutorialView.m in Sources */,
+				A22370642828107400585509 /* LKMenuPopoverSettingController.m in Sources */,
+				A22370652828107400585509 /* LKPreferenceManager.m in Sources */,
+				A22370662828107400585509 /* LKMeasureResultView.m in Sources */,
+				A22370672828107400585509 /* LKInspectableApp.m in Sources */,
+				A22370682828107400585509 /* LKDashboardAttributeTextView.m in Sources */,
+				A22370692828107400585509 /* LKBaseView.m in Sources */,
+				A223706A2828107400585509 /* LKHierarchyHandlersPopoverItemView.m in Sources */,
+				A223706B2828107400585509 /* LKMeasureController.m in Sources */,
+				A223706C2828107400585509 /* LKDashboardViewController.m in Sources */,
+				A223706D2828107400585509 /* LookinDisplayItemNode.m in Sources */,
+				A223706E2828107400585509 /* LKTutorialPopoverController.m in Sources */,
+				A223706F2828107400585509 /* LKWindowToolbarScaleView.m in Sources */,
+				A22370702828107400585509 /* LKImageTextView.m in Sources */,
+				A22370712828107400585509 /* LKStaticWindowController.m in Sources */,
+				A22370722828107400585509 /* LKWindowToolbarAppButton.m in Sources */,
+				A22370732828107400585509 /* LKPreferenceSwitchView.m in Sources */,
+				A22370742828107400585509 /* LKTextControl.m in Sources */,
+				A22370752828107400585509 /* NSView+LookinClient.m in Sources */,
+				A22370762828107400585509 /* LKDashboardAttributeInsetsView.m in Sources */,
+				A22370772828107400585509 /* LKReadWindowController.m in Sources */,
+				A22370782828107400585509 /* LKPreviewPanGestureRecognizer.m in Sources */,
+				A22370792828107400585509 /* LKConsoleInputRowView.m in Sources */,
+				A223707A2828107400585509 /* LKTextsMenuView.m in Sources */,
+				A223707B2828107400585509 /* NSAppearance+LookinClient.m in Sources */,
+				A223707C2828107400585509 /* LKLaunchWindowController.m in Sources */,
+				A223707D2828107400585509 /* LKStaticHierarchyDataSource.m in Sources */,
+				A223707E2828107400585509 /* LKPreviewController.m in Sources */,
+				A223707F2828107400585509 /* LKWindow.m in Sources */,
+				A22370802828107400585509 /* LKMethodTraceMenuItemView.m in Sources */,
+				A22370812828107400585509 /* LKUserActionManager.m in Sources */,
+				A22370822828107400585509 /* LKMethodTraceDetailView.m in Sources */,
+				A22370832828107400585509 /* ShortCocoa+Others.m in Sources */,
+				A22370842828107400585509 /* NSButton+LookinClient.m in Sources */,
+				A22370852828107400585509 /* LKWindowController.m in Sources */,
+				A22370862828107400585509 /* LKHierarchyHandlersPopoverController.m in Sources */,
+				A22370872828107400585509 /* LKOutlineRowView.m in Sources */,
+				A22370882828107400585509 /* ShortCocoaCore.m in Sources */,
+				A22370892828107400585509 /* LKPerformanceReporter.m in Sources */,
+				A223708A2828107400585509 /* LKDashboardAccessoryWindowController.m in Sources */,
+				A223708B2828107400585509 /* LKConsoleDataSourceRowItem.m in Sources */,
+				A223708C2828107400585509 /* LKPreferencePopupView.m in Sources */,
+				A223708D2828107400585509 /* LKMeasureResultLineData.m in Sources */,
+				A223708E2828107400585509 /* LKMethodTraceWindowController.m in Sources */,
+				A223708F2828107400585509 /* ShortCocoa+LookinClient.m in Sources */,
+				A22370902828107400585509 /* LKDashboardAttributePointView.m in Sources */,
+				A22370912828107400585509 /* LKDashboardCardView.m in Sources */,
+				A22370922828107400585509 /* LKInputSearchSuggestionsContentView.m in Sources */,
+				A22370932828107400585509 /* LKPopPanel.m in Sources */,
+				A22370942828107400585509 /* AppDelegate.m in Sources */,
+				A22370952828107400585509 /* LKStaticAsyncUpdateManager.m in Sources */,
+				A22370962828107400585509 /* LKDashboardAttributeClassView.m in Sources */,
+				A22370972828107400585509 /* LKHierarchyView.m in Sources */,
+				A22370982828107400585509 /* LKAppsManager.m in Sources */,
+				A22370992828107400585509 /* LKInputSearchSuggestionsRowView.m in Sources */,
+				A223709A2828107400585509 /* LKProgressIndicatorView.m in Sources */,
+				A223709B2828107400585509 /* LKBaseControl.m in Sources */,
+				A223709C2828107400585509 /* LKDashboardAttributeRectView.m in Sources */,
+				A223709D2828107400585509 /* LKEnumListRegistry.m in Sources */,
+				A223709E2828107400585509 /* LKReadHierarchyDataSource.m in Sources */,
+				A223709F2828107400585509 /* LKDashboardSectionView.m in Sources */,
+				A22370A02828107400585509 /* NSPointerArray+LookinClient.m in Sources */,
+				A22370A12828107400585509 /* LKMethodTraceMenuView.m in Sources */,
+				A22370A22828107400585509 /* LKDashboardAttributeView.m in Sources */,
+				A22370A32828107400585509 /* LKInputSearchView.m in Sources */,
+				A22370A42828107400585509 /* LKTwoColors.m in Sources */,
+				A22370A52828107400585509 /* LKAboutViewController.m in Sources */,
+				A22370A62828107400585509 /* LKDashboardSearchCardView.m in Sources */,
+				A22370A72828107400585509 /* LKPanelContentView.m in Sources */,
+				A22370A82828107400585509 /* LKLaunchViewController.m in Sources */,
+				A22370A92828107400585509 /* LKConnectionRequest.m in Sources */,
+				A22370AA2828107400585509 /* LKConsoleViewController.m in Sources */,
+				A22370AB2828107400585509 /* LKConstraintPopoverController.m in Sources */,
+				A22370AC2828107400585509 /* LKStaticViewController.m in Sources */,
+				A22370AD2828107400585509 /* LKInputSearchSuggestionItem.m in Sources */,
+				A22370AE2828107400585509 /* LKDashboardAttributeColorView.m in Sources */,
+				A22370AF2828107400585509 /* LKDashboardSearchMethodsDataSource.m in Sources */,
+				A22370B02828107400585509 /* LKAboutWindowController.m in Sources */,
+				A22370B12828107400585509 /* LKTableView.m in Sources */,
+				A22370B22828107400585509 /* ShortCocoa+String.m in Sources */,
+				A22370B32828107400585509 /* ShortCocoa+Private.m in Sources */,
+				A22370B42828107400585509 /* LKDashboardSearchInputView.m in Sources */,
+				A22370B52828107400585509 /* LKDashboardAttributeRowsCountView.m in Sources */,
+				A22370B62828107400585509 /* LKDashboardAttributeEnumsView.m in Sources */,
+				A22370B72828107400585509 /* LKConsoleReturnRowView.m in Sources */,
+				A22370B82828107400585509 /* NSControl+LookinClient.m in Sources */,
+				A22370B92828107400585509 /* LKMethodTraceDataSource.m in Sources */,
+				A22370BA2828107400585509 /* LKDashboardCardTitleControl.m in Sources */,
+				A22370BB2828107400585509 /* LKMethodTraceLaunchView.m in Sources */,
+				A22370BC2828107400585509 /* LKHierarchyRowView.m in Sources */,
+				A22370BD2828107400585509 /* LKConsoleSubmitRowView.m in Sources */,
+				A22370BE2828107400585509 /* LKDashboardAttributeRelationView.m in Sources */,
+				A22370BF2828107400585509 /* LKNumberInputView.m in Sources */,
+				A22370C02828107400585509 /* LKConsoleDataSource.m in Sources */,
+				A22370C12828107400585509 /* LKReadHierarchyController.m in Sources */,
+				A22370C22828107400585509 /* LKDashboardSearchMethodsView.m in Sources */,
+				A22370C32828107400585509 /* LKExportAccessoryView.m in Sources */,
+				A22370C42828107400585509 /* NSString+LookinClient.m in Sources */,
+				A22370C52828107400585509 /* NSArray+LookinClient.m in Sources */,
+				A22370C62828107400585509 /* LKOutlineItem.m in Sources */,
+				A22370C72828107400585509 /* LKTipsView.m in Sources */,
+				A22370C82828107400585509 /* LKMenuPopoverAppsListController.m in Sources */,
+				A22370C92828107400585509 /* LKTableRowView.m in Sources */,
+				A22370CA2828107400585509 /* LKDashboardAttributeNumberInputView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA48F29721CC0CA50032EC2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA8C13A21CC17680017A345 /* LKStaticHierarchyController.m in Sources */,
+				AAEF2C112308420400CFAC53 /* LookinPreviewView.m in Sources */,
+				AA3D51AA2289E57C00E4E6B7 /* LKExportManager.m in Sources */,
+				AAEE450721DF81C300BF2650 /* LKPreferenceWindowController.m in Sources */,
+				AA13691E22C3DA6F00B8AE87 /* LKTutorialManager.m in Sources */,
+				AAAEB36E22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.m in Sources */,
+				AAB09025229D736F00159B15 /* LKOutlineView.m in Sources */,
+				AAC5E2DE228034DC0081A810 /* LKHierarchyDataSource.m in Sources */,
+				AAC1FB212282EDC6000A3653 /* LKWindowToolbarHelper.m in Sources */,
+				A26EF69827F89F83005A9E4E /* ShortCocoa+Layout.m in Sources */,
+				AAED8ED822AFED490051242B /* LKDashboardAttributeSizeView.m in Sources */,
+				AAA8C12821CC17680017A345 /* LKBaseViewController.m in Sources */,
+				AA05CCD7221ED5E80086CDD1 /* LKDashboardAttributeSwitchView.m in Sources */,
+				AAA8C12021CC17680017A345 /* LKNavigationManager.m in Sources */,
+				AA48F2A821CC0CA60032EC2C /* main.m in Sources */,
+				AAF418C222BA2AF000111554 /* LKConsoleSelectPopoverController.m in Sources */,
+				AA22A0ED2276D65B00356E70 /* LKHierarchyItem.m in Sources */,
+				AA66645F22DBBAC7009E05CC /* NSString+Score.m in Sources */,
+				AAA8C11F21CC17680017A345 /* LKConnectionManager.m in Sources */,
+				AAEE450B21DF820100BF2650 /* LKPreferenceViewController.m in Sources */,
+				AAAF21152226BD4D00975C95 /* LKTextFieldView.m in Sources */,
+				AAA8C15A21CC17680017A345 /* LKSplitView.m in Sources */,
+				AABEE405229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.m in Sources */,
+				AA01EF2722DD0D26002A2E06 /* LKHelper.m in Sources */,
+				AA356AF5228EE6A3005C3969 /* NSColor+LookinClient.m in Sources */,
+				AA0A2DCD233F6AE4008BF946 /* LKDashboardAttributeConstraintsItemControl.m in Sources */,
+				AA5AE70622C2B2E50064D41B /* LookinDocument.m in Sources */,
+				AA20A499232A2A2300AC80AA /* LKDashboardAttributeConstraintsView.m in Sources */,
+				AAD387312288624600042229 /* LKReadViewController.m in Sources */,
+				AAA8C12221CC17680017A345 /* LKLabel.m in Sources */,
+				AABE9005224169D200030361 /* LKAppMenuManager.m in Sources */,
+				AAF418C522BA2C9600111554 /* LKConsoleSelectPopoverItemControl.m in Sources */,
+				AAA8C12721CC17680017A345 /* LKImageControl.m in Sources */,
+				A26EF69927F89F83005A9E4E /* ShortCocoa+UIToolkit.m in Sources */,
+				AA50755E22A3EE4A00D2A5AC /* LKInputSearchSuggestionWindowController.m in Sources */,
+				D41874D4234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.m in Sources */,
+				AAB65C0C2320FCF0001E4299 /* LKDashboardSearchPropView.m in Sources */,
+				AA8CFE252296DD7F00B98BA2 /* LKMethodTraceViewController.m in Sources */,
+				AAD387342288632100042229 /* LKHierarchyController.m in Sources */,
+				AAA8C15F21CC17680017A345 /* LKLaunchAppView.m in Sources */,
+				AAA8C15921CC17680017A345 /* LKPreviewStageView.m in Sources */,
+				AA30216021F32908000B0084 /* LKColorIndicatorLayer.m in Sources */,
+				D4052AC9235CBD090033C961 /* LKMeasureTutorialView.m in Sources */,
+				AA049A1721E61B85008C6366 /* LKMenuPopoverSettingController.m in Sources */,
+				AAEC732022A6E4830011B147 /* LKPreferenceManager.m in Sources */,
+				D4052ACC235CE2300033C961 /* LKMeasureResultView.m in Sources */,
+				AAA8C11D21CC17680017A345 /* LKInspectableApp.m in Sources */,
+				AA17F390232FBD710082F393 /* LKDashboardAttributeTextView.m in Sources */,
+				AAA8C12B21CC17680017A345 /* LKBaseView.m in Sources */,
+				AA3A7D0923003F5800997887 /* LKHierarchyHandlersPopoverItemView.m in Sources */,
+				D4224EEF2358ED3400ED9626 /* LKMeasureController.m in Sources */,
+				AAA8C14021CC17680017A345 /* LKDashboardViewController.m in Sources */,
+				AAEF2C122308420400CFAC53 /* LookinDisplayItemNode.m in Sources */,
+				AA17857E22DE65D20042C8F0 /* LKTutorialPopoverController.m in Sources */,
+				D4D1B2D32353975A002A5071 /* LKWindowToolbarScaleView.m in Sources */,
+				AAF418C822BA2D1300111554 /* LKImageTextView.m in Sources */,
+				AAA8C15C21CC17680017A345 /* LKStaticWindowController.m in Sources */,
+				A2C71CBE282165DB0056D991 /* LKWindowToolbarAppButton.m in Sources */,
+				AA98EC96222703CC0083348D /* LKPreferenceSwitchView.m in Sources */,
+				AA1BE2502237D6A700DB38E6 /* LKTextControl.m in Sources */,
+				AAA8C13421CC17680017A345 /* NSView+LookinClient.m in Sources */,
+				AACBACB222AEA6EA00A8F89D /* LKDashboardAttributeInsetsView.m in Sources */,
+				AAD3872D2288614300042229 /* LKReadWindowController.m in Sources */,
+				AAA8C15721CC17680017A345 /* LKPreviewPanGestureRecognizer.m in Sources */,
+				AA50754322A2844400D2A5AC /* LKConsoleInputRowView.m in Sources */,
+				AA2F1AF32303F34B004725D6 /* LKTextsMenuView.m in Sources */,
+				AA23624B222C67C1008FE069 /* NSAppearance+LookinClient.m in Sources */,
+				AAA8C16021CC17680017A345 /* LKLaunchWindowController.m in Sources */,
+				AAC41E1722686A28005CDD6E /* LKStaticHierarchyDataSource.m in Sources */,
+				AAA8C15821CC17680017A345 /* LKPreviewController.m in Sources */,
+				AA5C54DB2289DF97004E09F4 /* LKWindow.m in Sources */,
+				AABEE3EF22970CE80042EC5A /* LKMethodTraceMenuItemView.m in Sources */,
+				AA66C5A7231965EE00085C76 /* LKUserActionManager.m in Sources */,
+				AABEE3FC22970DF80042EC5A /* LKMethodTraceDetailView.m in Sources */,
+				A26EF69627F89F83005A9E4E /* ShortCocoa+Others.m in Sources */,
+				AAE649332299462200232880 /* NSButton+LookinClient.m in Sources */,
+				AAC323172267ABD200BACA67 /* LKWindowController.m in Sources */,
+				AA3A7D0523003D7A00997887 /* LKHierarchyHandlersPopoverController.m in Sources */,
+				AAD2BED7226B327000E83D01 /* LKOutlineRowView.m in Sources */,
+				A26EF69527F89F83005A9E4E /* ShortCocoaCore.m in Sources */,
+				A213803D2821886B009BFE60 /* LKPerformanceReporter.m in Sources */,
+				AA66C5A1231924BD00085C76 /* LKDashboardAccessoryWindowController.m in Sources */,
+				AA50753D22A27EAD00D2A5AC /* LKConsoleDataSourceRowItem.m in Sources */,
+				AA98EC9C22270B800083348D /* LKPreferencePopupView.m in Sources */,
+				D4E1FD66236169130070DFB8 /* LKMeasureResultLineData.m in Sources */,
+				AA8CFE212296DD5300B98BA2 /* LKMethodTraceWindowController.m in Sources */,
+				AAA8C12421CC17680017A345 /* ShortCocoa+LookinClient.m in Sources */,
+				AA8133F022AFAEA1000A9D40 /* LKDashboardAttributePointView.m in Sources */,
+				AAA8C14621CC17680017A345 /* LKDashboardCardView.m in Sources */,
+				AAE61CCB22A5023000B3FB9F /* LKInputSearchSuggestionsContentView.m in Sources */,
+				AA0A2DDB233F81D9008BF946 /* LKPopPanel.m in Sources */,
+				AAA8C15D21CC17680017A345 /* AppDelegate.m in Sources */,
+				AAB872E6221C26B600C25294 /* LKStaticAsyncUpdateManager.m in Sources */,
+				AAB636C022B3854100885A2C /* LKDashboardAttributeClassView.m in Sources */,
+				AAA8C12E21CC17680017A345 /* LKHierarchyView.m in Sources */,
+				AAA8C11E21CC17680017A345 /* LKAppsManager.m in Sources */,
+				AAE61CCE22A5063F00B3FB9F /* LKInputSearchSuggestionsRowView.m in Sources */,
+				AAA8C12621CC17680017A345 /* LKProgressIndicatorView.m in Sources */,
+				AAA8C12A21CC17680017A345 /* LKBaseControl.m in Sources */,
+				AACBACAF22AE983F00A8F89D /* LKDashboardAttributeRectView.m in Sources */,
+				AAA8C14221CC17680017A345 /* LKEnumListRegistry.m in Sources */,
+				AAD8C02C22C60E06009253F4 /* LKReadHierarchyDataSource.m in Sources */,
+				AA22310D22AA717E00A5A975 /* LKDashboardSectionView.m in Sources */,
+				AAA9638D228428EE0047F707 /* NSPointerArray+LookinClient.m in Sources */,
+				AABEE3EC22970CCF0042EC5A /* LKMethodTraceMenuView.m in Sources */,
+				AAA8C14A21CC17680017A345 /* LKDashboardAttributeView.m in Sources */,
+				AA50755722A3E76A00D2A5AC /* LKInputSearchView.m in Sources */,
+				AA65ED492341FE8300F0BF34 /* LKTwoColors.m in Sources */,
+				AA39055123694D5D00CA7646 /* LKAboutViewController.m in Sources */,
+				AAB65C092320FC30001E4299 /* LKDashboardSearchCardView.m in Sources */,
+				AA290358229824A400073B65 /* LKPanelContentView.m in Sources */,
+				AAA8C15E21CC17680017A345 /* LKLaunchViewController.m in Sources */,
+				AA7F157822C0F2B9004436AD /* LKConnectionRequest.m in Sources */,
+				AA9A3D732269DDCE00BE46C7 /* LKConsoleViewController.m in Sources */,
+				AA34A15E233F884D00513829 /* LKConstraintPopoverController.m in Sources */,
+				AAA8C15B21CC17680017A345 /* LKStaticViewController.m in Sources */,
+				AAE61CC822A4F7B100B3FB9F /* LKInputSearchSuggestionItem.m in Sources */,
+				AA05CCDA221ED5F60086CDD1 /* LKDashboardAttributeColorView.m in Sources */,
+				AA5606302322AEA7008C82CF /* LKDashboardSearchMethodsDataSource.m in Sources */,
+				AA39054D23694C3100CA7646 /* LKAboutWindowController.m in Sources */,
+				AAD2BECE226B1ED500E83D01 /* LKTableView.m in Sources */,
+				A26EF69727F89F83005A9E4E /* ShortCocoa+String.m in Sources */,
+				A26EF69427F89F83005A9E4E /* ShortCocoa+Private.m in Sources */,
+				AAB65C062320ED56001E4299 /* LKDashboardSearchInputView.m in Sources */,
+				AA28179F22B0305400A0874C /* LKDashboardAttributeRowsCountView.m in Sources */,
+				AA05CCDD221ED6110086CDD1 /* LKDashboardAttributeEnumsView.m in Sources */,
+				AA50755422A28A1600D2A5AC /* LKConsoleReturnRowView.m in Sources */,
+				AADD181A2302FB5B00AF79A4 /* NSControl+LookinClient.m in Sources */,
+				AAA2C6142297D5CF005CBA10 /* LKMethodTraceDataSource.m in Sources */,
+				AAB636C622B3BA0F00885A2C /* LKDashboardCardTitleControl.m in Sources */,
+				AA443BA322C40354009543D1 /* LKMethodTraceLaunchView.m in Sources */,
+				AAA8C12F21CC17680017A345 /* LKHierarchyRowView.m in Sources */,
+				AA50755122A28A0A00D2A5AC /* LKConsoleSubmitRowView.m in Sources */,
