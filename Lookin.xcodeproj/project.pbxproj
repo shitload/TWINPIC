@@ -582,3 +582,564 @@
 		AAA8C11621CC17680017A345 /* LKLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchViewController.m; sourceTree = "<group>"; };
 		AAA8C11721CC17680017A345 /* LKLaunchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchWindowController.h; sourceTree = "<group>"; };
 		AAA8C11821CC17680017A345 /* LKLaunchAppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchAppView.m; sourceTree = "<group>"; };
+		AAA8C11921CC17680017A345 /* LKLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKLaunchViewController.h; sourceTree = "<group>"; };
+		AAA8C11A21CC17680017A345 /* LKLaunchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKLaunchWindowController.m; sourceTree = "<group>"; };
+		AAA8C11B21CC17680017A345 /* LKNavigationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKNavigationManager.h; sourceTree = "<group>"; };
+		AAA8C11C21CC17680017A345 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AAA9638B228428EE0047F707 /* NSPointerArray+LookinClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSPointerArray+LookinClient.h"; sourceTree = "<group>"; };
+		AAA9638C228428EE0047F707 /* NSPointerArray+LookinClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSPointerArray+LookinClient.m"; sourceTree = "<group>"; };
+		AAAEB36C22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeStringArrayView.h; sourceTree = "<group>"; };
+		AAAEB36D22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeStringArrayView.m; sourceTree = "<group>"; };
+		AAAF21132226BD4D00975C95 /* LKTextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKTextFieldView.h; sourceTree = "<group>"; };
+		AAAF21142226BD4D00975C95 /* LKTextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKTextFieldView.m; sourceTree = "<group>"; };
+		AAB09023229D736F00159B15 /* LKOutlineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKOutlineView.h; sourceTree = "<group>"; };
+		AAB09024229D736F00159B15 /* LKOutlineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKOutlineView.m; sourceTree = "<group>"; };
+		AAB09026229D74F000159B15 /* LKOutlineItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKOutlineItem.h; sourceTree = "<group>"; };
+		AAB09027229D74F000159B15 /* LKOutlineItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKOutlineItem.m; sourceTree = "<group>"; };
+		AAB4C85422415F75002D2B06 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		AAB636BE22B3854100885A2C /* LKDashboardAttributeClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeClassView.h; sourceTree = "<group>"; };
+		AAB636BF22B3854100885A2C /* LKDashboardAttributeClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeClassView.m; sourceTree = "<group>"; };
+		AAB636C122B3981200885A2C /* LKDashboardAttributeRelationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeRelationView.h; sourceTree = "<group>"; };
+		AAB636C222B3981200885A2C /* LKDashboardAttributeRelationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeRelationView.m; sourceTree = "<group>"; };
+		AAB636C422B3BA0F00885A2C /* LKDashboardCardTitleControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardCardTitleControl.h; sourceTree = "<group>"; };
+		AAB636C522B3BA0F00885A2C /* LKDashboardCardTitleControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardCardTitleControl.m; sourceTree = "<group>"; };
+		AAB65C042320ED56001E4299 /* LKDashboardSearchInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardSearchInputView.h; sourceTree = "<group>"; };
+		AAB65C052320ED56001E4299 /* LKDashboardSearchInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardSearchInputView.m; sourceTree = "<group>"; };
+		AAB65C072320FC30001E4299 /* LKDashboardSearchCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardSearchCardView.h; sourceTree = "<group>"; };
+		AAB65C082320FC30001E4299 /* LKDashboardSearchCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardSearchCardView.m; sourceTree = "<group>"; };
+		AAB65C0A2320FCF0001E4299 /* LKDashboardSearchPropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardSearchPropView.h; sourceTree = "<group>"; };
+		AAB65C0B2320FCF0001E4299 /* LKDashboardSearchPropView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardSearchPropView.m; sourceTree = "<group>"; };
+		AAB872E4221C26B600C25294 /* LKStaticAsyncUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKStaticAsyncUpdateManager.h; sourceTree = "<group>"; };
+		AAB872E5221C26B600C25294 /* LKStaticAsyncUpdateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKStaticAsyncUpdateManager.m; sourceTree = "<group>"; };
+		AAB9517A22C3AECA00A5F958 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		AAB9519122C3BDC900A5F958 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		AABE9003224169D200030361 /* LKAppMenuManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKAppMenuManager.h; sourceTree = "<group>"; };
+		AABE9004224169D200030361 /* LKAppMenuManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKAppMenuManager.m; sourceTree = "<group>"; };
+		AABEE3EA22970CCF0042EC5A /* LKMethodTraceMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMethodTraceMenuView.h; sourceTree = "<group>"; };
+		AABEE3EB22970CCF0042EC5A /* LKMethodTraceMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMethodTraceMenuView.m; sourceTree = "<group>"; };
+		AABEE3ED22970CE80042EC5A /* LKMethodTraceMenuItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMethodTraceMenuItemView.h; sourceTree = "<group>"; };
+		AABEE3EE22970CE80042EC5A /* LKMethodTraceMenuItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMethodTraceMenuItemView.m; sourceTree = "<group>"; };
+		AABEE3FA22970DF80042EC5A /* LKMethodTraceDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMethodTraceDetailView.h; sourceTree = "<group>"; };
+		AABEE3FB22970DF80042EC5A /* LKMethodTraceDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMethodTraceDetailView.m; sourceTree = "<group>"; };
+		AABEE403229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMethodTraceSelectMethodContentView.h; sourceTree = "<group>"; };
+		AABEE404229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMethodTraceSelectMethodContentView.m; sourceTree = "<group>"; };
+		AAC16CD82282B5F400E67E0A /* LKTipsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKTipsView.h; sourceTree = "<group>"; };
+		AAC16CD92282B5F400E67E0A /* LKTipsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKTipsView.m; sourceTree = "<group>"; };
+		AAC1FB1F2282EDC6000A3653 /* LKWindowToolbarHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKWindowToolbarHelper.h; sourceTree = "<group>"; };
+		AAC1FB202282EDC6000A3653 /* LKWindowToolbarHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKWindowToolbarHelper.m; sourceTree = "<group>"; };
+		AAC323152267ABD200BACA67 /* LKWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKWindowController.h; sourceTree = "<group>"; };
+		AAC323162267ABD200BACA67 /* LKWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKWindowController.m; sourceTree = "<group>"; };
+		AAC41E1522686A28005CDD6E /* LKStaticHierarchyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKStaticHierarchyDataSource.m; sourceTree = "<group>"; };
+		AAC41E1622686A28005CDD6E /* LKStaticHierarchyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKStaticHierarchyDataSource.h; sourceTree = "<group>"; };
+		AAC5E2DC228034DC0081A810 /* LKHierarchyDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LKHierarchyDataSource.h; path = LookinClient/Hierarchy/LKHierarchyDataSource.h; sourceTree = SOURCE_ROOT; };
+		AAC5E2DD228034DC0081A810 /* LKHierarchyDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LKHierarchyDataSource.m; path = LookinClient/Hierarchy/LKHierarchyDataSource.m; sourceTree = SOURCE_ROOT; };
+		AACBACAD22AE983F00A8F89D /* LKDashboardAttributeRectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeRectView.h; sourceTree = "<group>"; };
+		AACBACAE22AE983F00A8F89D /* LKDashboardAttributeRectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeRectView.m; sourceTree = "<group>"; };
+		AACBACB022AEA6E900A8F89D /* LKDashboardAttributeInsetsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeInsetsView.h; sourceTree = "<group>"; };
+		AACBACB122AEA6E900A8F89D /* LKDashboardAttributeInsetsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeInsetsView.m; sourceTree = "<group>"; };
+		AAD2BECC226B1ED500E83D01 /* LKTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKTableView.h; sourceTree = "<group>"; };
+		AAD2BECD226B1ED500E83D01 /* LKTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKTableView.m; sourceTree = "<group>"; };
+		AAD2BECF226B280B00E83D01 /* LKTableRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKTableRowView.h; sourceTree = "<group>"; };
+		AAD2BED0226B280B00E83D01 /* LKTableRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKTableRowView.m; sourceTree = "<group>"; };
+		AAD2BED5226B327000E83D01 /* LKOutlineRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKOutlineRowView.h; sourceTree = "<group>"; };
+		AAD2BED6226B327000E83D01 /* LKOutlineRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKOutlineRowView.m; sourceTree = "<group>"; };
+		AAD3872B2288614300042229 /* LKReadWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKReadWindowController.h; sourceTree = "<group>"; };
+		AAD3872C2288614300042229 /* LKReadWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKReadWindowController.m; sourceTree = "<group>"; };
+		AAD3872F2288624600042229 /* LKReadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKReadViewController.h; sourceTree = "<group>"; };
+		AAD387302288624600042229 /* LKReadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKReadViewController.m; sourceTree = "<group>"; };
+		AAD387322288632100042229 /* LKHierarchyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKHierarchyController.h; sourceTree = "<group>"; };
+		AAD387332288632100042229 /* LKHierarchyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKHierarchyController.m; sourceTree = "<group>"; };
+		AAD8C02A22C60E06009253F4 /* LKReadHierarchyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKReadHierarchyDataSource.m; sourceTree = "<group>"; };
+		AAD8C02B22C60E06009253F4 /* LKReadHierarchyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKReadHierarchyDataSource.h; sourceTree = "<group>"; };
+		AADD18182302FB5B00AF79A4 /* NSControl+LookinClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSControl+LookinClient.h"; sourceTree = "<group>"; };
+		AADD18192302FB5B00AF79A4 /* NSControl+LookinClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSControl+LookinClient.m"; sourceTree = "<group>"; };
+		AAE61CC622A4F7B100B3FB9F /* LKInputSearchSuggestionItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKInputSearchSuggestionItem.h; sourceTree = "<group>"; };
+		AAE61CC722A4F7B100B3FB9F /* LKInputSearchSuggestionItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKInputSearchSuggestionItem.m; sourceTree = "<group>"; };
+		AAE61CC922A5023000B3FB9F /* LKInputSearchSuggestionsContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKInputSearchSuggestionsContentView.h; sourceTree = "<group>"; };
+		AAE61CCA22A5023000B3FB9F /* LKInputSearchSuggestionsContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKInputSearchSuggestionsContentView.m; sourceTree = "<group>"; };
+		AAE61CCC22A5063F00B3FB9F /* LKInputSearchSuggestionsRowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKInputSearchSuggestionsRowView.h; sourceTree = "<group>"; };
+		AAE61CCD22A5063F00B3FB9F /* LKInputSearchSuggestionsRowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKInputSearchSuggestionsRowView.m; sourceTree = "<group>"; };
+		AAE649312299462200232880 /* NSButton+LookinClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSButton+LookinClient.h"; sourceTree = "<group>"; };
+		AAE649322299462200232880 /* NSButton+LookinClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSButton+LookinClient.m"; sourceTree = "<group>"; };
+		AAEC35A32340EAB3009E5040 /* NSString+LookinClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LookinClient.h"; sourceTree = "<group>"; };
+		AAEC35A42340EAB3009E5040 /* NSString+LookinClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LookinClient.m"; sourceTree = "<group>"; };
+		AAEC731E22A6E4820011B147 /* LKPreferenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKPreferenceManager.h; sourceTree = "<group>"; };
+		AAEC731F22A6E4820011B147 /* LKPreferenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKPreferenceManager.m; sourceTree = "<group>"; };
+		AAED8ED622AFED490051242B /* LKDashboardAttributeSizeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeSizeView.h; sourceTree = "<group>"; };
+		AAED8ED722AFED490051242B /* LKDashboardAttributeSizeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeSizeView.m; sourceTree = "<group>"; };
+		AAEE450521DF81C300BF2650 /* LKPreferenceWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPreferenceWindowController.h; sourceTree = "<group>"; };
+		AAEE450621DF81C300BF2650 /* LKPreferenceWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPreferenceWindowController.m; sourceTree = "<group>"; };
+		AAEE450921DF820100BF2650 /* LKPreferenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKPreferenceViewController.h; sourceTree = "<group>"; };
+		AAEE450A21DF820100BF2650 /* LKPreferenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKPreferenceViewController.m; sourceTree = "<group>"; };
+		AAEF2C0D2308420300CFAC53 /* LookinPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookinPreviewView.m; sourceTree = "<group>"; };
+		AAEF2C0E2308420300CFAC53 /* LookinPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookinPreviewView.h; sourceTree = "<group>"; };
+		AAEF2C0F2308420400CFAC53 /* LookinDisplayItemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookinDisplayItemNode.m; sourceTree = "<group>"; };
+		AAEF2C102308420400CFAC53 /* LookinDisplayItemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookinDisplayItemNode.h; sourceTree = "<group>"; };
+		AAF418C022BA2AF000111554 /* LKConsoleSelectPopoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKConsoleSelectPopoverController.h; sourceTree = "<group>"; };
+		AAF418C122BA2AF000111554 /* LKConsoleSelectPopoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKConsoleSelectPopoverController.m; sourceTree = "<group>"; };
+		AAF418C322BA2C9600111554 /* LKConsoleSelectPopoverItemControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKConsoleSelectPopoverItemControl.h; sourceTree = "<group>"; };
+		AAF418C422BA2C9600111554 /* LKConsoleSelectPopoverItemControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKConsoleSelectPopoverItemControl.m; sourceTree = "<group>"; };
+		AAF418C622BA2D1300111554 /* LKImageTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKImageTextView.h; sourceTree = "<group>"; };
+		AAF418C722BA2D1300111554 /* LKImageTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKImageTextView.m; sourceTree = "<group>"; };
+		D4052AC7235CBD090033C961 /* LKMeasureTutorialView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMeasureTutorialView.h; sourceTree = "<group>"; };
+		D4052AC8235CBD090033C961 /* LKMeasureTutorialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMeasureTutorialView.m; sourceTree = "<group>"; };
+		D4052ACA235CE2300033C961 /* LKMeasureResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMeasureResultView.h; sourceTree = "<group>"; };
+		D4052ACB235CE2300033C961 /* LKMeasureResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMeasureResultView.m; sourceTree = "<group>"; };
+		D41874D2234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKDashboardAttributeOpenImageView.h; sourceTree = "<group>"; };
+		D41874D3234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKDashboardAttributeOpenImageView.m; sourceTree = "<group>"; };
+		D4224EED2358ED3400ED9626 /* LKMeasureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMeasureController.h; sourceTree = "<group>"; };
+		D4224EEE2358ED3400ED9626 /* LKMeasureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMeasureController.m; sourceTree = "<group>"; };
+		D4D1B2D12353975A002A5071 /* LKWindowToolbarScaleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKWindowToolbarScaleView.h; sourceTree = "<group>"; };
+		D4D1B2D22353975A002A5071 /* LKWindowToolbarScaleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKWindowToolbarScaleView.m; sourceTree = "<group>"; };
+		D4E1FD64236169130070DFB8 /* LKMeasureResultLineData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LKMeasureResultLineData.h; sourceTree = "<group>"; };
+		D4E1FD65236169130070DFB8 /* LKMeasureResultLineData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LKMeasureResultLineData.m; sourceTree = "<group>"; };
+		D97552B9BF9170E090F8CAA7 /* Pods-LookinClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookinClient.debug.xcconfig"; path = "Target Support Files/Pods-LookinClient/Pods-LookinClient.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A22370CB2828107400585509 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A22370CC2828107400585509 /* Security.framework in Frameworks */,
+				113B2F55E5BE571AC938D898 /* Pods_LookinTestflight.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA48F29821CC0CA50032EC2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1CAA3E22E471EC006D9285 /* Security.framework in Frameworks */,
+				094E413CB04F29F94551D070 /* Pods_LookinClient.framework in Frameworks */,
+				BC7E32318E0156F2D16B96CA /* Pods_LookinClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A9FB6E904476A1F9D0BB82E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA1CAA3D22E471EC006D9285 /* Security.framework */,
+				AAB9517A22C3AECA00A5F958 /* Quartz.framework */,
+				AAB9519122C3BDC900A5F958 /* QuickLookThumbnailing.framework */,
+				81A3B0CB06C22A05EDC913F3 /* Pods_LookinClient.framework */,
+				89555EC46A276B7FD0CB65FA /* Pods_LookinTestflight.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D159F647DFD4AA3F8E7F9E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D97552B9BF9170E090F8CAA7 /* Pods-LookinClient.debug.xcconfig */,
+				5E8E4C9C392BAAF93643C21E /* Pods-LookinClient.release.xcconfig */,
+				4225D6261428134154CB341E /* Pods-LookinTestflight.debug.xcconfig */,
+				07695A2606130B23B91F553C /* Pods-LookinTestflight.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A26EF68527F89F83005A9E4E /* ShortCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				A26EF68627F89F83005A9E4E /* ShortCocoa+String.h */,
+				A26EF68727F89F83005A9E4E /* ShortCocoa+Layout.h */,
+				A26EF68827F89F83005A9E4E /* ShortCocoa+Private.m */,
+				A26EF68927F89F83005A9E4E /* ShortCocoaCore.m */,
+				A26EF68A27F89F83005A9E4E /* ShortCocoa+Others.m */,
+				A26EF68B27F89F83005A9E4E /* ShortCocoa+UIToolkit.h */,
+				A26EF68C27F89F83005A9E4E /* ShortCocoa+String.m */,
+				A26EF68D27F89F83005A9E4E /* ShortCocoa.h */,
+				A26EF68E27F89F83005A9E4E /* ShortCocoa+Private.h */,
+				A26EF68F27F89F83005A9E4E /* ShortCocoa+Layout.m */,
+				A26EF69027F89F83005A9E4E /* ShortCocoaDefines.h */,
+				A26EF69127F89F83005A9E4E /* ShortCocoa+UIToolkit.m */,
+				A26EF69227F89F83005A9E4E /* ShortCocoa+Others.h */,
+				A26EF69327F89F83005A9E4E /* ShortCocoaCore.h */,
+			);
+			path = ShortCocoa;
+			sourceTree = "<group>";
+		};
+		AA05CCD1221ED50B0086CDD1 /* AttributeView */ = {
+			isa = PBXGroup;
+			children = (
+				AA05CCD8221ED5F60086CDD1 /* LKDashboardAttributeColorView.h */,
+				AAB636BE22B3854100885A2C /* LKDashboardAttributeClassView.h */,
+				AAB636BF22B3854100885A2C /* LKDashboardAttributeClassView.m */,
+				AAB636C122B3981200885A2C /* LKDashboardAttributeRelationView.h */,
+				AAB636C222B3981200885A2C /* LKDashboardAttributeRelationView.m */,
+				AAAEB36C22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.h */,
+				D41874D2234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.h */,
+				D41874D3234B68AE004D68A2 /* LKDashboardAttributeOpenImageView.m */,
+				AA0A2DD3233F7D2B008BF946 /* Constraint */,
+				AAAEB36D22B408DF00A3DDE7 /* LKDashboardAttributeStringArrayView.m */,
+				AA05CCD9221ED5F60086CDD1 /* LKDashboardAttributeColorView.m */,
+				AA05CCDB221ED6110086CDD1 /* LKDashboardAttributeEnumsView.h */,
+				AA05CCDC221ED6110086CDD1 /* LKDashboardAttributeEnumsView.m */,
+				AACBACB022AEA6E900A8F89D /* LKDashboardAttributeInsetsView.h */,
+				AACBACB122AEA6E900A8F89D /* LKDashboardAttributeInsetsView.m */,
+				AA05CCD2221ED5CA0086CDD1 /* LKDashboardAttributeNumberInputView.h */,
+				AA05CCD3221ED5CA0086CDD1 /* LKDashboardAttributeNumberInputView.m */,
+				AA8133EE22AFAEA1000A9D40 /* LKDashboardAttributePointView.h */,
+				AA8133EF22AFAEA1000A9D40 /* LKDashboardAttributePointView.m */,
+				AACBACAD22AE983F00A8F89D /* LKDashboardAttributeRectView.h */,
+				AACBACAE22AE983F00A8F89D /* LKDashboardAttributeRectView.m */,
+				AA28179D22B0305400A0874C /* LKDashboardAttributeRowsCountView.h */,
+				AA28179E22B0305400A0874C /* LKDashboardAttributeRowsCountView.m */,
+				AAED8ED622AFED490051242B /* LKDashboardAttributeSizeView.h */,
+				AA17F38E232FBD710082F393 /* LKDashboardAttributeTextView.h */,
+				AA17F38F232FBD710082F393 /* LKDashboardAttributeTextView.m */,
+				AAED8ED722AFED490051242B /* LKDashboardAttributeSizeView.m */,
+				AA05CCD5221ED5E80086CDD1 /* LKDashboardAttributeSwitchView.h */,
+				AA05CCD6221ED5E80086CDD1 /* LKDashboardAttributeSwitchView.m */,
+				AAA8C0E021CC17680017A345 /* LKDashboardAttributeView.h */,
+				AAA8C0EF21CC17680017A345 /* LKDashboardAttributeView.m */,
+			);
+			path = AttributeView;
+			sourceTree = "<group>";
+		};
+		AA0757B922C606F3005535DC /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				AA5AE70422C2B2E50064D41B /* LookinDocument.h */,
+				AA5AE70522C2B2E50064D41B /* LookinDocument.m */,
+				AA9CC2C322891EA20014D13B /* LKExportAccessoryView.h */,
+				AA9CC2C422891EA20014D13B /* LKExportAccessoryView.m */,
+				AA3D51A82289E57C00E4E6B7 /* LKExportManager.h */,
+				AA3D51A92289E57C00E4E6B7 /* LKExportManager.m */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		AA0757C122C607D7005535DC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AA01EF2622DD0D26002A2E06 /* LKHelper.h */,
+				AA01EF2522DD0D26002A2E06 /* LKHelper.m */,
+				AABE9003224169D200030361 /* LKAppMenuManager.h */,
+				AABE9004224169D200030361 /* LKAppMenuManager.m */,
+				AAEC731E22A6E4820011B147 /* LKPreferenceManager.h */,
+				AAEC731F22A6E4820011B147 /* LKPreferenceManager.m */,
+				AAA8C11B21CC17680017A345 /* LKNavigationManager.h */,
+				AAA8C08E21CC17670017A345 /* LKNavigationManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		AA0757C322C6084A005535DC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				AA66645E22DBBAC7009E05CC /* NSString+Score.h */,
+				AA66645D22DBBAC7009E05CC /* NSString+Score.m */,
+				AAEC35A32340EAB3009E5040 /* NSString+LookinClient.h */,
+				AAEC35A42340EAB3009E5040 /* NSString+LookinClient.m */,
+				AA236249222C67C1008FE069 /* NSAppearance+LookinClient.h */,
+				AA23624A222C67C1008FE069 /* NSAppearance+LookinClient.m */,
+				AAE649312299462200232880 /* NSButton+LookinClient.h */,
+				AAE649322299462200232880 /* NSButton+LookinClient.m */,
+				AA356AF3228EE6A3005C3969 /* NSColor+LookinClient.h */,
+				AA356AF4228EE6A3005C3969 /* NSColor+LookinClient.m */,
+				AAA9638B228428EE0047F707 /* NSPointerArray+LookinClient.h */,
+				AAA9638C228428EE0047F707 /* NSPointerArray+LookinClient.m */,
+				AA2F1AF423040552004725D6 /* NSArray+LookinClient.h */,
+				AA2F1AF523040552004725D6 /* NSArray+LookinClient.m */,
+				AAA8C0B821CC17670017A345 /* NSView+LookinClient.h */,
+				AADD18182302FB5B00AF79A4 /* NSControl+LookinClient.h */,
+				AADD18192302FB5B00AF79A4 /* NSControl+LookinClient.m */,
+				AAA8C0B421CC17670017A345 /* NSView+LookinClient.m */,
+				AAA8C0A421CC17670017A345 /* ShortCocoa+LookinClient.h */,
+				AAA8C09621CC17670017A345 /* ShortCocoa+LookinClient.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		AA08FC9322DF99E700F65B20 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				AA13691C22C3DA6F00B8AE87 /* LKTutorialManager.h */,
+				AA13691D22C3DA6F00B8AE87 /* LKTutorialManager.m */,
+				AA17857C22DE65D20042C8F0 /* LKTutorialPopoverController.h */,
+				AA17857D22DE65D20042C8F0 /* LKTutorialPopoverController.m */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		AA0A2DD3233F7D2B008BF946 /* Constraint */ = {
+			isa = PBXGroup;
+			children = (
+				AA20A497232A2A2300AC80AA /* LKDashboardAttributeConstraintsView.h */,
+				AA20A498232A2A2300AC80AA /* LKDashboardAttributeConstraintsView.m */,
+				AA34A15C233F884D00513829 /* LKConstraintPopoverController.h */,
+				AA34A15D233F884D00513829 /* LKConstraintPopoverController.m */,
+				AA0A2DCB233F6AE4008BF946 /* LKDashboardAttributeConstraintsItemControl.h */,
+				AA0A2DCC233F6AE4008BF946 /* LKDashboardAttributeConstraintsItemControl.m */,
+			);
+			path = Constraint;
+			sourceTree = "<group>";
+		};
+		AA39054E23694C3800CA7646 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				AA39054B23694C3100CA7646 /* LKAboutWindowController.h */,
+				AA39054C23694C3100CA7646 /* LKAboutWindowController.m */,
+				AA39054F23694D5D00CA7646 /* LKAboutViewController.h */,
+				AA39055023694D5D00CA7646 /* LKAboutViewController.m */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		AA48F29221CC0CA50032EC2C = {
+			isa = PBXGroup;
+			children = (
+				AA48F29D21CC0CA50032EC2C /* LookinClient */,
+				AA48F29C21CC0CA50032EC2C /* Products */,
+				5D159F647DFD4AA3F8E7F9E7 /* Pods */,
+				0A9FB6E904476A1F9D0BB82E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA48F29C21CC0CA50032EC2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA48F29B21CC0CA50032EC2C /* Lookin.app */,
+				A22370DB2828107400585509 /* LookinTestflight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA48F29D21CC0CA50032EC2C /* LookinClient */ = {
+			isa = PBXGroup;
+			children = (
+				AA6E0D8322E1D5BD00948877 /* Localizable.strings */,
+				AA48F2A921CC0CA60032EC2C /* Lookin.entitlements */,
+				AAA8C11C21CC17680017A345 /* AppDelegate.h */,
+				AAA8C11321CC17680017A345 /* AppDelegate.m */,
+				AA48F2A721CC0CA60032EC2C /* main.m */,
+				AA66488B23696D220043B50A /* logo_jump.gif */,
+				AA48F2A621CC0CA60032EC2C /* LookinClient_Info.plist */,
+				A22370DE2828113900585509 /* LookinTestflight_Info.plist */,
+				AA48F2A121CC0CA60032EC2C /* Assets.xcassets */,
+				AAA8C0C021CC17670017A345 /* LookinClient_PrefixHeader.pch */,
+				AA77A32C22CE0E7100C73721 /* lookin_icon.icns */,
+				A26EF68527F89F83005A9E4E /* ShortCocoa */,
+				AA39054E23694C3800CA7646 /* About */,
+				AAA8C08F21CC17670017A345 /* Base */,
+				AA08FC9322DF99E700F65B20 /* Tutorial */,
+				AA0757B922C606F3005535DC /* Export */,
+				AA0757C122C607D7005535DC /* Manager */,
+				AA8CFE222296DD5800B98BA2 /* MethodTrace */,
+				AA50753722A269F600D2A5AC /* Console */,
+				AAA8C08721CC17670017A345 /* Connection */,
+				AAA8C0F721CC17680017A345 /* Toolbar */,
+				D4224EF02358ED3A00ED9626 /* Measure */,
+				AAA8C0D621CC17680017A345 /* Dashboard */,
+				AAA8C0C221CC17670017A345 /* Hierarchy */,
+				AAA8C11421CC17680017A345 /* Launch */,
+				AAA8C0D221CC17680017A345 /* Static */,
+				AAD3872E2288614B00042229 /* Read */,
+				AAEE450821DF81C800BF2650 /* Preference */,
+				AA48F2A321CC0CA60032EC2C /* MainMenu.xib */,
+			);
+			path = LookinClient;
+			sourceTree = "<group>";
+		};
+		AA50753722A269F600D2A5AC /* Console */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A3D642269DDCC00BE46C7 /* LKConsoleViewController.h */,
+				AA9A3D6D2269DDCD00BE46C7 /* LKConsoleViewController.m */,
+				AA50754122A2844400D2A5AC /* LKConsoleInputRowView.h */,
+				AA50754F22A28A0A00D2A5AC /* LKConsoleSubmitRowView.h */,
+				AA50755022A28A0A00D2A5AC /* LKConsoleSubmitRowView.m */,
+				AA50755222A28A1600D2A5AC /* LKConsoleReturnRowView.h */,
+				AA50755322A28A1600D2A5AC /* LKConsoleReturnRowView.m */,
+				AA50754222A2844400D2A5AC /* LKConsoleInputRowView.m */,
+				AA50753822A27CC500D2A5AC /* LKConsoleDataSource.h */,
+				AA50753B22A27EAD00D2A5AC /* LKConsoleDataSourceRowItem.h */,
+				AA50753C22A27EAD00D2A5AC /* LKConsoleDataSourceRowItem.m */,
+				AA50753922A27CC500D2A5AC /* LKConsoleDataSource.m */,
+				AAF418C022BA2AF000111554 /* LKConsoleSelectPopoverController.h */,
+				AAF418C122BA2AF000111554 /* LKConsoleSelectPopoverController.m */,
+				AAF418C322BA2C9600111554 /* LKConsoleSelectPopoverItemControl.h */,
+				AAF418C422BA2C9600111554 /* LKConsoleSelectPopoverItemControl.m */,
+			);
+			path = Console;
+			sourceTree = "<group>";
+		};
+		AA50755822A3ED9B00D2A5AC /* InputSearch */ = {
+			isa = PBXGroup;
+			children = (
+				AA50755522A3E76A00D2A5AC /* LKInputSearchView.h */,
+				AA50755622A3E76A00D2A5AC /* LKInputSearchView.m */,
+				AA50755C22A3EE4A00D2A5AC /* LKInputSearchSuggestionWindowController.h */,
+				AA50755D22A3EE4A00D2A5AC /* LKInputSearchSuggestionWindowController.m */,
+				AAE61CCC22A5063F00B3FB9F /* LKInputSearchSuggestionsRowView.h */,
+				AAE61CCD22A5063F00B3FB9F /* LKInputSearchSuggestionsRowView.m */,
+				AAE61CC922A5023000B3FB9F /* LKInputSearchSuggestionsContentView.h */,
+				AAE61CCA22A5023000B3FB9F /* LKInputSearchSuggestionsContentView.m */,
+				AAE61CC622A4F7B100B3FB9F /* LKInputSearchSuggestionItem.h */,
+				AAE61CC722A4F7B100B3FB9F /* LKInputSearchSuggestionItem.m */,
+			);
+			path = InputSearch;
+			sourceTree = "<group>";
+		};
+		AA8CFE222296DD5800B98BA2 /* MethodTrace */ = {
+			isa = PBXGroup;
+			children = (
+				AA8CFE1F2296DD5300B98BA2 /* LKMethodTraceWindowController.h */,
+				AA8CFE202296DD5300B98BA2 /* LKMethodTraceWindowController.m */,
+				AABEE3FA22970DF80042EC5A /* LKMethodTraceDetailView.h */,
+				AABEE3FB22970DF80042EC5A /* LKMethodTraceDetailView.m */,
+				AA8CFE232296DD7F00B98BA2 /* LKMethodTraceViewController.h */,
+				AA8CFE242296DD7F00B98BA2 /* LKMethodTraceViewController.m */,
+				AA443BA122C40354009543D1 /* LKMethodTraceLaunchView.h */,
+				AA443BA222C40354009543D1 /* LKMethodTraceLaunchView.m */,
+				AAA2C6122297D5CF005CBA10 /* LKMethodTraceDataSource.h */,
+				AAA2C6132297D5CF005CBA10 /* LKMethodTraceDataSource.m */,
+				AABEE3EA22970CCF0042EC5A /* LKMethodTraceMenuView.h */,
+				AABEE3EB22970CCF0042EC5A /* LKMethodTraceMenuView.m */,
+				AABEE403229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.h */,
+				AABEE404229721CE0042EC5A /* LKMethodTraceSelectMethodContentView.m */,
+				AABEE3ED22970CE80042EC5A /* LKMethodTraceMenuItemView.h */,
+				AABEE3EE22970CE80042EC5A /* LKMethodTraceMenuItemView.m */,
+			);
+			path = MethodTrace;
+			sourceTree = "<group>";
+		};
+		AAA8C08721CC17670017A345 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				AAA8C08B21CC17670017A345 /* LKAppsManager.m */,
+				AAA8C08821CC17670017A345 /* LKAppsManager.h */,
+				AAA8C08C21CC17670017A345 /* LKConnectionManager.m */,
+				AA7F157622C0F2B9004436AD /* LKConnectionRequest.h */,
+				AA7F157722C0F2B9004436AD /* LKConnectionRequest.m */,
+				AAA8C08921CC17670017A345 /* LKConnectionManager.h */,
+				AAA8C08D21CC17670017A345 /* LKInspectableApp.h */,
+				AAA8C08A21CC17670017A345 /* LKInspectableApp.m */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		AAA8C08F21CC17670017A345 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AA0757C322C6084A005535DC /* Category */,
+				AA50755822A3ED9B00D2A5AC /* InputSearch */,
+				AAB09026229D74F000159B15 /* LKOutlineItem.h */,
+				AA65ED472341FE8300F0BF34 /* LKTwoColors.h */,
+				AA65ED482341FE8300F0BF34 /* LKTwoColors.m */,
+				AAB09027229D74F000159B15 /* LKOutlineItem.m */,
+				AA66C5A5231965EE00085C76 /* LKUserActionManager.h */,
+				AA66C5A6231965EE00085C76 /* LKUserActionManager.m */,
+				A213803B2821886B009BFE60 /* LKPerformanceReporter.h */,
+				A213803C2821886B009BFE60 /* LKPerformanceReporter.m */,
+				AA2F1AF12303F34B004725D6 /* LKTextsMenuView.h */,
+				AA2F1AF22303F34B004725D6 /* LKTextsMenuView.m */,
+				AAC323152267ABD200BACA67 /* LKWindowController.h */,
+				AAC323162267ABD200BACA67 /* LKWindowController.m */,
+				AA0A2DD9233F81D9008BF946 /* LKPopPanel.h */,
+				AA0A2DDA233F81D9008BF946 /* LKPopPanel.m */,
+				AA5C54D92289DF97004E09F4 /* LKWindow.h */,
+				AA5C54DA2289DF97004E09F4 /* LKWindow.m */,
+				AAA8C0D321CC17680017A345 /* LKSplitView.h */,
+				AAA8C11021CC17680017A345 /* LKSplitView.m */,
+				AAD2BECF226B280B00E83D01 /* LKTableRowView.h */,
+				AAD2BED0226B280B00E83D01 /* LKTableRowView.m */,
+				AAD2BECC226B1ED500E83D01 /* LKTableView.h */,
+				AAD2BECD226B1ED500E83D01 /* LKTableView.m */,
+				AAAF21132226BD4D00975C95 /* LKTextFieldView.h */,
+				AAAF21142226BD4D00975C95 /* LKTextFieldView.m */,
+				AAC16CD82282B5F400E67E0A /* LKTipsView.h */,
+				AAC16CD92282B5F400E67E0A /* LKTipsView.m */,
+				AA1BE24E2237D6A700DB38E6 /* LKTextControl.h */,
+				AA1BE24F2237D6A700DB38E6 /* LKTextControl.m */,
+				AAA8C0A721CC17670017A345 /* LKProgressIndicatorView.h */,
+				AAA8C09A21CC17670017A345 /* LKProgressIndicatorView.m */,
+				AA290356229824A400073B65 /* LKPanelContentView.h */,
+				AA290357229824A400073B65 /* LKPanelContentView.m */,
+				AAD2BED5226B327000E83D01 /* LKOutlineRowView.h */,
+				AAD2BED6226B327000E83D01 /* LKOutlineRowView.m */,
+				AA30215E21F32908000B0084 /* LKColorIndicatorLayer.h */,
+				AA30215F21F32908000B0084 /* LKColorIndicatorLayer.m */,
+				AAB09023229D736F00159B15 /* LKOutlineView.h */,
+				AAB09024229D736F00159B15 /* LKOutlineView.m */,
+				AA6CC486221FE7DE00CA6D54 /* LKNumberInputView.h */,
+				AA6CC487221FE7DE00CA6D54 /* LKNumberInputView.m */,
+				AAA8C0A621CC17670017A345 /* LKImageControl.h */,
+				AAA8C09B21CC17670017A345 /* LKImageControl.m */,
+				AAF418C622BA2D1300111554 /* LKImageTextView.h */,
+				AAF418C722BA2D1300111554 /* LKImageTextView.m */,
+				AAA8C0A121CC17670017A345 /* LKLabel.h */,
+				AAA8C09221CC17670017A345 /* LKLabel.m */,
+				AAA8C09321CC17670017A345 /* LKBaseControl.h */,
+				AAA8C0A021CC17670017A345 /* LKBaseControl.m */,
+				AAA8C09721CC17670017A345 /* LKBaseView.h */,
+				AAA8C0A321CC17670017A345 /* LKBaseView.m */,
+				AAA8C0A521CC17670017A345 /* LKBaseViewController.h */,
+				AAA8C09C21CC17670017A345 /* LKBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		AAA8C0C221CC17670017A345 /* Hierarchy */ = {
+			isa = PBXGroup;
+			children = (
+				AAD387322288632100042229 /* LKHierarchyController.h */,
+				AAD387332288632100042229 /* LKHierarchyController.m */,
+				AA3A7D0223003D7A00997887 /* LKHierarchyHandlersPopoverController.h */,
+				AA3A7D0323003D7A00997887 /* LKHierarchyHandlersPopoverController.m */,
+				AA3A7D0723003F5800997887 /* LKHierarchyHandlersPopoverItemView.h */,
+				AA3A7D0823003F5800997887 /* LKHierarchyHandlersPopoverItemView.m */,
+				AAC5E2DC228034DC0081A810 /* LKHierarchyDataSource.h */,
+				AAC5E2DD228034DC0081A810 /* LKHierarchyDataSource.m */,
+				AA22A0EB2276D65B00356E70 /* LKHierarchyItem.h */,
+				AA22A0EC2276D65B00356E70 /* LKHierarchyItem.m */,
+				AAA8C0AD21CC17670017A345 /* LKHierarchyView.m */,
+				AAA8C0AB21CC17670017A345 /* LKHierarchyView.h */,
+				AAA8C0AE21CC17670017A345 /* LKHierarchyRowView.m */,
+				AAA8C0AC21CC17670017A345 /* LKHierarchyRowView.h */,
+			);
+			path = Hierarchy;
+			sourceTree = "<group>";
+		};
+		AAA8C0D221CC17680017A345 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				AAA8C10721CC17680017A345 /* Preview */,
+				AAA8C0D521CC17680017A345 /* LKStaticViewController.h */,
+				AAA8C11121CC17680017A345 /* LKStaticViewController.m */,
+				AAB872E4221C26B600C25294 /* LKStaticAsyncUpdateManager.h */,
+				AAB872E5221C26B600C25294 /* LKStaticAsyncUpdateManager.m */,
+				AAC41E1622686A28005CDD6E /* LKStaticHierarchyDataSource.h */,
+				AAC41E1522686A28005CDD6E /* LKStaticHierarchyDataSource.m */,
+				AAA8C0D421CC17680017A345 /* LKStaticWindowController.h */,
+				AAA8C11221CC17680017A345 /* LKStaticWindowController.m */,
+				AAA8C0CA21CC17670017A345 /* LKStaticHierarchyController.m */,
+				AAA8C0D121CC17670017A345 /* LKStaticHierarchyController.h */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		AAA8C0D621CC17680017A345 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				AAB65C0D2320FCFA001E4299 /* Search */,
+				AA05CCD1221ED50B0086CDD1 /* AttributeView */,
+				AAA8C0DA21CC17680017A345 /* LKDashboardCardView.h */,
+				AA66C59F231924BD00085C76 /* LKDashboardAccessoryWindowController.h */,
+				AA66C5A0231924BD00085C76 /* LKDashboardAccessoryWindowController.m */,
+				AAA8C0EA21CC17680017A345 /* LKDashboardCardView.m */,
+				AAB636C422B3BA0F00885A2C /* LKDashboardCardTitleControl.h */,
+				AAB636C522B3BA0F00885A2C /* LKDashboardCardTitleControl.m */,
+				AA22310B22AA717E00A5A975 /* LKDashboardSectionView.h */,
+				AA22310C22AA717E00A5A975 /* LKDashboardSectionView.m */,
+				AAA8C0F121CC17680017A345 /* LKDashboardViewController.h */,
+				AAA8C0DF21CC17680017A345 /* LKDashboardViewController.m */,
+				AAA8C0F521CC17680017A345 /* LKEnumListRegistry.h */,
+				AAA8C0E621CC17680017A345 /* LKEnumListRegistry.m */,
+			);
+			path = Dashboard;
