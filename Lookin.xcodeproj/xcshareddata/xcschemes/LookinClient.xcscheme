@@ -43,4 +43,18 @@
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
-            BuildableIdentifier = "p
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AA48F29A21CC0CA50032EC2C"
+            BuildableName = "Lookin.app"
+            BlueprintName = "LookinClient"
+            ReferencedContainer = "container:Lookin.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnabl
