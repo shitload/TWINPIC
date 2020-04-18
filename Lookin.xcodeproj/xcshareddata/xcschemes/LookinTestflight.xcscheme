@@ -42,4 +42,18 @@
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
-         <Bui
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A22370362828107400585509"
+            BuildableName = "LookinTestflight.app"
+            BlueprintName = "LookinTestflight"
+            ReferencedContainer = "container:Lookin.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersi
