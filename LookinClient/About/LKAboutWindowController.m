@@ -22,4 +22,16 @@
     
     LKWindow *window = [[LKWindow alloc] initWithContentRect:NSMakeRect(0, 0, width, height) styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:YES];
     window.movableByWindowBackground = YES;
- 
+    [window center];
+    
+    if (self = [self initWithWindow:window]) {
+        LKAboutViewController *vc = [LKAboutViewController new];
+        window.contentView = vc.view;
+        self.contentViewController = vc;
+    }
+    return self;
+}
+
+
+
+@end
