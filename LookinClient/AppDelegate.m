@@ -41,4 +41,24 @@
                 NSApp.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
                 break;
             default:
-            
+                NSApp.appearance = nil;
+                break;
+        }
+    }];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {    
+    [LKConnectionManager sharedInstance];
+    if (!self.launchedToOpenFile) {
+        [[LKNavigationManager sharedInstance] showLaunch];
+    }
+    
+    [self resolveAppCenterKey];
+    
+    NSString *key = [self resolveAppCenterKey];
+    if (key) {
+        [MSACAppCenter start:key withServices:@[
+            [MSACAnalytics class],
+            [MSACCrashes class]
+        ]];
+        MSACAppCenter.enabled = LKPreferenceManager.mainManager.enableRepo
