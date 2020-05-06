@@ -30,3 +30,15 @@
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     [[LKAppMenuManager sharedInstance] setup];
+    
+    [RACObserve([LKPreferenceManager mainManager], appearanceType) subscribeNext:^(NSNumber *number) {
+        LookinPreferredAppeanranceType type = [number integerValue];
+        switch (type) {
+            case LookinPreferredAppeanranceTypeDark:
+                NSApp.appearance = [NSAppearance appearanceNamed:NSAppearanceNameDarkAqua];
+                break;
+            case LookinPreferredAppeanranceTypeLight:
+                NSApp.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+                break;
+            default:
+            
