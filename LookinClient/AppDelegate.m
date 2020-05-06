@@ -61,4 +61,27 @@
             [MSACAnalytics class],
             [MSACCrashes class]
         ]];
-        MSACAppCenter.enabled = LKPreferenceManager.mainManager.enableRepo
+        MSACAppCenter.enabled = LKPreferenceManager.mainManager.enableReport;
+    }
+    else {
+        MSACAppCenter.enabled = NO;
+    }
+    
+#ifdef DEBUG
+    [self _runTests];
+#endif
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return YES;
+}
+
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
+    self.launchedToOpenFile = YES;
+    NSError *error;
+    BOOL isSuccessful = [[LKNavigationManager sharedInstance] showReaderWithFilePath:filename error:&error];    
+    return isSuccessful;
+}
+
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+    // 清理打开
