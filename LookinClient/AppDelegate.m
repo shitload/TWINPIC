@@ -84,4 +84,20 @@
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
-    // 清理打开
+    // 清理打开 UIImageView 的图片时创建的临时文件
+    NSArray<NSString *> *tempImageFilesToDelete = [LKHelper sharedInstance].tempImageFiles;
+    if (tempImageFilesToDelete.count == 0) {
+        return NSTerminateNow;
+    }
+    [tempImageFilesToDelete enumerateObjectsUsingBlock:^(NSString * _Nonnull path, NSUInteger idx, BOOL * _Nonnull stop) {
+        BOOL isSucc = [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        if (!isSucc) {
+            NSAssert(NO, @"");
+        }
+    }];
+    return NSTerminateNow;
+}
+
+#pragma mark - Test
+
+- (NSString *)resolveAp
