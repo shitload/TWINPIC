@@ -127,4 +127,15 @@
         NSArray<LookinAttrSectionIdentifier> *secIDs = [LookinDashboardBlueprint sectionIDsForGroupID:groupID];
         [allSecIDs addObjectsFromArray:secIDs];
     }];
-    NSSet<LookinA
+    NSSet<LookinAttrSectionIdentifier> *allSecIDs_unique = [NSSet setWithArray:allSecIDs];
+    if (allSecIDs.count != allSecIDs_unique.count) {
+        NSAssert(NO, @"");
+    }
+    
+    // 确保 LookinAttrIdentifier 的 value 没有重复
+    NSMutableArray<LookinAttrIdentifier> *allAttrIDs = [NSMutableArray array];
+    [allSecIDs enumerateObjectsUsingBlock:^(LookinAttrSectionIdentifier  _Nonnull secID, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray<LookinAttrIdentifier> *attrIDs = [LookinDashboardBlueprint attrIDsForSectionID:secID];
+        [allAttrIDs addObjectsFromArray:attrIDs];
+    }];
+    NSSet<LookinAttrIdentifier> *a
