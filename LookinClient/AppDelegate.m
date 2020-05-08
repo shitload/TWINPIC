@@ -138,4 +138,10 @@
         NSArray<LookinAttrIdentifier> *attrIDs = [LookinDashboardBlueprint attrIDsForSectionID:secID];
         [allAttrIDs addObjectsFromArray:attrIDs];
     }];
-    NSSet<LookinAttrIdentifier> *a
+    NSSet<LookinAttrIdentifier> *allAttrIDs_unique = [NSSet setWithArray:allAttrIDs];
+    if (allAttrIDs.count != allAttrIDs_unique.count) {
+        NSAssert(NO, @"");
+    }
+}
+
+@end
