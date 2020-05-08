@@ -116,4 +116,15 @@
 - (void)_runTests {
     // 确保 LookinAttrGroupIdentifier 的 value 没有重复
     NSArray<LookinAttrGroupIdentifier> *allGroupIDs = [LookinDashboardBlueprint groupIDs];
-    NSSet<LookinAttrGroupIdentifier> *allGroupIDs_unique = [N
+    NSSet<LookinAttrGroupIdentifier> *allGroupIDs_unique = [NSSet setWithArray:allGroupIDs];
+    if (allGroupIDs.count != allGroupIDs_unique.count) {
+        NSAssert(NO, @"");
+    }
+    
+    // 确保 LookinAttrSectionIdentifier 的 value 没有重复
+    NSMutableArray<LookinAttrSectionIdentifier> *allSecIDs = [NSMutableArray array];
+    [allGroupIDs enumerateObjectsUsingBlock:^(LookinAttrGroupIdentifier  _Nonnull groupID, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray<LookinAttrSectionIdentifier> *secIDs = [LookinDashboardBlueprint sectionIDsForGroupID:groupID];
+        [allSecIDs addObjectsFromArray:secIDs];
+    }];
+    NSSet<LookinA
