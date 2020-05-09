@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "Logo_16.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "Logo_32.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "
