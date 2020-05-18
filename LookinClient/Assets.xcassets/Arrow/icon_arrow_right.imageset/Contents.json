@@ -1,13 +1,12 @@
-
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "2.pdf"
+      "filename" : "1.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_arrow_down.pdf",
+      "filename" : "icon_arrow_right.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
