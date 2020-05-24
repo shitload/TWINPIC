@@ -1,0 +1,11 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "info-1.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "info.pdf",
+      "appearances" : [
+       
