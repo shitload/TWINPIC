@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dashboard_button.pdf"
+      "filename" : "dashboard_control.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "dashboard_button_dark.pdf",
+      "filename" : "dashboard_control_dark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
