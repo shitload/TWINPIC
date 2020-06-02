@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dashboard_tableview.pdf"
+      "filename" : "dashboard_textfield.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "dashboard_tableview_dark.pdf",
+      "filename" : "dashboard_textfield_dark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
