@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_button_light.pdf"
+      "filename" : "hierarchy_collectioncell_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_button.pdf",
+      "filename" : "hierarchy_collectioncell.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -15,8 +16,3 @@
       ]
     }
   ],
-  "info" : {
-    "version" : 1,
-    "author" : "xcode"
-  }
-}
