@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_controller_light.pdf"
+      "filename" : "bbb.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "1.pdf",
+      "filename" : "aaa.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
