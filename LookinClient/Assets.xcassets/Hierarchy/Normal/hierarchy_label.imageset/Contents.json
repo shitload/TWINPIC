@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_gradientlayer_light.pdf"
+      "filename" : "hierarchy_label_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_gradientlayer.pdf",
+      "filename" : "hierarchy_label.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
