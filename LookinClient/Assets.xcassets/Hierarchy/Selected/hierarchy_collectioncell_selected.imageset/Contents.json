@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_button_light.pdf"
+      "filename" : "hierarchy_collectioncell_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_button_selected.pdf",
+      "filename" : "hierarchy_collectioncell_selected.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
