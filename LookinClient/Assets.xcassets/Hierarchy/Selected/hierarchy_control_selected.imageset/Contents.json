@@ -1,13 +1,12 @@
-
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_collectionreuseview_light.pdf"
+      "filename" : "hierarchy_control_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_collectionreuseview_selected.pdf",
+      "filename" : "hierarchy_control_selected.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

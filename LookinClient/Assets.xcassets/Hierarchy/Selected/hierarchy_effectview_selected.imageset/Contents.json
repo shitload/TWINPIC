@@ -3,11 +3,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_collectionreuseview_light.pdf"
+      "filename" : "bbb.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_collectionreuseview_selected.pdf",
+      "filename" : "ddd.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
