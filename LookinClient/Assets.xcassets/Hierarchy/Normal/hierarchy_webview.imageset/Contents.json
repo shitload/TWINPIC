@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_textview_light.pdf"
+      "filename" : "hierarchy_webview_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_textview.pdf",
+      "filename" : "hierarchy_webview.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

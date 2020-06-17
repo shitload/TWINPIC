@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_textview_light.pdf"
+      "filename" : "hierarchy_view.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_textview.pdf",
+      "filename" : "hierarchy_view_dark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
