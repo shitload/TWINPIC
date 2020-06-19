@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_tableheaderfooter_light.pdf"
+      "filename" : "hierarchy_tableview_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_tableheaderfooter_selected.pdf",
+      "filename" : "hierarchy_tableview_selected.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
