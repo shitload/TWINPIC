@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_slider_light.pdf"
+      "filename" : "hierarchy_tablecellseparator_light.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_slider_selected.pdf",
+      "filename" : "hierarchy_tablecellseparator_selected.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
