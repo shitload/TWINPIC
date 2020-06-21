@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "hierarchy_view.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "hierarchy_view_selected.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+   
