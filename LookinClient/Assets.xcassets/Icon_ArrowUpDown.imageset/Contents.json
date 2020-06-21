@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_view.pdf"
+      "filename" : "Group 6.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "hierarchy_view_selected.pdf",
+      "filename" : "Icon_ArrowUpDown.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
