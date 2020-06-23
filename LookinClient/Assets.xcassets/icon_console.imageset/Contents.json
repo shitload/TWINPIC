@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_app-1.pdf"
+      "filename" : "icon_console.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_app.pdf",
+      "filename" : "icon_console-1.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
