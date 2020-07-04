@@ -1,12 +1,13 @@
+
 {
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon_more-1.pdf"
+      "filename" : "icon_setting-1.pdf"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_more.pdf",
+      "filename" : "icon_setting.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",

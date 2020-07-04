@@ -1,0 +1,13 @@
+
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "icon_rotation.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
