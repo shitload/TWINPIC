@@ -11,4 +11,16 @@
 
 @implementation NSArray (LookinClient)
 
-- (NSArray *)lk
+- (NSArray *)lk_visibleViews {
+    NSArray *newArray = [self lookin_filter:^BOOL(id obj) {
+        if ([obj isKindOfClass:[NSView class]]) {
+            return ![((NSView *)obj) isHidden];
+        } else {
+            NSAssert(NO, @"");
+            return NO;
+        }
+    }];
+    return newArray;
+}
+
+@end
