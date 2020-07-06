@@ -13,4 +13,15 @@
 - (BOOL)lk_isDarkMode {
     if (__builtin_available(macOS 10.14, *)) {
         if ([self.name isEqualToString:NSAppearanceNameDarkAqua]
-            || [self.name isEqualToString:NSAppearanceNameVibra
+            || [self.name isEqualToString:NSAppearanceNameVibrantDark]
+            || [self.name isEqualToString:NSAppearanceNameAccessibilityHighContrastDarkAqua]
+            || [self.name isEqualToString:NSAppearanceNameAccessibilityHighContrastVibrantDark]) {
+            return YES;
+        }
+        return NO;
+    } else {
+        return NO;
+    }
+}
+
+@end
