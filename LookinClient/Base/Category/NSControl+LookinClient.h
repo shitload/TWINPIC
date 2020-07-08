@@ -7,4 +7,16 @@
 //
 
 #import <AppKit/AppKit.h>
-#impo
+#import <Cocoa/Cocoa.h>
+
+@interface NSControl (LookinClient)
+
+- (CGFloat)heightForWidth:(CGFloat)width;
+
+- (CGFloat)bestHeight;
+
+- (CGFloat)bestWidth;
+
+- (NSSize)bestSize;
+
+@end
