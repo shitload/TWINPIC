@@ -16,4 +16,15 @@
 }
 
 - (CGFloat)bestHeight {
-    return [self 
+    return [self sizeThatFits:NSSizeMax].height;
+}
+
+- (CGFloat)bestWidth {
+    return [self sizeThatFits:NSSizeMax].width;
+}
+
+- (NSSize)bestSize {
+    return [self sizeThatFits:NSSizeMax];
+}
+
+@end
