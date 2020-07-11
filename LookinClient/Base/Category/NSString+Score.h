@@ -15,4 +15,13 @@ enum{
 
 typedef NSUInteger NSStringScoreOption;
 
-@in
+@interface NSString (Score)
+
+- (CGFloat) scoreAgainst:(NSString *)otherString;
+- (CGFloat) scoreAgainst:(NSString *)otherString fuzziness:(NSNumber *)fuzziness;
+- (CGFloat) scoreAgainst:(NSString *)otherString fuzziness:(NSNumber *)fuzziness options:(NSStringScoreOption)options;
+
+- (CGFloat) scoreAgainst:(NSString *)anotherString fuzziness:(NSNumber *)fuzziness options:(NSStringScoreOption)options
+     invalidCharacterSet:(NSCharacterSet *)invalidCharacterSet decomposedString:(NSString *)string;
+
+- (NSString *)decomposedStringWithInvalidCharacterSet:(NSCharacterSet *)invalidCharacterSe
