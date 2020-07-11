@@ -24,4 +24,7 @@ typedef NSUInteger NSStringScoreOption;
 - (CGFloat) scoreAgainst:(NSString *)anotherString fuzziness:(NSNumber *)fuzziness options:(NSStringScoreOption)options
      invalidCharacterSet:(NSCharacterSet *)invalidCharacterSet decomposedString:(NSString *)string;
 
-- (NSString *)decomposedStringWithInvalidCharacterSet:(NSCharacterSet *)invalidCharacterSe
+- (NSString *)decomposedStringWithInvalidCharacterSet:(NSCharacterSet *)invalidCharacterSet;
+- (NSCharacterSet *)invalidCharacterSet;
+
+@end
