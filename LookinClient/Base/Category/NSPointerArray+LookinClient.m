@@ -28,4 +28,10 @@
     if (!pointer) {
         return NO;
     }
-    if (
+    if ([self lk_indexOfPointer:pointer] != NSNotFound) {
+        return YES;
+    }
+    return NO;
+}
+
+@end
