@@ -17,4 +17,6 @@
 /// 将一个 view 作为自己的 subview 并且放到最底部
 - (void)lk_insertSubviewAtBottom:(NSView *)view;
 
-- (void)
+- (void)showDebugBorder;
+
+@end
