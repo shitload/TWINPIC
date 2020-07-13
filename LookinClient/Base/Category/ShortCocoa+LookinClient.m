@@ -28,4 +28,20 @@
 
 - (ShortCocoa *)lookin_sizeToFit {
     [self unpackClassA:[LKBaseView class] doA:^(LKBaseView * _Nonnull view, BOOL * _Nonnull stop) {
-        NSSize size = [view si
+        NSSize size = [view sizeThatFits:NSMakeSize(CGFLOAT_MAX, CGFLOAT_MAX)];
+        NSRect rect = view.frame;
+        rect.size = size;
+        view.frame = rect;
+    } classB:[NSControl class] doB:^(NSControl * _Nonnull control, BOOL * _Nonnull stop) {
+        NSSize size = [control sizeThatFits:NSMakeSize(CGFLOAT_MAX, CGFLOAT_MAX)];
+        if (isnan(size.width)) {
+            size.width = 0;
+        }
+        if (isnan(size.height)) {
+            size.height = 0;
+        }
+        NSRect rect = control.frame;
+        rect.size = size;
+        control.frame = rect;
+    }];
+    re
