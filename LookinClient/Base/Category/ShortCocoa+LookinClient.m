@@ -44,4 +44,16 @@
         rect.size = size;
         control.frame = rect;
     }];
-    re
+    return self;
+}
+
+- (ShortCocoa *)lookin_heightToFit {
+    [self unpackClassA:[LKBaseView class] doA:^(LKBaseView * _Nonnull view, BOOL * _Nonnull stop) {
+        CGFloat limitedWidth = CGRectGetWidth(view.bounds);
+        CGFloat height = [view sizeThatFits:NSMakeSize(limitedWidth, CGFLOAT_MAX)].height;
+        
+        CGRect rect = view.frame;
+        rect.size.height = height;
+        view.frame = rect;
+    } classB:[NSControl class] doB:^(NSControl * _Nonnull control, BOOL * _Nonnull stop) {
+        CGFloat limitedWidth = CGRectGetW
