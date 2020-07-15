@@ -75,4 +75,22 @@
         
         [self unpackClassA:[NSView class] doA:^(NSView *view, BOOL *stop) {
             CGRect rect = view.frame;
-          
+            if (rect.size.width > maxWidth) {
+                rect.size.width = maxWidth;
+                view.frame = rect;
+            }
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            if (rect.size.width > maxWidth) {
+                rect.size.width = maxWidth;
+                layer.frame = rect;
+            }
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))lk_minWidth {
+    return ^(CGFloat minWidth) {
+        if (isnan(minWidth)) {
+            NSAssert(NO,
