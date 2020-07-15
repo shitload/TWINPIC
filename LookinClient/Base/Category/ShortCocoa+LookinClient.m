@@ -56,4 +56,23 @@
         rect.size.height = height;
         view.frame = rect;
     } classB:[NSControl class] doB:^(NSControl * _Nonnull control, BOOL * _Nonnull stop) {
-        CGFloat limitedWidth = CGRectGetW
+        CGFloat limitedWidth = CGRectGetWidth(control.bounds);
+        CGFloat height = [control sizeThatFits:NSMakeSize(limitedWidth, CGFLOAT_MAX)].height;
+        
+        CGRect rect = control.frame;
+        rect.size.height = height;
+        control.frame = rect;
+    }];
+    return self;
+}
+
+- (ShortCocoa * (^)(CGFloat))lk_maxWidth {
+    return ^(CGFloat maxWidth) {
+        if (isnan(maxWidth)) {
+            NSAssert(NO, @"传入了 NaN");
+            return self;
+        }
+        
+        [self unpackClassA:[NSView class] doA:^(NSView *view, BOOL *stop) {
+            CGRect rect = view.frame;
+          
