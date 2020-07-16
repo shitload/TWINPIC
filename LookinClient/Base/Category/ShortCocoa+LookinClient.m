@@ -93,4 +93,20 @@
 - (ShortCocoa * (^)(CGFloat))lk_minWidth {
     return ^(CGFloat minWidth) {
         if (isnan(minWidth)) {
-            NSAssert(NO,
+            NSAssert(NO, @"传入了 NaN");
+            return self;
+        }
+        
+        [self unpackClassA:[NSView class] doA:^(NSView *view, BOOL *stop) {
+            CGRect rect = view.frame;
+            if (rect.size.width < minWidth) {
+                rect.size.width = minWidth;
+                view.frame = rect;
+            }
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            if (rect.size.width < minWidth) {
+                rect.size.width = minWidth;
+                layer.frame = rect;
+            }
+       
