@@ -109,4 +109,9 @@
                 rect.size.width = minWidth;
                 layer.frame = rect;
             }
-       
+        }];
+        return self;
+    };
+}
+
+@end
