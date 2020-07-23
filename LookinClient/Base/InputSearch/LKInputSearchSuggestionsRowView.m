@@ -13,4 +13,24 @@
     CGFloat _titleLeft;
 }
 
-- (instancetype)initWithFrame:(NSRect)fr
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        _horInset = 10;
+        _titleLeft = 5;
+        
+        _imageView = [NSImageView new];
+        [self addSubview:self.imageView];
+        
+        _titleLabel = [LKLabel new];
+        self.titleLabel.maximumNumberOfLines = 1;
+        self.titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        self.titleLabel.font = NSFontMake(14);
+        [self addSubview:self.titleLabel];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.imageView).sizeToFit.x(_horInset).verAlign;
+   
