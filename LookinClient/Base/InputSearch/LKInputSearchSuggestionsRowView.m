@@ -33,4 +33,15 @@
 - (void)layout {
     [super layout];
     $(self.imageView).sizeToFit.x(_horInset).verAlign;
-   
+    $(self.titleLabel).x(self.imageView.$maxX + _titleLeft).toRight(_horInset).heightToFit.verAlign.offsetY(-1);
+}
+
+- (CGFloat)bestWidth {
+    return _horInset * 2 + self.imageView.image.size.width + _titleLeft + [self.titleLabel sizeThatFits:NSSizeMax].width;
+}
+
+- (void)drawSelectionInRect:(NSRect)dirtyRect {
+    if (self.selectionHighlightStyle != NSTableViewSelectionHighlightStyleNone) {
+        NSColor *color = [NSAppearance currentAppearance].lk_isDarkMode ? [LKHelper accentColor] : LookinColorRGBAMake(0, 0, 0, .24);
+        [color setFill];
+        NSBez
