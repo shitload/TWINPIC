@@ -44,4 +44,9 @@
     if (self.selectionHighlightStyle != NSTableViewSelectionHighlightStyleNone) {
         NSColor *color = [NSAppearance currentAppearance].lk_isDarkMode ? [LKHelper accentColor] : LookinColorRGBAMake(0, 0, 0, .24);
         [color setFill];
-        NSBez
+        NSBezierPath *selectionPath = [NSBezierPath bezierPathWithRect:self.bounds];
+        [selectionPath fill];
+    }
+}
+
+@end
