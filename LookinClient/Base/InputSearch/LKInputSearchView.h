@@ -16,4 +16,18 @@
 
 - (void)inputSearchView:(LKInputSearchView *)view submitText:(NSString *)text;
 
-@e
+@end
+
+@interface LKInputSearchView : LKBaseView
+
+- (instancetype)initWithThrottleTime:(CGFloat)throttleTime;
+
+@property(nonatomic, assign) CGFloat horizontalInset;
+
+@property(nonatomic, strong, readonly) NSTextField *textField;
+
+- (void)clearContentAndSuggestions;
+
+@property(nonatomic, weak) id<LKInputSearchViewDelegate> delegate;
+
+@end
