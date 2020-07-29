@@ -103,3 +103,15 @@
 }
 
 @end
+
+@implementation LKBaseViewController (NSSubclassingHooks)
+
+- (NSView *)makeContainerView {
+    return [[LKBaseView alloc] init];
+}
+
+- (BOOL)shouldShowConnectionTips {
+    return NO;
+}
+
+@end
