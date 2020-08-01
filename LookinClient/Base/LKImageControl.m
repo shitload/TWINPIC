@@ -33,4 +33,18 @@
     _image = image;
     _imageView.image = image;
     
-    [self setNeedsLayout:YES
+    [self setNeedsLayout:YES];
+}
+
+- (void)layout {
+    [super layout];
+    _imageView.frame = self.bounds;
+    _imageView.layer.anchorPoint = NSMakePoint(.5, .5);
+    _imageView.layer.frame = _imageView.frame;
+}
+
+- (NSSize)sizeThatFits:(NSSize)size {
+    return _imageView.image.size;
+}
+
+@end
