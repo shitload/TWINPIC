@@ -12,4 +12,21 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
     if (self = [super initWithFrame:frameRect]) {
- 
+        _imageView = [NSImageView new];
+        [self addSubview:self.imageView];
+        
+        _label = [LKLabel new];
+        [self addSubview:self.label];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.imageView).sizeToFit.x(self.imageMargins.left).verAlign;
+    $(self.label).x(self.imageView.$maxX + self.imageMargins.right).toRight(0).heightToFit.verAlign;
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    NSSize labelSize = [self.label sizeThatFits:NSSizeMax];
+    limitedSize.width = self.imageMargins.left + self.imageView
