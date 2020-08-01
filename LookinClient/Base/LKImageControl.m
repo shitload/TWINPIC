@@ -8,4 +8,29 @@
 
 #import "LKImageControl.h"
 
-@int
+@interface LKImageControl ()
+
+@end
+
+@implementation LKImageControl
+
++  (instancetype)buttonWithImage:(NSImage *)image {
+    LKImageControl *button = [[LKImageControl alloc] init];
+    button.image = image;
+    return button;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {        
+        _imageView = [NSImageView new];
+        _imageView.wantsLayer = YES;
+        [self addSubview:_imageView];
+    }
+    return self;
+}
+
+- (void)setImage:(NSImage *)image {
+    _image = image;
+    _imageView.image = image;
+    
+    [self setNeedsLayout:YES
