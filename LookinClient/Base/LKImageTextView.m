@@ -29,4 +29,9 @@
 
 - (NSSize)sizeThatFits:(NSSize)limitedSize {
     NSSize labelSize = [self.label sizeThatFits:NSSizeMax];
-    limitedSize.width = self.imageMargins.left + self.imageView
+    limitedSize.width = self.imageMargins.left + self.imageView.image.size.width + self.imageMargins.right + labelSize.width;
+    limitedSize.height = MAX(self.imageView.image.size.height, labelSize.height);
+    return limitedSize;
+}
+
+@end
