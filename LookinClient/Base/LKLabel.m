@@ -51,4 +51,11 @@
 
 - (void)_updateColors {
     if (self.textColors) {
-        self.textColor = self.textCo
+        self.textColor = self.textColors.color;
+    }
+    if (self.backgroundColors) {
+        self.backgroundColor = self.backgroundColors.color;
+    }
+}
+
+@end
