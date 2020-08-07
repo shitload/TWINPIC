@@ -17,4 +17,17 @@ typedef NS_ENUM(NSUInteger, LKNumberInputViewStyle) {
 @class LKTextFieldView;
 
 extern const CGFloat LKNumberInputHorizontalHeight;
-extern const CGFloat LKN
+extern const CGFloat LKNumberInputVerticalHeight;
+
+@interface LKNumberInputView : LKBaseView
+
+@property(nonatomic, assign) LKNumberInputViewStyle viewStyle;
+
+@property(nonatomic, copy) NSString *title;
+
+@property(nonatomic, strong, readonly) LKTextFieldView *textFieldView;
+
+/// 将当前 string 转换成 attrType 格式的对象并返回，如果返回 nil 则说明转换失败
++ (id)parsedValueWithString:(NSString *)string attrType:(LookinAttrType)attrType;
+
+@end
