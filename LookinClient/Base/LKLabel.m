@@ -29,4 +29,26 @@
 }
 
 - (void)setStringValue:(NSString *)stringValue {
-    //
+    // 不做保护的话，传入 nil 会 crash
+    stringValue = stringValue ? : @"";
+    [super setStringValue:stringValue];
+}
+
+- (void)viewDidChangeEffectiveAppearance {
+    [super viewDidChangeEffectiveAppearance];
+    [self _updateColors];
+}
+
+- (void)setTextColors:(LKTwoColors *)textColors {
+    _textColors = textColors;
+    [self _updateColors];
+}
+
+- (void)setBackgroundColors:(LKTwoColors *)backgroundColors {
+    _backgroundColors = backgroundColors;
+    [self _updateColors];
+}
+
+- (void)_updateColors {
+    if (self.textColors) {
+        self.textColor = self.textCo
