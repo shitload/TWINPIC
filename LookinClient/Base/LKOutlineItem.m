@@ -26,3 +26,19 @@
 }
 
 - (NSArray<LKOutlineItem *> *)flatItems {
+    NSMutableArray<LKOutlineItem *> *array = [NSMutableArray array];
+    
+    [array addObject:self];
+    
+    if (self.status == LKOutlineItemStatusExpanded) {
+        [self.subItems enumerateObjectsUsingBlock:^(LKOutlineItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.indentation = self.indentation + 1;
+            [array addObjectsFromArray:[obj flatItems]];
+        }];
+    }
+    
+    return array.copy;
+}
+
++ (NSArray<LKOutlineItem *> *)flatItemsFromRootItems:(NSArray<LKOutlineItem *> *)items {
+    NSMutableArray<LKOutlineItem *> *resu
