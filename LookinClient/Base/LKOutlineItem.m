@@ -41,4 +41,11 @@
 }
 
 + (NSArray<LKOutlineItem *> *)flatItemsFromRootItems:(NSArray<LKOutlineItem *> *)items {
-    NSMutableArray<LKOutlineItem *> *resu
+    NSMutableArray<LKOutlineItem *> *resultItems = [NSMutableArray array];
+    [items enumerateObjectsUsingBlock:^(LKOutlineItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [resultItems addObjectsFromArray:[obj flatItems]];
+    }];
+    return resultItems.copy;
+}
+
+@end
