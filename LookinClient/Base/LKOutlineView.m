@@ -109,3 +109,21 @@
     NSInteger row = button.tag;
     LKOutlineItem *item = [self.displayingItems lookin_safeObjectAtIndex:row];
     if (!item || item.status == LKOutlineItemStatusNotExpandable) {
+        return;
+    }
+    if (item.status == LKOutlineItemStatusExpanded) {
+        item.status = LKOutlineItemStatusCollapsed;
+    } else {
+        item.status = LKOutlineItemStatusExpanded;
+    }
+    [self _updateDisplayingItems];
+}
+
+#pragma mark - Others
+
+- (void)_updateDisplayingItems {
+    self.displayingItems = [LKOutlineItem flatItemsFromRootItems:self.items];
+    [self.tableView reloadData];
+}
+
+@end
