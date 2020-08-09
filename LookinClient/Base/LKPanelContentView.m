@@ -21,4 +21,16 @@
 @implementation LKPanelContentView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
-    i
+    if (self = [super initWithFrame:frameRect]) {
+        self.backgroundColorName = @"DashboardBackgroundColor";
+        
+        self.titleContainerView = [LKBaseView new];
+        self.titleContainerView.backgroundColorName = @"PanelTitleBackgroundColor";
+        [self addSubview:self.titleContainerView];
+        
+        self.titleImageView = [NSImageView new];
+        [self.titleContainerView addSubview:self.titleImageView];
+        
+        self.titleLabel = [LKLabel new];
+        self.titleLabel.font = NSFontMake(13);
+        [self.titleContainerView addSub
