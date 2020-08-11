@@ -33,4 +33,15 @@
         
         self.titleLabel = [LKLabel new];
         self.titleLabel.font = NSFontMake(13);
-        [self.titleContainerView addSub
+        [self.titleContainerView addSubview:self.titleLabel];
+        
+        self.cancelButton = [NSButton lk_normalButtonWithTitle:NSLocalizedString(@"Cancel", nil) target:self action:@selector(_handleCancelButton)];
+        // esc
+        self.cancelButton.keyEquivalent = [NSString stringWithFormat:@"%C", 0x1b];
+        [self addSubview:self.cancelButton];
+        
+        _submitButton = [NSButton lk_normalButtonWithTitle:NSLocalizedString(@"Done", nil) target:self action:@selector(_handleSubmitButton)];
+        self.submitButton.keyEquivalent = @"\r";
+        [self addSubview:self.submitButton];
+        
+        _con
