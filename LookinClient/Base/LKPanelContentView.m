@@ -44,4 +44,21 @@
         self.submitButton.keyEquivalent = @"\r";
         [self addSubview:self.submitButton];
         
-        _con
+        _contentView = [LKBaseView new];
+        self.contentView.layer.masksToBounds = NO;
+        [self addSubview:self.contentView];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    
+    NSEdgeInsets insets = NSEdgeInsetsMake(0, 14, 6, 14);
+    
+    $(self.titleContainerView).fullWidth.height(40).y(0);
+    $(self.titleImageView).sizeToFit.x(insets.left).verAlign;
+    $(self.titleLabel).sizeToFit.x(self.titleImageView.$maxX + 6).verAlign;
+    
+    $(self.submitButton).right(insets.right).bottom(insets.bottom);
+    $(self.cancelButton).maxX(self.submitButton.$x - 5).bottom(
