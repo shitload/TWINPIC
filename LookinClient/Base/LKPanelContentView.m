@@ -61,4 +61,24 @@
     $(self.titleLabel).sizeToFit.x(self.titleImageView.$maxX + 6).verAlign;
     
     $(self.submitButton).right(insets.right).bottom(insets.bottom);
-    $(self.cancelButton).maxX(self.submitButton.$x - 5).bottom(
+    $(self.cancelButton).maxX(self.submitButton.$x - 5).bottom(insets.bottom);
+    
+    $(self.contentView).x(insets.left).toRight(insets.right).y(self.titleContainerView.$maxY + 10).toMaxY(self.submitButton.$y - 10);
+}
+
+- (void)setTitleImage:(NSImage *)titleImage {
+    _titleImage = titleImage;
+    self.titleImageView.image = titleImage;
+    [self setNeedsLayout:YES];
+}
+
+- (void)setTitleText:(NSString *)titleText {
+    _titleText = titleText.copy;
+    self.titleLabel.stringValue = titleText;
+    [self setNeedsLayout:YES];
+}
+
+- (void)_handleCancelButton {
+    if (self.needExit) {
+        self.needExit();
+ 
