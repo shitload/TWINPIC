@@ -81,4 +81,15 @@
 - (void)_handleCancelButton {
     if (self.needExit) {
         self.needExit();
- 
+    }
+}
+
+- (void)_handleSubmitButton {
+    [self didClickSubmitButton];
+}
+
+- (void)didClickSubmitButton {
+    NSAssert(NO, @"should implement by subclass");
+}
+
+@end
