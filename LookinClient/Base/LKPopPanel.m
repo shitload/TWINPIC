@@ -18,4 +18,17 @@
         contentView.layer.borderWidth = 1;
         contentView.didChangeAppearanceBlock = ^(LKBaseView *view, BOOL isDarkMode) {
             view.backgroundColor = isDarkMode ? LookinColorMake(44, 44, 44) : LookinColorMake(236, 236, 236);
-            view.layer.borderColo
+            view.layer.borderColor = isDarkMode ? SeparatorDarkModeColor.CGColor : SeparatorLightModeColor.CGColor;
+        };
+        self.contentView = contentView;
+        self.backgroundColor = [NSColor clearColor];
+    }
+    return self;
+}
+
+// 如果没有这一句，window 里的输入框将无法触发编辑
+- (BOOL)canBecomeKeyWindow {
+    return YES;
+}
+
+@end
