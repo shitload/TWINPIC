@@ -10,4 +10,6 @@
 
 @interface LKSplitView : NSSplitView
 
-@property(nonatomic, copy) void (^didFinishFir
+@property(nonatomic, copy) void (^didFinishFirstLayout)(LKSplitView *view);
+
+@end
