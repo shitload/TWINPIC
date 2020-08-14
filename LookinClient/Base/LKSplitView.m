@@ -28,4 +28,12 @@
 - (void)layout {
     [super layout];
     
-    if (
+    if (!_hasLayouted) {
+        if (self.didFinishFirstLayout) {
+            self.didFinishFirstLayout(self);
+        }
+        _hasLayouted = YES;
+    }
+}
+
+@end
