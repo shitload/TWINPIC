@@ -28,4 +28,28 @@
         [self.layer addSublayer:self.backgroundColorLayer];
         
         _titleLabel = [LKLabel new];
-        self.titleLabel.lineBreakMode = NSLineBreakByTruncatingMidd
+        self.titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        [self addSubview:self.titleLabel];
+        
+        _subtitleLabel = [LKLabel new];
+        [self addSubview:self.subtitleLabel];
+        
+        self.isDarkMode = self.effectiveAppearance.lk_isDarkMode;
+        
+        [self _updateBackgroundLayerColor];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.backgroundColorLayer).fullFrame;
+}
+
+- (BOOL)isFlipped {
+    return YES;
+}
+
+- (void)viewDidChangeEffectiveAppearance {
+    [super viewDidChangeEffectiveAppearance];
+    self.isDarkMode = self.effectiveAppea
