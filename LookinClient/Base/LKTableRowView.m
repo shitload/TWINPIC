@@ -52,4 +52,26 @@
 
 - (void)viewDidChangeEffectiveAppearance {
     [super viewDidChangeEffectiveAppearance];
-    self.isDarkMode = self.effectiveAppea
+    self.isDarkMode = self.effectiveAppearance.lk_isDarkMode;
+    [self _updateBackgroundLayerColor];
+}
+
+- (void)setIsSelected:(BOOL)isSelected {
+    if (_isSelected == isSelected) {
+        return;
+    }
+    _isSelected = isSelected;
+    [self _updateBackgroundLayerColor];
+}
+
+- (void)setIsHovered:(BOOL)isHovered {
+    if (_isHovered == isHovered) {
+        return;
+    }
+    _isHovered = isHovered;
+    [self _updateBackgroundLayerColor];
+}
+
+- (void)_updateBackgroundLayerColor {
+    if (self.isSelected) {
+        self.backgroundColorLayer.backgroundColor = [LKHelper a
