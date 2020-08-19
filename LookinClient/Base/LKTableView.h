@@ -31,3 +31,20 @@
 @interface LKTableView : NSScrollView
 
 @property(nonatomic, strong, readonly) NSTableView *tableView;
+
+/// 默认为 YES
+@property(nonatomic, assign) BOOL canScrollHorizontally;
+
+@property(nonatomic, weak) id<LKTableViewDelegate> delegate;
+@property(nonatomic, weak) id<LKTableViewDataSource> dataSource;
+
+/// 默认为 YES
+@property(nonatomic, assign) BOOL adjustsSelectionAutomatically;
+/// 默认为 YES
+@property(nonatomic, assign) BOOL adjustsHoverAutomatically;
+
+- (void)reloadData;
+
+- (void)scrollRowToVisible:(NSInteger)row;
+
+@end
