@@ -74,4 +74,23 @@
 
 - (void)_updateBackgroundLayerColor {
     if (self.isSelected) {
-        self.backgroundColorLayer.backgroundColor = [LKHelper a
+        self.backgroundColorLayer.backgroundColor = [LKHelper accentColor].CGColor;
+    } else if (self.isHovered) {
+        self.backgroundColorLayer.backgroundColor = self.isDarkMode ? LookinColorRGBAMake(255, 255, 255, .15).CGColor : LookinColorRGBAMake(0, 0, 0, .1).CGColor;
+    } else {
+        self.backgroundColorLayer.backgroundColor = [NSColor clearColor].CGColor;
+    }
+}
+
+@end
+
+@implementation LKTableBlankRowView
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        self.contentWidth = 0;
+    }
+    return self;
+}
+
+@end
