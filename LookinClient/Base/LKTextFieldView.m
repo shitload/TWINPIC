@@ -89,3 +89,50 @@
 }
 
 - (void)setTextColors:(LKTwoColors *)textColors {
+    _textColors = textColors;
+    [self updateColors];
+}
+
+- (void)setImage:(NSImage *)image {
+    _image = image;
+    if (image) {
+        if (!self.imageView) {
+            self.imageView = [NSImageView new];
+            [self addSubview:self.imageView];
+        }
+        self.imageView.image = image;
+    } else {
+        [self.imageView removeFromSuperview];
+        self.imageView = nil;
+    }
+    [self setNeedsLayout:YES];
+}
+
+- (void)initCloseButton {
+    if (self.closeButton) {
+        return;
+    }
+    
+    _closeButton = [NSButton new];
+    self.closeButton.title = NSLocalizedString(@"CancelSearch", nil);
+    self.closeButton.bezelStyle = NSBezelStyleRegularSquare;
+    [self addSubview:self.closeButton];
+    [self setNeedsLayout:YES];
+    
+    @weakify(self);
+    // rac_textSignal 只能监测到用户手动输入文字，observe stringValue 只能监测到代码手动设置文字（比如业务逻辑里按下 esc 来清除文字），这二者配合恰好
+    [[self.textField.rac_textSignal combineLatestWith:RACObserve(self.textField, stringValue)] subscribeNext:^(RACTwoTuple<NSString *,id> * _Nullable x) {
+        @strongify(self);
+        self.closeButton.hidden = (self.textField.stringValue.length == 0);
+    }];
+}
+
+- (void)mouseDown:(NSEvent *)event {
+    [super mouseDown:event];
+    // 如果不加这个逻辑的话，非编辑状态下点击到了右侧 closeButton 的位置就会无法激活输入框令用户困惑
+    if (self.textField.isEditable) {
+        [self.textField becomeFirstResponder];
+    }
+}
+
+@end
