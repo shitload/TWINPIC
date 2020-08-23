@@ -38,4 +38,12 @@
     [super layout];
     
     NSArray<LKLabel *> *visibleRightLabels = self.rightLabels.lk_visibleViews;
-    NSArray<LKLabel *> *visibleLeftLabels =
+    NSArray<LKLabel *> *visibleLeftLabels = self.leftLabels.lk_visibleViews;
+    
+    if (self.type == LKTextsMenuViewTypeCenter) {
+        __block CGFloat leftLabelMaxWidth = self.insets.left;
+        [visibleLeftLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull leftLabel, NSUInteger idx, BOOL * _Nonnull stop) {
+            LKLabel *prevLeftLabel = (idx > 0 ? visibleLeftLabels[idx - 1] : nil);
+            CGFloat y = prevLeftLabel ? (prevLeftLabel.$maxY + self.verSpace) : 0;
+            $(leftLabel).sizeToFit.y(y);
+            leftLabelMaxWidth = MAX(leftLabelMaxWidth, leftLabel.$w
