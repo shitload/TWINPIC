@@ -46,4 +46,16 @@
             LKLabel *prevLeftLabel = (idx > 0 ? visibleLeftLabels[idx - 1] : nil);
             CGFloat y = prevLeftLabel ? (prevLeftLabel.$maxY + self.verSpace) : 0;
             $(leftLabel).sizeToFit.y(y);
-            leftLabelMaxWidth = MAX(leftLabelMaxWidth, leftLabel.$w
+            leftLabelMaxWidth = MAX(leftLabelMaxWidth, leftLabel.$width + self.insets.left);
+        }];
+        [visibleLeftLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull leftLabel, NSUInteger idx, BOOL * _Nonnull stop) {
+            $(leftLabel).maxX(leftLabelMaxWidth);
+            
+            CGFloat midY = leftLabel.$midY;
+            
+            LKLabel *rightLabel = visibleRightLabels[idx];
+            $(rightLabel).x(leftLabelMaxWidth + self.horSpace).sizeToFit.midY(midY);
+        
+            NSButton *button = self.buttons[@(idx)];
+            if (button) {
+                CGFloat x = rightLab
