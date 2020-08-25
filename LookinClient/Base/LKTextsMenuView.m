@@ -58,4 +58,17 @@
         
             NSButton *button = self.buttons[@(idx)];
             if (button) {
-                CGFloat x = rightLab
+                CGFloat x = rightLabel.$maxX;
+                if (rightLabel.stringValue.length > 0) {
+                    x += (self->_buttonMarginLeft);
+                }
+                $(button).sizeToFit.x(x).midY(midY + 1);
+            }
+        }];
+        
+    } else {
+        [visibleRightLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull rightLabel, NSUInteger idx, BOOL * _Nonnull stop) {
+            LKLabel *prevLeftLabel = (idx > 0 ? visibleLeftLabels[idx - 1] : nil);
+            
+            LKLabel *leftLabel = visibleLeftLabels[idx];
+            CGFloat y = prevLeftLabel ? (prevLeftLabel.$maxY 
