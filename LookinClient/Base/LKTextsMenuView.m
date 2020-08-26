@@ -71,4 +71,18 @@
             LKLabel *prevLeftLabel = (idx > 0 ? visibleLeftLabels[idx - 1] : nil);
             
             LKLabel *leftLabel = visibleLeftLabels[idx];
-            CGFloat y = prevLeftLabel ? (prevLeftLabel.$maxY 
+            CGFloat y = prevLeftLabel ? (prevLeftLabel.$maxY + self.verSpace) : 0;
+            $(leftLabel).sizeToFit.x(0).y(y);
+            
+            CGFloat rightLabelMaxX = self.$width;
+            NSButton *button = self.buttons[@(idx)];
+            if (button) {
+                $(button).sizeToFit.right(0).midY(leftLabel.$midY);
+                rightLabelMaxX = button.$x - (self -> _buttonMarginLeft);
+            }
+            $(rightLabel).x(leftLabel.$maxX + self.horSpace).toMaxX(rightLabelMaxX).heightToFit.midY(leftLabel.$midY);
+        }];
+    }
+}
+
+- (void)setTexts:(NSArray<LookinStringTwoTuple *> *)texts {
