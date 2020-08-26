@@ -100,4 +100,19 @@
         obj.hidden = YES;
     } doNext:^(NSUInteger idx, LKLabel *obj) {
         obj.hidden = NO;
-        obj.stringValue = texts
+        obj.stringValue = texts[idx].first;
+    }];
+
+    [self.rightLabels lookin_dequeueWithCount:texts.count add:^LKLabel *(NSUInteger idx) {
+        LKLabel *label = [LKLabel new];
+        label.selectable = YES;
+        label.font = self.font;
+        label.maximumNumberOfLines = 1;
+        label.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        [self addSubview:label];
+        return label;
+    } notDequeued:^(NSUInteger idx, LKLabel *obj) {
+        obj.hidden = YES;
+    } doNext:^(NSUInteger idx, LKLabel *obj) {
+        obj.hidden = NO;
+        obj.stringValue =
