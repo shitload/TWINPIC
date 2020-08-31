@@ -133,4 +133,22 @@
 - (void)_updateAlignments {
     [self.leftLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (self.type == LKTextsMenuViewTypeJustified) {
-            obj.alignment = NSTextAlignmentLeft
+            obj.alignment = NSTextAlignmentLeft;
+        } else {
+            obj.alignment = NSTextAlignmentRight;
+        }
+    }];
+    [self.rightLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.type == LKTextsMenuViewTypeJustified) {
+            obj.alignment = NSTextAlignmentRight;
+        } else {
+            obj.alignment = NSTextAlignmentLeft;
+        }
+    }];
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    __block CGFloat resultHeight = 0;
+    
+    __block CGFloat leftMaxWidth = 0;
+    __block CGFloat rightMaxWi
