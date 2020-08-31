@@ -115,4 +115,22 @@
         obj.hidden = YES;
     } doNext:^(NSUInteger idx, LKLabel *obj) {
         obj.hidden = NO;
-        obj.stringValue =
+        obj.stringValue = texts[idx].second;
+    }];
+
+    NSAssert(self.leftLabels.count == self.rightLabels.count, @"");
+    
+    [self updateColors];
+    [self _updateAlignments];
+    [self setNeedsLayout:YES];
+}
+
+- (void)setType:(LKTextsMenuViewType)type {
+    _type = type;
+    [self _updateAlignments];
+}
+
+- (void)_updateAlignments {
+    [self.leftLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.type == LKTextsMenuViewTypeJustified) {
+            obj.alignment = NSTextAlignmentLeft
