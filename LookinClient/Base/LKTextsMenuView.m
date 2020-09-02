@@ -151,4 +151,16 @@
     __block CGFloat resultHeight = 0;
     
     __block CGFloat leftMaxWidth = 0;
-    __block CGFloat rightMaxWi
+    __block CGFloat rightMaxWidth = 0;
+    [self.leftLabels.lk_visibleViews enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSSize size = [obj bestSize];
+        leftMaxWidth = MAX(leftMaxWidth, size.width);
+        resultHeight += size.height;
+        if (idx > 0) {
+            resultHeight += self.verSpace;
+        }
+    }];
+    [self.rightLabels.lk_visibleViews enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat width = [obj bestWidth];
+        
+        NSButton *button = self.buttons[@(idx)];
