@@ -164,3 +164,20 @@
         CGFloat width = [obj bestWidth];
         
         NSButton *button = self.buttons[@(idx)];
+        if (button) {
+            width += [button bestWidth];
+            if (obj.stringValue.length > 0) {
+                width += (self -> _buttonMarginLeft);
+            }
+        }
+        
+        rightMaxWidth = MAX(rightMaxWidth, width);
+    }];
+    
+    /// 这里多给个 1 的冗余量，来抵消 ShortCocoa 布局时取整带来的误差
+    CGFloat resultWidth = leftMaxWidth + rightMaxWidth + self.horSpace + self.insets.left + self.insets.right;
+    return NSMakeSize(resultWidth, resultHeight);
+}
+
+- (void)updateColors {
+    [super updateCo
