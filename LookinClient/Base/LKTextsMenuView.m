@@ -180,4 +180,18 @@
 }
 
 - (void)updateColors {
-    [super updateCo
+    [super updateColors];
+    [self.leftLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textColor = [(self.isDarkMode ? NSColorGray9 : NSColorGray1) colorWithAlphaComponent:.7];
+    }];
+    [self.rightLabels enumerateObjectsUsingBlock:^(LKLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textColor = self.isDarkMode ? NSColorWhite : NSColorBlack;
+    }];
+}
+
+- (void)addButton:(NSButton *)button atIndex:(NSUInteger)idx {
+    if (!button) {
+        NSAssert(NO, @"");
+        return;
+    }
+    if (self.butto
