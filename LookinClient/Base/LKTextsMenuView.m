@@ -194,4 +194,16 @@
         NSAssert(NO, @"");
         return;
     }
-    if (self.butto
+    if (self.buttons[@(idx)]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    if (!self.buttons) {
+        self.buttons = [NSMutableDictionary dictionary];
+    }
+    self.buttons[@(idx)] = button;
+    [self addSubview:button];
+    [self setNeedsLayout:YES];
+}
+
+@end
