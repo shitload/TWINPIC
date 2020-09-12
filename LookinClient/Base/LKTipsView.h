@@ -36,4 +36,6 @@
 @interface LKRedTipsView : LKTipsView
 
 - (void)startAnimation;
-- (v
+- (void)endAnimation;
+
+@end
