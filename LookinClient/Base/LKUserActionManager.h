@@ -24,4 +24,14 @@ typedef NS_ENUM(NSInteger, LKUserActionType) {
 
 @end
 
-@interface LKUserActionManager :
+@interface LKUserActionManager : NSObject
+
++ (instancetype)sharedInstance;
+
+/// 业务调用该方法
+- (void)sendAction:(LKUserActionType)type;
+
+/// delegate 不会被该类强引用，也无需在 delegate 对象被 dealloc 时设法 removeDelegate 之类的，相同的 delegate 被重复添加只会视为被添加一次
+- (void)addDelegate:(id<LKUserActionManagerDelegate>)delegate;
+
+@end
