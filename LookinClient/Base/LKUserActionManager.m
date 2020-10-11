@@ -17,4 +17,28 @@
 @implementation LKUserActionManager
 
 + (instancetype)sharedInstance {
-    static dispatch_o
+    static dispatch_once_t onceToken;
+    static LKUserActionManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.delegators = [NSPointerArray weakObjectsPointerArray];
+    }
+    return self;
+}
+
+- (void)addDelegate:(id<LKUserActionManagerDelegate>)delegate {
+    if (!delegate) {
+        NSAssert(NO, @"");
+        return;
+    }
+    if 
