@@ -41,4 +41,22 @@
         NSAssert(NO, @"");
         return;
     }
-    if 
+    if ([self.delegators lk_containsPointer:(void *)delegate]) {
+        return;
+    }
+    [self.delegators addPointer:(void *)delegate];
+}
+
+- (void)sendAction:(LKUserActionType)type {
+    if (type == LKUserActionType_None) {
+        NSAssert(NO, @"");
+        return;
+    }
+    [[self.delegators allObjects] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj respondsToSelector:@selector(LKUserActionManager:didAct:)]) {
+            [obj LKUserActionManager:self didAct:type];
+        }
+    }];
+}
+
+@end
