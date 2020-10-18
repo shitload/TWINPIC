@@ -3,4 +3,15 @@
 //  Lookin
 //
 //  Created by Li Kai on 2019/5/14.
-//  https://look
+//  https://lookin.work
+//
+
+#import <Cocoa/Cocoa.h>
+
+@class LKPanelContentView;
+
+@interface LKWindow : NSWindow
+
++ (instancetype)panelWindowWithWidth:(CGFloat)width height:(CGFloat)height contentView:(LKPanelContentView *)contentView;
+
+@end
