@@ -142,3 +142,117 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="fae-2U-koj"/>
+                            <menuItem title="Method Trace" tag="55" id="bHZ-OY-nHf">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="UnO-Ic-dbw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="KZS-d6-qTN">
+                        <items>
+                            <menuItem title="Close" keyEquivalent="w" id="HyZ-cP-T4V">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="C3a-4E-BRi"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Minimize" keyEquivalent="m" id="1su-F5-8TV">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="IoG-Xh-ddo"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="SgI-Kf-8kY">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="E2Y-8i-zT1"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="XeF-AN-JH1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="1Xd-pd-BoU">
+                        <items>
+                            <menuItem title="Integrate by CocoaPods (Click to Copy)" id="Yrs-Xq-P5S">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="pod 'LookinServer', :configurations =&gt; ['Debug']" tag="66" id="xxP-d2-qU0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Y2C-86-yPe"/>
+                            <menuItem title="Integrate by SPM (Click to Copy)" id="tzW-YO-PTy">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="https://github.com/QMUI/LookinServer/" tag="67" id="B9m-qb-e0j">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Q9p-dn-YRK"/>
+                            <menuItem title="Integration Guide" tag="68" id="TaG-im-Whl">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Official Website" tag="52" id="K9e-H9-X9Y">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="How to reduce the reload time" tag="69" id="lmN-eu-pZ4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Profile of the Developer" tag="56" id="hYy-NB-PWb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Source Code at GitHub" tag="57" id="hmd-Lc-rdV">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Source Code at GitHub" id="q1h-qk-yOs">
+                                    <items>
+                                        <menuItem title="Lookin (macOS App)" tag="58" id="F1N-6J-GJB">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="LookinServer" tag="59" id="jAS-fg-MOz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="RHL-eM-x6M"/>
+                            <menuItem title="Report Issues" tag="60" id="h5N-Yv-Kn1">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" id="ZgS-oM-flz">
+                                    <items>
+                                        <menuItem title="Create Issues at GitHub (Recommended)" id="R8l-dM-5J7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="https://github.com/hughkli/Lookin/issues" tag="62" id="gGJ-eo-aDM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="https://github.com/QMUI/LookinServer/issues" tag="63" id="jcR-PK-iVE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="5sm-PB-Pq7"/>
+                                        <menuItem title="Email (Click to Copy)" id="gPh-pf-dCp">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="lookin@lookin.work" tag="61" id="oE9-hN-SqM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="3k2-uJ-acx"/>
+                                        <menuItem title="Send Message at Sina Weibo" id="Dln-4J-NPy">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="https://weibo.com/234885306" tag="64" id="G6D-eh-IcU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="139" y="154"/>
+        </menu>
+        <userDefaultsController representsSharedInstance="YES" id="KGc-ZG-ddL"/>
+        <customObject id="ljh-qk-5vX" customClass="SUUpdater"/>
+    </objects>
+</document>
