@@ -34,4 +34,18 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
     return instance;
 }
 
-+ (id)allocW
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _willConnectToApp = [RACSubject subject];
+        _didAutoReconnectSucc = [RACSubject subject];
+        
+        @weakify(self);
+        [[[[LKConnectionManager sharedInstance].channelWillEnd filter:^BOOL(Lookin_PTChannel *channel) {
+            @strongify(self);
+            return channel == self.inspectingApp.channel;
+            
+        }] flattenMap:^__kindof RACS
