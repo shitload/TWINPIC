@@ -11,4 +11,27 @@
 #import "LKConnectionManager.h"
 #import "LookinDefines.h"
 #import "LookinAppInfo.h"
-#import "LookinHierarchyInfo
+#import "LookinHierarchyInfo.h"
+#import "LookinConnectionResponseAttachment.h"
+#import "LookinMethodTraceRecord.h"
+
+NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndNotificationName";
+
+@interface LKAppsManager ()
+
+@property(nonatomic, strong) RACSubject *willConnectToApp;
+
+@end
+
+@implementation LKAppsManager
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static LKAppsManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocW
