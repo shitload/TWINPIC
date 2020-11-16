@@ -48,4 +48,15 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
             @strongify(self);
             return channel == self.inspectingApp.channel;
             
-        }] flattenMap:^__kindof RACS
+        }] flattenMap:^__kindof RACSignal * _Nullable(Lookin_PTChannel *channel) {
+            @strongify(self);
+            
+            NSLog(@"current connection end");
+            
+            LookinAppInfo *targetAppInfo = self.inspectingApp.appInfo;
+            self.inspectingApp = nil;
+            
+            RACSignal *signal = [[[RACSignal interval:3 onScheduler:[RACScheduler scheduler]] takeUntil:self.willConnectToApp] flattenMap:^__kindof RACSignal * _Nullable(NSDate * _Nullable value) {
+                return [self _fetchInspectableAppWithSimilarInfo:targetAppInfo];
+            }];
+            re
