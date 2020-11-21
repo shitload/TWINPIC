@@ -59,4 +59,19 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
             RACSignal *signal = [[[RACSignal interval:3 onScheduler:[RACScheduler scheduler]] takeUntil:self.willConnectToApp] flattenMap:^__kindof RACSignal * _Nullable(NSDate * _Nullable value) {
                 return [self _fetchInspectableAppWithSimilarInfo:targetAppInfo];
             }];
-            re
+            return signal;
+            
+        }] subscribeNext:^(LKInspectableApp *newApp) {
+            @strongify(self);
+            if (newApp) {
+                NSLog(@"Reconnected successfully.");
+                self.inspectingApp = newApp;
+                [self.didAutoReconnectSucc sendNext:newApp];
+            } else {
+//                NSLog(@"Failed to reconnect.");
+            }
+        }];
+        
+        [[LKConnectionManager sharedInstance].didReceivePush subscribeNext:^(RACTuple *x) {
+            @strongify(self);
+            RACTupleUnpack(Lookin_PTCh
