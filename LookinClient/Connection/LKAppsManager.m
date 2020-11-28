@@ -74,4 +74,20 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
         
         [[LKConnectionManager sharedInstance].didReceivePush subscribeNext:^(RACTuple *x) {
             @strongify(self);
-            RACTupleUnpack(Lookin_PTCh
+            RACTupleUnpack(Lookin_PTChannel *channel, NSNumber *type, NSObject *data) = x;
+            if (channel != self.inspectingApp.channel) {
+                return;
+            }
+            
+            if (type.intValue == LookinPush_MethodTraceRecord) {
+                if ([data isKindOfClass:[LookinMethodTraceRecord class]]) {
+                    [self.inspectingApp handleMethodTraceRecord:(LookinMethodTraceRecord *)data];
+                } else {
+                    NSAssert(NO, @"");
+                }
+            }
+        }];
+        
+    }
+    return self;
+}
