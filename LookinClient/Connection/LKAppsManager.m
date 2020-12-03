@@ -91,3 +91,19 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
     }
     return self;
 }
+
+- (void)setInspectingApp:(LKInspectableApp *)inspectingApp {
+    BOOL shouldPostNotification = (_inspectingApp && !inspectingApp);
+    
+    _inspectingApp = inspectingApp;
+    if (inspectingApp) {
+        [self.willConnectToApp sendNext:inspectingApp];
+    }
+    
+    if (shouldPostNotification) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LKInspectingAppDidEndNotificationName object:self];
+    }
+}
+
+- (RACSignal *)_fetchInspectableAppWithSimilarInfo:(LookinAppInfo *)appInfo {
+    return [[[self fetchAppInfosWithImage:NO localInfos:nil] map:^id _Nullable(NSArray<L
