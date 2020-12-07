@@ -106,4 +106,17 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
 }
 
 - (RACSignal *)_fetchInspectableAppWithSimilarInfo:(LookinAppInfo *)appInfo {
-    return [[[self fetchAppInfosWithImage:NO localInfos:nil] map:^id _Nullable(NSArray<L
+    return [[[self fetchAppInfosWithImage:NO localInfos:nil] map:^id _Nullable(NSArray<LKInspectableApp *> *allApps) {
+//        NSLog(@"Reconnecting… ...");
+        LKInspectableApp *targetApp = [allApps lookin_firstFiltered:^BOOL(LKInspectableApp *obj) {
+            return [appInfo isEqualToAppInfo:obj.appInfo];
+        }];
+        targetApp.appInfo.appIcon = appInfo.appIcon;
+        return targetApp;
+    }] catch:^RACSignal * _Nonnull(NSError * _Nonnull error) {
+        return [RACSignal return:nil];
+    }];
+}
+
+- (RACSignal *)fetchAppInfosWithImage:(BOOL)needImages localInfos:(NSArray<LookinAppInfo *> *)localInfos {
+    NSArray<
