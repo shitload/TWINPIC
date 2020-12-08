@@ -129,4 +129,11 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
     }] ? : @[];
     NSDictionary *params = @{@"needImages":@(needImages), @"local":localInfoIdentifiers};
     
-    return [[[[LKConnectionManager shar
+    return [[[[LKConnectionManager sharedInstance] tryToConnectAllPorts] flattenMap:^__kindof RACSignal * _Nullable(NSArray<Lookin_PTChannel *> *connectedChannels) {
+        if (!connectedChannels.count) {
+            // 没有任何 channel
+            return [RACSignal return:nil];
+        }
+        
+        NSArray<RACSignal *> *signals = [connectedChannels lookin_map:^id(NSUInteger idx, Lookin_PTChannel *channel) {
+            return [[[LKConnectionManager sharedInstance] requestWithType:LookinRequestTypeApp data:params channel:channel] catch:^RACSignal * _Nonnull(NSError * _Nonnull error) 
