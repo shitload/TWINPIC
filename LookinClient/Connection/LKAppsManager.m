@@ -119,4 +119,14 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
 }
 
 - (RACSignal *)fetchAppInfosWithImage:(BOOL)needImages localInfos:(NSArray<LookinAppInfo *> *)localInfos {
-    NSArray<
+    NSArray<LookinAppInfo *> *validAppInfos = [localInfos lookin_filter:^BOOL(LookinAppInfo *info) {
+        /// 超过 8 秒则认为过期
+        return [[NSDate date] timeIntervalSince1970] - info.cachedTimestamp <= 8;
+    }];
+    
+    NSArray<NSNumber *> *localInfoIdentifiers = [validAppInfos lookin_map:^id(NSUInteger idx, LookinAppInfo *value) {
+        return @(value.appInfoIdentifier);
+    }] ? : @[];
+    NSDictionary *params = @{@"needImages":@(needImages), @"local":localInfoIdentifiers};
+    
+    return [[[[LKConnectionManager shar
