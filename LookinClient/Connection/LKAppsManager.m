@@ -146,4 +146,20 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
                 }
             }];
         }];
-        return [RACSignal
+        return [RACSignal zip:signals];
+    
+    }] map:^id _Nullable(RACTuple * _Nullable x) {
+        NSArray<LKInspectableApp *> *apps = [x.allObjects lookin_map:^id(NSUInteger idx, id value) {
+            if (value == [NSNull null]) {
+                // 位于后台无法执行代码的 app
+                return nil;
+            }
+            
+            if ([value isKindOfClass:[NSError class]]) {
+                // Lookin 版本不匹配的 app
+                LKInspectableApp *app = [[LKInspectableApp alloc] init];
+                app.serverVersionError = value;
+                return app;
+            }
+            
+    
