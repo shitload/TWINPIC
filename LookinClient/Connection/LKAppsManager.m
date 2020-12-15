@@ -162,4 +162,14 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
                 return app;
             }
             
-    
+            if ([value isKindOfClass:[RACTuple class]]) {
+                RACTupleUnpack(LookinConnectionResponseAttachment *response, Lookin_PTChannel *relatedChannel) = value;
+                if (response.error) {
+                    NSAssert(NO, @"");
+                    return nil;
+                } else {
+                    LookinAppInfo *receivedInfo = response.data;
+                    receivedInfo.cachedTimestamp = [[NSDate date] timeIntervalSince1970];
+                    if (receivedInfo.shouldUseCache) {
+                        // 使用之前拉取的旧 info
+         
