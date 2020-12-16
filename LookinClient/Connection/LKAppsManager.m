@@ -172,4 +172,14 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
                     receivedInfo.cachedTimestamp = [[NSDate date] timeIntervalSince1970];
                     if (receivedInfo.shouldUseCache) {
                         // 使用之前拉取的旧 info
-         
+                        LookinAppInfo *localInfo = [validAppInfos lookin_firstFiltered:^BOOL(LookinAppInfo *obj) {
+                            return obj.appInfoIdentifier == receivedInfo.appInfoIdentifier;
+                        }];
+                        if (localInfo) {
+                            receivedInfo = localInfo;
+                        }
+                    }
+                    
+                    LKInspectableApp *app = [[LKInspectableApp alloc] init];
+                    app.appInfo = receivedInfo;
+                    app.channel 
