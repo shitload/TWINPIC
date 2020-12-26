@@ -182,4 +182,16 @@ NSString *const LKInspectingAppDidEndNotificationName = @"LKInspectingAppDidEndN
                     
                     LKInspectableApp *app = [[LKInspectableApp alloc] init];
                     app.appInfo = receivedInfo;
-                    app.channel 
+                    app.channel = relatedChannel;
+                    return app;
+                }
+            }
+            
+            NSAssert(NO, @"");
+            return nil;
+        }];
+        return apps;
+    }];
+}
+
+@end
