@@ -60,4 +60,25 @@ static NSIndexSet * PushFrameTypeList() {
 
 @end
 
-@interface LKUSBConnect
+@interface LKUSBConnectionPort : NSObject
+
+@property(nonatomic, assign) int portNumber;
+
+@property(nonatomic, strong) NSNumber *deviceID;
+
+@property(nonatomic, strong) Lookin_PTChannel *connectedChannel;
+
+@end
+
+@implementation LKUSBConnectionPort
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"number:%@, deviceID:%@, connectedChannel:%@", @(self.portNumber), self.deviceID, self.connectedChannel];
+}
+
+@end
+
+@interface LKConnectionManager () <Lookin_PTChannelDelegate>
+
+@property(nonatomic, copy) NSArray<LKSimulatorConnectionPort *> *allSimulatorPorts;
+@property(nonatomic, strong) NSMu
