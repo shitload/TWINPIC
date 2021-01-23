@@ -35,4 +35,29 @@ static NSIndexSet * PushFrameTypeList() {
 @implementation Lookin_PTChannel (LKConnection)
 
 - (void)setActiveRequests:(NSMutableSet<LKConnectionRequest *> *)activeRequests {
- 
+    [self lookin_bindObject:activeRequests forKey:@"activeRequest"];
+}
+
+- (NSMutableSet<LKConnectionRequest *> *)activeRequests {
+    return [self lookin_getBindObjectForKey:@"activeRequest"];
+}
+
+@end
+
+@interface LKSimulatorConnectionPort : NSObject
+
+@property(nonatomic, assign) int portNumber;
+
+@property(nonatomic, strong) Lookin_PTChannel *connectedChannel;
+
+@end
+
+@implementation LKSimulatorConnectionPort
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"number:%@", @(self.portNumber)];
+}
+
+@end
+
+@interface LKUSBConnect
