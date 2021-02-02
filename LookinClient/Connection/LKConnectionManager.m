@@ -81,4 +81,27 @@ static NSIndexSet * PushFrameTypeList() {
 @interface LKConnectionManager () <Lookin_PTChannelDelegate>
 
 @property(nonatomic, copy) NSArray<LKSimulatorConnectionPort *> *allSimulatorPorts;
-@property(nonatomic, strong) NSMu
+@property(nonatomic, strong) NSMutableArray<LKUSBConnectionPort *> *allUSBPorts;
+
+@end
+
+@implementation LKConnectionManager
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static LKConnectionManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone {
+    return [self sharedInstance];
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _channelWillEnd = [RACSubject subject];
+        _didReceivePush = [RACSubject subject];
+    
