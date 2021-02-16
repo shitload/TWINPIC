@@ -104,4 +104,21 @@ static NSIndexSet * PushFrameTypeList() {
     if (self = [super init]) {
         _channelWillEnd = [RACSubject subject];
         _didReceivePush = [RACSubject subject];
-    
+        
+        self.allSimulatorPorts = ({
+            NSMutableArray<LKSimulatorConnectionPort *> *ports = [NSMutableArray array];
+            for (int number = LookinSimulatorIPv4PortNumberStart; number <= LookinSimulatorIPv4PortNumberEnd; number++) {
+                LKSimulatorConnectionPort *port = [LKSimulatorConnectionPort new];
+                port.portNumber = number;
+                [ports addObject:port];
+            }
+            ports;
+        });
+        self.allUSBPorts = [NSMutableArray array];
+        
+        [self _startListeningForUSBDevices];
+    }
+    return self;
+}
+
+#pragma mar
