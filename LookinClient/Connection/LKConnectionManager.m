@@ -121,4 +121,15 @@ static NSIndexSet * PushFrameTypeList() {
     return self;
 }
 
-#pragma mar
+#pragma mark - Ports Connect
+
+- (RACSignal *)tryToConnectAllPorts {
+    return [[RACSignal zip:@[[self _tryToConnectAllSimulatorPorts],
+                            [self _tryToConnectAllUSBDevices]]] map:^id _Nullable(RACTuple * _Nullable value) {
+        RACTupleUnpack(NSArray<Lookin_PTChannel *> *simulatorChannels, NSArray<Lookin_PTChannel *> *usbChannels) = value;
+        NSArray *connectedChannels = [simulatorChannels arrayByAddingObjectsFromArray:usbChannels];
+        return connectedChannels;
+    }];
+}
+
+/// 返回的 x 为所有已成功链接的 Lookin_PTChannel 数组
