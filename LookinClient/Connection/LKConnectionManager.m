@@ -132,4 +132,13 @@ static NSIndexSet * PushFrameTypeList() {
     }];
 }
 
-/// 返回的 x 为所有已成功链接的 Lookin_PTChannel 数组
+/// 返回的 x 为所有已成功链接的 Lookin_PTChannel 数组，该方法不会 sendError:
+- (RACSignal *)_tryToConnectAllSimulatorPorts {
+    NSArray<RACSignal *> *tries = [self.allSimulatorPorts lookin_map:^id(NSUInteger idx, LKSimulatorConnectionPort *port) {
+        return [[self _connectToSimulatorPort:port] catch:^RACSignal * _Nonnull(NSError * _Nonnull error) {
+            return [RACSignal return:nil];
+        }];
+    }];
+    return [[RACSignal zip:tries] map:^id _Nullable(RACTuple * _Nullable value) {
+        NSArray<Lookin_PTChannel *> *connectedChannels = [value.allObjects lookin_filter:^BOOL(id obj) {
+            return (obj != [NSNull null])
