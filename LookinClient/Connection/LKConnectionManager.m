@@ -141,4 +141,18 @@ static NSIndexSet * PushFrameTypeList() {
     }];
     return [[RACSignal zip:tries] map:^id _Nullable(RACTuple * _Nullable value) {
         NSArray<Lookin_PTChannel *> *connectedChannels = [value.allObjects lookin_filter:^BOOL(id obj) {
-            return (obj != [NSNull null])
+            return (obj != [NSNull null]);
+        }];
+        return connectedChannels;
+    }];
+}
+
+/// 返回的 x 为成功链接的 Lookin_PTChannel
+/// 注意，如果某个 app 被退到了后台但是没有被 kill，则在这个方法里它的 channel 仍然会被成功连接
+- (RACSignal *)_connectToSimulatorPort:(LKSimulatorConnectionPort *)port {
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        if (port.connectedChannel) {
+            // 该 port 本来就已经成功连接
+            [subscriber sendNext:port.connectedChannel];
+            [subscriber sendCompleted];
+            return n
