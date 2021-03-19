@@ -167,4 +167,21 @@ static NSIndexSet * PushFrameTypeList() {
                     // 意外
                 }
                 [localChannel close];
-                [subscriber send
+                [subscriber sendError:error];
+            } else {
+                port.connectedChannel = localChannel;
+                [subscriber sendNext:localChannel];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
+/// 返回的 x 为所有已成功链接的 Lookin_PTChannel 数组，该方法不会 sendError:
+- (RACSignal *)_tryToConnectAllUSBDevices {
+    if (!self.allUSBPorts.count) {
+        return [RACSignal return:[NSArray array]];
+    }
+    NSArray<RACSignal *> *tries = [self.allUSBPorts lookin_map:^id(NSUInteger idx, LKUSBConnectionPort *port) {
+        return [[self _
