@@ -155,4 +155,16 @@ static NSIndexSet * PushFrameTypeList() {
             // 该 port 本来就已经成功连接
             [subscriber sendNext:port.connectedChannel];
             [subscriber sendCompleted];
-            return n
+            return nil;
+        }
+        
+        Lookin_PTChannel *localChannel = [Lookin_PTChannel channelWithDelegate:self];
+        [localChannel connectToPort:port.portNumber IPv4Address:INADDR_LOOPBACK callback:^(NSError *error, Lookin_PTAddress *address) {
+            if (error) {
+                if (error.domain == NSPOSIXErrorDomain && (error.code == ECONNREFUSED || error.code == ETIMEDOUT)) {
+                    // 没有 iOS 客户端
+                } else {
+                    // 意外
+                }
+                [localChannel close];
+                [subscriber send
