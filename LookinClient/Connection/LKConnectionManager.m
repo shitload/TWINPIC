@@ -184,4 +184,18 @@ static NSIndexSet * PushFrameTypeList() {
         return [RACSignal return:[NSArray array]];
     }
     NSArray<RACSignal *> *tries = [self.allUSBPorts lookin_map:^id(NSUInteger idx, LKUSBConnectionPort *port) {
-        return [[self _
+        return [[self _connectToUSBPort:port] catch:^RACSignal * _Nonnull(NSError * _Nonnull error) {
+            return [RACSignal return:nil];
+        }];
+    }];
+    return [[RACSignal zip:tries] map:^id _Nullable(RACTuple * _Nullable value) {
+        NSArray<Lookin_PTChannel *> *connectedChannels = [value.allObjects lookin_filter:^BOOL(id obj) {
+            return (obj != [NSNull null]);
+        }];
+        return connectedChannels;
+    }];
+}
+
+/// 返回的 x 为成功链接的 Lookin_PTChannel
+- (RACSignal *)_connectToUSBPort:(LKUSBConnectionPort *)port {
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RAC
