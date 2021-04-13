@@ -198,4 +198,15 @@ static NSIndexSet * PushFrameTypeList() {
 
 /// 返回的 x 为成功链接的 Lookin_PTChannel
 - (RACSignal *)_connectToUSBPort:(LKUSBConnectionPort *)port {
-    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RAC
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        if (port.connectedChannel) {
+            // 该 port 本来就已经成功连接
+            [subscriber sendNext:port.connectedChannel];
+            [subscriber sendCompleted];
+            return nil;
+        }
+        
+        Lookin_PTChannel *channel = [Lookin_PTChannel channelWithDelegate:self];
+        [channel connectToPort:port.portNumber overUSBHub:Lookin_PTUSBHub.sharedHub deviceID:port.deviceID callback:^(NSError *error) {
+            if (error) {
+                if (error.domain == Lookin_PTUSBHubErrorDomain &
