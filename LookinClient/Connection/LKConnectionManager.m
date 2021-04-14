@@ -209,4 +209,24 @@ static NSIndexSet * PushFrameTypeList() {
         Lookin_PTChannel *channel = [Lookin_PTChannel channelWithDelegate:self];
         [channel connectToPort:port.portNumber overUSBHub:Lookin_PTUSBHub.sharedHub deviceID:port.deviceID callback:^(NSError *error) {
             if (error) {
-                if (error.domain == Lookin_PTUSBHubErrorDomain &
+                if (error.domain == Lookin_PTUSBHubErrorDomain && error.code == PTUSBHubErrorConnectionRefused) {
+                    // error
+                } else {
+                    // error
+                }
+                [channel close];
+                [subscriber sendError:error];
+            } else {
+                // succ
+                port.connectedChannel = channel;
+                [subscriber sendNext:channel];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
+#pragma mark - Request
+
+- (void)pushWithType:(unsigned int)pushType data:(NSObject *)data channel:(Lookin_PTChannel *)cha
