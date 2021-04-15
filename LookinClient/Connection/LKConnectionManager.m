@@ -229,4 +229,18 @@ static NSIndexSet * PushFrameTypeList() {
 
 #pragma mark - Request
 
-- (void)pushWithType:(unsigned int)pushType data:(NSObject *)data channel:(Lookin_PTChannel *)cha
+- (void)pushWithType:(unsigned int)pushType data:(NSObject *)data channel:(Lookin_PTChannel *)channel {
+    if (!channel || !channel.isConnected) {
+        return;
+    }
+    NSError *archiveError = nil;
+    dispatch_data_t payload = [[NSKeyedArchiver archivedDataWithRootObject:data requiringSecureCoding:YES error:&archiveError] createReferencingDispatchData];
+    if (archiveError) {
+        NSAssert(NO, @"");
+    }
+    NSLog(@"LookinClient - pushData, type:%@", @(pushType));
+    [channel sendFrameOfType:pushType tag:0 withPayload:payload callback:nil];
+}
+
+- (RACSignal *)requestWithType:(unsigned int)requestType data:(NSObject *)requestData channel:(Lookin_PTChannel *)channel {
+    return 
