@@ -243,4 +243,14 @@ static NSIndexSet * PushFrameTypeList() {
 }
 
 - (RACSignal *)requestWithType:(unsigned int)requestType data:(NSObject *)requestData channel:(Lookin_PTChannel *)channel {
-    return 
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        //        NSLog(@"LookinClient, level1 - will ping for request:%@, port:%@", @(type), @(channel.portNumber));
+        NSTimeInterval timeoutInterval;
+        if (requestType == LookinRequestTypeApp) {
+            // 如果某个 iOS app 连接上了 channel 却又处于后台的话，而这个 timeout 时间又过长的话，就会导致初次进入 launch 时非常慢（因为必须等到 timeoutInterval 结束），因此这里为了体验缩小这个时间
+            timeoutInterval = .5;
+        } else {
+            timeoutInterval = 2;
+        }
+        
+        [self _requestWithType:LookinRequestTypePing 
