@@ -253,4 +253,13 @@ static NSIndexSet * PushFrameTypeList() {
             timeoutInterval = 2;
         }
         
-        [self _requestWithType:LookinRequestTypePing 
+        [self _requestWithType:LookinRequestTypePing channel:channel data:nil timeoutInterval:timeoutInterval succ:^(LookinConnectionResponseAttachment *pingResponse) {
+            // ping 成功了
+            // NSLog(@"LookinClient, level1 - ping succ, will send request:%@, port:%@", @(type), @(channel.portNumber));
+            NSError *versionErr = [self _checkServerVersionWithResponse:pingResponse];
+            if (versionErr) {
+                // LookinServer 版本有问题
+                [subscriber sendError:versionErr];
+            } else {
+                // 没问题，开始发真正请求
+ 
