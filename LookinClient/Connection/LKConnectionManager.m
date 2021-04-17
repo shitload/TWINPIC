@@ -274,4 +274,16 @@ static NSIndexSet * PushFrameTypeList() {
             
         } fail:^(NSError *error) {
             // ping 失败了
-            [s
+            [subscriber sendError:error];
+            
+        } completion:nil];
+        return nil;
+    }];
+}
+
+- (NSError *)_checkServerVersionWithResponse:(LookinConnectionResponseAttachment *)pingResponse {
+    int serverVersion = pingResponse.lookinServerVersion;
+    BOOL serverIsExprimental = [pingResponse respondsToSelector:@selector(lookinServerIsExprimental)] && pingResponse.lookinServerIsExprimental;
+    if (serverVersion == -1 || serverVersion == 100) {
+        // 说明用的还是旧版本的内部版本 LookinServer，这里兼容一下
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomai
