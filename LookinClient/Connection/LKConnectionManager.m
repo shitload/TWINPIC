@@ -262,4 +262,16 @@ static NSIndexSet * PushFrameTypeList() {
                 [subscriber sendError:versionErr];
             } else {
                 // 没问题，开始发真正请求
- 
+                [self _requestWithType:requestType channel:channel data:requestData timeoutInterval:5 succ:^(id responseData) {
+                    RACTuple *tupleResult = [RACTuple tupleWithObjects:responseData, channel, nil];
+                    [subscriber sendNext:tupleResult];
+                } fail:^(NSError *error) {
+                    [subscriber sendError:error];
+                } completion:^{
+                    [subscriber sendCompleted];
+                }];
+            }
+            
+        } fail:^(NSError *error) {
+            // ping 失败了
+            [s
