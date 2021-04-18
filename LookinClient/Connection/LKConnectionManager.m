@@ -292,4 +292,18 @@ static NSIndexSet * PushFrameTypeList() {
     
     if (LOOKIN_CLIENT_IS_EXPERIMENTAL && !serverIsExprimental) {
         // client 是私有版本，framework 是官网版本
-        NSErr
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_ClientIsPrivate userInfo:nil];
+        return versionErr;
+    
+    }
+    
+    if (!LOOKIN_CLIENT_IS_EXPERIMENTAL && serverIsExprimental) {
+        // client 是现网版本，framework 是私有版本
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_ServerIsPrivate userInfo:nil];
+        return versionErr;
+        
+    }
+    
+    if (serverVersion > LOOKIN_SUPPORTED_SERVER_MAX) {
+        // server 版本过高，需要升级 client
+        NSError *versionErr = [NSError errorWithDomain:Looki
