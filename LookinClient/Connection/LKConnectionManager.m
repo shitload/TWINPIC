@@ -306,4 +306,10 @@ static NSIndexSet * PushFrameTypeList() {
     
     if (serverVersion > LOOKIN_SUPPORTED_SERVER_MAX) {
         // server 版本过高，需要升级 client
-        NSError *versionErr = [NSError errorWithDomain:Looki
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_ServerVersionTooHigh userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Lookin app version is too low.", nil), NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Target iOS app is linked with a higher version LookinServer.framework. Please click \"Lookin\"-\"Check for Updates\" near the top-left corner or visit https://lookin.work to update your Lookin app.", nil)}];
+        return versionErr;
+        
+    }
+    
+    if (serverVersion < LOOKIN_SUPPORTED_SERVER_MIN) {
+        // server 版本过低，需
