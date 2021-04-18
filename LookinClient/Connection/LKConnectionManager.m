@@ -286,4 +286,10 @@ static NSIndexSet * PushFrameTypeList() {
     BOOL serverIsExprimental = [pingResponse respondsToSelector:@selector(lookinServerIsExprimental)] && pingResponse.lookinServerIsExprimental;
     if (serverVersion == -1 || serverVersion == 100) {
         // 说明用的还是旧版本的内部版本 LookinServer，这里兼容一下
-        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomai
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_ServerVersionTooLow userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Fail to inspect this iOS app due to a version problem.", nil), NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please update LookinServer.framework linked with target iOS App to a newer version. Visit the website below to get detailed instructions:\nhttps://lookin.work/faq/server-version-too-low/", nil)}];
+        return versionErr;
+    }
+    
+    if (LOOKIN_CLIENT_IS_EXPERIMENTAL && !serverIsExprimental) {
+        // client 是私有版本，framework 是官网版本
+        NSErr
