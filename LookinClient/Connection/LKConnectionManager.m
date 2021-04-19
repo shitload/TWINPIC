@@ -333,3 +333,14 @@ static NSIndexSet * PushFrameTypeList() {
     if (!channel.isConnected) {
         if (failBlock) {
             failBlock(LookinErr_NoConnect);
+        }
+        return;
+    }
+    if (channel.activeRequests.count && requestType != LookinRequestTypePing) {
+        // 检查是否有相同 type 的旧请求尚在进行中，如果有则移除之前的旧请求（旧请求会被报告 error）
+        NSSet<LKConnectionRequest *> *requestsToBeDiscarded = [channel.activeRequests lookin_filter:^BOOL(LKConnectionRequest *obj) {
+            return (obj.type == requestType);
+        }];
+        [requestsToBeDiscarded enumerateObjectsUsingBlock:^(LKConnectionRequest * _Nonnull obj, BOOL * _Nonnull stop) {
+            if (obj.failBlock) {
+               
