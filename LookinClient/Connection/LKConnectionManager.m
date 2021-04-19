@@ -322,4 +322,14 @@ static NSIndexSet * PushFrameTypeList() {
 
 #pragma mark - Private
 
-- (v
+- (void)_requestWithType:(unsigned int)requestType channel:(Lookin_PTChannel *)channel data:(NSObject *)data timeoutInterval:(NSTimeInterval)timeoutInterval succ:(void (^)(id data))succBlock fail:(void (^)(NSError *error))failBlock completion:(void (^)(void))completionBlock {
+    if (!channel) {
+        NSAssert(NO, @"");
+        if (failBlock) {
+            failBlock(LookinErr_Inner);
+        }
+        return;
+    }
+    if (!channel.isConnected) {
+        if (failBlock) {
+            failBlock(LookinErr_NoConnect);
