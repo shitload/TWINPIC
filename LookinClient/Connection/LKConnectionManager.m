@@ -312,4 +312,14 @@ static NSIndexSet * PushFrameTypeList() {
     }
     
     if (serverVersion < LOOKIN_SUPPORTED_SERVER_MIN) {
-        // server 版本过低，需
+        // server 版本过低，需要升级 server
+        NSError *versionErr = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_ServerVersionTooLow userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Fail to inspect this iOS app due to a version problem.", nil), NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"Please update LookinServer.framework linked with target iOS App to a newer version. Visit the website below to get detailed instructions:\nhttps://lookin.work/faq/server-version-too-low/", nil)}];
+        return versionErr;
+    }
+    
+    return nil;
+}
+
+#pragma mark - Private
+
+- (v
