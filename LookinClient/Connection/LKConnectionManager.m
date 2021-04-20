@@ -343,4 +343,15 @@ static NSIndexSet * PushFrameTypeList() {
         }];
         [requestsToBeDiscarded enumerateObjectsUsingBlock:^(LKConnectionRequest * _Nonnull obj, BOOL * _Nonnull stop) {
             if (obj.failBlock) {
-               
+                NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_Discard userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"The request is discarded due to a newer same request.", nil)}];
+                obj.failBlock(error);
+            }
+            [obj endTimeoutCount];
+            [channel.activeRequests removeObject:obj];
+            
+            NSLog(@"LookinClient - will discard request, type:%@, tag:%@", @(obj.type), @(obj.tag));
+        }];
+    }
+    
+    LKConnectionRequest *request = [[LKConnectionRequest alloc] init];
+    request.t
