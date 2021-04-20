@@ -363,4 +363,16 @@ static NSIndexSet * PushFrameTypeList() {
     @weakify(channel);
     request.timeoutBlock = ^(LKConnectionRequest *selfRequest) {
         @strongify(channel);
-        NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_Timeout userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Request timeout", nil), NSLocalizedRecoverySuggestionErrorKey:LookinErrorT
+        NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_Timeout userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Request timeout", nil), NSLocalizedRecoverySuggestionErrorKey:LookinErrorText_Timeout}];
+        selfRequest.failBlock(error);
+        [channel.activeRequests removeObject:selfRequest];
+    };
+    
+    LookinConnectionAttachment *attachment = [LookinConnectionAttachment new];
+    attachment.data = data;
+    NSError *archiveError = nil;
+    dispatch_data_t payload = [[NSKeyedArchiver archivedDataWithRootObject:attachment requiringSecureCoding:YES error:&archiveError] createReferencingDispatchData];
+    if (archiveError) {
+        NSAssert(NO, @"");
+    }
+    [channel sendFrameOfType:requestType tag:request.tag withPayload:pay
