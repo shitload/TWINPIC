@@ -375,4 +375,14 @@ static NSIndexSet * PushFrameTypeList() {
     if (archiveError) {
         NSAssert(NO, @"");
     }
-    [channel sendFrameOfType:requestType tag:request.tag withPayload:pay
+    [channel sendFrameOfType:requestType tag:request.tag withPayload:payload callback:^(NSError *error) {
+//        NSLog(@"LookinClient - sendRequest, type:%@", @(requestType));
+        if (error) {
+            if (failBlock) {
+                NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_PeerTalk userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"The operation failed due to an inner error.", nil)}];
+                failBlock(error);
+            }
+        } else {
+            // 成功发出了该 request
+            if (!channel.activeRequests) {
+                channel.activeReques
