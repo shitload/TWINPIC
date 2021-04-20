@@ -354,4 +354,13 @@ static NSIndexSet * PushFrameTypeList() {
     }
     
     LKConnectionRequest *request = [[LKConnectionRequest alloc] init];
-    request.t
+    request.type = requestType;
+    request.tag = (uint32_t)[[NSDate date] timeIntervalSince1970];
+    request.succBlock = succBlock;
+    request.failBlock = failBlock;
+    request.completionBlock = completionBlock;
+    request.timeoutInterval = timeoutInterval;
+    @weakify(channel);
+    request.timeoutBlock = ^(LKConnectionRequest *selfRequest) {
+        @strongify(channel);
+        NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_Timeout userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Request timeout", nil), NSLocalizedRecoverySuggestionErrorKey:LookinErrorT
