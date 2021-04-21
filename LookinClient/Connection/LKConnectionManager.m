@@ -385,4 +385,21 @@ static NSIndexSet * PushFrameTypeList() {
         } else {
             // 成功发出了该 request
             if (!channel.activeRequests) {
-                channel.activeReques
+                channel.activeRequests = [NSMutableSet set];
+            }
+            [channel.activeRequests addObject:request];
+            [request resetTimeoutCount];
+        }
+    }];
+}
+
+- (void)cancelRequestWithType:(unsigned int)requestType channel:(Lookin_PTChannel *)channel {
+    LKConnectionRequest *activeRequest = [channel.activeRequests lookin_firstFiltered:^BOOL(LKConnectionRequest *obj) {
+        return obj.type == requestType;
+    }];
+    if (!activeRequest) {
+        return;
+    }
+    [activeRequest endTimeoutCount];
+    [channel.activeRequests removeObject:activeRequest];
+    if (activeR
