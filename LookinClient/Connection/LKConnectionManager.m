@@ -424,4 +424,17 @@ static NSIndexSet * PushFrameTypeList() {
         NSLog(@"Lookin - USB 设备插入，DeviceID: %@", deviceID);
     }];
     
-    [nc addObserverForName:Lookin_PTUSBDeviceDidDetachNotification object:Lookin_PTUSBHub.sharedHub queue:
+    [nc addObserverForName:Lookin_PTUSBDeviceDidDetachNotification object:Lookin_PTUSBHub.sharedHub queue:nil usingBlock:^(NSNotification *note) {
+        NSNumber *deviceID = [note.userInfo objectForKey:@"DeviceID"];
+        [self.allUSBPorts.copy enumerateObjectsUsingBlock:^(LKUSBConnectionPort * _Nonnull port, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([port.deviceID isEqual:deviceID]) {
+                [self.allUSBPorts removeObject:port];
+            }
+        }];
+        NSLog(@"Lookin - USB 设备拔出，DeviceID: %@", deviceID);
+    }];
+}
+
+#pragma mark - <Lookin_PTChannelDelegate>
+
+- (BOOL)ioFrameChannel:(Lookin_PTChannel*)channel s
