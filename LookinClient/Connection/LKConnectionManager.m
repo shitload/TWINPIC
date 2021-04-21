@@ -402,4 +402,16 @@ static NSIndexSet * PushFrameTypeList() {
     }
     [activeRequest endTimeoutCount];
     [channel.activeRequests removeObject:activeRequest];
-    if (activeR
+    if (activeRequest.completionBlock) {
+        activeRequest.completionBlock();
+    }
+    NSLog(@"Lookin - 用户手动取消 request, type:%@", @(requestType));
+}
+
+- (void)_startListeningForUSBDevices {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserverForName:Lookin_PTUSBDeviceDidAttachNotification object:Lookin_PTUSBHub.sharedHub queue:nil usingBlock:^(NSNotification *note) {
+        NSNumber *deviceID = [note.userInfo objectForKey:@"DeviceID"];
+        
+        /// 仅一台真机 device 上的所有 app 共享同一批端口（在 Lookin 里是 47175 ~ 47179 这 5 个），不同真机互不影响。比如依次启动“真机 A 的 app1”、“真机 A 的 
