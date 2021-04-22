@@ -453,4 +453,14 @@ static NSIndexSet * PushFrameTypeList() {
     }
 }
 
-- (void)ioFrameChannel:(Lookin_
+- (void)ioFrameChannel:(Lookin_PTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(Lookin_PTData*)payload {
+    if ([PushFrameTypeList() containsIndex:type]) {
+        NSData *data = [NSData dataWithContentsOfDispatchData:payload.dispatchData];
+        NSError *unarchiveError = nil;
+        NSObject *unarchivedData = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:&unarchiveError];
+        if (unarchiveError) {
+            //        NSAssert(NO, @"");
+        }
+        
+        RACTuple *tuple = [RACTuple tupleWithObjects:channel, @(type), unarchivedData, nil];
+        
