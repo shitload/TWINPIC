@@ -437,4 +437,20 @@ static NSIndexSet * PushFrameTypeList() {
 
 #pragma mark - <Lookin_PTChannelDelegate>
 
-- (BOOL)ioFrameChannel:(Lookin_PTChannel*)channel s
+- (BOOL)ioFrameChannel:(Lookin_PTChannel*)channel shouldAcceptFrameOfType:(uint32_t)type tag:(uint32_t)tag payloadSize:(uint32_t)payloadSize {
+    if ([PushFrameTypeList() containsIndex:type]) {
+        return YES;
+    }
+    
+    LKConnectionRequest *activeRequest = [channel.activeRequests lookin_firstFiltered:^BOOL(LKConnectionRequest *obj) {
+        return (obj.type == type && obj.tag == tag);
+    }];
+    if (activeRequest) {
+        return YES;
+    } else {
+        NSLog(@"LookinClient - will refuse, type:%@, tag:%@", @(type), @(tag));
+        return NO;
+    }
+}
+
+- (void)ioFrameChannel:(Lookin_
