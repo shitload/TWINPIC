@@ -477,4 +477,17 @@ static NSIndexSet * PushFrameTypeList() {
     }
 
     NSData *data = [NSData dataWithContentsOfDispatchData:payload.dispatchData];
-  
+    NSError *unarchiveError = nil;
+    LookinConnectionResponseAttachment *attachment = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:&unarchiveError];
+    if (unarchiveError) {
+//        NSAssert(NO, @"");
+    }
+    
+    if (attachment.appIsInBackground) {
+        // app 处于后台模式
+        
+        [activeRequest endTimeoutCount];
+        [channel.activeRequests removeObject:activeRequest];
+
+        if (activeRequest.failBlock) {
+            NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCod
