@@ -490,4 +490,21 @@ static NSIndexSet * PushFrameTypeList() {
         [channel.activeRequests removeObject:activeRequest];
 
         if (activeRequest.failBlock) {
-            NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCod
+            NSError *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_PingFailForBackgroundState userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"The operation failed because target iOS app has entered to the background state.", nil)}];
+            activeRequest.failBlock(error);
+        }
+        
+        NSLog(@"Lookin - iOS app 报告自己处于后台，request fail");
+        
+        return;
+    }
+    
+    if (activeRequest.succBlock) {
+        activeRequest.succBlock(attachment);
+    }
+    
+    static NSUInteger dataSize = 0;
+    static CFTimeInterval startTime = 0;
+    if (activeRequest.receivedDataCount == 0) {
+        dataSize = 0;
+      
