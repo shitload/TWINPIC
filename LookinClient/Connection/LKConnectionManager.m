@@ -463,4 +463,18 @@ static NSIndexSet * PushFrameTypeList() {
         }
         
         RACTuple *tuple = [RACTuple tupleWithObjects:channel, @(type), unarchivedData, nil];
-        
+        [self.didReceivePush sendNext:tuple];
+        return;
+    }
+    
+//    NSLog(@"LookinClient - did receive, port:%@, type:%@, tag:%@", @(channel.portNumber), @(type), @(tag));
+    LKConnectionRequest *activeRequest = [channel.activeRequests lookin_firstFiltered:^BOOL(LKConnectionRequest *obj) {
+        return (obj.type == type && obj.tag == tag);
+    }];
+    if (!activeRequest) {
+        // 也许在 shouldAcceptFrameOfType 和 didReceiveFrame 两个时机之间，该 request 因为超时而被销毁了？有点玄学但确实偶尔会走到这里。
+        return;
+    }
+
+    NSData *data = [NSData dataWithContentsOfDispatchData:payload.dispatchData];
+  
