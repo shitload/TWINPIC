@@ -523,4 +523,14 @@ static NSIndexSet * PushFrameTypeList() {
     
     if (hasReceivedAllResponses) {
         [activeRequest endTimeoutCount];
-        [channel.activeRequests re
+        [channel.activeRequests removeObject:activeRequest];
+        if (activeRequest.completionBlock) {
+            activeRequest.completionBlock();
+        }
+        
+        CFTimeInterval timeDuration = CACurrentMediaTime() - startTime;
+        CGFloat totalSize = dataSize / 1024.0 / 1024.0;
+        if (totalSize > 0.5) {
+            NSMutableString *logString = [[NSMutableString alloc] initWithString:@"Lookin - "];
+            [logString appendFormat:@"已收到全部请求 %@ / %@，总耗时:%.2f, 数据总大小:%.2fM", @(activeRequest.receivedDataCount), @(attachment.dataTotalCount), timeDuration, totalSize];
+ 
