@@ -507,4 +507,20 @@ static NSIndexSet * PushFrameTypeList() {
     static CFTimeInterval startTime = 0;
     if (activeRequest.receivedDataCount == 0) {
         dataSize = 0;
-      
+        startTime = CACurrentMediaTime();
+    }
+    dataSize += data.length;
+    
+    BOOL hasReceivedAllResponses = NO;
+    if (attachment.dataTotalCount > 0) {
+        activeRequest.receivedDataCount += attachment.currentDataCount;
+        if (activeRequest.receivedDataCount >= attachment.dataTotalCount) {
+            hasReceivedAllResponses = YES;
+        }
+    } else {
+        hasReceivedAllResponses = YES;
+    }
+    
+    if (hasReceivedAllResponses) {
+        [activeRequest endTimeoutCount];
+        [channel.activeRequests re
