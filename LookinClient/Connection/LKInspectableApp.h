@@ -23,4 +23,17 @@
 
 - (RACSignal *)fetchHierarchyData;
 
-- (RACSignal *)submitModification:(LookinAttributeModifi
+- (RACSignal *)submitModification:(LookinAttributeModification *)modification;
+
+- (RACSignal *)fetchHierarchyDetailWithTaskPackages:(NSArray<LookinStaticAsyncUpdateTasksPackage *> *)packages;
+- (void)cancelHierarchyDetailFetching;
+
+- (void)pushHierarchyDetailBringForwardTaskPackages:(NSArray<LookinStaticAsyncUpdateTasksPackage *> *)packages;
+
+- (RACSignal *)fetchModificationPatchWithTasks:(NSArray<LookinStaticAsyncUpdateTask *> *)tasks;
+
+- (RACSignal *)fetchObjectWithOid:(unsigned long)oid;
+
+- (RACSignal *)fetchClassesAndMethodTraceList;
+
+- (RACSignal *)fetchSelectorNamesWithClass:(NSString *)classN
