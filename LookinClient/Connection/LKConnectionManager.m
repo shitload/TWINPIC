@@ -533,4 +533,16 @@ static NSIndexSet * PushFrameTypeList() {
         if (totalSize > 0.5) {
             NSMutableString *logString = [[NSMutableString alloc] initWithString:@"Lookin - "];
             [logString appendFormat:@"已收到全部请求 %@ / %@，总耗时:%.2f, 数据总大小:%.2fM", @(activeRequest.receivedDataCount), @(attachment.dataTotalCount), timeDuration, totalSize];
- 
+            NSLog(@"%@", logString);
+        }
+    } else {
+        /// 对于多 response 的请求，每收到一次 response 则重置 timeout 倒计时
+        [activeRequest resetTimeoutCount];
+//        NSLog(@"Lookin - 收到请求 %@ / %@", @(activeRequest.receivedDataCount), @(attachment.dataTotalCount));
+    }
+}
+
+- (void)ioFrameChannel:(Lookin_PTChannel*)channel didEndWithError:(NSError*)error {
+    // iOS 客户端断开
+    [self.allSimulatorPorts enumerateObjectsUsingBlock:^(LKSimulatorConnectionPort * _Nonnull port, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (port.connected
