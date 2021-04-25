@@ -545,4 +545,18 @@ static NSIndexSet * PushFrameTypeList() {
 - (void)ioFrameChannel:(Lookin_PTChannel*)channel didEndWithError:(NSError*)error {
     // iOS 客户端断开
     [self.allSimulatorPorts enumerateObjectsUsingBlock:^(LKSimulatorConnectionPort * _Nonnull port, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (port.connected
+        if (port.connectedChannel == channel) {
+            port.connectedChannel = nil;
+        }
+    }];
+    [self.allUSBPorts enumerateObjectsUsingBlock:^(LKUSBConnectionPort * _Nonnull port, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (port.connectedChannel == channel) {
+            port.connectedChannel = nil;
+        }
+    }];
+    [self.channelWillEnd sendNext:channel];
+    
+    [channel close];
+}
+
+@end
