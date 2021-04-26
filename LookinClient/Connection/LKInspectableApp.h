@@ -36,4 +36,16 @@
 
 - (RACSignal *)fetchClassesAndMethodTraceList;
 
-- (RACSignal *)fetchSelectorNamesWithClass:(NSString *)classN
+- (RACSignal *)fetchSelectorNamesWithClass:(NSString *)className hasArg:(BOOL)hasArg;
+
+- (RACSignal *)addMethodTraceWithClassName:(NSString *)className selName:(NSString *)selName;
+
+- (RACSignal *)deleteMethodTraceWithClassName:(NSString *)className selName:(NSString *)selName;
+
+- (RACSignal *)invokeMethodWithOid:(unsigned long)oid text:(NSString *)text;
+
+/// 获取某个 imageView 的 image 对象，oid 是 imageView 的 oid
+- (RACSignal *)fetchImageWithImageViewOid:(unsigned long)oid;
+
+/// 修改一个 gestureRecognizer 的 enable 属性。如果 shouldBeEnabled 为 YES 则表示想要把它的 enable 属性修改为 YES
+- (RACSignal *)modifyGestureRecognizer:(unsigned long)oid toBeEnabled:(BOOL)shouldBeEnabled
