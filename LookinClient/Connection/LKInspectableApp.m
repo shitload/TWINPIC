@@ -31,4 +31,19 @@
     [self _pushWithType:LookinPush_CanceHierarchyDetails data:nil];
 }
 
-- (void)pushHierarchyDetail
+- (void)pushHierarchyDetailBringForwardTaskPackages:(NSArray<LookinStaticAsyncUpdateTasksPackage *> *)packages {
+    [self _pushWithType:LookinPush_BringForwardScreenshotTask data:packages];
+}
+
+- (RACSignal *)fetchModificationPatchWithTasks:(NSArray<LookinStaticAsyncUpdateTask *> *)tasks {
+    return [self _requestWithType:LookinRequestTypeAttrModificationPatch data:tasks];
+}
+
+- (RACSignal *)fetchObjectWithOid:(unsigned long)oid {
+    if (!oid) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    return [self _requestWithType:LookinRequestTypeFetchObject data:@(oid)];
+}
+
+- (RACSig
