@@ -18,4 +18,17 @@
     return [self _requestWithType:LookinRequestTypeHierarchy data:nil];
 }
 
-- (RACSignal *)submitModification:(LookinAttributeModific
+- (RACSignal *)submitModification:(LookinAttributeModification *)modification {
+    return [self _requestWithType:LookinRequestTypeModification data:modification];
+}
+
+- (RACSignal *)fetchHierarchyDetailWithTaskPackages:(NSArray<LookinStaticAsyncUpdateTasksPackage *> *)packages {
+    return [self _requestWithType:LookinRequestTypeHierarchyDetails data:packages];
+}
+
+- (void)cancelHierarchyDetailFetching {
+    [self _cancelRequestWithType:LookinRequestTypeHierarchyDetails];
+    [self _pushWithType:LookinPush_CanceHierarchyDetails data:nil];
+}
+
+- (void)pushHierarchyDetail
