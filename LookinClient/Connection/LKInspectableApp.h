@@ -48,4 +48,10 @@
 - (RACSignal *)fetchImageWithImageViewOid:(unsigned long)oid;
 
 /// 修改一个 gestureRecognizer 的 enable 属性。如果 shouldBeEnabled 为 YES 则表示想要把它的 enable 属性修改为 YES
-- (RACSignal *)modifyGestureRecognizer:(unsigned long)oid toBeEnabled:(BOOL)shouldBeEnabled
+- (RACSignal *)modifyGestureRecognizer:(unsigned long)oid toBeEnabled:(BOOL)shouldBeEnabled;
+
+#pragma mark - Push From iOS
+
+- (void)handleMethodTraceRecord:(LookinMethodTraceRecord *)record;
+
+@end
