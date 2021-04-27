@@ -46,4 +46,16 @@
     return [self _requestWithType:LookinRequestTypeFetchObject data:@(oid)];
 }
 
-- (RACSig
+- (RACSignal *)fetchClassesAndMethodTraceList {
+    return [self _requestWithType:LookinRequestTypeClassesAndMethodTraceLit data:nil];
+}
+
+- (RACSignal *)fetchSelectorNamesWithClass:(NSString *)className hasArg:(BOOL)hasArg {
+    return [self _requestWithType:LookinRequestTypeAllSelectorNames data:@{@"className":className, @"hasArg":@(hasArg)}];
+}
+
+- (RACSignal *)addMethodTraceWithClassName:(NSString *)className selName:(NSString *)selName {
+    if (!className || !selName) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    return [self
