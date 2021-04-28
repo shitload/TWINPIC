@@ -70,4 +70,12 @@
 }
 
 - (RACSignal *)invokeMethodWithOid:(unsigned long)oid text:(NSString *)text {
-   
+    if (oid == 0 || !text.length) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    NSDictionary *param = @{@"oid":@(oid), @"text":text};
+    return [[self _requestWithType:LookinRequestTypeInvokeMethod data:param] map:^id _Nullable(NSDictionary * _Nullable value) {
+        if ([value[@"description"] isEqualToString:LookinStringFlag_VoidReturn]) {
+            // 方法没有返回值时，替换成本地说明
+            NSMutableDictionary *newValue = [value mutableCopy];
+            newValue[@"description"] = NSLocalizedString(@"The method was invoked su
