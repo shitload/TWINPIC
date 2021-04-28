@@ -78,4 +78,26 @@
         if ([value[@"description"] isEqualToString:LookinStringFlag_VoidReturn]) {
             // 方法没有返回值时，替换成本地说明
             NSMutableDictionary *newValue = [value mutableCopy];
-            newValue[@"description"] = NSLocalizedString(@"The method was invoked su
+            newValue[@"description"] = NSLocalizedString(@"The method was invoked successfully and no value was returned.", nil);
+            return newValue;
+        } else {
+            return value;
+        }
+    }];
+}
+
+- (RACSignal *)fetchAttrGroupListWithOid:(unsigned long)oid {
+    if (!oid) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    return [self _requestWithType:LookinRequestTypeAllAttrGroups data:@(oid)];
+}
+
+- (RACSignal *)fetchImageWithImageViewOid:(unsigned long)oid {
+    if (!oid) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    return [self _requestWithType:LookinRequestTypeFetchImageViewImage data:@(oid)];
+}
+
+- (RACSignal *
