@@ -100,4 +100,20 @@
     return [self _requestWithType:LookinRequestTypeFetchImageViewImage data:@(oid)];
 }
 
-- (RACSignal *
+- (RACSignal *)modifyGestureRecognizer:(unsigned long)oid toBeEnabled:(BOOL)shouldBeEnabled {
+    if (!oid) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    return [self _requestWithType:LookinRequestTypeModifyRecognizerEnable data:@{@"oid":@(oid), @"enable":@(shouldBeEnabled)}];
+}
+
+#pragma mark - Push From iOS
+
+- (void)handleMethodTraceRecord:(LookinMethodTraceRecord *)record {
+    [[LKNavigationManager sharedInstance].activeMethodTraceDataSource handleReceivingRecord:record];
+}
+
+#pragma mark - Private
+
+- (void)_pushWithType:(uint32_t)pushType data:(id)data {
+  
