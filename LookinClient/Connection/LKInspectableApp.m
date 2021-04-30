@@ -129,4 +129,21 @@
     return [[[LKConnectionManager sharedInstance] requestWithType:requestType data:data channel:self.channel] flattenMap:^__kindof RACSignal * _Nullable(RACTuple *tuple) {
         LookinConnectionResponseAttachment *attachment = tuple.first;
         if (attachment.error) {
-            
+            // 翻译成本地文字
+            if (attachment.error.code == LookinErrCode_ObjectNotFound) {
+                attachment.error = LookinErr_ObjNotFound;
+            } else if (attachment.error.code == LookinErrCode_Inner) {
+                attachment.error = LookinErr_Inner;
+            }
+            return [RACSignal error:attachment.error];
+        } else {
+            return [RACSignal return:attachment.data];
+        }
+    }];
+}
+
+- (void)_cancelRequestWithType:(uint32_t)requestType {
+    if (!self.channel) {
+        return;
+    }
+    [[LKConnectionManager sharedInstance] cancelRe
