@@ -116,4 +116,17 @@
 #pragma mark - Private
 
 - (void)_pushWithType:(uint32_t)pushType data:(id)data {
-  
+    if (!self.channel) {
+        return;
+    }
+    [[LKConnectionManager sharedInstance] pushWithType:pushType data:data channel:self.channel];
+}
+
+- (RACSignal *)_requestWithType:(uint32_t)requestType data:(id)data {
+    if (!self.channel) {
+        return [RACSignal error:LookinErr_NoConnect];
+    }
+    return [[[LKConnectionManager sharedInstance] requestWithType:requestType data:data channel:self.channel] flattenMap:^__kindof RACSignal * _Nullable(RACTuple *tuple) {
+        LookinConnectionResponseAttachment *attachment = tuple.first;
+        if (attachment.error) {
+            
