@@ -8,4 +8,7 @@
 
 #import "LKConsoleDataSourceRowItem.h"
 
-@implementation LK
+@implementation LKConsoleDataSourceRowItem
+
+
+@end
