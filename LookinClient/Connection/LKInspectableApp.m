@@ -146,4 +146,7 @@
     if (!self.channel) {
         return;
     }
-    [[LKConnectionManager sharedInstance] cancelRe
+    [[LKConnectionManager sharedInstance] cancelRequestWithType:requestType channel:self.channel];
+}
+
+@end
