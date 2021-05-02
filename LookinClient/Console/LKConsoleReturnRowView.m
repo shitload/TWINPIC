@@ -30,4 +30,13 @@
 
 - (void)layout {
     [super layout];
-    $(self.titleLabel).x(_insets.le
+    $(self.titleLabel).x(_insets.left).toRight(_insets.right).heightToFit.y(_insets.top);
+}
+
+- (CGFloat)heightForWidth:(CGFloat)width {
+    CGFloat height = [self.titleLabel sizeThatFits:NSMakeSize(width - _insets.left -_insets.right, CGFLOAT_MAX)].height;
+    height += _insets.top + _insets.bottom;
+    return height;
+}
+
+@end
