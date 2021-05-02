@@ -12,4 +12,13 @@
 
 @interface LKConsoleSelectPopoverController : LKBaseViewController
 
-- (inst
+- (instancetype)initWithDataSource:(LKConsoleDataSource *)dataSource;
+
+- (CGFloat)bestHeight;
+
+- (void)reRender;
+
+@property(nonatomic, copy) void (^needShowError)(NSError *error);
+@property(nonatomic, copy) void (^needClose)(void);
+
+@end
