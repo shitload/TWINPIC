@@ -36,4 +36,19 @@
         [self addSubview:self.titleLabel];
     
         self.subtitleLabel = [LKLabel new];
-        self.s
+        self.subtitleLabel.maximumNumberOfLines = 1;
+        self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        self.subtitleLabel.font = NSFontMake(11);
+        self.subtitleLabel.textColor = [NSColor secondaryLabelColor];
+        self.subtitleLabel.hidden = YES;
+        [self addSubview:self.subtitleLabel];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.imageView).sizeToFit.x(3).verAlign;
+    $(self.titleLabel).x(self.imageView.$maxX + 4).toRight(0).heightToFit;
+    if (self.subtitleLabel.isVisible) {
+  
