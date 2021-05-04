@@ -63,4 +63,29 @@
         textHeight += [self.subtitleLabel sizeThatFits:NSSizeMax].height + _subtitleMarginTop;
     }
     size.height = MAX(imageHeight, textHeight);
-    retu
+    return size;
+}
+
+- (void)sizeToFit {
+    $(self).size([self sizeThatFits:NSSizeMax]);
+}
+
+- (void)setTitle:(NSString *)title {
+    _title = title.copy;
+    self.titleLabel.stringValue = title;
+    [self setNeedsLayout:YES];
+}
+
+- (void)setSubtitle:(NSString *)subtitle {
+    _subtitle = subtitle.copy;
+    self.subtitleLabel.stringValue = subtitle;
+    self.subtitleLabel.hidden = !subtitle.length;
+    [self setNeedsLayout:YES];
+}
+
+- (void)setIsChecked:(BOOL)isChecked {
+    _isChecked = isChecked;
+    self.imageView.hidden = !isChecked;
+}
+
+- (void)setRepresentedObject:(LookinObject *)represen
