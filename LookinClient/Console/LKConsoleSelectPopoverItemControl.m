@@ -51,4 +51,16 @@
     $(self.imageView).sizeToFit.x(3).verAlign;
     $(self.titleLabel).x(self.imageView.$maxX + 4).toRight(0).heightToFit;
     if (self.subtitleLabel.isVisible) {
-  
+        $(self.subtitleLabel).x(self.titleLabel.$x).toRight(0).heightToFit.y(self.titleLabel.$maxY + _subtitleMarginTop);
+    }
+    $(self.titleLabel, self.subtitleLabel).visibles.groupVerAlign;
+}
+
+- (NSSize)sizeThatFits:(NSSize)size {
+    CGFloat imageHeight = self.imageView.image.size.height;
+    CGFloat textHeight = [self.titleLabel sizeThatFits:NSSizeMax].height;
+    if (self.subtitleLabel.isVisible) {
+        textHeight += [self.subtitleLabel sizeThatFits:NSSizeMax].height + _subtitleMarginTop;
+    }
+    size.height = MAX(imageHeight, textHeight);
+    retu
