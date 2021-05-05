@@ -88,4 +88,9 @@
     self.imageView.hidden = !isChecked;
 }
 
-- (void)setRepresentedObject:(LookinObject *)represen
+- (void)setRepresentedObject:(LookinObject *)representedObject {
+    _representedObject = representedObject;
+    self.titleLabel.textColor = representedObject ? [NSColor labelColor] : [NSColor secondaryLabelColor];
+}
+
+@end
