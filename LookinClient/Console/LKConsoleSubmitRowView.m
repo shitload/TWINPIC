@@ -27,4 +27,12 @@
 
 - (void)layout {
     [super layout];
-    NSSize 
+    NSSize titleSize = [self.titleLabel sizeThatFits:NSSizeMax];
+    titleSize.width = MIN(titleSize.width, self.$width * .5);
+    $(self.titleLabel).x(ConsoleInsetLeft).width(titleSize.width).height(titleSize.height).verAlign;
+    $(self.subtitleLabel).x(self.titleLabel.$maxX + 5).toRight(ConsoleInsetRight).heightToFit.verAlign;
+}
+
+- (void)setIsDarkMode:(BOOL)isDarkMode {
+    [super setIsDarkMode:isDarkMode];
+    self.titleLabel.textColor = isDarkMode ? LookinColorMake(85, 200, 95) : LookinColorMake(54, 
