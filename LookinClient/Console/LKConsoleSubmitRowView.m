@@ -35,4 +35,7 @@
 
 - (void)setIsDarkMode:(BOOL)isDarkMode {
     [super setIsDarkMode:isDarkMode];
-    self.titleLabel.textColor = isDarkMode ? LookinColorMake(85, 200, 95) : LookinColorMake(54, 
+    self.titleLabel.textColor = isDarkMode ? LookinColorMake(85, 200, 95) : LookinColorMake(54, 155, 62);
+}
+
+@end
