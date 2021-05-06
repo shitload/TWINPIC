@@ -42,4 +42,17 @@
             self.titleView.textField.alignment = NSTextAlignmentCenter;
             self.titleView.textField.stringValue = NSLocalizedString(@"The layout of selected view is not affected by this constraint.", nil);
             self.titleView.backgroundColors = LKColorsCombine(LookinColorRGBAMake(0, 0, 0, 0.1), LookinColorRGBAMake(0, 0, 0, 0.2));
-            self.ti
+            self.titleView.image = NSImageMake(@"Constraint_Popover_Info");
+            self.titleView.insets = NSEdgeInsetsMake(0, _horInset, 0, _horInset);
+            [self.view addSubview:self.titleView];
+        }
+        
+        self.textsView = [LKTextsMenuView new];
+        self.textsView.verSpace = 8;
+        self.textsView.horSpace = 4;
+        self.textsView.font = NSFontMake(13);
+        self.textsView.type = LKTextsMenuViewTypeCenter;
+        [self.view addSubview:self.textsView];
+    
+        NSMutableArray<LookinStringTwoTuple *> *texts = [NSMutableArray array];
+        [texts addObject:[LookinStringTwoTuple tupleW
