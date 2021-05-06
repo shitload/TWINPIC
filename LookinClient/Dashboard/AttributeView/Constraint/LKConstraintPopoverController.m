@@ -36,4 +36,10 @@
         self.constraint = constraint;
         
         if (!constraint.effective) {
-            self.titleView
+            self.titleView = [LKTextFieldView labelView];
+            self.titleView.textField.font = NSFontMake(IsEnglish ? 12 : 13);
+            self.titleView.textColors = LKColorsCombine(NSColorGray1, NSColorGray9);
+            self.titleView.textField.alignment = NSTextAlignmentCenter;
+            self.titleView.textField.stringValue = NSLocalizedString(@"The layout of selected view is not affected by this constraint.", nil);
+            self.titleView.backgroundColors = LKColorsCombine(LookinColorRGBAMake(0, 0, 0, 0.1), LookinColorRGBAMake(0, 0, 0, 0.2));
+            self.ti
