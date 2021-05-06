@@ -16,4 +16,24 @@
 
 @property(nonatomic, strong) LKTextFieldView *titleView;
 @property(nonatomic, strong) LKTextsMenuView *textsView;
-@prop
+@property(nonatomic, strong) LookinAutoLayoutConstraint *constraint;
+
+@end
+
+@implementation LKConstraintPopoverController {
+    CGFloat _horInset;
+    CGFloat _insetBottom;
+    CGFloat _titleHeight;
+    CGFloat _textsViewMarginTop;
+}
+
+- (instancetype)initWithConstraint:(LookinAutoLayoutConstraint *)constraint {
+    if (self = [self initWithContainerView:nil]) {
+        _horInset = 5;
+        _insetBottom = 10;
+        _titleHeight = 26;
+        _textsViewMarginTop = 10;
+        self.constraint = constraint;
+        
+        if (!constraint.effective) {
+            self.titleView
