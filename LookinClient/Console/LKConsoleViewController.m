@@ -137,3 +137,66 @@
     LKConsoleDataSourceRowItem *item = [self.dataSource.rowItems lookin_safeObjectAtIndex:row];
     if (!item) {
         return 0;
+    }
+    if (item.type == LKConsoleDataSourceRowItemTypeInput) {
+        return 20;
+    }
+    
+    if (item.type == LKConsoleDataSourceRowItemTypeSubmit) {
+        return 20;
+    }
+    
+    if (item.type == LKConsoleDataSourceRowItemTypeReturn) {
+        LKConsoleReturnRowView *calculatingView = [self lookin_getBindObjectForKey:@"calculatingReturnRowView"];
+        if (!calculatingView) {
+            calculatingView = [LKConsoleReturnRowView new];
+            [self lookin_bindObject:calculatingView forKey:@"calculatingReturnRowView"];
+        }
+        calculatingView.titleLabel.stringValue = item.normalText;
+        CGFloat height = [calculatingView heightForWidth:self.tableView.$width];
+        return height;
+    }
+    return 0;
+}
+
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+    LKConsoleDataSourceRowItem *item = [self.dataSource.rowItems lookin_safeObjectAtIndex:row];
+    if (!item) {
+        return [LKTableBlankRowView new];
+    }
+    
+    if (item.type == LKConsoleDataSourceRowItemTypeInput) {
+        return self.inputRowView;
+    }
+    
+    if (item.type == LKConsoleDataSourceRowItemTypeSubmit) {
+        LKConsoleSubmitRowView *view = (LKConsoleSubmitRowView *)[tableView makeViewWithIdentifier:@"submit" owner:self];
+        if (!view) {
+            view = [LKConsoleSubmitRowView new];
+            view.identifier = @"submit";
+        }
+        view.titleLabel.stringValue = item.highlightText;
+        view.subtitleLabel.stringValue = item.normalText;
+        [view setNeedsLayout:YES];
+        return view;
+    }
+    
+    if (item.type == LKConsoleDataSourceRowItemTypeReturn) {
+        LKConsoleReturnRowView *view = (LKConsoleReturnRowView *)[tableView makeViewWithIdentifier:@"return" owner:self];
+        if (!view) {
+            view = [LKConsoleReturnRowView new];
+            view.identifier = @"return";
+        }
+        view.titleLabel.stringValue = item.normalText;
+        [view setNeedsLayout:YES];
+        return view;
+    }
+    
+    return [LKTableBlankRowView new];
+}
+
+- (void)tableViewDidClickBlankArea:(LKTableView *)tableView {
+    [self.inputRowView makeTextFieldAsFirstResponder];
+}
+
+@end
