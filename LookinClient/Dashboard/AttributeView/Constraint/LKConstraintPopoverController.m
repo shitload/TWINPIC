@@ -55,4 +55,7 @@
         [self.view addSubview:self.textsView];
     
         NSMutableArray<LookinStringTwoTuple *> *texts = [NSMutableArray array];
-        [texts addObject:[LookinStringTwoTuple tupleW
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"FirstItem" second:[LookinAutoLayoutConstraint descriptionWithItemObject:constraint.firstItem type:constraint.firstItemType detailed:YES]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"FirstAttribute" second:[LookinAutoLayoutConstraint descriptionWithAttribute:constraint.firstAttribute].lk_capitalizedString]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Relation" second:[LookinAutoLayoutConstraint descriptionWithRelation:constraint.relation]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFi
