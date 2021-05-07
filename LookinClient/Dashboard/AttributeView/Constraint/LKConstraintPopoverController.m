@@ -58,4 +58,7 @@
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"FirstItem" second:[LookinAutoLayoutConstraint descriptionWithItemObject:constraint.firstItem type:constraint.firstItemType detailed:YES]]];
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"FirstAttribute" second:[LookinAutoLayoutConstraint descriptionWithAttribute:constraint.firstAttribute].lk_capitalizedString]];
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Relation" second:[LookinAutoLayoutConstraint descriptionWithRelation:constraint.relation]]];
-        [texts addObject:[LookinStringTwoTuple tupleWithFi
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"SecondItem" second:[LookinAutoLayoutConstraint descriptionWithItemObject:constraint.secondItem type:constraint.secondItemType detailed:YES]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"SecondAttribute" second:[LookinAutoLayoutConstraint descriptionWithAttribute:constraint.secondAttribute].lk_capitalizedString]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Multiplier" second:[NSString stringWithFormat:@"%@", @(constraint.multiplier)]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Constant" second:[NSString 
