@@ -61,4 +61,9 @@
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"SecondItem" second:[LookinAutoLayoutConstraint descriptionWithItemObject:constraint.secondItem type:constraint.secondItemType detailed:YES]]];
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"SecondAttribute" second:[LookinAutoLayoutConstraint descriptionWithAttribute:constraint.secondAttribute].lk_capitalizedString]];
         [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Multiplier" second:[NSString stringWithFormat:@"%@", @(constraint.multiplier)]]];
-        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Constant" second:[NSString 
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Constant" second:[NSString stringWithFormat:@"%@", @(constraint.constant)]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Priority" second:[NSString stringWithFormat:@"%@", @(constraint.priority)]]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Active" second:constraint.active ? @"YES" : @"NO"]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"ShouldBeArchived" second:constraint.shouldBeArchived ? @"YES" : @"NO"]];
+        [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Identifier" second:constraint.identifier ? : @""]];
+   
