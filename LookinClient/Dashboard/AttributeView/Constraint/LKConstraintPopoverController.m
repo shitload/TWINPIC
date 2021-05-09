@@ -74,4 +74,22 @@
             
         }
         if (constraint.secondItemType == LookinConstraintItemTypeView) {
-            NSButton *button = [NSButton lk_buttonWithImage:NSImageMake(
+            NSButton *button = [NSButton lk_buttonWithImage:NSImageMake(@"Icon_JumpDisclosure") target:self action:@selector(_handleJumpButton:)];
+            [button lookin_bindObject:constraint.firstItem forKey:@"jumpObject"];
+            [self.textsView addButton:button atIndex:3];
+        }
+        
+        self.textsView.texts = texts;
+    }
+    return self;
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    if (self.titleView) {
+        $(self.titleView).fullWidth.height(_titleHeight).y(0);
+    }
+    
+    CGFloat y = (self.titleView ? _titleHeight : 0);
+    $(self.textsView).sizeToFit.horAlign.y(y + _textsViewMarginTop);
+}
