@@ -93,3 +93,21 @@
     CGFloat y = (self.titleView ? _titleHeight : 0);
     $(self.textsView).sizeToFit.horAlign.y(y + _textsViewMarginTop);
 }
+
+- (NSSize)contentSize {
+    NSSize resultSize = [self.textsView sizeThatFits:NSSizeMax];
+    
+    if (self.titleView) {
+        CGFloat titleWidth = [self.titleView sizeThatFits:NSSizeMax].width;
+        resultSize.width = MAX(titleWidth, resultSize.width);
+        resultSize.height += _titleHeight;
+    }
+    
+    resultSize.width += _horInset * 2;
+    resultSize.height += (_insetBottom + _textsViewMarginTop);
+    
+    return resultSize;
+}
+
+- (void)_handleJumpButton:(NSButton *)button {
+    LookinObject *objec
