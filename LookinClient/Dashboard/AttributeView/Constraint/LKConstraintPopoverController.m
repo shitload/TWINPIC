@@ -110,4 +110,14 @@
 }
 
 - (void)_handleJumpButton:(NSButton *)button {
-    LookinObject *objec
+    LookinObject *object = [button lookin_getBindObjectForKey:@"jumpObject"];
+    if (!object) {
+        NSAssert(NO, @"");
+        return;
+    }
+    if (self.requestJumpingToObject) {
+        self.requestJumpingToObject(object);
+    }
+}
+
+@end
