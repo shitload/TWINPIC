@@ -38,4 +38,15 @@
     [super renderWithAttribute];
     
     NSArray<LookinAutoLayoutConstraint *> *rawData = self.attribute.value;
-    NSArray<LookinAutoLayoutConstraint *> *sortedRawData = [self _sortedRawD
+    NSArray<LookinAutoLayoutConstraint *> *sortedRawData = [self _sortedRawDataFromData:rawData];
+    
+    [self.textControls lookin_dequeueWithCount:sortedRawData.count add:^LKDashboardAttributeConstraintsItemControl *(NSUInteger idx) {
+        LKDashboardAttributeConstraintsItemControl *control = [LKDashboardAttributeConstraintsItemControl new];
+        [control addTarget:self clickAction:@selector(_handleClickItem:)];
+        [self addSubview:control];
+        return control;
+        
+    } notDequeued:^(NSUInteger idx, LKDashboardAttributeConstraintsItemControl *control) {
+        control.hidden = YES;
+        
+    } doNe
