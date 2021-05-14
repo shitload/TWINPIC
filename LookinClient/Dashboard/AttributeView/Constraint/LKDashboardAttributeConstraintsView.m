@@ -70,4 +70,18 @@
     }];
 }
 
-- 
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    NSArray<LKTextControl *> *visibleControls = [self.textControls lookin_filter:^BOOL(LKTextControl *obj) {
+        return !obj.hidden;
+    }];
+    limitedSize.height = [visibleControls lookin_reduceCGFloat:^CGFloat(CGFloat accumulator, NSUInteger idx, LKTextControl *obj) {
+        CGFloat labelHeight = [obj sizeThatFits:limitedSize].height;
+        accumulator += labelHeight;
+        if (idx) {
+            accumulator += self->_verInterSpace;
+        }
+        return accumulator;
+    } initialAccumlator:0];
+    return limitedSize;
+}
+
