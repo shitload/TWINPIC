@@ -49,4 +49,25 @@
     } notDequeued:^(NSUInteger idx, LKDashboardAttributeConstraintsItemControl *control) {
         control.hidden = YES;
         
-    } doNe
+    } doNext:^(NSUInteger idx, LKDashboardAttributeConstraintsItemControl *control) {
+        control.hidden = NO;
+        control.constraint = sortedRawData[idx];
+        [control setNeedsLayout:YES];
+    }];
+    [self setNeedsLayout:YES];
+}
+
+- (void)layout {
+    [super layout];
+    
+    __block CGFloat y = 0;
+    [self.textControls enumerateObjectsUsingBlock:^(LKTextControl * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.hidden) {
+            return;
+        }
+        $(obj).fullFrame.heightToFit.y(y);
+        y = obj.$maxY + self->_verInterSpace;
+    }];
+}
+
+- 
