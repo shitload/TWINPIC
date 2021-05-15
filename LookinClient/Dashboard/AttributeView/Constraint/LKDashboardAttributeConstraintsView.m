@@ -85,3 +85,15 @@
     return limitedSize;
 }
 
+- (NSArray<LookinAutoLayoutConstraint *> *)_sortedRawDataFromData:(NSArray<LookinAutoLayoutConstraint *> *)rawData {
+    return [rawData sortedArrayUsingComparator:^NSComparisonResult(LookinAutoLayoutConstraint *obj1, LookinAutoLayoutConstraint *obj2) {
+        if (obj1.effective != obj2.effective) {
+            if (obj1.effective) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedDescending;
+            }
+        }
+        
+        if (obj1.firstItemType > obj2.firstItemType) {
+            return NSOrder
