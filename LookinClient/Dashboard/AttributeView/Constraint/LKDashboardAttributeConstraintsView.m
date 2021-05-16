@@ -96,4 +96,21 @@
         }
         
         if (obj1.firstItemType > obj2.firstItemType) {
-            return NSOrder
+            return NSOrderedDescending;
+        } else if (obj1.firstItemType < obj2.firstItemType) {
+            return NSOrderedAscending;
+        }
+        
+        if (obj1.firstAttribute > obj2.firstAttribute) {
+            return NSOrderedDescending;
+        } else if (obj1.firstAttribute < obj2.firstAttribute) {
+            return NSOrderedAscending;
+        }
+        
+        return NSOrderedSame;
+    }];
+}
+
+- (void)_handleClickItem:(LKDashboardAttributeConstraintsItemControl *)control {
+    LookinAutoLayoutConstraint *constraint = control.constraint;
+    L
