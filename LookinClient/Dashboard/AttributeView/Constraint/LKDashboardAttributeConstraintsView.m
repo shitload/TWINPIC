@@ -113,4 +113,16 @@
 
 - (void)_handleClickItem:(LKDashboardAttributeConstraintsItemControl *)control {
     LookinAutoLayoutConstraint *constraint = control.constraint;
-    L
+    LKConstraintPopoverController *vc = [[LKConstraintPopoverController alloc] initWithConstraint:constraint];
+    
+    NSPopover *popover = [[NSPopover alloc] init];
+    popover.animates = NO;
+    popover.behavior = NSPopoverBehaviorTransient;
+    popover.contentSize = [vc contentSize];
+    popover.contentViewController = vc;
+    @weakify(popover);
+    vc.requestJumpingToObject = ^(LookinObject *lookinObj) {
+        @strongify(popover);
+        [popover close];
+        
+        LKHierarchyDataSource *dataSource = [self.dashboardViewController cu
