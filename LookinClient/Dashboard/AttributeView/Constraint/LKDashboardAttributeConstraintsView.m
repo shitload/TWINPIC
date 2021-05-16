@@ -125,4 +125,15 @@
         @strongify(popover);
         [popover close];
         
-        LKHierarchyDataSource *dataSource = [self.dashboardViewController cu
+        LKHierarchyDataSource *dataSource = [self.dashboardViewController currentDataSource];
+        LookinDisplayItem *item = [dataSource displayItemWithOid:lookinObj.oid];
+        // 注意这里要先 expand 然后再 select 以使得可以滚动到目标位置
+        if (!item.displayingInHierarchy) {
+            [dataSource expandToShowItem:item];
+        }
+        dataSource.selectedItem = item;
+    };
+    [popover showRelativeToRect:NSMakeRect(0, 0, control.bounds.size.width, control.bounds.size.height) ofView:control preferredEdge:NSRectEdgeMaxX];
+}
+
+@end
