@@ -170,3 +170,52 @@
 - (void)_updateMenuItem:(NSMenuItem *)menuItem {
     if (menuItem.tag == self.dashboardViewController.currentDataSource.customColorMenuItemTag) {
         // "自定义颜色"
+        menuItem.state = NSControlStateValueOff;
+        menuItem.target = self;
+        menuItem.action = @selector(_handleCustomColorMenuItem);
+        return;
+    }
+
+    menuItem.target = self;
+    menuItem.action = @selector(_handlePresetMenuItem:);
+    NSColor *color = menuItem.representedObject;
+    if ([self.attribute.value isEqual:[color lk_rgbaComponents]] || self.attribute.value == color) {
+        // if 中后面的 == 是用来判断二者都是 nil 的情况
+        menuItem.state = NSControlStateValueOn;
+    } else {
+        menuItem.state = NSControlStateValueOff;
+    }
+}
+
+- (void)_handlePresetMenuItem:(NSMenuItem *)item {
+    [self _modifyToColor:item.representedObject];
+}
+
+- (void)_handleCustomColorMenuItem {
+    NSColor *initialColor = [NSColor lk_colorFromRGBAComponents:self.attribute.value];
+    
+    NSColorPanel *panel = [NSColorPanel sharedColorPanel];
+    [panel setShowsAlpha:YES];
+    [panel setContinuous:NO];
+    [panel setColor:initialColor];
+    [panel setTarget:self];
+    [panel setAction:@selector(_handleSystemColorPanel:)];
+    [panel orderFront:self];
+}
+
+- (void)_handleSystemColorPanel:(NSColorPanel *)panel {
+    [self _modifyToColor:panel.color];
+}
+
+- (void)_modifyToColor:(NSColor *)targetColor {
+    NSArray *expecetdValue = [(NSColor *)targetColor lk_rgbaComponents];
+    if ([expecetdValue isEqual:self.attribute.value]) {
+        NSLog(@"修改没有变化，不做任何提交");
+        return;
+    }
+    // 提交修改
+    [[self.dashboardViewController modifyAttribute:self.attribute newValue:expecetdValue] subscribeNext:^(id  _Nullable x) {
+    }];
+}
+
+@end
