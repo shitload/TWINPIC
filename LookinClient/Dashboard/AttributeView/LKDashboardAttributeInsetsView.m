@@ -27,4 +27,19 @@
         NSArray<NSString *> *titles = @[@"T", @"L", @"B", @"R"];
         self.mainInputsView = [NSArray lookin_arrayWithCount:4 block:^id(NSUInteger idx) {
             LKNumberInputView *view = [LKNumberInputView new];
-            view.title = ti
+            view.title = titles[idx];
+            view.viewStyle = LKNumberInputViewStyleHorizontal;
+            view.textFieldView.textField.delegate = self;
+            [self addSubview:view];
+            return view;
+        }];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    CGFloat itemWidth = (self.$width - DashboardAttrItemHorInterspace) / 2.0;
+    [self.mainInputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat x, y;
+        if (idx == 0 |
