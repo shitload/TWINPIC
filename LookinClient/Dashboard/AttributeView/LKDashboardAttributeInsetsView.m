@@ -42,4 +42,21 @@
     CGFloat itemWidth = (self.$width - DashboardAttrItemHorInterspace) / 2.0;
     [self.mainInputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat x, y;
-        if (idx == 0 |
+        if (idx == 0 || idx == 2) {
+            x = 0;
+        } else {
+            x = itemWidth + DashboardAttrItemHorInterspace;
+        }
+        if (idx == 0 || idx == 1) {
+            y = 0;
+        } else {
+            y = LKNumberInputHorizontalHeight + DashboardAttrItemVerInterspace;
+        }
+        $(view).width(itemWidth).height(LKNumberInputHorizontalHeight).x(x).y(y);
+    }];
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    CGFloat height = LKNumberInputHorizontalHeight * 2 + DashboardAttrItemVerInterspace;
+    limitedSize.height = height;
+    return 
