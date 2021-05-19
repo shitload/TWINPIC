@@ -59,4 +59,19 @@
 - (NSSize)sizeThatFits:(NSSize)limitedSize {
     CGFloat height = LKNumberInputHorizontalHeight * 2 + DashboardAttrItemVerInterspace;
     limitedSize.height = height;
-    return 
+    return limitedSize;
+}
+
+- (void)renderWithAttribute {
+    if (!self.attribute) {
+        NSAssert(NO, @"");
+        return;
+    }
+    if (![self.attribute.value isKindOfClass:[NSValue class]]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    NSEdgeInsets insets = ((NSValue *)self.attribute.value).edgeInsetsValue;
+    NSArray<NSString *> *mainStrs = @[[NSString lookin_stringFromDouble:insets.top decimal:3],
+                                  [NSString lookin_stringFromDouble:insets.left decimal:3],
+                                  [NSString lookin_stringFromDouble:insets.botto
