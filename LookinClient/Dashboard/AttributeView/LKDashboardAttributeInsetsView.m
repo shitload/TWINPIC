@@ -102,4 +102,22 @@
     }
     
     double inputDouble = [inputValue doubleValue];
-    NSUInteger editingTextFieldIdx = [[self.mainInputsView lookin_map:^id(NSUInte
+    NSUInteger editingTextFieldIdx = [[self.mainInputsView lookin_map:^id(NSUInteger idx, LKNumberInputView *value) {
+        return value.textFieldView.textField;
+    }] indexOfObject:editingTextField];
+    
+    NSEdgeInsets expectedInsets = ((NSValue *)self.attribute.value).edgeInsetsValue;
+    switch (editingTextFieldIdx) {
+        case 0:
+            // top
+            expectedInsets.top = inputDouble;
+            break;
+        case 1:
+            // left
+            expectedInsets.left = inputDouble;
+            break;
+        case 2:
+            // bottom
+            expectedInsets.bottom = inputDouble;
+            break;
+        cas
