@@ -74,4 +74,16 @@
     NSEdgeInsets insets = ((NSValue *)self.attribute.value).edgeInsetsValue;
     NSArray<NSString *> *mainStrs = @[[NSString lookin_stringFromDouble:insets.top decimal:3],
                                   [NSString lookin_stringFromDouble:insets.left decimal:3],
-                                  [NSString lookin_stringFromDouble:insets.botto
+                                  [NSString lookin_stringFromDouble:insets.bottom decimal:3],
+                                  [NSString lookin_stringFromDouble:insets.right decimal:3]];
+    
+    [self.mainInputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textFieldView.textField.editable = [self canEdit];
+        obj.textFieldView.textField.stringValue = mainStrs[idx];
+    }];
+}
+
+#pragma mark - <NSTextFieldDelegate>
+
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
+    return self.
