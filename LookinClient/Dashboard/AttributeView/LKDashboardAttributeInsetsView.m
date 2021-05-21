@@ -120,4 +120,18 @@
             // bottom
             expectedInsets.bottom = inputDouble;
             break;
-        cas
+        case 3:
+            // right
+            expectedInsets.right = inputDouble;
+            break;
+        default:
+            [self renderWithAttribute];
+            NSAssert(NO, @"");
+            break;
+    }
+    
+    NSEdgeInsets originInsets = ((NSValue *)self.attribute.value).edgeInsetsValue;
+    // 这里 NSValue 的 isEqual: 方法不准，要手动判断
+    BOOL valueDidChange = (originInsets.top != expectedInsets.top ||
+                           originInsets.left != expectedInsets.left ||
+                           originInsets.bottom != expec
