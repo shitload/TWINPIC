@@ -148,4 +148,17 @@
     [[self.dashboardViewController modifyAttribute:self.attribute newValue:expectedValue] subscribeError:^(NSError * _Nullable error) {
         @strongify(self);
         NSLog(@"修改返回 error");
-        [self re
+        [self renderWithAttribute];
+    }];
+}
+
+#pragma mark - Others
+
+- (void)setDashboardViewController:(LKDashboardViewController *)dashboardViewController {
+    [super setDashboardViewController:dashboardViewController];
+    [self.mainInputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textFieldView.backgroundColorName = @"DashboardCardValueBGColor";
+    }];
+}
+
+@end
