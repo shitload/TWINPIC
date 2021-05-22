@@ -134,4 +134,18 @@
     // 这里 NSValue 的 isEqual: 方法不准，要手动判断
     BOOL valueDidChange = (originInsets.top != expectedInsets.top ||
                            originInsets.left != expectedInsets.left ||
-                           originInsets.bottom != expec
+                           originInsets.bottom != expectedInsets.bottom ||
+                           originInsets.right != expectedInsets.right);
+    if (!valueDidChange) {
+        NSLog(@"修改没有变化，不做任何提交");
+        [self renderWithAttribute];
+        return;
+    }
+    NSValue *expectedValue = [NSValue valueWithEdgeInsets:expectedInsets];
+    
+    // 提交修改
+    @weakify(self);
+    [[self.dashboardViewController modifyAttribute:self.attribute newValue:expectedValue] subscribeError:^(NSError * _Nullable error) {
+        @strongify(self);
+        NSLog(@"修改返回 error");
+        [self re
