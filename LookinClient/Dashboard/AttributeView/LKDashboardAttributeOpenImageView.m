@@ -6,4 +6,21 @@
 //  https://lookin.work
 //
 
-#imp
+#import "LKDashboardAttributeOpenImageView.h"
+#import "LKNumberInputView.h"
+#import "LKDashboardViewController.h"
+#import "LKAppsManager.h"
+
+@interface LKDashboardAttributeOpenImageView ()
+
+@property(nonatomic, strong) LKTextControl *control;
+
+@end
+
+@implementation LKDashboardAttributeOpenImageView
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        self.layer.borderWidth = 1;
+        self.layer.cornerRadius = DashboardCardControlCornerRadius;
+        self.borderColors
