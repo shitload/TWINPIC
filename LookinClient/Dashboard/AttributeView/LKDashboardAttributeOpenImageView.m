@@ -23,4 +23,18 @@
     if (self = [super initWithFrame:frameRect]) {
         self.layer.borderWidth = 1;
         self.layer.cornerRadius = DashboardCardControlCornerRadius;
-        self.borderColors
+        self.borderColors = LKColorsCombine(LookinColorMake(181, 181, 181), LookinColorMake(83, 83, 83));
+        
+        self.control = [LKTextControl new];
+        self.control.adjustAlphaWhenClick = YES;
+        self.control.label.stringValue = NSLocalizedString(@"Open Image with Preview…", nil);
+        self.control.label.font = NSFontMake(11);
+        [self.control addTarget:self clickAction:@selector(_handleClick)];
+        [self addSubview:self.control];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.control).fullFr
