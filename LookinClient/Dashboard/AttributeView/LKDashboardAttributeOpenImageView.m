@@ -37,4 +37,26 @@
 
 - (void)layout {
     [super layout];
-    $(self.control).fullFr
+    $(self.control).fullFrame;
+}
+
+- (void)renderWithAttribute {
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    limitedSize.height = LKNumberInputHorizontalHeight;
+    return limitedSize;
+}
+
+- (void)_handleClick {
+    NSNumber *imageViewOid_num = self.attribute.value;
+    if (imageViewOid_num == nil) {
+        AlertError(LookinErr_Inner, self.window);
+        NSAssert(NO, @"");
+        return;
+    }
+    
+    unsigned long imageViewOid = [imageViewOid_num unsignedLongValue];
+
+    LKDashboardViewController *dashController = self.dashboardViewController;
+    if 
