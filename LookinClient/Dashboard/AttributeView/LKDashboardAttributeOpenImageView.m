@@ -59,4 +59,18 @@
     unsigned long imageViewOid = [imageViewOid_num unsignedLongValue];
 
     LKDashboardViewController *dashController = self.dashboardViewController;
-    if 
+    if (!dashController.isStaticMode) {
+        AlertErrorText(NSLocalizedString(@"The feature is not available in current mode.", nil), NSLocalizedString(@"You must connect Lookin with target iOS app before using this feature.", nil), self.window);
+        return;
+    }
+
+    if (!InspectingApp) {
+        AlertError(LookinErr_NoConnect, self.window);
+        return;
+    }
+    
+    @weakify(self);
+    [[InspectingApp fetchImageWithImageViewOid:imageViewOid] subscribeNext:^(NSData *imageData) {
+        @strongify(self);
+        if (!imageData) {
+            AlertErrorT
