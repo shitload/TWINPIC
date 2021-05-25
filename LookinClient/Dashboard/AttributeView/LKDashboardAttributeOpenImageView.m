@@ -73,4 +73,12 @@
     [[InspectingApp fetchImageWithImageViewOid:imageViewOid] subscribeNext:^(NSData *imageData) {
         @strongify(self);
         if (!imageData) {
-            AlertErrorT
+            AlertErrorText(NSLocalizedString(@"Operation failed. The image property value of selected UIImageView is nil.", nil), @"", self.window);
+            return;
+        }
+        
+        NSString *fileName = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Lookin_UIImageView_%@.png", fileName]];
+        NSError *writeError;
+        BOOL writeSucc = [imageData writeToFile:filePath options:0 error:&writeError];
+        if (!w
