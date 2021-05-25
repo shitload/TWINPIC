@@ -81,4 +81,19 @@
         NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Lookin_UIImageView_%@.png", fileName]];
         NSError *writeError;
         BOOL writeSucc = [imageData writeToFile:filePath options:0 error:&writeError];
-        if (!w
+        if (!writeSucc) {
+            NSAssert(NO, @"");
+            AlertError(writeError, self.window);
+            return;
+        }
+        [[NSWorkspace sharedWorkspace] openFile:filePath withApplication:@"preview"];
+        
+        // 记录临时文件地址以在 Lookin 退出时清理
+        if (![LKHelper sharedInstance].tempImageFiles) {
+            [LKHelper sharedInstance].tempImageFiles = [NSMutableArray array];
+        }
+        [[LKHelper sharedInstance].tempImageFiles addObject:filePath];
+        
+    } error:^(NSError * _Nullable error) {
+        @strongify(self);
+        AlertError(error, self.
