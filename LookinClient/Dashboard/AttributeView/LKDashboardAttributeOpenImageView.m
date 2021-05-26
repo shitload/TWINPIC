@@ -96,4 +96,8 @@
         
     } error:^(NSError * _Nullable error) {
         @strongify(self);
-        AlertError(error, self.
+        AlertError(error, self.window);
+    }];
+}
+
+@end
