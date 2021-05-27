@@ -65,4 +65,15 @@
 
 - (void)renderWithAttribute {
     if (!self.attribute) {
-  
+        NSAssert(NO, @"");
+        return;
+    }
+    if (![self.attribute.value isKindOfClass:[NSValue class]]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    NSRect rect = ((NSValue *)self.attribute.value).rectValue;
+    NSArray<NSString *> *mainStrs = @[[NSString lookin_stringFromDouble:rect.origin.x decimal:3],
+                                  [NSString lookin_stringFromDouble:rect.origin.y decimal:3],
+                                  [NSString lookin_stringFromDouble:rect.size.width decimal:3],
+                                  [NSString lookin_
