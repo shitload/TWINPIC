@@ -128,4 +128,19 @@
             break;
     }
     
-    N
+    NSValue *expectedValue = [NSValue valueWithRect:expectedRect];
+    if ([expectedValue isEqual:self.attribute.value]) {
+        NSLog(@"修改没有变化，不做任何提交");
+        [self renderWithAttribute];
+        return;
+    }
+
+    // 提交修改
+    @weakify(self);
+    
+    CGRect oldRect = [self.attribute.value rectValue];
+    
+    [[self.dashboardViewController modifyAttribute:self.attribute newValue:expectedValue] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        CGRect currentRect = [self.attribute.value rectValue];
+        if ([self _rectA:oldRect 
