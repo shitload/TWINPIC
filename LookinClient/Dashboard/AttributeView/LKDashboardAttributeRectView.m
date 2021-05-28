@@ -104,4 +104,28 @@
         return value.textFieldView.textField;
     }] indexOfObject:editingTextField];
     
-    CGRect expectedRect = ((NSValue *)self.attribute.value).rectValu
+    CGRect expectedRect = ((NSValue *)self.attribute.value).rectValue;
+    switch (editingTextFieldIdx) {
+        case 0:
+            // x
+            expectedRect.origin.x = inputDouble;
+            break;
+        case 1:
+            // y
+            expectedRect.origin.y = inputDouble;
+            break;
+        case 2:
+            // width
+            expectedRect.size.width = inputDouble;
+            break;
+        case 3:
+            // height
+            expectedRect.size.height = inputDouble;
+            break;
+        default:
+            [self renderWithAttribute];
+            NSAssert(NO, @"");
+            break;
+    }
+    
+    N
