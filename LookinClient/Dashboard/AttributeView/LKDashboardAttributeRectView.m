@@ -91,4 +91,17 @@
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification {
-    NSTextField *editingTextField = notif
+    NSTextField *editingTextField = notification.object;
+    NSNumber *inputValue = [LKNumberInputView parsedValueWithString:editingTextField.stringValue attrType:LookinAttrTypeDouble];
+    if (inputValue == nil) {
+        NSLog(@"输入格式校验不通过，驳回");
+        [self renderWithAttribute];
+        return;
+    }
+    
+    double inputDouble = [inputValue doubleValue];
+    NSUInteger editingTextFieldIdx = [[self.mainInputsView lookin_map:^id(NSUInteger idx, LKNumberInputView *value) {
+        return value.textFieldView.textField;
+    }] indexOfObject:editingTextField];
+    
+    CGRect expectedRect = ((NSValue *)self.attribute.value).rectValu
