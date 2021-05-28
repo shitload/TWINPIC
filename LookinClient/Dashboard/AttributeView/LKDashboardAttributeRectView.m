@@ -76,4 +76,19 @@
     NSArray<NSString *> *mainStrs = @[[NSString lookin_stringFromDouble:rect.origin.x decimal:3],
                                   [NSString lookin_stringFromDouble:rect.origin.y decimal:3],
                                   [NSString lookin_stringFromDouble:rect.size.width decimal:3],
-                                  [NSString lookin_
+                                  [NSString lookin_stringFromDouble:rect.size.height decimal:3]];
+    
+    [self.mainInputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textFieldView.textField.editable = [self canEdit];
+        obj.textFieldView.textField.stringValue = mainStrs[idx];
+    }];
+}
+
+#pragma mark - <NSTextFieldDelegate>
+
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
+    return self.canEdit;
+}
+
+- (void)controlTextDidEndEditing:(NSNotification *)notification {
+    NSTextField *editingTextField = notif
