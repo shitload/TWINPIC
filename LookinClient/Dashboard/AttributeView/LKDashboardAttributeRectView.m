@@ -145,4 +145,26 @@
         CGRect currentRect = [self.attribute.value rectValue];
         if ([self _rectA:oldRect isAlmostEqualToRectB:currentRect] && ![self _rectA:expectedRect isAlmostEqualToRectB:currentRect]) {
             // Lookin 更改了 value 之后，又被 iOS 里的业务改回去了，这个在修改 frame 时经常出现，就像 Lookin 更改失败了一样，为了避免用户迷惑，这里特意弹窗告知一下
-            AlertErrorText(NSLocalizedString(@"The modification seems to have no effect.", nil), NSLocalizedString(@"After modifying successfully by Lookin, the value seems to be recovered by the code in your iOS app. For example, modifying \"frame\" of a view may trigger \"layoutSubviews\", and \"layoutSubviews\" may modify the value again.
+            AlertErrorText(NSLocalizedString(@"The modification seems to have no effect.", nil), NSLocalizedString(@"After modifying successfully by Lookin, the value seems to be recovered by the code in your iOS app. For example, modifying \"frame\" of a view may trigger \"layoutSubviews\", and \"layoutSubviews\" may modify the value again.", nil), self.window);
+        }
+        
+    } error:^(NSError * _Nullable error) {
+        @strongify(self);
+        NSLog(@"修改返回 error");
+        [self renderWithAttribute];
+        
+    }];
+}
+
+/// 比较 rectA 和 rectB 是否相等
+- (BOOL)_rectA:(CGRect)rectA isAlmostEqualToRectB:(CGRect)rectB {
+    if (ABS(rectA.origin.x - rectB.origin.x) > 0.1) {
+        return NO;
+    }
+    if (ABS(rectA.origin.y - rectB.origin.y) > 0.1) {
+        return NO;
+    }
+    if (ABS(rectA.size.width - rectB.size.width) > 0.1) {
+        return NO;
+    }
+    if (ABS(rectA.size.height - rectB.size.hei
