@@ -167,4 +167,10 @@
     if (ABS(rectA.size.width - rectB.size.width) > 0.1) {
         return NO;
     }
-    if (ABS(rectA.size.height - rectB.size.hei
+    if (ABS(rectA.size.height - rectB.size.height) > 0.1) {
+        return NO;
+    }
+    return YES;
+}
+
+@end
