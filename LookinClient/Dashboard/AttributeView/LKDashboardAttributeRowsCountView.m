@@ -47,4 +47,16 @@
     if (!self.attribute) {
         NSAssert(NO, @"");
         return;
-   
+    }
+    if (![self.attribute.value isKindOfClass:[NSArray class]]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    
+    NSArray<NSNumber *> *numbers = self.attribute.value;
+    self.inputsView = [self.inputsView lookin_resizeWithCount:numbers.count add:^LKNumberInputView *(NSUInteger idx) {
+        LKNumberInputView *view = [LKNumberInputView new];
+        view.textFieldView.textField.editable = NO;
+        view.viewStyle = LKNumberInputViewStyleHorizontal;
+        view.textFieldView.backgroundColorName = @"DashboardCardValueBGColor";
+        [se
