@@ -76,4 +76,10 @@
 #pragma mark - Others
 
 - (void)setDashboardViewController:(LKDashboardViewController *)dashboardViewController {
-    [super setDashboardViewController:dashboardViewC
+    [super setDashboardViewController:dashboardViewController];
+    [self.inputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.textFieldView.backgroundColorName = @"DashboardCardValueBGColor";
+    }];
+}
+
+@end
