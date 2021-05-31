@@ -31,4 +31,20 @@
 
 - (void)layout {
     [super layout];
-    [self.inputsVie
+    [self.inputsView enumerateObjectsUsingBlock:^(LKNumberInputView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat y = idx * (LKNumberInputHorizontalHeight + DashboardAttrItemVerInterspace);
+        $(view).fullWidth.height(LKNumberInputHorizontalHeight).y(y);
+    }];
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    CGFloat height = (LKNumberInputHorizontalHeight + DashboardAttrItemVerInterspace) * self.inputsView.count - DashboardAttrItemVerInterspace;
+    limitedSize.height = MAX(height, 0);
+    return limitedSize;
+}
+
+- (void)renderWithAttribute {
+    if (!self.attribute) {
+        NSAssert(NO, @"");
+        return;
+   
