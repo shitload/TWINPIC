@@ -59,4 +59,21 @@
         view.textFieldView.textField.editable = NO;
         view.viewStyle = LKNumberInputViewStyleHorizontal;
         view.textFieldView.backgroundColorName = @"DashboardCardValueBGColor";
-        [se
+        [self addSubview:view];
+        return view;
+        
+    } remove:^(NSUInteger idx, LKNumberInputView *obj) {
+        [obj removeFromSuperview];
+        
+    } doNext:^(NSUInteger idx, LKNumberInputView *obj) {
+        obj.title = [NSString stringWithFormat:@"Section %@", @(idx)];
+        obj.textFieldView.textField.stringValue = [NSString stringWithFormat:@"%@", numbers[idx]];
+    }];
+    
+    [self setNeedsLayout:YES];
+}
+
+#pragma mark - Others
+
+- (void)setDashboardViewController:(LKDashboardViewController *)dashboardViewController {
+    [super setDashboardViewController:dashboardViewC
