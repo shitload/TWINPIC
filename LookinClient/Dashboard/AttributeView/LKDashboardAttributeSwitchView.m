@@ -58,3 +58,31 @@
 }
 
 - (NSUInteger)numberOfColumnsOccupied {
+    if ([self.attribute.identifier isEqualToString:LookinAttr_UIScrollView_Zoom_Bounce]) {
+        return 1;
+    }
+    return 0;
+}
+
+#pragma mark - Private
+
+- (void)_handleButton {
+    NSValue *expectedValue;
+    if (self.button.state == NSControlStateValueOff) {
+        expectedValue = @(NO);
+    } else if (self.button.state == NSControlStateValueOn) {
+        expectedValue = @(YES);
+    } else {
+        NSAssert(NO, @"");
+        return;
+    }
+    
+    // 提交修改
+    @weakify(self);
+    [[self.dashboardViewController modifyAttribute:self.attribute newValue:expectedValue] subscribeError:^(NSError * _Nullable error) {
+        @strongify(self);
+        [self renderWithAttribute];
+    }];
+}
+
+@end
