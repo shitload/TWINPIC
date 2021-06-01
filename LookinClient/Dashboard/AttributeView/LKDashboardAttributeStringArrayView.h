@@ -8,4 +8,9 @@
 
 #import "LKDashboardAttributeView.h"
 
-@interfac
+@interface LKDashboardAttributeStringArrayView : LKDashboardAttributeView
+
+/// 子类必须实现该方法
+- (NSArray<NSString *> *)stringListWithAttribute:(LookinAttribute *)attribute;
+
+@end
