@@ -25,4 +25,25 @@
         self.scrollView.layer.cornerRadius = DashboardCardControlCornerRadius;
         self.textView = self.scrollView.documentView;
         self.textView.font = NSFontMake(12);
-        self.textView.backgroundColor = [NSColor color
+        self.textView.backgroundColor = [NSColor colorNamed:@"DashboardCardValueBGColor"];
+        self.textView.textContainerInset = NSMakeSize(2, 4);
+        self.textView.delegate = self;
+        [self addSubview:self.scrollView];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.scrollView).fullFrame;
+}
+
+- (void)renderWithAttribute {
+    [super renderWithAttribute];
+    /// nil 居然会 crash
+    self.textView.string = self.attribute.value ? : @"";
+    self.textView.editable = self.canEdit;
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    limi
