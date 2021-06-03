@@ -46,4 +46,13 @@
 }
 
 - (NSSize)sizeThatFits:(NSSize)limitedSize {
-    limi
+    limitedSize.width -= self.textView.textContainerInset.width * 2;
+    
+    NSDictionary *attributes = @{NSFontAttributeName: self.textView.font};
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[self.textView string] attributes:attributes];
+    NSRect rect = [attributedString boundingRectWithSize:limitedSize options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    limitedSize.height = MIN(rect.size.height + self.textView.textContainerInset.height * 2, 80);
+    return limitedSize;
+}
+
+#pragma
