@@ -72,4 +72,7 @@
         @strongify(self);
         NSLog(@"修改返回 error");
         [self renderWithAttribute];
-  
+    }];
+}
+
+@end
