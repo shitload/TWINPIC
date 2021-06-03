@@ -55,4 +55,21 @@
     return limitedSize;
 }
 
-#pragma
+#pragma mark - <NSTextViewDelegate>
+
+- (void)textDidEndEditing:(NSNotification *)notification {
+    NSString *expectedValue = self.textView.string;
+    
+    if ([expectedValue isEqual:self.attribute.value]) {
+        NSLog(@"修改没有变化，不做任何提交");
+        [self renderWithAttribute];
+        return;
+    }
+
+    // 提交修改
+    @weakify(self);
+    [[self.dashboardViewController modifyAttribute:self.attribute newValue:expectedValue] subscribeError:^(NSError * _Nullable error) {
+        @strongify(self);
+        NSLog(@"修改返回 error");
+        [self renderWithAttribute];
+  
