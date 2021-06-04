@@ -11,4 +11,24 @@
 #import "LKDashboardViewController.h"
 #import "LookinDashboardBlueprint.h"
 
-@i
+@implementation LKDashboardAttributeView
+
+- (void)setAttribute:(LookinAttribute *)attribute {
+    _attribute = attribute;
+    [self renderWithAttribute];
+}
+
+- (BOOL)canEdit {
+    SEL setter = [LookinDashboardBlueprint setterWithAttrID:self.attribute.identifier];
+    return setter && self.dashboardViewController.isStaticMode;
+}
+
+- (void)renderWithAttribute {
+    // do nothing
+}
+
+- (NSUInteger)numberOfColumnsOccupied {
+    return 1;
+}
+
+@end
