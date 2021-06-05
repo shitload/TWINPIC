@@ -21,4 +21,9 @@
 
 @property(nonatomic, weak) id<LKDashboardAccessoryWindowControllerDelegate> delegate;
 
-/// contentSize 是内容所
+/// contentSize 是内容所需的窗口大小，由该方法返回
+- (instancetype)initWithDashboardController:(LKDashboardViewController *)dashboardController attrGroupID:(LookinAttrGroupIdentifier)groupID;
+
+- (NSSize)renderWithAttrSections:(NSArray<LookinAttributesSection *> *)sections;
+
+@end
