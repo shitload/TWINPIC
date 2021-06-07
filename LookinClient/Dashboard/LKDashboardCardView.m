@@ -381,3 +381,27 @@
     CGFloat panelMaxX = panelX + contentSize.width;
     if (panelMaxX > self.window.screen.frame.size.width) {
         // 防止超出屏幕右侧
+        panelX = selfWindowFrame.origin.x + CGRectGetMinX(selfFrameInWindow) - contentSize.width - 5;
+    }
+    CGRect panelFrame = CGRectMake(panelX, panelY, contentSize.width, contentSize.height);
+    // panelFrame 是左下角坐标系。虽然这里的 controller.window 是 self.window 的 childWindow，但 panelFrame 仍然是相对于 screen 的坐标，换句话说，如果 panelFrame.y 是 0，则 panel 的底部会和屏幕底部重合
+    [self.accessoryWC.window setFrame:panelFrame display:YES];
+}
+
+- (void)dashboardAccessoryWindowControllerWillClose:(LKDashboardAccessoryWindowController *)controller {
+    [self.sectionViews enumerateKeysAndObjectsUsingBlock:^(LookinAttrSectionIdentifier _Nonnull key, LKDashboardSectionView * _Nonnull secView, BOOL * _Nonnull stop) {
+        secView.manageState = LKDashboardSectionManageState_None;
+    }];
+    self.accessoryWC = nil;
+}
+
+- (BOOL)_shouldShowDetailButtonWithGroupID:(LookinAttrGroupIdentifier)identifier {
+    NSUInteger sectionCount = [LookinDashboardBlueprint sectionIDsForGroupID:identifier].count;
+    if (sectionCount > 1) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+@end
