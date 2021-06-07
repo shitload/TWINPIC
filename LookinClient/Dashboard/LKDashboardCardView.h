@@ -31,4 +31,9 @@
 
 @property(nonatomic, assign) BOOL isCollapsed;
 
-- (LKDas
+- (LKDashboardSectionView *)sectionViewWithID:(LookinAttrSectionIdentifier)secID;
+
+/// 如果 rect 为 CGRectZero，则会全部变暗
+- (void)playFadeAnimationWithHighlightRect:(CGRect)rect;
+
+@end
