@@ -20,4 +20,10 @@ typedef NS_ENUM(NSInteger, LKDashboardSectionManageState) {
 
 @property(nonatomic, strong) LookinAttributesSection *attrSection;
 
-@property(nonatomic, assign) BOOL sh
+@property(nonatomic, assign) BOOL showTopSeparator;
+
+@property(nonatomic, weak) LKDashboardViewController *dashboardViewController;
+
+@property(nonatomic, assign) LKDashboardSectionManageState manageState;
+
+@end
