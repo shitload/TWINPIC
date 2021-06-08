@@ -24,3 +24,5 @@
 - (NSArray<LKEnumListRegistryKeyValueItem *> *)itemsForEnumName:(NSString *)enumName;
 
 - (NSString *)descForEnumName:(NSString *)enumName value:(long)value;
+
+@end
