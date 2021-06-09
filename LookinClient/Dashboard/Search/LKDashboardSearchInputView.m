@@ -38,4 +38,14 @@
         self.textField.editable = YES;
         self.textField.bordered = NO;
         self.textField.bezeled = NO;
-        self.textField.usesSin
+        self.textField.usesSingleLineMode = YES;
+        self.textField.backgroundColor = [NSColor clearColor];
+        self.textField.lineBreakMode = NSLineBreakByTruncatingTail;
+        self.textField.font = NSFontMake(13);
+        self.textField.hidden = YES;
+        [self addSubview:self.textField];
+        
+        @weakify(self);
+        [[self.textField.rac_textSignal throttle:0.3] subscribeNext:^(NSString * _Nullable x) {
+            @strongify(self);
+            if ([self.delegate respondsToSelector:@selector(dashboar
