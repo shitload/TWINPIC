@@ -17,4 +17,20 @@
 @implementation LKDashboardSearchCardView
 
 - (instancetype)initWithFrame:(NSRect)frameRect {
-    if (s
+    if (self = [super initWithFrame:frameRect]) {
+        self.layer.cornerRadius = DashboardCardCornerRadius;
+        
+        self.backgroundEffectView = [LKVisualEffectView new];
+        self.backgroundEffectView.blendingMode = NSVisualEffectBlendingModeWithinWindow;
+        self.backgroundEffectView.state = NSVisualEffectStateActive;
+        [self addSubview:self.backgroundEffectView];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.backgroundEffectView).fullFrame;
+}
+
+@end
