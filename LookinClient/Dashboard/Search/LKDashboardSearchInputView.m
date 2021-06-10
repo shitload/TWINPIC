@@ -71,4 +71,28 @@
 - (void)updateColors {
     [super updateColors];
     if (self.isActive) {
-        self.layer.borderColor = self.isDarkMode ? LookinColorM
+        self.layer.borderColor = self.isDarkMode ? LookinColorMake(70, 71, 72).CGColor : LookinColorMake(198, 199, 200).CGColor;
+    } else {
+        self.layer.borderColor = self.isDarkMode ? LookinColorMake(47, 48, 49).CGColor : LookinColorMake(220, 221, 222).CGColor;
+    }
+}
+
+- (void)mouseDown:(NSEvent *)event {
+    [super mouseDown:event];
+    self.isActive = YES;
+}
+
+- (NSString *)currentInputString {
+    return self.textField.stringValue;
+}
+
+- (void)setIsActive:(BOOL)isActive {
+    if (_isActive == isActive) {
+        return;
+    }
+    _isActive = isActive;
+    
+    [self updateColors];
+    
+    if (isActive) {
+        
