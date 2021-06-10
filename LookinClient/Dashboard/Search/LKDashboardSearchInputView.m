@@ -48,4 +48,27 @@
         @weakify(self);
         [[self.textField.rac_textSignal throttle:0.3] subscribeNext:^(NSString * _Nullable x) {
             @strongify(self);
-            if ([self.delegate respondsToSelector:@selector(dashboar
+            if ([self.delegate respondsToSelector:@selector(dashboardSearchInputView:didInputString:)]) {
+                [self.delegate dashboardSearchInputView:self didInputString:x];
+            }
+        }];
+        
+        [self updateColors];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    if (self.isActive) {
+        $(self.iconImageView).sizeToFit.x(_iconXWhenActive);
+    } else {
+        $(self.iconImageView).sizeToFit.centerAlign;
+    }
+    $(self.textField).x(30).toRight(2).heightToFit.verAlign;
+}
+
+- (void)updateColors {
+    [super updateColors];
+    if (self.isActive) {
+        self.layer.borderColor = self.isDarkMode ? LookinColorM
