@@ -95,4 +95,16 @@
     [self updateColors];
     
     if (isActive) {
+        [self.iconImageView.animator setFrameOrigin:NSMakePoint(_iconXWhenActive, self.iconImageView.$y)];
         
+        self.textField.animator.hidden = NO;
+        [self.textField becomeFirstResponder];
+        
+    } else {
+        [self.iconImageView.animator setFrameOrigin:NSMakePoint(self.$width / 2.0 - self.iconImageView.$width / 2.0, self.iconImageView.$y)];
+        
+        self.textField.animator.hidden = YES;
+        self.textField.stringValue = @"";
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(dashboardSearchInputView:didToggleActive:
