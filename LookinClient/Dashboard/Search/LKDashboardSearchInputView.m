@@ -107,4 +107,25 @@
         self.textField.stringValue = @"";
     }
     
-    if ([self.delegate respondsToSelector:@selector(dashboardSearchInputView:didToggleActive:
+    if ([self.delegate respondsToSelector:@selector(dashboardSearchInputView:didToggleActive:)]) {
+        [self.delegate dashboardSearchInputView:self didToggleActive:isActive];
+    }
+}
+
+#pragma mark - <NSTextFieldDelegate>
+
+- (void)controlTextDidEndEditing:(NSNotification *)obj {
+    self.isActive = NO;
+}
+
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+    if (commandSelector == NSSelectorFromString(@"cancelOperation:")) {
+        // 按下了 esc 键
+        self.isActive = NO;
+        return YES;
+    }
+    return NO;
+}
+
+
+@end
