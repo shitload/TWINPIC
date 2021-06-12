@@ -36,4 +36,21 @@
         return [RACSignal error:LookinErr_Inner];
     }
     if (![LKAppsManager sharedInstance].inspectingApp) {
-        return [RACSigna
+        return [RACSignal error:LookinErr_NoConnect];
+    }
+    if ([self.classesToSelsDict objectForKey:className]) {
+        return [RACSignal return:self.classesToSelsDict[className]];
+    }
+    
+    @weakify(self);
+    return [[[LKAppsManager sharedInstance].inspectingApp fetchSelectorNamesWithClass:className hasArg:NO] doNext:^(NSArray<NSString *> *sels) {
+        @strongify(self);
+        self.classesToSelsDict[className] = sels;
+    }];
+}
+
+- (void)clearAllCache {
+    [self.classesToSelsDict removeAllObjects];
+}
+
+@end
