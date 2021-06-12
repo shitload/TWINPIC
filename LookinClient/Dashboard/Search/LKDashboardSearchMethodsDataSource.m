@@ -14,4 +14,26 @@
 /**
  @{
  @"UIView": @[@"layoutSubviews", @"addSubview:", ...],
- @"UIViewController": @[@"v
+ @"UIViewController": @[@"viewDidAppear:", ...],
+ ...
+ };
+ */
+@property(nonatomic, strong) NSMutableDictionary<NSString *, NSArray<NSString *> *> *classesToSelsDict;
+
+@end
+
+@implementation LKDashboardSearchMethodsDataSource
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.classesToSelsDict = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+
+- (RACSignal *)fetchNonArgMethodsListWithClass:(NSString *)className {
+    if (!className.length) {
+        return [RACSignal error:LookinErr_Inner];
+    }
+    if (![LKAppsManager sharedInstance].inspectingApp) {
+        return [RACSigna
