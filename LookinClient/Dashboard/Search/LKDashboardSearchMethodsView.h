@@ -20,4 +20,8 @@
 
 @property(nonatomic, weak) id<LKDashboardSearchMethodsViewDelegate> delegate;
 
-- (void)renderWithMethods:(NSArray<NSString *> *)methods oid:(unsigned long)oid
+- (void)renderWithMethods:(NSArray<NSString *> *)methods oid:(unsigned long)oid;
+
+- (void)renderWithError:(NSError *)error;
+
+@end
