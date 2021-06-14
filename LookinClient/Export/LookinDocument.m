@@ -44,4 +44,22 @@
     LookinHierarchyFile *hierarchyFile = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:&unarchiveError];
     
     if (unarchiveError) {
-        if
+        if (outError) {
+            *outError = unarchiveError;
+        }
+        return NO;
+    }
+    
+    NSError *verifyError = [LookinHierarchyFile verifyHierarchyFile:hierarchyFile];
+    if (verifyError) {
+        if (outError) {
+            *outError = verifyError;
+        }
+        return NO;
+    }
+
+    self.hierarchyFile = hierarchyFile;
+    return YES;
+}
+
+@end
