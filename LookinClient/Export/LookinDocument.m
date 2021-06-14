@@ -29,4 +29,19 @@
     }
     
     if ([typeName isEqualToString:@"com.lookin.lookin"]) {
- 
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.hierarchyFile requiringSecureCoding:YES error:outError];
+        return data;
+    }
+    
+    if (outError) {
+        *outError = LookinErr_Inner;
+    }
+    return nil;
+}
+
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {    
+    NSError *unarchiveError = nil;
+    LookinHierarchyFile *hierarchyFile = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:&unarchiveError];
+    
+    if (unarchiveError) {
+        if
