@@ -29,4 +29,12 @@
             [self.hierarchyView scrollToMakeItemVisible:item];
         }];
         
-        RAC(self.hierarchy
+        RAC(self.hierarchyView, displayItems) = [RACObserve(self.dataSource, displayingFlatItems) doNext:^(id  _Nullable x) {
+            @strongify(self);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.hierarchyView updateGuidesWithHoveredItem:self.dataSource.hoveredItem];
+            });
+        }];
+        
+        [[RACObserve(self.dataSource, hoveredItem) distinctUntilChanged] subscribeNext:^(LookinDisplayItem * _Nullable x) {
+            [self.hierarchyView updateGuidesWithH
