@@ -80,4 +80,20 @@
 - (NSView *)currentSelectedRowView {
     NSInteger row = [self.dataSource.displayingFlatItems indexOfObject:self.dataSource.selectedItem];
     if (row == NSNotFound) {
-//   
+//        NSAssert(NO, @"LKHierarchyController, currentSelectedRowView, NSNotFound");
+        return nil;
+    }
+    return [self.hierarchyView.tableView.tableView rowViewAtRow:row makeIfNecessary:NO];
+}
+
+#pragma mark - <LKHierarchyViewDelegate>
+
+- (void)hierarchyView:(LKHierarchyView *)view didSelectItem:(LookinDisplayItem *)item {
+    self.dataSource.selectedItem = item;
+}
+
+- (void)hierarchyView:(LKHierarchyView *)view didDoubleClickItem:(LookinDisplayItem *)item {
+    if (!item.isExpandable) {
+        return;
+    }
+    if (item.is
