@@ -37,4 +37,17 @@
         }];
         
         [[RACObserve(self.dataSource, hoveredItem) distinctUntilChanged] subscribeNext:^(LookinDisplayItem * _Nullable x) {
-            [self.hierarchyView updateGuidesWithH
+            [self.hierarchyView updateGuidesWithHoveredItem:x];
+        }];
+    }
+    return self;
+}
+
+- (void)viewDidAppear {
+    [super viewDidAppear];
+    if (!TutorialMng.hasAlreadyShowedTipsThisLaunch && !TutorialMng.copyTitle) {
+        NSView *selectedView = [self currentSelectedRowView];
+        if (selectedView) {
+            TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+            [TutorialMng showPopoverOfView:selectedView text:NSLocalizedString(@"You can copy ivar or class name in right-cick menu.", nil) learned:^{
+                TutorialMng.copyTitle = YES;
