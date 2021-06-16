@@ -51,3 +51,16 @@
             TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
             [TutorialMng showPopoverOfView:selectedView text:NSLocalizedString(@"You can copy ivar or class name in right-cick menu.", nil) learned:^{
                 TutorialMng.copyTitle = YES;
+            }];
+        }
+    }
+    if (!TutorialMng.hasAlreadyShowedTipsThisLaunch && !TutorialMng.eventsHandler) {
+        // 第一个 row 一般是 UIWindow，上面肯定是有手势的
+        LKHierarchyRowView *rowView = [self.hierarchyView.tableView.tableView rowViewAtRow:0 makeIfNecessary:NO];
+        if (![rowView isKindOfClass:[LKHierarchyRowView class]]) {
+            return;
+        }
+        if (rowView.displayItem.eventHandlers.count && rowView.eventHandlerButton) {
+            TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+            TutorialMng.eventsHandler = YES;
+ 
