@@ -63,4 +63,21 @@
         if (rowView.displayItem.eventHandlers.count && rowView.eventHandlerButton) {
             TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
             TutorialMng.eventsHandler = YES;
- 
+            [TutorialMng showPopoverOfView:rowView.eventHandlerButton text:@"这个蓝色图标表示存在 GestureRecognizer 等事件处理器，可点击这个蓝色图标查看详情" learned:^{
+                TutorialMng.eventsHandler = YES;
+            }];
+        }
+    }
+}
+
+- (NSView *)makeContainerView {
+    LKHierarchyView *hierarchyView = [[LKHierarchyView alloc] init];
+    hierarchyView.delegate = self;
+    _hierarchyView = hierarchyView;
+    return hierarchyView;
+}
+
+- (NSView *)currentSelectedRowView {
+    NSInteger row = [self.dataSource.displayingFlatItems indexOfObject:self.dataSource.selectedItem];
+    if (row == NSNotFound) {
+//   
