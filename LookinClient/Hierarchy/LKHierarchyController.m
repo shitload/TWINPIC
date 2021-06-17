@@ -130,4 +130,13 @@
         [self.dataSource searchWithString:string];
     } else {
         [self.dataSource endSearch];
-        if (self.dataSource.selectedIte
+        if (self.dataSource.selectedItem) {
+            // 结束搜索，滚动到选中的 item
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.hierarchyView scrollToMakeItemVisible:self.dataSource.selectedItem];
+            });
+        }
+    }
+}
+
+@end
