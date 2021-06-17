@@ -96,4 +96,21 @@
     if (!item.isExpandable) {
         return;
     }
-    if (item.is
+    if (item.isExpanded) {
+        [self.dataSource collapseItem:item];
+    } else {
+        [self.dataSource expandItem:item];
+    }
+}
+
+/// 注意这里 item 可能为 nil
+- (void)hierarchyView:(LKHierarchyView *)view didHoverAtItem:(LookinDisplayItem *)item {
+    self.dataSource.hoveredItem = item;
+}
+
+- (void)hierarchyView:(LKHierarchyView *)view needToCollapseItem:(LookinDisplayItem *)item {
+    [self.dataSource collapseItem:item];
+}
+
+- (void)hierarchyView:(LKHierarchyView *)view needToCollapseChildrenOfItem:(LookinDisplayItem *)item {
+    [self.dataSource collapseAllChildrenOfItem:it
