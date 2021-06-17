@@ -113,4 +113,21 @@
 }
 
 - (void)hierarchyView:(LKHierarchyView *)view needToCollapseChildrenOfItem:(LookinDisplayItem *)item {
-    [self.dataSource collapseAllChildrenOfItem:it
+    [self.dataSource collapseAllChildrenOfItem:item];
+}
+
+- (void)hierarchyView:(LKHierarchyView *)view needToExpandItem:(LookinDisplayItem *)item recursively:(BOOL)recursively {
+    if (recursively) {
+        [self.dataSource expandItemsRootedByItem:item];
+    } else {
+        [self.dataSource expandItem:item];
+    }
+}
+
+- (void)hierarchyView:(LKHierarchyView *)view didInputSearchString:(NSString *)string {
+    NSLog(@"search string:%@", string);
+    if (string.length) {
+        [self.dataSource searchWithString:string];
+    } else {
+        [self.dataSource endSearch];
+        if (self.dataSource.selectedIte
