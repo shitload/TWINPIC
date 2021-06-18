@@ -40,4 +40,22 @@
     CGFloat _subtitleMarginTop;
 }
 
-- (instancetype)initWithEventHandler:(LookinEventHandler *)eventHandler e
+- (instancetype)initWithEventHandler:(LookinEventHandler *)eventHandler editable:(BOOL)editable {
+    if (self = [self initWithFrame:NSZeroRect]) {
+        _contentX = 28;
+        _insetRight = 16;
+        _verInset = 10;
+        _contentMarginTop = 4;
+        _subtitleMarginTop = 3;
+        
+        self.eventHandler = eventHandler;
+        
+        self.topSepLayer = [CALayer layer];
+        [self.layer addSublayer:self.topSepLayer];
+        
+        self.iconImageView = [NSImageView new];
+        [self addSubview:self.iconImageView];
+        
+        self.titleLabel = [LKLabel new];
+        self.titleLabel.selectable = YES;
+        s
