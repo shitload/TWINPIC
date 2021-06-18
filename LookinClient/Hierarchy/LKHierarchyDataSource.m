@@ -754,3 +754,88 @@
                                           LookinColorMake(105, 190, 0),
                                           LookinColorMake(254, 182, 2)];
     NSArray<LKSelectColorItem *> *defaultColorItems = [defaultColors lookin_map:^id(NSUInteger idx, NSColor *value) {
+        LKSelectColorItem *item = [LKSelectColorItem new];
+        item.color = value;
+        if (value) {
+            item.title = rgbaFormat ? [value rgbaString]: [value hexString];
+        } else {
+            item.title = @"nil";
+        }
+        return item;
+    }];
+    [menuModel addObjectsFromArray:defaultColorItems];
+    
+    NSUInteger defaultItemsCount = menuModel.count;
+    
+    if (AliasColorItemsOrSections) {
+        [menuModel addObjectsFromArray:AliasColorItemsOrSections];
+    }
+    
+    NSMenu *menu = [NSMenu new];
+    [menuModel enumerateObjectsUsingBlock:^(id itemOrSection, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == defaultItemsCount) {
+            [menu addItem:[NSMenuItem separatorItem]];
+        }
+        
+        if ([itemOrSection isKindOfClass:[LKSelectColorItemsSection class]]) {
+            LKSelectColorItemsSection *itemsSection = itemOrSection;
+            
+            NSMenuItem *menuItem = [NSMenuItem new];
+            menuItem.image = [[NSImage alloc] initWithSize:NSMakeSize(1, 22)];
+            [menu addItem:menuItem];
+            menuItem.title = itemsSection.title;
+            
+            NSMenu *submenu = [NSMenu new];
+            [itemsSection.items enumerateObjectsUsingBlock:^(LKSelectColorItem * _Nonnull subAliasItem, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSMenuItem *subMenuItem = [self _menuItemFromColorItem:subAliasItem];
+                [submenu addItem:subMenuItem];
+            }];
+            menuItem.submenu = submenu;
+            
+        } else if ([itemOrSection isKindOfClass:[LKSelectColorItem class]]) {
+            NSMenuItem *menuItem = [self _menuItemFromColorItem:itemOrSection];
+            [menu addItem:menuItem];
+            
+        } else {
+            NSAssert(NO, @"");
+        }
+    }];
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItem:({
+        NSMenuItem *menuItem = [NSMenuItem new];
+        menuItem.image = [[NSImage alloc] initWithSize:NSMakeSize(1, 22)];
+        menuItem.title = NSLocalizedString(@"Other…", nil);
+        menuItem.tag = self.customColorMenuItemTag;
+        menuItem;
+    })];
+    
+    return menu;
+}
+
+- (NSMenuItem *)_menuItemFromColorItem:(LKSelectColorItem *)item {
+    NSImage *image = [LKColorIndicatorLayer imageWithColor:item.color shapeSize:NSMakeSize(20, 20) insets:NSEdgeInsetsMake(4, 5, 4, 6)];
+    NSMenuItem *menuItem = [NSMenuItem new];
+    menuItem.image = image;
+    menuItem.title = item.title;
+    menuItem.representedObject = item.color;
+    return menuItem;
+}
+
+- (NSInteger)customColorMenuItemTag {
+    return 10;
+}
+
+#pragma mark - Others
+
+/// 子类实现该方法
+- (LKPreferenceManager *)preferenceManager {
+    NSAssert(NO, @"should implement by subclass");
+    return nil;
+}
+
+- (void)dealloc {
+    NSLog(@"%@ dealloc", self.class);
+}
+
+@end
