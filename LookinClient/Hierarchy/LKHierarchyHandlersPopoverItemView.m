@@ -20,4 +20,24 @@
 
 @property(nonatomic, strong) NSImageView *iconImageView;
 
-@property(nonatomic, st
+@property(nonatomic, strong) LKLabel *titleLabel;
+@property(nonatomic, strong) LKLabel *subtitleLabel;
+@property(nonatomic, strong) NSButton *recognizerEnableButton;
+
+
+@property(nonatomic, strong) LKTextsMenuView *contentView;
+
+@property(nonatomic, strong) CALayer *topSepLayer;
+
+
+@end
+
+@implementation LKHierarchyHandlersPopoverItemView {
+    CGFloat _contentX;
+    CGFloat _insetRight;
+    CGFloat _verInset;
+    CGFloat _contentMarginTop;
+    CGFloat _subtitleMarginTop;
+}
+
+- (instancetype)initWithEventHandler:(LookinEventHandler *)eventHandler e
