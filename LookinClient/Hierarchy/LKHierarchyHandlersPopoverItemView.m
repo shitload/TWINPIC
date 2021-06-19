@@ -78,4 +78,12 @@
                 self.recognizerEnableButton.title = @"";
                 self.recognizerEnableButton.target = self;
                 self.recognizerEnableButton.action = @selector(_handleGestureButton:);
-                [self _renderRecogni
+                [self _renderRecognizerEnabledButton];
+                [self.contentView addButton:self.recognizerEnableButton atIndex:0];
+            } else {
+                [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Enabled" second:(eventHandler.gestureRecognizerIsEnabled ? @"YES" : @"NO")]];
+            }
+            
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Delegate" second:(eventHandler.gestureRecognizerDelegator ? : @"nil")]];
+            // gesture 的名字都太长了，把字号弄小一点
+            self.titleLabel.font = [NSFont boldSystemFontOfSize:12];
