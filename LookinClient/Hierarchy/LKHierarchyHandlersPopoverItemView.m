@@ -58,4 +58,14 @@
         
         self.titleLabel = [LKLabel new];
         self.titleLabel.selectable = YES;
-        s
+        self.titleLabel.maximumNumberOfLines = 1;
+        self.titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        [self addSubview:self.titleLabel];
+        
+        self.contentView = [LKTextsMenuView new];
+        self.contentView.font = NSFontMake(13);
+        [self addSubview:self.contentView];
+        
+        self.topSepLayer.backgroundColor = self.isDarkMode ? LookinColorRGBAMake(255, 255, 255, .15).CGColor : LookinColorRGBAMake(0, 0, 0, .12).CGColor;
+        
+        NSMutableArray<LookinStringTwoTuple *> *texts = [NSMutableArray ar
