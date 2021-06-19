@@ -68,4 +68,14 @@
         
         self.topSepLayer.backgroundColor = self.isDarkMode ? LookinColorRGBAMake(255, 255, 255, .15).CGColor : LookinColorRGBAMake(0, 0, 0, .12).CGColor;
         
-        NSMutableArray<LookinStringTwoTuple *> *texts = [NSMutableArray ar
+        NSMutableArray<LookinStringTwoTuple *> *texts = [NSMutableArray array];
+        if (eventHandler.handlerType == LookinEventHandlerTypeGesture) {
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Enabled" second:@""]];
+
+            if (editable) {
+                self.recognizerEnableButton = [NSButton new];
+                [self.recognizerEnableButton setButtonType:NSButtonTypeSwitch];
+                self.recognizerEnableButton.title = @"";
+                self.recognizerEnableButton.target = self;
+                self.recognizerEnableButton.action = @selector(_handleGestureButton:);
+                [self _renderRecogni
