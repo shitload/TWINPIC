@@ -87,3 +87,13 @@
             [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Delegate" second:(eventHandler.gestureRecognizerDelegator ? : @"nil")]];
             // gesture 的名字都太长了，把字号弄小一点
             self.titleLabel.font = [NSFont boldSystemFontOfSize:12];
+        } else {
+            self.titleLabel.font = [NSFont boldSystemFontOfSize:13];
+        }
+        
+        if (eventHandler.targetActions.count == 0) {
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Target" second:@"nil"]];
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Action" second:@"NULL"]];
+        } else if (eventHandler.targetActions.count == 1) {
+            LookinStringTwoTuple *tuple = eventHandler.targetActions.firstObject;
+            [texts addObject:[LookinStringTwoTuple
