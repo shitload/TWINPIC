@@ -96,4 +96,9 @@
             [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Action" second:@"NULL"]];
         } else if (eventHandler.targetActions.count == 1) {
             LookinStringTwoTuple *tuple = eventHandler.targetActions.firstObject;
-            [texts addObject:[LookinStringTwoTuple
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Target" second:tuple.first]];
+            [texts addObject:[LookinStringTwoTuple tupleWithFirst:@"Action" second:tuple.second]];
+        } else {
+            [eventHandler.targetActions enumerateObjectsUsingBlock:^(LookinStringTwoTuple * _Nonnull tuple, NSUInteger idx, BOOL * _Nonnull stop) {
+                [texts addObject:[LookinStringTwoTuple tupleWithFirst:[NSString stringWithFormat:@"Target %@", @(idx + 1)] second:tuple.first]];
+                [texts addObject:[LookinStringTwoTuple tupleWithFirst:[NSString stringWithFormat:@"Action %@",
