@@ -101,4 +101,16 @@
         } else {
             [eventHandler.targetActions enumerateObjectsUsingBlock:^(LookinStringTwoTuple * _Nonnull tuple, NSUInteger idx, BOOL * _Nonnull stop) {
                 [texts addObject:[LookinStringTwoTuple tupleWithFirst:[NSString stringWithFormat:@"Target %@", @(idx + 1)] second:tuple.first]];
-                [texts addObject:[LookinStringTwoTuple tupleWithFirst:[NSString stringWithFormat:@"Action %@",
+                [texts addObject:[LookinStringTwoTuple tupleWithFirst:[NSString stringWithFormat:@"Action %@", @(idx + 1)] second:tuple.second]];
+            }];
+        }
+        self.contentView.texts = texts;
+
+        if (eventHandler.handlerType == LookinEventHandlerTypeGesture) {
+            self.titleLabel.stringValue = eventHandler.eventName;
+            self.iconImageView.image = NSImageMake(@"icon_gesture_tap");
+        } else {
+            self.titleLabel.stringValue = eventHandler.eventName;
+            if ([eventHandler.eventName hasPrefix:@"UIControlEventEditing"]) {
+                self.iconImageView.image = NSImageMake(@"icon_targetaction_edit");
+            } else
