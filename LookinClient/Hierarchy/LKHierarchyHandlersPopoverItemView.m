@@ -113,4 +113,15 @@
             self.titleLabel.stringValue = eventHandler.eventName;
             if ([eventHandler.eventName hasPrefix:@"UIControlEventEditing"]) {
                 self.iconImageView.image = NSImageMake(@"icon_targetaction_edit");
-            } else
+            } else {
+                self.iconImageView.image = NSImageMake(@"icon_targetaction_touch");
+            }
+        }
+        
+        if (eventHandler.handlerType == LookinEventHandlerTypeGesture) {
+            NSMutableArray<NSString *> *texts = [NSMutableArray array];
+            if (eventHandler.inheritedRecognizerName) {
+                [texts addObject:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Inherits from", nil), eventHandler.inheritedRecognizerName]];
+            }
+            [texts addObjectsFromArray:eventHandler.recognizerIvarTraces];
+           
