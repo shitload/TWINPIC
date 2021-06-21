@@ -124,4 +124,12 @@
                 [texts addObject:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Inherits from", nil), eventHandler.inheritedRecognizerName]];
             }
             [texts addObjectsFromArray:eventHandler.recognizerIvarTraces];
-           
+            if (texts.count > 0) {
+                NSString *text = [texts componentsJoinedByString:@"\n"];
+                self.subtitleLabel = [LKLabel new];
+                self.subtitleLabel.textColor = self.isDarkMode ? [NSColorGray9 colorWithAlphaComponent:.5] : [NSColorGray1 colorWithAlphaComponent:.6];
+                self.subtitleLabel.stringValue = text;
+                self.subtitleLabel.selectable = YES;
+                self.subtitleLabel.font = NSFontMake(12);
+                self.subtitleLabel.maximumNumberOfLines = 0;
+                sel
