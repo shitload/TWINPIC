@@ -132,4 +132,24 @@
                 self.subtitleLabel.selectable = YES;
                 self.subtitleLabel.font = NSFontMake(12);
                 self.subtitleLabel.maximumNumberOfLines = 0;
-                sel
+                self.subtitleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+                [self addSubview:self.subtitleLabel];
+            }
+        }
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.topSepLayer).x(_contentX).toRight(_insetRight).y(0).height(1);
+    
+    $(self.titleLabel).x(_contentX).toRight(_insetRight).heightToFit.y(_verInset);
+    
+    CGFloat y = self.titleLabel.$maxY;
+    if (self.subtitleLabel) {
+        $(self.subtitleLabel).x(_contentX).toRight(_insetRight).heightToFit.y(y + _subtitleMarginTop);
+        y = self.subtitleLabel.$maxY;
+    }
+    
+    
