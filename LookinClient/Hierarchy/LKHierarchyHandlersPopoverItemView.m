@@ -152,4 +152,17 @@
         y = self.subtitleLabel.$maxY;
     }
     
+    $(self.contentView).x(_contentX).toRight(_insetRight).heightToFit.y(y + _contentMarginTop);
+    $(self.iconImageView).sizeToFit.midX(_contentX / 2.0 + 1).midY(self.titleLabel.$midY);
+}
+
+- (void)setNeedTopBorder:(BOOL)needTopBorder {
+    _needTopBorder = needTopBorder;
+    self.topSepLayer.hidden = !needTopBorder;
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    NSSize titleSize = [self.titleLabel bestSize];
+    NSSize contentSize = [self.contentView sizeThatFits:NSSizeMax];
+    NSSize subtitleSize = [self.subtitleLabel bestSize];
     
