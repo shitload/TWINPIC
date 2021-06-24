@@ -165,4 +165,14 @@
     NSSize titleSize = [self.titleLabel bestSize];
     NSSize contentSize = [self.contentView sizeThatFits:NSSizeMax];
     NSSize subtitleSize = [self.subtitleLabel bestSize];
-    
+    limitedSize.width = MAX(MAX(titleSize.width, contentSize.width), subtitleSize.width) + _contentX + _insetRight + 2; // 加个 2 冗余一下像素取整误差
+    limitedSize.height = titleSize.height + contentSize.height + _contentMarginTop + _verInset * 2;
+    if (self.subtitleLabel) {
+        limitedSize.height += (_subtitleMarginTop + subtitleSize.height);
+    }
+    return limitedSize;
+}
+
+- (void)_handleGestureButton:(NSButton *)button {
+    NSWindow *mainWindow = [LKNavigationManager sharedInstance].staticWindowController.window;
+ 
