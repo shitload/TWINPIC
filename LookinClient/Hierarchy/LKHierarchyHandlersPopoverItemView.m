@@ -191,4 +191,18 @@
     [[InspectingApp modifyGestureRecognizer:self.eventHandler.recognizerOid toBeEnabled:shouldEnableRecognizer] subscribeNext:^(NSNumber *enabled_number) {
         @strongify(self);
         BOOL isEnabled = [enabled_number boolValue];
+        self.eventHandler.gestureRecognizerIsEnabled = isEnabled;
+        [self _renderRecognizerEnabledButton];
         
+    } error:^(NSError * _Nullable error) {
+        @strongify(self);
+        AlertError(error, mainWindow);
+        [self _renderRecognizerEnabledButton];
+    }];
+}
+
+- (void)_renderRecognizerEnabledButton {
+    self.recognizerEnableButton.state = (self.eventHandler.gestureRecognizerIsEnabled ? NSControlStateValueOn : NSControlStateValueOff);
+}
+
+@end
