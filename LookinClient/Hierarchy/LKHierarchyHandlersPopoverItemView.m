@@ -175,4 +175,20 @@
 
 - (void)_handleGestureButton:(NSButton *)button {
     NSWindow *mainWindow = [LKNavigationManager sharedInstance].staticWindowController.window;
- 
+    
+    if (!InspectingApp) {
+        AlertError(LookinErr_NoConnect, mainWindow);
+        [self _renderRecognizerEnabledButton];
+        return;
+    }
+    BOOL shouldEnableRecognizer;
+    if (button.state == NSControlStateValueOn) {
+        shouldEnableRecognizer = YES;
+    } else {
+        shouldEnableRecognizer = NO;
+    }
+    @weakify(self);
+    [[InspectingApp modifyGestureRecognizer:self.eventHandler.recognizerOid toBeEnabled:shouldEnableRecognizer] subscribeNext:^(NSNumber *enabled_number) {
+        @strongify(self);
+        BOOL isEnabled = [enabled_number boolValue];
+        
