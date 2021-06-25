@@ -35,4 +35,9 @@
 + (NSArray<LKHierarchyItem *> *)flatItemsFromRootItems:(NSArray<LKHierarchyItem *> *)items {
     NSMutableArray<LKHierarchyItem *> *resultItems = [NSMutableArray array];
     [items enumerateObjectsUsingBlock:^(LKHierarchyItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [resultItems addObjectsF
+        [resultItems addObjectsFromArray:[obj flatItems]];
+    }];
+    return resultItems.copy;
+}
+
+@end
