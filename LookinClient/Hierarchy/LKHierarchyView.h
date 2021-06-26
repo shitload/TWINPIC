@@ -33,4 +33,23 @@
 
 - (void)hierarchyView:(LKHierarchyView *)view needToCancelPreviewOfItem:(LookinDisplayItem *)item;
 
-- (void)hierarchyView:(LKHierarchyView *)view needToShowPre
+- (void)hierarchyView:(LKHierarchyView *)view needToShowPreviewOfItem:(LookinDisplayItem *)item;
+
+@end
+
+@interface LKHierarchyView : LKBaseView
+
+@property(nonatomic, strong, readonly) LKTableView *tableView;
+
+@property(nonatomic, copy) NSArray<LookinDisplayItem *> *displayItems;
+
+@property(nonatomic, weak) id<LKHierarchyViewDelegate> delegate;
+
+- (void)scrollToMakeItemVisible:(LookinDisplayItem *)item;
+
+- (void)updateGuidesWithHoveredItem:(LookinDisplayItem *)item;
+
+/// 激活搜索框
+- (void)activateSearchBar;
+
+@end
