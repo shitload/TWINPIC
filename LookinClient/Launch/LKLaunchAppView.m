@@ -143,3 +143,109 @@
                 self.errorTitleLabel.stringValue = @"LookinServer 版本过低：请在 Xcode 中按住 \"Option\" 并选择 \"Product\" - \"Clean Build Folder\" 然后重新编译，或者找 hughkli";
                 self.errorSubtitleLabel.hidden = YES;
             } else {
+                // 现网的 LookinClient
+                self.errorTitleLabel.stringValue = NSLocalizedString(@"The version of LookinServer linked with this iOS App is too low.", nil);
+            }
+            
+        } else if (app.serverVersionError.code == LookinErrCode_ServerVersionTooHigh) {
+            if (LOOKIN_CLIENT_IS_EXPERIMENTAL) {
+                // 内部版本的 LookinClient
+                self.errorTitleLabel.stringValue = @"Lookin 客户端版本过低，请使用微信读书主干项目文件夹下最新的 Lookin Exprimental 查看该 app，或者找 hughkli";
+                self.errorSubtitleLabel.hidden = YES;
+            } else {
+                // 现网的 LookinClient
+                self.errorTitleLabel.stringValue = NSLocalizedString(@"Unable to inspect this iOS App. Current version of Lookin app is too low.", nil);
+            }
+            
+        } else if (app.serverVersionError.code == LookinErrCode_ServerIsPrivate) {
+            self.errorTitleLabel.stringValue = @"请使用微信读书主干项目文件夹下最新的 Lookin Exprimental 而非现网版本的 Lookin 查看该 App，或者找 hughkli";
+            self.errorSubtitleLabel.hidden = YES;
+            
+        } else if (app.serverVersionError.code == LookinErrCode_ClientIsPrivate) {
+            self.errorTitleLabel.stringValue = @"请使用现网版本的 Lookin 查看该 App，或者找 hughkli";
+            self.errorSubtitleLabel.hidden = YES;
+            
+        } else {
+            self.errorTitleLabel.stringValue = @"Unknown Error";
+            NSAssert(NO, @"");
+        }
+        
+    } else {
+        self.errorImageView.hidden = YES;
+        self.errorTitleLabel.hidden = YES;
+        self.errorSubtitleLabel.hidden = YES;
+        
+        self.previewImageView.hidden = NO;
+        self.iconImageView.hidden = NO;
+        self.titleLabel.hidden = NO;
+        self.subtitleLabel.hidden = NO;
+        
+        self.previewImageView.image = app.appInfo.screenshot;
+        if (app.appInfo.deviceType == LookinAppInfoDeviceSimulator) {
+            self.iconImageView.image = NSImageMake(@"icon_simulator_big");
+        } else if (app.appInfo.deviceType == LookinAppInfoDeviceIPad) {
+            self.iconImageView.image = NSImageMake(@"icon_ipad_big");
+        } else {
+            self.iconImageView.image = NSImageMake(@"icon_iphone_big");
+        }
+        self.titleLabel.stringValue = app.appInfo.deviceDescription;
+        self.subtitleLabel.stringValue = [NSString stringWithFormat:@"iOS %@", app.appInfo.osDescription];
+    }
+    
+    [self updateLayer];
+    [self setNeedsLayout:YES];
+}
+
+- (void)mouseEntered:(NSEvent *)event {
+    [super mouseEntered:event];
+    self.hoverBgLayer.opacity = 1;
+}
+
+- (void)mouseExited:(NSEvent *)event {
+    [super mouseExited:event];
+    self.hoverBgLayer.opacity = 0;
+}
+
+- (void)updateLayer {
+    [super updateLayer];
+    self.hoverBgLayer.backgroundColor = self.effectiveAppearance.lk_isDarkMode ? LookinColorRGBAMake(0, 0, 0, .17).CGColor : LookinColorRGBAMake(0, 0, 0, .08).CGColor;
+    
+    if (self.app.serverVersionError) {
+        self.layer.backgroundColor = self.effectiveAppearance.lk_isDarkMode ? LookinColorRGBAMake(0, 0, 0, .13).CGColor : LookinColorRGBAMake(0, 0, 0, .05).CGColor;
+    } else {
+        self.layer.backgroundColor = [NSColor clearColor].CGColor;
+    }
+}
+
+- (void)updateTrackingAreas {
+    [super updateTrackingAreas];
+    [self.trackingAreas enumerateObjectsUsingBlock:^(NSTrackingArea * _Nonnull oldArea, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self removeTrackingArea:oldArea];
+    }];
+    
+    NSTrackingArea *newArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:NSTrackingMouseEnteredAndExited|NSTrackingActiveAlways owner:self userInfo:nil];
+    [self addTrackingArea:newArea];
+}
+
+- (void)_initErrorViewsIfNeeded {
+    if (!self.errorImageView) {
+        self.errorImageView = [NSImageView new];
+        self.errorImageView.image = NSImageMake(@"icon_alert_big");
+        [self addSubview:self.errorImageView];
+    }
+    if (!self.errorTitleLabel) {
+        self.errorTitleLabel = [LKLabel new];
+        self.errorTitleLabel.textColor = [NSColor labelColor];
+        self.errorTitleLabel.alignment = NSTextAlignmentCenter;
+        self.errorTitleLabel.maximumNumberOfLines = 0;
+        [self addSubview:self.errorTitleLabel];
+    }
+    if (!self.errorSubtitleLabel) {
+        self.errorSubtitleLabel = [LKLabel new];
+        self.errorSubtitleLabel.stringValue = NSLocalizedString(@"Find solution…", nil);
+        self.errorSubtitleLabel.textColor = [NSColor linkColor];
+        [self addSubview:self.errorSubtitleLabel];
+    }
+}
+
+@end
