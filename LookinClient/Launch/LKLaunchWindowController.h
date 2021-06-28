@@ -8,4 +8,10 @@
 
 #import "LKWindowController.h"
 
-@class LKLaunchViewController
+@class LKLaunchViewController;
+
+@interface LKLaunchWindowController : LKWindowController
+
+@property(nonatomic, strong, readonly) LKLaunchViewController *launchViewController;
+
+@end
