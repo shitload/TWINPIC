@@ -8,4 +8,25 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
-			
+			<array>
+				<string>lookin</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>lookin_icon</string>
+			<key>CFBundleTypeName</key>
+			<string>Lookin Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.lookin.lookin</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>LookinDocument</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CF
