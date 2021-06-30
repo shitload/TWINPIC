@@ -63,4 +63,21 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
-			</a
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Lookin Document</string>
+			<key>UTTypeIconFile</key>
+			<string>lookin_icon</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.lookin.lookin</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>lookin</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
