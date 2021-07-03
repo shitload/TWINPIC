@@ -51,4 +51,23 @@ static NSUInteger const kTag_LookinServerGitHub = 59;
 
 static NSUInteger const kTag_ReportIssues = 60;
 static NSUInteger const kTag_Email = 61;
-static NSUInteger const kTag_LookinClientGitHubI
+static NSUInteger const kTag_LookinClientGitHubIssues = 62;
+static NSUInteger const kTag_LookinServerGitHubIssues = 63;
+static NSUInteger const kTag_Weibo = 64;
+
+static NSUInteger const kTag_CopyPod = 66;
+static NSUInteger const kTag_CopySPM = 67;
+static NSUInteger const kTag_MoreIntegrationGuide = 68;
+static NSUInteger const kTag_ReduceReloadTime = 69;
+
+@interface LKAppMenuManager ()
+
+@property(nonatomic, copy) NSDictionary<NSNumber *, NSString *> *delegatingTagToSelMap;
+
+@end
+
+@implementation LKAppMenuManager
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static LKAppMenuManager *instance = nil
