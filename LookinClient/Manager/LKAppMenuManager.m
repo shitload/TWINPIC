@@ -70,4 +70,19 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
-    static LKAppMenuManager *instance = nil
+    static LKAppMenuManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (void)setup {
+    self.delegatingTagToSelMap = @{
+                                   @(kTag_Reload):NSStringFromSelector(@selector(appMenuManagerDidSelectReload)),
+                                   @(kTag_Dimension):NSStringFromSelector(@selector(appMenuManagerDidSelectDimension)),
+                                   @(kTag_ZoomIn):NSStringFro
