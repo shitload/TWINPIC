@@ -26,4 +26,16 @@ static NSUInteger const kTag_Preferences = 12;
 static NSUInteger const kTag_CheckUpdates = 13;
 
 static NSUInteger const kTag_Reload = 21;
+static NSUInteger const kTag_Dimension = 22;
+static NSUInteger const kTag_ZoomIn = 23;
+static NSUInteger const kTag_ZoomOut = 24;
+static NSUInteger const kTag_DecreaseInterspace = 25;
+static NSUInteger const kTag_IncreaseInterspace = 26;
+static NSUInteger const kTag_Expansion = 27;
+static NSUInteger const kTag_Filter = 28;
+static NSUInteger const kTag_DelayReload = 29;
+static NSUInteger const kTag_OpenInNewWindow = 31;
+static NSUInteger const kTag_Export = 32;
+
+static NSUInteger const kTag_ShowFramework = 50;
 static N
