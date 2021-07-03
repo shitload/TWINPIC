@@ -38,4 +38,17 @@ static NSUInteger const kTag_OpenInNewWindow = 31;
 static NSUInteger const kTag_Export = 32;
 
 static NSUInteger const kTag_ShowFramework = 50;
-static N
+static NSUInteger const kTag_CocoaPods = 51;
+static NSUInteger const kTag_ShowWebsite = 52;
+static NSUInteger const kTag_ShowConfig = 53;
+static NSUInteger const kTag_ShowLookiniOS = 54;
+static NSUInteger const kTag_MethodTrace = 55;
+static NSUInteger const kTag_DeveloperProfile = 56;
+
+static NSUInteger const kTag_GitHub = 57;
+static NSUInteger const kTag_LookinClientGitHub = 58;
+static NSUInteger const kTag_LookinServerGitHub = 59;
+
+static NSUInteger const kTag_ReportIssues = 60;
+static NSUInteger const kTag_Email = 61;
+static NSUInteger const kTag_LookinClientGitHubI
