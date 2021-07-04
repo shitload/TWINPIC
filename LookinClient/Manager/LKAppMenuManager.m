@@ -111,4 +111,22 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     // Lookin - 偏好设置
     NSMenuItem *menuItem_preferences = [menu_lookin itemWithTag:kTag_Preferences];
     menuItem_preferences.target = self;
-    menuItem_preferences.actio
+    menuItem_preferences.action = @selector(_handlePreferences);
+    
+    NSMenuItem *menuItem_checkUpdates = [menu_lookin itemWithTag:kTag_CheckUpdates];
+    menuItem_checkUpdates.target = self;
+    menuItem_checkUpdates.action = @selector(_handleCheckUpdates);
+    
+    // 文件
+    NSMenu *menu_file = [menu itemAtIndex:1].submenu;
+    menu_file.autoenablesItems = NO;
+    menu_file.delegate = self;
+    
+    // 视图
+    NSMenu *menu_view = [menu itemAtIndex:3].submenu;
+    menu_view.autoenablesItems = NO;
+    menu_view.delegate = self;
+    
+    // 帮助
+    NSMenu *menu_help = [menu itemAtIndex:5].submenu;
+    menu_
