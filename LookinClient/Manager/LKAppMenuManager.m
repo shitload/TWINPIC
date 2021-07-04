@@ -94,4 +94,21 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
                                    @(kTag_OpenInNewWindow):NSStringFromSelector(@selector(appMenuManagerDidSelectOpenInNewWindow)),
                                    @(kTag_Filter):NSStringFromSelector(@selector(appMenuManagerDidSelectFilter)),
                                    @(kTag_DelayReload):NSStringFromSelector(@selector(appMenuManagerDidSelectDelayReload)),
-                                   @(kTag_MethodTrace):NSStringFromSelector(@selector(appMenuManagerD
+                                   @(kTag_MethodTrace):NSStringFromSelector(@selector(appMenuManagerDidSelectMethodTrace)),
+    };
+    
+    NSMenu *menu = [NSApp mainMenu];
+    
+    // Lookin
+    NSMenu *menu_lookin = [menu itemAtIndex:0].submenu;
+    menu_lookin.autoenablesItems = NO;
+    menu_lookin.delegate = self;
+    
+    NSMenuItem *menuItem_about = [menu_lookin itemWithTag:kTag_About];
+    menuItem_about.target = self;
+    menuItem_about.action = @selector(_handleAbout);
+    
+    // Lookin - 偏好设置
+    NSMenuItem *menuItem_preferences = [menu_lookin itemWithTag:kTag_Preferences];
+    menuItem_preferences.target = self;
+    menuItem_preferences.actio
