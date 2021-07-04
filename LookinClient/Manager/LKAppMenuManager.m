@@ -85,4 +85,9 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     self.delegatingTagToSelMap = @{
                                    @(kTag_Reload):NSStringFromSelector(@selector(appMenuManagerDidSelectReload)),
                                    @(kTag_Dimension):NSStringFromSelector(@selector(appMenuManagerDidSelectDimension)),
-                                   @(kTag_ZoomIn):NSStringFro
+                                   @(kTag_ZoomIn):NSStringFromSelector(@selector(appMenuManagerDidSelectZoomIn)),
+                                   @(kTag_ZoomOut):NSStringFromSelector(@selector(appMenuManagerDidSelectZoomOut)),
+                                   @(kTag_DecreaseInterspace):NSStringFromSelector(@selector(appMenuManagerDidSelectDecreaseInterspace)),
+                                   @(kTag_IncreaseInterspace):NSStringFromSelector(@selector(appMenuManagerDidSelectIncreaseInterspace)),
+                                   @(kTag_Expansion):NSStringFromSelector(@selector(appMenuManagerDidSelectExpansionIndex:)),
+                   
