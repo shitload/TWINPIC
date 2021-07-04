@@ -90,4 +90,8 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
                                    @(kTag_DecreaseInterspace):NSStringFromSelector(@selector(appMenuManagerDidSelectDecreaseInterspace)),
                                    @(kTag_IncreaseInterspace):NSStringFromSelector(@selector(appMenuManagerDidSelectIncreaseInterspace)),
                                    @(kTag_Expansion):NSStringFromSelector(@selector(appMenuManagerDidSelectExpansionIndex:)),
-                   
+                                   @(kTag_Export):NSStringFromSelector(@selector(appMenuManagerDidSelectExport)),
+                                   @(kTag_OpenInNewWindow):NSStringFromSelector(@selector(appMenuManagerDidSelectOpenInNewWindow)),
+                                   @(kTag_Filter):NSStringFromSelector(@selector(appMenuManagerDidSelectFilter)),
+                                   @(kTag_DelayReload):NSStringFromSelector(@selector(appMenuManagerDidSelectDelayReload)),
+                                   @(kTag_MethodTrace):NSStringFromSelector(@selector(appMenuManagerD
