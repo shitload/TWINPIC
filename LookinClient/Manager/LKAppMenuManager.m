@@ -129,4 +129,18 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     
     // 帮助
     NSMenu *menu_help = [menu itemAtIndex:5].submenu;
-    menu_
+    menu_help.autoenablesItems = YES;
+    menu_help.delegate = self;
+    
+    // 帮助 - 显示 Framework
+    NSMenuItem *menuItem_showFramework = [menu_help itemWithTag:kTag_ShowFramework];
+    menuItem_showFramework.target = self;
+    menuItem_showFramework.action = @selector(_handleShowFramework);
+    
+    // 帮助 - CocoaPods
+    NSMenuItem *menuItem_cocoaPods = [menu_help itemWithTag:kTag_CocoaPods];
+    menuItem_cocoaPods.target = self;
+    menuItem_cocoaPods.action = @selector(_handleShowCocoaPods);
+    
+    // 帮助 - 官方网站
+    NSMenuItem *menuItem_showWebsi
