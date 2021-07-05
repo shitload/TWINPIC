@@ -143,4 +143,16 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     menuItem_cocoaPods.action = @selector(_handleShowCocoaPods);
     
     // 帮助 - 官方网站
-    NSMenuItem *menuItem_showWebsi
+    NSMenuItem *menuItem_showWebsite = [menu_help itemWithTag:kTag_ShowWebsite];
+    menuItem_showWebsite.target = self;
+    menuItem_showWebsite.action = @selector(_handleShowWebsite);
+    
+    // 帮助 - 创建配置文件
+    NSMenuItem *menuItem_showConfig = [menu_help itemWithTag:kTag_ShowConfig];
+    menuItem_showConfig.target = self;
+    menuItem_showConfig.action = @selector(_handleShowConfig);
+    
+    // 帮助 - 在 iOS 上使用 Lookin
+    NSMenuItem *menuItem_showLookiniOS = [menu_help itemWithTag:kTag_ShowLookiniOS];
+    menuItem_showLookiniOS.target = self;
+    menuItem_showLookiniOS.action = @selector(_handleShowLook
