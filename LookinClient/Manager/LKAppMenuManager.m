@@ -155,4 +155,18 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     // 帮助 - 在 iOS 上使用 Lookin
     NSMenuItem *menuItem_showLookiniOS = [menu_help itemWithTag:kTag_ShowLookiniOS];
     menuItem_showLookiniOS.target = self;
-    menuItem_showLookiniOS.action = @selector(_handleShowLook
+    menuItem_showLookiniOS.action = @selector(_handleShowLookiniOS);
+    
+    NSMenuItem *menuItem_viewDeveloperProfile = [menu_help itemWithTag:kTag_DeveloperProfile];
+    menuItem_viewDeveloperProfile.target = self;
+    menuItem_viewDeveloperProfile.action = @selector(_handleShowDeveloperProfile);
+    
+    NSMenu *sourceCodeMenu = [menu_help itemWithTag:kTag_GitHub].submenu;
+    {
+        NSMenuItem *item = [sourceCodeMenu itemWithTag:kTag_LookinClientGitHub];
+        item.target = self;
+        item.action = @selector(_handleShowLookinClientGithub);
+    }
+    
+    {
+        NSMenuItem *item = [sourceCodeMenu itemWithTag:kTag_LookinServer
