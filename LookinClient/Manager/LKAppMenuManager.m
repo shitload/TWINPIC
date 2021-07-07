@@ -169,4 +169,22 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     }
     
     {
-        NSMenuItem *item = [sourceCodeMenu itemWithTag:kTag_LookinServer
+        NSMenuItem *item = [sourceCodeMenu itemWithTag:kTag_LookinServerGitHub];
+        item.target = self;
+        item.action = @selector(_handleShowLookinServerGithub);
+    }
+    
+    NSMenu *issuesMenu = [menu_help itemWithTag:kTag_ReportIssues].submenu;
+    {
+        NSMenuItem *item = [issuesMenu itemWithTag:kTag_Email];
+        item.target = self;
+        item.action = @selector(_handleEmail);
+    }
+    {
+        NSMenuItem *item = [issuesMenu itemWithTag:kTag_LookinClientGitHubIssues];
+        item.target = self;
+        item.action = @selector(_handleClientIssues);
+    }
+    {
+        NSMenuItem *item = [issuesMenu itemWithTag:kTag_LookinServerGitHubIssues];
+        item.ta
