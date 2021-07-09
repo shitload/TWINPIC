@@ -207,4 +207,15 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
         item.action = @selector(_handleCopySPM);
     }
     {
-        NSMen
+        NSMenuItem *item = [menu_help itemWithTag:kTag_MoreIntegrationGuide];
+        item.target = self;
+        item.action = @selector(_handleOpenMoreIntegrationGuide);
+    }
+    {
+        NSMenuItem *item = [menu_help itemWithTag:kTag_ReduceReloadTime];
+        item.target = self;
+        item.action = @selector(_handleCustomUserConfig);
+    }
+    
+    NSArray *itemArray = [menu_file.itemArray arrayByAddingObjectsFromArray:menu_view.itemArray];
+    [itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop
