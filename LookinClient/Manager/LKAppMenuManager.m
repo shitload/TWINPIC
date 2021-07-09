@@ -187,4 +187,24 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     }
     {
         NSMenuItem *item = [issuesMenu itemWithTag:kTag_LookinServerGitHubIssues];
-        item.ta
+        item.target = self;
+        item.action = @selector(_handleServerIssues);
+    }
+    {
+        NSMenuItem *item = [issuesMenu itemWithTag:kTag_Weibo];
+        item.target = self;
+        item.action = @selector(_handleWeibo);
+    }
+    
+    {
+        NSMenuItem *item = [menu_help itemWithTag:kTag_CopyPod];
+        item.target = self;
+        item.action = @selector(_handleCopyPod);
+    }
+    {
+        NSMenuItem *item = [menu_help itemWithTag:kTag_CopySPM];
+        item.target = self;
+        item.action = @selector(_handleCopySPM);
+    }
+    {
+        NSMen
