@@ -263,4 +263,21 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
         NSAssert(NO, @"");
         return;
     }
-    LKWindowController *w
+    LKWindowController *wc = [LKNavigationManager sharedInstance].currentKeyWindowController;
+    if (![wc respondsToSelector:sel]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[wc methodSignatureForSelector:sel]];
+    [invocation setTarget:wc];
+    [invocation setSelector:sel];
+    [invocation invoke];
+}
+
+- (void)_handleExpansion:(NSMenuItem *)item {
+    NSNumber *idxNum = item.representedObject;
+    if (idxNum == nil) {
+        NSAssert(NO, @"");
+        return;
+    }
+    NSUIn
