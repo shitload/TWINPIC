@@ -228,4 +228,20 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
                         expansionSubItem.target = self;
                         expansionSubItem.representedObject = @(idx);
                         expansionSubItem.action = @selector(_handleExpansion:);
-                  
+                    }];
+                }
+            } else {
+                obj.target = self;
+                obj.action = @selector(_handleDelegateItem:);
+            }
+        }
+    }];
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    LKWindowController *wc = [LKNavigationManager sharedInstance].currentKeyWindowController;
+
+    [menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *selString = self.delegatingTagToSelMap[@(obj.tag)];
+        if (selString) {
+        
