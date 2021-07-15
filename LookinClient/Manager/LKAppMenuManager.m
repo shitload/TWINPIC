@@ -218,4 +218,14 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     }
     
     NSArray *itemArray = [menu_file.itemArray arrayByAddingObjectsFromArray:menu_view.itemArray];
-    [itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop
+    [itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *selString = self.delegatingTagToSelMap[@(obj.tag)];
+        if (selString) {
+            if (obj.hasSubmenu) {
+                if (obj.tag == kTag_Expansion) {
+                    // 视图 - 深度
+                    [obj.submenu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull expansionSubItem, NSUInteger idx, BOOL * _Nonnull stop) {
+                        expansionSubItem.target = self;
+                        expansionSubItem.representedObject = @(idx);
+                        expansionSubItem.action = @selector(_handleExpansion:);
+                  
