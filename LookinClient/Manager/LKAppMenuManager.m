@@ -244,4 +244,23 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     [menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *selString = self.delegatingTagToSelMap[@(obj.tag)];
         if (selString) {
-        
+            SEL delegateSel = NSSelectorFromString(selString);
+            obj.enabled = [wc respondsToSelector:delegateSel];
+        } else {
+            obj.enabled = YES;
+        }
+    }];
+}
+
+- (void)_handlePreferences {
+    [[LKNavigationManager sharedInstance] showPreference];
+}
+
+- (void)_handleDelegateItem:(NSMenuItem *)item {
+    NSString *selString = self.delegatingTagToSelMap[@(item.tag)];
+    SEL sel = NSSelectorFromString(selString);
+    if (!sel) {
+        NSAssert(NO, @"");
+        return;
+    }
+    LKWindowController *w
