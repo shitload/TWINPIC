@@ -293,4 +293,20 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 }
 
 - (void)_handleShowConfig {
-    [LK
+    [LKHelper openLookinWebsiteWithPath:@"faq/config-file/"];
+}
+
+- (void)_handleShowLookiniOS {
+    [LKHelper openLookinWebsiteWithPath:@"faq/lookin-ios/"];
+}
+
+- (void)_handleShowDeveloperProfile {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.linkedin.com/in/likai123"]];
+}
+
+- (void)_handleShowLookinClientGithub {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/hughkli/Lookin"]];
+}
+
+- (void)_handleShowLookinServerGithub {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http
