@@ -280,4 +280,17 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
         NSAssert(NO, @"");
         return;
     }
-    NSUIn
+    NSUInteger index = idxNum.unsignedIntegerValue;
+    
+    LKWindowController *wc = [LKNavigationManager sharedInstance].currentKeyWindowController;
+    if (![wc respondsToSelector:@selector(appMenuManagerDidSelectExpansionIndex:)]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    [wc appMenuManagerDidSelectExpansionIndex:index];
+    
+    [MSACAnalytics trackEvent:@"Hierarchy Expansion" withProperties:@{@"level":[NSString stringWithFormat:@"%@", idxNum]}];
+}
+
+- (void)_handleShowConfig {
+    [LK
