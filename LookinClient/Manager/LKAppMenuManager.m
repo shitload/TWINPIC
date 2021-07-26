@@ -309,4 +309,23 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 }
 
 - (void)_handleShowLookinServerGithub {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/QMUI/LookinServer"]];
+}
+
+- (void)_handleEmail {
+    NSString *stringToCopy = @"lookin@lookin.work";
+    
+    NSPasteboard *paste = [NSPasteboard generalPasteboard];
+    [paste clearContents];
+    [paste writeObjects:@[stringToCopy]];
+}
+
+- (void)_handleClientIssues {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/hughkli/Lookin/issues"]];
+}
+
+- (void)_handleServerIssues {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/QMUI/LookinServer/issues"]];
+}
+
+-
