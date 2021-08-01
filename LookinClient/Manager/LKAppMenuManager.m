@@ -328,4 +328,21 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/QMUI/LookinServer/issues"]];
 }
 
--
+- (void)_handleWeibo {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://weibo.com/234885306"]];
+}
+
+- (void)_handleShowWebsite {
+    [LKHelper openLookinOfficialWebsite];
+}
+
+- (void)_handleCopyPod {
+    NSString *stringToCopy = @"pod 'LookinServer', :configurations => ['Debug']";
+    
+    NSPasteboard *paste = [NSPasteboard generalPasteboard];
+    [paste clearContents];
+    [paste writeObjects:@[stringToCopy]];
+}
+
+- (void)_handleCopySPM {
+    NSString *stringToCopy = @"https://github.com/QMUI/LookinServer/";
