@@ -346,3 +346,23 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 
 - (void)_handleCopySPM {
     NSString *stringToCopy = @"https://github.com/QMUI/LookinServer/";
+    
+    NSPasteboard *paste = [NSPasteboard generalPasteboard];
+    [paste clearContents];
+    [paste writeObjects:@[stringToCopy]];
+}
+
+- (void)_handleOpenMoreIntegrationGuide {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/QMUI/LookinServer/blob/master/README.md"]];
+}
+
+- (void)_handleCustomUserConfig {
+    [LKHelper openCustomConfigWebsite];
+}
+
+- (void)_handleCheckUpdates {
+    [[SUUpdater sharedUpdater] checkForUpdates:self];
+}
+
+- (void)_handleShowFramework {
+    NSString *bundlePath = [[NSBundle mainBundle] bund
