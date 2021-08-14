@@ -365,4 +365,14 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 }
 
 - (void)_handleShowFramework {
-    NSString *bundlePath = [[NSBundle mainBundle] bund
+    NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
+    NSString *frameworkDirPath = [bundlePath stringByAppendingPathComponent:@"/Contents/Resources/LookinServerFramework/"];
+    NSString *unzippedFilePath = [frameworkDirPath stringByAppendingPathComponent:@"LookinServer.framework"];
+    NSFileManager *mng = [NSFileManager defaultManager];
+    BOOL fileExsit = [mng fileExistsAtPath:unzippedFilePath isDirectory:NULL];
+    if (!fileExsit) {
+        [self _handleFailingToShowFramework];
+        return;
+    }
+    NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:unzippedFilePath isDirectory:NO];
+    [[NSWorkspace sharedWorkspace]
