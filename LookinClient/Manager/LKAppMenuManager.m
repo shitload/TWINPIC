@@ -375,4 +375,13 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
         return;
     }
     NSURL *fileUrl = [[NSURL alloc] initFileURLWithPath:unzippedFilePath isDirectory:NO];
-    [[NSWorkspace sharedWorkspace]
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[fileUrl]];
+}
+
+- (void)_handleFailingToShowFramework {
+    NSString *message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"You can download framework from the url below:", nil), LOOKIN_SERVER_FRAMEWORK_URL];
+    AlertErrorText(NSLocalizedString(@"Failed to show framework in Finder", nil), message, [LKNavigationManager sharedInstance].currentKeyWindowController.window);
+}
+
+- (void)_handleShowCocoaPods {
+    [LKHelper openLookinWebsiteWithPath:@"faq/integration-guide/"];
