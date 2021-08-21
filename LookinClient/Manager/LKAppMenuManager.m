@@ -385,3 +385,10 @@ static NSUInteger const kTag_ReduceReloadTime = 69;
 
 - (void)_handleShowCocoaPods {
     [LKHelper openLookinWebsiteWithPath:@"faq/integration-guide/"];
+}
+
+- (void)_handleAbout {
+    [[LKNavigationManager sharedInstance] showAbout];
+}
+
+@end
