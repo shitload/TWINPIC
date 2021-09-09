@@ -28,4 +28,19 @@
 #define NSSizeMax NSMakeSize(CGFLOAT_MAX, CGFLOAT_MAX)
 
 #define NSColorBlack LookinColorMake(13, 20, 30)
-#define NSColorWhite LookinColorMake(2
+#define NSColorWhite LookinColorMake(250, 251, 252)
+#define NSColorGray0 LookinColorMake(33, 40, 50)
+#define NSColorGray1 LookinColorMake(53, 60, 70)
+#define NSColorGray9 LookinColorMake(216, 220, 228)
+
+extern const CGFloat HierarchyMinWidth;
+
+extern const CGFloat MeasureViewWidth;
+
+extern const CGFloat DashboardViewWidth;
+extern const CGFloat DashboardAttrItemHorInterspace;
+extern const CGFloat DashboardAttrItemVerInterspace;
+extern const CGFloat DashboardHorInset;
+extern const CGFloat DashboardCardControlCornerRadius;
+extern const CGFloat DashboardSectionMarginTop;
+extern const CGFloat Dashboar
