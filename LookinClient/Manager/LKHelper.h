@@ -43,4 +43,21 @@ extern const CGFloat DashboardAttrItemVerInterspace;
 extern const CGFloat DashboardHorInset;
 extern const CGFloat DashboardCardControlCornerRadius;
 extern const CGFloat DashboardSectionMarginTop;
-extern const CGFloat Dashboar
+extern const CGFloat DashboardCardCornerRadius;
+extern const CGFloat DashboardSearchCardInset;
+
+extern const CGFloat ConsoleInsetLeft;
+extern const CGFloat ConsoleInsetRight;
+
+extern const CGFloat ZoomSliderMaxValue;
+
+typedef struct {
+    CGFloat left, right;
+} HorizontalMargins;
+
+CG_INLINE HorizontalMargins HorizontalMarginsMake(CGFloat left, CGFloat right) {
+    HorizontalMargins margins = {left, right};
+    return margins;
+}
+
+#define AlertError(targetError, targetWindow) if (targetError.code != LookinErrCode_Discard) {[[NSAlert alertWithError:targetErro
