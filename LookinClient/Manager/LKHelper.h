@@ -60,4 +60,26 @@ CG_INLINE HorizontalMargins HorizontalMarginsMake(CGFloat left, CGFloat right) {
     return margins;
 }
 
-#define AlertError(targetError, targetWindow) if (targetError.code != LookinErrCode_Discard) {[[NSAlert alertWithError:targetErro
+#define AlertError(targetError, targetWindow) if (targetError.code != LookinErrCode_Discard) {[[NSAlert alertWithError:targetError] beginSheetModalForWindow:targetWindow completionHandler:nil];}
+
+#define AlertErrorText(errorTitle, errorDetail, targetWindow) AlertError(LookinErrorMake(errorTitle, errorDetail), targetWindow)
+
+#define IsEnglish [LKHelper isEnglish]
+
+@interface LKHelper : NSObject
+
++ (instancetype)sharedInstance;
+
++ (NSFont *)italicFontOfSize:(CGFloat)fontSize;
+
++ (NSString *)lookinVersion;
+
++ (void)openLookinWebsiteWithPath:(NSString *)path;
+
++ (void)openLookinOfficialWebsite;
+
++ (void)openCustomConfigWebsite;
+
++ (BOOL)isEnglish;
+
+/// macOS 10.14 及以后返回用户的系统主题色，旧版本系统返回蓝色
