@@ -83,3 +83,14 @@ CG_INLINE HorizontalMargins HorizontalMarginsMake(CGFloat left, CGFloat right) {
 + (BOOL)isEnglish;
 
 /// macOS 10.14 及以后返回用户的系统主题色，旧版本系统返回蓝色
++ (NSColor *)accentColor;
+
++ (NSArray<NSString *> *)bestMatchesInCandidates:(NSArray<NSString *> *)candidates input:(NSString *)input maxResultsCount:(NSUInteger)maxResultsCount;
+
+/// 使用 UIImageView 的 “使用预览打开该图片” 功能时会创建临时图片文件，它们的路径会保存在这里，Lookin 退出时应当删除这些临时文件
+/// 创建图片的相关逻辑见 LKDashboardAttributeOpenImageView.m
+@property(nonatomic, strong) NSMutableArray<NSString *> *tempImageFiles;
+
+/// macOS 10.14 及之后返回系统的 [NSTextView scrollableTextView]。10.13 由该方法自己实现。
+/// 当使用自己实现的版本时（即 10.13 系统），需要业务自己负责 textView（即  scrollableTextView.documentVie）的布局
++ (NSScrollView *)
