@@ -29,4 +29,15 @@
 - (BOOL)showReaderWithFilePath:(NSString *)filePath error:(NSError **)error;
 - (void)showReaderWithHierarchyFile:(LookinHierarchyFile *)file title:(NSString *)title;
 
-@property(nonatomic, strong, readonly) LKLaunchWindowController *la
+@property(nonatomic, strong, readonly) LKLaunchWindowController *launchWindowController;
+@property(nonatomic, strong, readonly) LKStaticWindowController *staticWindowController;
+@property(nonatomic, strong, readonly) LKMethodTraceWindowController *methodTraceWindowController;
+@property(nonatomic, strong) NSMutableArray<LKReadWindowController *> *readWindowControllers;
+
+- (LKWindowController *)currentKeyWindowController;
+
+@property(nonatomic, weak) LKMethodTraceDataSource *activeMethodTraceDataSource;
+
+@property(nonatomic, assign) CGFloat windowTitleBarHeight;
+
+@end
