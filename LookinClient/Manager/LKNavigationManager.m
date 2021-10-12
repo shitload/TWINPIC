@@ -25,4 +25,25 @@
 
 @interface LKNavigationManager ()
 
-@p
+@property(nonatomic, strong) LKPreferenceWindowController *preferenceWindowController;
+@property(nonatomic, strong) LKAboutWindowController *aboutWindowController;
+
+@end
+
+@implementation LKNavigationManager
+
++ (instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    static LKNavigationManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (void)showLaunch {
+    _launchWindowController = [[LKLaunchWindowController alloc
