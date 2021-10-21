@@ -46,4 +46,23 @@
 }
 
 - (void)showLaunch {
-    _launchWindowController = [[LKLaunchWindowController alloc
+    _launchWindowController = [[LKLaunchWindowController alloc] init];
+    [self.launchWindowController showWindow:self];
+}
+
+- (void)showStaticWorkspace {
+    if (!self.staticWindowController) {
+        _staticWindowController = [[LKStaticWindowController alloc] init];
+        self.staticWindowController.window.delegate = self;
+    }
+    [self.staticWindowController showWindow:self];
+}
+
+- (void)closeLaunch {
+    [self.launchWindowController close];
+    _launchWindowController = nil;
+}
+
+- (void)showPreference {
+    if (!self.preferenceWindowController) {
+        self.preferenceWindowController = [LKPre
