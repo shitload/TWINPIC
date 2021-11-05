@@ -65,4 +65,21 @@
 
 - (void)showPreference {
     if (!self.preferenceWindowController) {
-        self.preferenceWindowController = [LKPre
+        self.preferenceWindowController = [LKPreferenceWindowController new];
+        self.preferenceWindowController.window.delegate = self;
+    }
+    [self.preferenceWindowController showWindow:self];
+}
+
+- (void)showAbout {
+    if (!self.aboutWindowController) {
+        _aboutWindowController = [[LKAboutWindowController alloc] init];
+        self.aboutWindowController.window.delegate = self;
+    }
+    [self.aboutWindowController showWindow:self];
+}
+
+- (void)showMethodTrace {
+    if (!self.methodTraceWindowController) {
+        if (![LKAppsManager sharedInstance].inspectingApp) {
+            NSWin
