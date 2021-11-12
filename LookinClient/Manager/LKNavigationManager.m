@@ -82,4 +82,17 @@
 - (void)showMethodTrace {
     if (!self.methodTraceWindowController) {
         if (![LKAppsManager sharedInstance].inspectingApp) {
-            NSWin
+            NSWindow *window = self.staticWindowController.window;
+            AlertErrorText(NSLocalizedString(@"Can not use Method Trace at this time.", nil), NSLocalizedString(@"Lost connection with the iOS app.", nil), window);
+            return;
+        }
+        
+        _methodTraceWindowController = [LKMethodTraceWindowController new];
+        self.methodTraceWindowController.window.delegate = self;
+    }
+    [self.methodTraceWindowController showWindow:self];
+    
+    [MSACAnalytics trackEvent:@"Launch MethodTrace"];
+}
+
+- (LKWindowController *)currentKeyWi
