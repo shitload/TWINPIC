@@ -95,4 +95,18 @@
     [MSACAnalytics trackEvent:@"Launch MethodTrace"];
 }
 
-- (LKWindowController *)currentKeyWi
+- (LKWindowController *)currentKeyWindowController {
+    NSWindow *keyWindow = [NSApplication sharedApplication].keyWindow;
+    if ([keyWindow.windowController isKindOfClass:[LKWindowController class]]) {
+        return keyWindow.windowController;
+    }
+    return nil;
+}
+
+- (BOOL)showReaderWithFilePath:(NSString *)filePath error:(NSError **)error {
+    NSData *data = [NSData dataWithContentsOfFile:filePath options:0 error:error];
+    if (!data) {
+        return NO;
+    }
+    
+    id dataObj = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error
