@@ -109,4 +109,17 @@
         return NO;
     }
     
-    id dataObj = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error
+    id dataObj = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:error];
+    if (!dataObj) {
+        // 比如拖了一个 pdf 格式的文件进来就会走到这里
+        if (error) {
+            *error = [NSError errorWithDomain:LookinErrorDomain code:LookinErrCode_UnsupportedFileType userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"Failed to open the document.", nil), NSLocalizedRecoverySuggestionErrorKey:NSLocalizedString(@"The file type is not supported.", nil)}];
+        }
+        return NO;
+    }
+    
+    NSError *verifyError = [LookinHierarchyFile verifyHierarchyFile:dataObj];
+    if (verifyError) {
+        // 有问题，无法打开
+        if (error) {
+            *er
