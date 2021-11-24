@@ -122,4 +122,22 @@
     if (verifyError) {
         // 有问题，无法打开
         if (error) {
-            *er
+            *error = verifyError;
+        }
+        return NO;
+    }
+    
+    // 文件校验无误
+    NSString *title = [[NSFileManager defaultManager] displayNameAtPath:filePath];
+    [self showReaderWithHierarchyFile:dataObj title:title];
+    return YES;
+}
+
+- (void)showReaderWithHierarchyFile:(LookinHierarchyFile *)file title:(NSString *)title {
+    LKReadWindowController *wc = [[LKReadWindowController alloc] initWithFile:file];
+    wc.window.title = title ? : @"";
+    wc.window.delegate = self;
+    [wc showWindow:self];
+    
+    if (!self.readWindowControllers) {
+        self.readWindowControllers = [NSMutableArr
