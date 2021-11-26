@@ -140,4 +140,23 @@
     [wc showWindow:self];
     
     if (!self.readWindowControllers) {
-        self.readWindowControllers = [NSMutableArr
+        self.readWindowControllers = [NSMutableArray array];
+    }
+    [self.readWindowControllers addObject:wc];
+}
+
+#pragma mark - <NSWindowDelegate>
+
+
+/**
+ staticWindowController 关闭时不要直接释放，因为点击 methodTrace 窗口的“连接已断开” tips 需要唤起 static 窗口来切换 App
+ */
+- (void)windowWillClose:(NSNotification *)notification {
+    NSWindow *closingWindow = notification.object;
+    
+    if (closingWindow == self.preferenceWindowController.window) {
+        _preferenceWindowController = nil;
+        
+    } else if (closingWindow == self.staticWindowController.window) {
+        [closingWindow saveFrameUsingName:LKWindowSizeName_Static];
+      
