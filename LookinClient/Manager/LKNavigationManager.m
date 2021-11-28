@@ -159,4 +159,16 @@
         
     } else if (closingWindow == self.staticWindowController.window) {
         [closingWindow saveFrameUsingName:LKWindowSizeName_Static];
-      
+        
+    } else if (closingWindow == self.methodTraceWindowController.window) {
+        [closingWindow saveFrameUsingName:LKWindowSizeName_Methods];
+        _methodTraceWindowController = nil;
+        
+    } else if (closingWindow == self.aboutWindowController.window) {
+        self.aboutWindowController = nil;
+        
+    } else {
+        LKReadWindowController *wc = [self.readWindowControllers lookin_firstFiltered:^BOOL(LKReadWindowController *obj) {
+            return obj.window == closingWindow;
+        }];
+        [s
