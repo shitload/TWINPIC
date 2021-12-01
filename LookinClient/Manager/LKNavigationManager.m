@@ -171,4 +171,8 @@
         LKReadWindowController *wc = [self.readWindowControllers lookin_firstFiltered:^BOOL(LKReadWindowController *obj) {
             return obj.window == closingWindow;
         }];
-        [s
+        [self.readWindowControllers removeObject:wc];
+    }
+}
+
+@end
