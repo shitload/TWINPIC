@@ -25,4 +25,12 @@ static NSString * const Key_ShowHiddenItems = @"showHiddenItems";
 static NSString * const Key_EnableReport = @"enableReport";
 static NSString * const Key_RgbaFormat = @"egbaFormat";
 static NSString * const Key_ZInterspace = @"zInterspace_v095";
-static NSString * const K
+static NSString * const Key_AppearanceType = @"appearanceType";
+static NSString * const Key_ExpansionIndex = @"expansionIndex";
+static NSString * const Key_SectionsShow = @"ss";
+static NSString * const Key_CollapsedGroups = @"collapsedGroups_918";
+static NSString * const Key_PreferredExportCompression = @"preferredExportCompression";
+static NSString * const Key_CallStackType = @"callStackType";
+static NSString * const Key_SyncConsoleTarget = @"syncConsoleTarget";
+static NSString * const Key_FreeRotation = @"FreeRotation";
+static NSString * const Key_ReceivingConfigTime_Color = @"ConfigTime_Colo
