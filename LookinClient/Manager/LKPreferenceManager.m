@@ -33,4 +33,22 @@ static NSString * const Key_PreferredExportCompression = @"preferredExportCompre
 static NSString * const Key_CallStackType = @"callStackType";
 static NSString * const Key_SyncConsoleTarget = @"syncConsoleTarget";
 static NSString * const Key_FreeRotation = @"FreeRotation";
-static NSString * const Key_ReceivingConfigTime_Color = @"ConfigTime_Colo
+static NSString * const Key_ReceivingConfigTime_Color = @"ConfigTime_Color";
+static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
+
+@interface LKPreferenceManager ()
+
+@property(nonatomic, strong) NSMutableDictionary<LookinAttrSectionIdentifier, NSNumber *> *storedSectionShowConfig;
+
+@end
+
+@implementation LKPreferenceManager
+
++ (instancetype)mainManager {
+    static dispatch_once_t onceToken;
+    static LKPreferenceManager *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+        instance.shouldStoreToLocal = YES;
+    });
+    return
