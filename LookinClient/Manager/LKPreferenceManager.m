@@ -51,4 +51,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         instance = [[super allocWithZone:NULL] init];
         instance.shouldStoreToLocal = YES;
     });
-    return
+    return instance;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _previewScale = [LookinDoubleMsgAttribute attributeWithDouble:LKInitialPreviewScale];
+        _previewDimension = [LookinIntegerMsgAttribute attributeWithInteger:LookinPreviewDimension3D];
+        _isMeasuring = [LookinBOOLMsgAttribute attributeWithBOOL:NO];
+        _isQuickSelecting = [LookinBOOLMsgAttribute attributeWithBOOL:NO];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        // 如果本次 Lookin 客户端的 version 和上次不同，则该变量会被置为 YES
+//  
