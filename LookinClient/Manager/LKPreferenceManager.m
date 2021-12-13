@@ -64,4 +64,13 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         
         // 如果本次 Lookin 客户端的 version 和上次不同，则该变量会被置为 YES
-//  
+//        BOOL clientVersionHasChanged = NO;
+        NSInteger prevClientVersion = [userDefaults integerForKey:Key_PreviousClientVersion];
+        if (prevClientVersion != LOOKIN_CLIENT_VERSION) {
+//            clientVersionHasChanged = YES;
+            [[NSUserDefaults standardUserDefaults] setInteger:LOOKIN_CLIENT_VERSION forKey:Key_PreviousClientVersion];
+        }
+        
+        NSNumber *obj_showOutline = [userDefaults objectForKey:Key_ShowOutline];
+        if (obj_showOutline != nil) {
+            _showOutline = [LookinBOOLMsgAttribute attributeWithBOOL:[obj_sho
