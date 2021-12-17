@@ -73,4 +73,13 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         
         NSNumber *obj_showOutline = [userDefaults objectForKey:Key_ShowOutline];
         if (obj_showOutline != nil) {
-            _showOutline = [LookinBOOLMsgAttribute attributeWithBOOL:[obj_sho
+            _showOutline = [LookinBOOLMsgAttribute attributeWithBOOL:[obj_showOutline boolValue]];
+        } else {
+            _showOutline = [LookinBOOLMsgAttribute attributeWithBOOL:YES];
+            [userDefaults setObject:@(YES) forKey:Key_ShowOutline];
+        }
+        [self.showHiddenItems subscribe:self action:@selector(_handleShowOutlineDidChange:) relatedObject:nil];
+        
+        NSNumber *obj_showHiddenItems = [userDefaults objectForKey:Key_ShowHiddenItems];
+        if (obj_showHiddenItems != nil) {
+            _showHiddenItems = [LookinBOOLMsgAttribute attributeWithBOOL:[obj_showHiddenItems boolValue]];
