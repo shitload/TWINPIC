@@ -83,3 +83,15 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         NSNumber *obj_showHiddenItems = [userDefaults objectForKey:Key_ShowHiddenItems];
         if (obj_showHiddenItems != nil) {
             _showHiddenItems = [LookinBOOLMsgAttribute attributeWithBOOL:[obj_showHiddenItems boolValue]];
+        } else {
+            _showHiddenItems = [LookinBOOLMsgAttribute attributeWithBOOL:NO];
+            [userDefaults setObject:@(NO) forKey:Key_ShowHiddenItems];
+        }
+        [self.showHiddenItems subscribe:self action:@selector(_handleShowHiddenItemsChange:) relatedObject:nil];
+        
+        NSNumber *obj_enableReport = [userDefaults objectForKey:Key_EnableReport];
+        if (obj_enableReport != nil) {
+            _enableReport = [obj_enableReport boolValue];
+        } else {
+            _enableReport = YES;
+   
