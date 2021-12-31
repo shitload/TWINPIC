@@ -94,4 +94,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
             _enableReport = [obj_enableReport boolValue];
         } else {
             _enableReport = YES;
-   
+            [userDefaults setObject:@(_enableReport) forKey:Key_EnableReport];
+        }
+        
+        NSNumber *obj_rgbaFormat = [userDefaults objectForKey:Key_RgbaFormat];
+        if (obj_rgbaFormat != nil) {
+            _rgbaFormat = [obj_rgbaFormat boolValue];
+        } else {
+            _rgbaFormat = YES;
+            [userDefaults setObject:@(_rgbaFormat) forKey:Key_RgbaFormat];
+        }
+        
+        double zInterspaceValue;
+        NSNumber *obj_zInterspace = [userDefaults objectForKey:Key_ZInterspace];
+        if (ob
