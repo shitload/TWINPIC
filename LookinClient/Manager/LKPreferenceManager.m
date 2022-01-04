@@ -107,4 +107,15 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         
         double zInterspaceValue;
         NSNumber *obj_zInterspace = [userDefaults objectForKey:Key_ZInterspace];
-        if (ob
+        if (obj_zInterspace != nil) {
+            zInterspaceValue = [obj_zInterspace doubleValue];
+        } else {
+            /// 默认值为 0.22
+            zInterspaceValue = .22;
+            [userDefaults setObject:@(zInterspaceValue) forKey:Key_ZInterspace];
+        }
+        zInterspaceValue = MAX(MIN(zInterspaceValue, LookinPreviewMaxZInterspace), LookinPreviewMinZInterspace);
+        _zInterspace = [LookinDoubleMsgAttribute attributeWithDouble:zInterspaceValue];
+        [self.zInterspace subscribe:self action:@selector(_handleZInterspaceDidChange:) relatedObject:nil];
+        
+  
