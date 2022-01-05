@@ -129,4 +129,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         NSNumber *obj_expansionIndex = [userDefaults objectForKey:Key_ExpansionIndex];
         if (obj_expansionIndex != nil) {
             _expansionIndex = [obj_expansionIndex integerValue];
-        } else 
+        } else {
+            _expansionIndex = 3;
+            [userDefaults setObject:@(_expansionIndex) forKey:Key_ExpansionIndex];
+        }
+        
+        NSNumber *obj_syncConsoleTarget = [userDefaults objectForKey:Key_SyncConsoleTarget];
+        if (obj_syncConsoleTarget != nil) {
+            _syncConsoleTarget = [obj_syncConsoleTarget boolValue];
+        } else {
+            _syncConsoleTarget = YES;
+            [userDefaults setObject:@(_syncConsoleTarget) forKey:Key_SyncConsoleTarget];
+        }
+        
+        NSNumber *obj_freeRotation = [us
