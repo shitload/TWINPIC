@@ -162,4 +162,13 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         }
         
         NSNumber *obj_preferredExportCompression = [userDefaults objectForKey:Key_PreferredExportCompression];
-        if (obj
+        if (obj_preferredExportCompression != nil) {
+            _preferredExportCompression = [obj_preferredExportCompression doubleValue];
+        } else {
+            /// 这里的默认值需要在 LKExportAccessory.m 里定义的选项里面
+            _preferredExportCompression = .5;
+            [userDefaults setObject:@(_preferredExportCompression) forKey:Key_PreferredExportCompression];
+        }
+        
+        _receivingConfigTime_Color = [userDefaults doubleForKey:Key_ReceivingConfigTime_Color];
+        _receivingConfigTime_Class = [userDef
