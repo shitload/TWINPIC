@@ -142,4 +142,13 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
             [userDefaults setObject:@(_syncConsoleTarget) forKey:Key_SyncConsoleTarget];
         }
         
-        NSNumber *obj_freeRotation = [us
+        NSNumber *obj_freeRotation = [userDefaults objectForKey:Key_FreeRotation];
+        if (obj_freeRotation != nil) {
+            _freeRotation = [LookinBOOLMsgAttribute attributeWithBOOL:obj_freeRotation.boolValue];
+        } else {
+            _freeRotation = [LookinBOOLMsgAttribute attributeWithBOOL:YES];
+            [userDefaults setObject:@(_freeRotation.currentBOOLValue) forKey:Key_FreeRotation];
+        }
+        [self.freeRotation subscribe:self action:@selector(_handleFreeRotationDidChange:) relatedObject:nil];
+        
+        self.storedSectionShowConfig = [[userDefault
