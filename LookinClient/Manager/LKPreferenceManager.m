@@ -151,4 +151,15 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         }
         [self.freeRotation subscribe:self action:@selector(_handleFreeRotationDidChange:) relatedObject:nil];
         
-        self.storedSectionShowConfig = [[userDefault
+        self.storedSectionShowConfig = [[userDefaults objectForKey:Key_SectionsShow] mutableCopy];
+        if (!self.storedSectionShowConfig) {
+            self.storedSectionShowConfig = [NSMutableDictionary dictionary];
+        }
+        
+        _collapsedAttrGroups = [userDefaults objectForKey:Key_CollapsedGroups];
+        if (!_collapsedAttrGroups) {
+            _collapsedAttrGroups = @[LookinAttrGroup_Class];
+        }
+        
+        NSNumber *obj_preferredExportCompression = [userDefaults objectForKey:Key_PreferredExportCompression];
+        if (obj
