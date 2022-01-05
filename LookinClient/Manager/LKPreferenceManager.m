@@ -118,4 +118,15 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         _zInterspace = [LookinDoubleMsgAttribute attributeWithDouble:zInterspaceValue];
         [self.zInterspace subscribe:self action:@selector(_handleZInterspaceDidChange:) relatedObject:nil];
         
-  
+        NSNumber *obj_appearanceType = [userDefaults objectForKey:Key_AppearanceType];
+        if (obj_appearanceType != nil) {
+            _appearanceType = [obj_appearanceType integerValue];
+        } else {
+            _appearanceType = LookinPreferredAppeanranceTypeSystem;
+            [userDefaults setObject:@(_appearanceType) forKey:Key_AppearanceType];
+        }
+        
+        NSNumber *obj_expansionIndex = [userDefaults objectForKey:Key_ExpansionIndex];
+        if (obj_expansionIndex != nil) {
+            _expansionIndex = [obj_expansionIndex integerValue];
+        } else 
