@@ -171,4 +171,22 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
         }
         
         _receivingConfigTime_Color = [userDefaults doubleForKey:Key_ReceivingConfigTime_Color];
-        _receivingConfigTime_Class = [userDef
+        _receivingConfigTime_Class = [userDefaults doubleForKey:Key_ReceivingConfigTime_Class];
+    }
+    return self;
+}
+
+- (void)_handleShowOutlineDidChange:(LookinMsgActionParams *)param {
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(param.boolValue) forKey:Key_ShowOutline];
+    }
+}
+
+- (void)_handleShowHiddenItemsChange:(LookinMsgActionParams *)param {
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(param.boolValue) forKey:Key_ShowHiddenItems];
+    }
+}
+
+- (void)setEnableReport:(BOOL)enableReport {
+   
