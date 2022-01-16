@@ -226,4 +226,19 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
     }
     _expansionIndex = expansionIndex;
     if (self.shouldStoreToLocal) {
-        [[NSUserDefaults 
+        [[NSUserDefaults standardUserDefaults] setObject:@(expansionIndex) forKey:Key_ExpansionIndex];
+    }
+}
+
+- (void)setCollapsedAttrGroups:(NSArray<NSNumber *> *)collapsedAttrGroups {
+    _collapsedAttrGroups = collapsedAttrGroups.copy;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:collapsedAttrGroups forKey:Key_CollapsedGroups];
+    }
+}
+
+- (void)setPreferredExportCompression:(CGFloat)preferredExportCompression {
+    if (_preferredExportCompression == preferredExportCompression) {
+        return;
+    }
+    _preferredExportCompres
