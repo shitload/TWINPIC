@@ -206,4 +206,24 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
     }
     _rgbaFormat = rgbaFormat;
     if (self.shouldStoreToLocal) {
-        [[NSUserDefaults standardUserDefaults] setObject:@(rgbaFormat) fo
+        [[NSUserDefaults standardUserDefaults] setObject:@(rgbaFormat) forKey:Key_RgbaFormat];
+    }
+}
+
+- (void)setAppearanceType:(LookinPreferredAppeanranceType)appearanceType {    
+    if (_appearanceType == appearanceType) {
+        return;
+    }
+    _appearanceType = appearanceType;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(appearanceType) forKey:Key_AppearanceType];
+    }
+}
+
+- (void)setExpansionIndex:(NSInteger)expansionIndex {
+    if (_expansionIndex == expansionIndex) {
+        return;
+    }
+    _expansionIndex = expansionIndex;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults 
