@@ -189,4 +189,21 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
 }
 
 - (void)setEnableReport:(BOOL)enableReport {
-   
+    if (_enableReport == enableReport) {
+        return;
+    }
+    _enableReport = enableReport;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(enableReport) forKey:Key_EnableReport];
+    }
+    
+    MSACAppCenter.enabled = enableReport;
+}
+
+- (void)setRgbaFormat:(BOOL)rgbaFormat {
+    if (_rgbaFormat == rgbaFormat) {
+        return;
+    }
+    _rgbaFormat = rgbaFormat;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(rgbaFormat) fo
