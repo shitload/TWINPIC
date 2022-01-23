@@ -241,4 +241,21 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
     if (_preferredExportCompression == preferredExportCompression) {
         return;
     }
-    _preferredExportCompres
+    _preferredExportCompression = preferredExportCompression;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(preferredExportCompression) forKey:Key_PreferredExportCompression];
+    }
+}
+
+- (void)setCallStackType:(LookinPreferredCallStackType)callStackType {
+    if (callStackType < 0 || callStackType > 2) {
+        NSAssert(NO, @"");
+        callStackType = 0;
+    }
+    _callStackType = callStackType;
+}
+
+- (void)setSyncConsoleTarget:(BOOL)syncConsoleTarget {
+    if (_syncConsoleTarget == syncConsoleTarget) {
+        return;
+  
