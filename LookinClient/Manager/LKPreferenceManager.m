@@ -258,4 +258,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
 - (void)setSyncConsoleTarget:(BOOL)syncConsoleTarget {
     if (_syncConsoleTarget == syncConsoleTarget) {
         return;
-  
+    }
+    _syncConsoleTarget = syncConsoleTarget;
+    if (self.shouldStoreToLocal) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(syncConsoleTarget) forKey:Key_SyncConsoleTarget];
+    }
+}
+
+- (void)setReceivingConfigTime_Class:(NSTimeInterval)receivingConfigTime_Class {
+    _receivingConfigTime_Class = receivingConfigTime_Class;
+    [[NSUserDefaults standardUserDefaults] setDouble:receivingConfigTime_Class forKey:Key_ReceivingConfigTime_Class];
+}
+
+- (void)setReceivingConfigTime_Color:(NSTimeInterval)receivingConfigTime_Color {
+    _rece
