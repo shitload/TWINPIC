@@ -271,4 +271,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
 }
 
 - (void)setReceivingConfigTime_Color:(NSTimeInterval)receivingConfigTime_Color {
-    _rece
+    _receivingConfigTime_Color = receivingConfigTime_Color;
+    [[NSUserDefaults standardUserDefaults] setDouble:receivingConfigTime_Color forKey:Key_ReceivingConfigTime_Color];
+}
+
+- (void)_handleFreeRotationDidChange:(LookinMsgActionParams *)param {
+    if (!self.shouldStoreToLocal) {
+        return;
+    }
+    BOOL boolValue = param.boolValue;
+    [[NSUserDefaults standardUserDefaults] setObject:@(boolValue) forKey:Key_FreeRotation];
+}
+
+- (void)_handleZInterspaceDidChange:(LookinMsgActionParams *)param {
+    if (!self.shouldStoreToLocal) 
