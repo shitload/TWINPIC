@@ -304,4 +304,17 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
     }
 }
 
-/// 把某个 section 显示在主
+/// 把某个 section 显示在主界面上
+- (void)showSection:(LookinAttrSectionIdentifier)secID {
+    if ([self isSectionShowing:secID]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    self.storedSectionShowConfig[secID] = @(YES);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationName_DidChangeSectionShowing object:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:self.storedSectionShowConfig.copy forKey:Key_SectionsShow];
+}
+
+/// 把某个 section 从主界面上移除
+- (void)hideSection:(LookinAttrSectionIdentifier)secID {
+    if (![self isSectionSho
