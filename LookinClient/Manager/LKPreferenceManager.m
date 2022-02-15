@@ -284,4 +284,24 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
 }
 
 - (void)_handleZInterspaceDidChange:(LookinMsgActionParams *)param {
-    if (!self.shouldStoreToLocal) 
+    if (!self.shouldStoreToLocal) {
+        return;
+    }
+    double doubleValue = param.doubleValue;
+    [[NSUserDefaults standardUserDefaults] setObject:@(doubleValue) forKey:Key_ZInterspace];
+}
+
+/// 返回某个 section 是否应该被显示在主界面上
+- (BOOL)isSectionShowing:(LookinAttrSectionIdentifier)secID {
+    if (self.storedSectionShowConfig[secID] != nil) {
+        return [self.storedSectionShowConfig[secID] boolValue];
+    }
+    NSSet<LookinAttrSectionIdentifier> *showingSecIDs = [self _showingSecIDsInDefault];
+    if ([showingSecIDs containsObject:secID]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+/// 把某个 section 显示在主
