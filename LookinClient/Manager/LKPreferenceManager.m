@@ -317,4 +317,18 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
 
 /// 把某个 section 从主界面上移除
 - (void)hideSection:(LookinAttrSectionIdentifier)secID {
-    if (![self isSectionSho
+    if (![self isSectionShowing:secID]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    self.storedSectionShowConfig[secID] = @(NO);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationName_DidChangeSectionShowing object:nil];
+    [[NSUserDefaults standardUserDefaults] setObject:self.storedSectionShowConfig.copy forKey:Key_SectionsShow];
+}
+
+/// 返回默认情况下，哪些 section 应该被显示在主界面上
+- (NSSet<LookinAttrSectionIdentifier> *)_showingSecIDsInDefault {
+    static dispatch_once_t onceToken;
+    static NSSet *targetSet = nil;
+    dispatch_once(&onceToken,^{
+     
