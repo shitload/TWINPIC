@@ -338,4 +338,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         LookinAttrSec_Layout_Frame,
                                                         LookinAttrSec_Layout_Bounds,
                                                         
-                                                        LookinAttrSec_AutoLayout_Hu
+                                                        LookinAttrSec_AutoLayout_Hugging,
+                                                        LookinAttrSec_AutoLayout_Resistance,
+                                                        LookinAttrSec_AutoLayout_Constraints,
+                                                        LookinAttrSec_AutoLayout_IntrinsicSize,
+                                                        
+                                                        LookinAttrSec_ViewLayer_Visibility,
+                                                        LookinAttrSec_ViewLayer_InterationAndMasks,
+                                   
