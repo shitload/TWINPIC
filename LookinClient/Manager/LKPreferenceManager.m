@@ -351,4 +351,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         LookinAttrSec_ViewLayer_Shadow,
                                                         
                                                         LookinAttrSec_UIVisualEffectView_Style,
-                                                        LookinAttrSec_UIVisualEffectView_QMUIForeg
+                                                        LookinAttrSec_UIVisualEffectView_QMUIForegroundColor,
+                                                        
+                                                        LookinAttrSec_UIImageView_Name,
+                                                        LookinAttrSec_UIImageView_Open,
+                                                        
+                                                        LookinAttrSec_UILabel_Text,
+                                                        LookinAttrSec_UILabel_Font,
+                                                        LookinAttrSec_U
