@@ -358,4 +358,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         
                                                         LookinAttrSec_UILabel_Text,
                                                         LookinAttrSec_UILabel_Font,
-                                                        LookinAttrSec_U
+                                                        LookinAttrSec_UILabel_NumberOfLines,
+                                                        LookinAttrSec_UILabel_TextColor,
+                                                        LookinAttrSec_UILabel_BreakMode,
+                                                        LookinAttrSec_UILabel_Alignment,
+                                                        
+                                                        LookinAttrSec_UIControl_EnabledSelected,
+                                                        LookinAttrSec_UIControl_QMUIOutsideEdge,
+                                                      
