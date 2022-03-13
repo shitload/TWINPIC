@@ -331,4 +331,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
     static dispatch_once_t onceToken;
     static NSSet *targetSet = nil;
     dispatch_once(&onceToken,^{
-     
+        NSArray<LookinAttrSectionIdentifier> *array = @[LookinAttrSec_Class_Class,
+                                                        
+                                                        LookinAttrSec_Relation_Relation,
+                                                        
+                                                        LookinAttrSec_Layout_Frame,
+                                                        LookinAttrSec_Layout_Bounds,
+                                                        
+                                                        LookinAttrSec_AutoLayout_Hu
