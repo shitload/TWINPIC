@@ -345,4 +345,10 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         
                                                         LookinAttrSec_ViewLayer_Visibility,
                                                         LookinAttrSec_ViewLayer_InterationAndMasks,
-                                   
+                                                        LookinAttrSec_ViewLayer_Corner,
+                                                        LookinAttrSec_ViewLayer_BgColor,
+                                                        LookinAttrSec_ViewLayer_Border,
+                                                        LookinAttrSec_ViewLayer_Shadow,
+                                                        
+                                                        LookinAttrSec_UIVisualEffectView_Style,
+                                                        LookinAttrSec_UIVisualEffectView_QMUIForeg
