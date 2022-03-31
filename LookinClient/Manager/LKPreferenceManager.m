@@ -378,4 +378,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         LookinAttrSec_UITableView_Style,
                                                         LookinAttrSec_UITableView_SectionsNumber,
                                                         LookinAttrSec_UITableView_RowsNumber,
-                                        
+                                                        
+                                                        LookinAttrSec_UITextView_Text,
+                                                        LookinAttrSec_UITextView_Font,
+                                                        LookinAttrSec_UITextView_TextColor,
+                                                        LookinAttrSec_UITextView_Alignment,
+                                                        LookinAttrSec_UITextView_ContainerInset,
+                                                        
+                                           
