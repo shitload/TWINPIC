@@ -371,4 +371,11 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         LookinAttrSec_UIScrollView_ContentInset,
                                                         LookinAttrSec_UIScrollView_AdjustedInset,
                                                         LookinAttrSec_UIScrollView_IndicatorInset,
-                                                        LookinAttrSec_UIScrollView_Offset
+                                                        LookinAttrSec_UIScrollView_Offset,
+                                                        LookinAttrSec_UIScrollView_ContentSize,
+                                                        LookinAttrSec_UIScrollView_Behavior,
+                                                        
+                                                        LookinAttrSec_UITableView_Style,
+                                                        LookinAttrSec_UITableView_SectionsNumber,
+                                                        LookinAttrSec_UITableView_RowsNumber,
+                                        
