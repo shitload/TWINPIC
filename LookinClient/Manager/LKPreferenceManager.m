@@ -365,4 +365,10 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         
                                                         LookinAttrSec_UIControl_EnabledSelected,
                                                         LookinAttrSec_UIControl_QMUIOutsideEdge,
-                                                      
+                                                        
+                                                        LookinAttrSec_UIButton_ContentInsets,
+                                                        
+                                                        LookinAttrSec_UIScrollView_ContentInset,
+                                                        LookinAttrSec_UIScrollView_AdjustedInset,
+                                                        LookinAttrSec_UIScrollView_IndicatorInset,
+                                                        LookinAttrSec_UIScrollView_Offset
