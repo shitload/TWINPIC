@@ -385,4 +385,14 @@ static NSString * const Key_ReceivingConfigTime_Class = @"ConfigTime_Class";
                                                         LookinAttrSec_UITextView_Alignment,
                                                         LookinAttrSec_UITextView_ContainerInset,
                                                         
-                                           
+                                                        LookinAttrSec_UITextField_Text,
+                                                        LookinAttrSec_UITextField_Font,
+                                                        LookinAttrSec_UITextField_TextColor,
+                                                        LookinAttrSec_UITextField_Alignment
+        ];
+        targetSet = [NSSet setWithArray:array];
+    });
+    return targetSet;
+}
+
+@end
