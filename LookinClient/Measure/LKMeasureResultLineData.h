@@ -22,4 +22,12 @@
 
 @interface LKMeasureResultVerLineData : NSObject
 
-+ (instancetype)dataWithStartY:(CGFlo
++ (instancetype)dataWithStartY:(CGFloat)startY endY:(CGFloat)endY x:(CGFloat)x value:(CGFloat)value;
+
+@property(nonatomic, assign) CGFloat startY;
+@property(nonatomic, assign) CGFloat endY;
+@property(nonatomic, assign) CGFloat x;
+
+@property(nonatomic, assign) CGFloat displayValue;
+
+@end
