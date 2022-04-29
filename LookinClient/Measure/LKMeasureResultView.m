@@ -29,4 +29,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 @property(nonatomic, strong) NSImageView *mainImageView;
 @property(nonatomic, strong) NSImageView *referImageView;
 
-/// 如果直接把 solidLinesLayer 作为 contentView.layer 的 sublayer 则经常出现 linesLayer 被 imageView.layer 盖住的情况，貌似 imageView.layer 是懒加载的且时机不
+/// 如果直接把 solidLinesLayer 作为 contentView.layer 的 sublayer 则经常出现 linesLayer 被 imageView.layer 盖住的情况，貌似 imageView.layer 是懒加载的且时机不好掌握，因此这里多包一层 view 吧确保顺序
+@property(nonatomic, strong) LKBaseView *linesContainerView;
+@property(nonatomic, strong) CAShapeLayer *solidLinesLayer;
+/// imageView 重叠时会被半透明处理，我们又不想半透明 border，所以单独把 border 作为 layer
+@property(nonatomic, strong) CALayer *mainImageViewBorderLayer;
+@property(nonatomic, strong) CALayer *referImageViewBorderLayer;
+
+@property(nonatomic, strong) NSMutableArray<LKTextFieldView *> *textFieldViews;
+
+@property(nonatomic, assign) CGRect originalMainFrame;
+@property(nonatomic, assign) CGRect originalReferFrame;
+
+@property(nonatomic, assign) CGRect scaledMainFrame;
