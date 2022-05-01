@@ -75,4 +75,14 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         [self.contentView addSubview:self.referImageView];
         
         self.linesContainerView = [LKBaseView new];
-        self.linesContainerView.layer.masksT
+        self.linesContainerView.layer.masksToBounds = NO;
+        [self.contentView addSubview:self.linesContainerView];
+    
+        self.mainImageViewBorderLayer = [CALayer layer];
+        self.mainImageViewBorderLayer.borderWidth = 1;
+        [self.mainImageViewBorderLayer lookin_removeImplicitAnimations];
+        [self.linesContainerView.layer addSublayer:self.mainImageViewBorderLayer];
+        
+        self.referImageViewBorderLayer = [CALayer layer];
+        self.referImageViewBorderLayer.borderWidth = 1;
+        [self.referImageViewBorderLayer lookin_removeImplicitAni
