@@ -63,4 +63,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 
         self.contentView = [LKBaseView new];
         // label 经常会超出范围
-        self.contentView.layer.mask
+        self.contentView.layer.masksToBounds = NO;
+        [self addSubview:self.contentView];
+        
+        self.mainImageView = [NSImageView new];
+        self.mainImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
+        [self.contentView addSubview:self.mainImageView];
+        
+        self.referImageView = [NSImageView new];
+        self.referImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
+        [self.contentView addSubview:self.referImageView];
+        
+        self.linesContainerView = [LKBaseView new];
+        self.linesContainerView.layer.masksT
