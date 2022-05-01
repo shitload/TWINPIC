@@ -42,3 +42,25 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 @property(nonatomic, assign) CGRect originalReferFrame;
 
 @property(nonatomic, assign) CGRect scaledMainFrame;
+@property(nonatomic, assign) CGRect scaledReferFrame;
+
+@end
+
+@implementation LKMeasureResultView {
+    CGFloat _horInset;
+    CGFloat _verInset;
+    CGFloat _labelHeight;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        _horInset = 20;
+        _verInset = 20;
+        _labelHeight = 16;
+        
+        self.hasEffectedBackground = YES;
+        self.layer.cornerRadius = DashboardCardCornerRadius;
+
+        self.contentView = [LKBaseView new];
+        // label 经常会超出范围
+        self.contentView.layer.mask
