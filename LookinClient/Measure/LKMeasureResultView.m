@@ -100,4 +100,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 }
 
 - (void)updateColors {
-    [super updat
+    [super updateColors];
+    NSColor *borderColor = self.isDarkMode ? LookinColorMake(123, 123, 123) : LookinColorMake(190, 190, 190);
+    self.referImageViewBorderLayer.borderColor = borderColor.CGColor;
+    self.mainImageViewBorderLayer.borderColor = borderColor.CGColor;
+}
+
+- (void)layout {
+    [super layout];
+    self.mainImageView.frame = self.scaledMainFrame;
+    self.referImageView.frame = self.scaledReferFrame;
+    
+    CGFloat contentWidth, contentHeight;
+    [self _getWidth:&contentWidth height:&contentHeight fromRectA:self.scaledMainFrame re
