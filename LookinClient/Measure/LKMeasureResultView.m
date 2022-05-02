@@ -85,4 +85,19 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         
         self.referImageViewBorderLayer = [CALayer layer];
         self.referImageViewBorderLayer.borderWidth = 1;
-        [self.referImageViewBorderLayer lookin_removeImplicitAni
+        [self.referImageViewBorderLayer lookin_removeImplicitAnimations];
+        [self.linesContainerView.layer addSublayer:self.referImageViewBorderLayer];
+        
+        self.solidLinesLayer = [CAShapeLayer layer];
+        self.solidLinesLayer.lineWidth = 1;
+        [self.solidLinesLayer lookin_removeImplicitAnimations];
+        self.solidLinesLayer.strokeColor = LookinColorMake(10, 127, 251).CGColor;
+        [self.linesContainerView.layer addSublayer:self.solidLinesLayer];
+    
+        [self updateColors];
+    }
+    return self;
+}
+
+- (void)updateColors {
+    [super updat
