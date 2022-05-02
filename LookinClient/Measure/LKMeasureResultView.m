@@ -112,4 +112,15 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     self.referImageView.frame = self.scaledReferFrame;
     
     CGFloat contentWidth, contentHeight;
-    [self _getWidth:&contentWidth height:&contentHeight fromRectA:self.scaledMainFrame re
+    [self _getWidth:&contentWidth height:&contentHeight fromRectA:self.scaledMainFrame rectB:self.scaledReferFrame];
+    $(self.contentView).width(contentWidth).height(contentHeight).centerAlign;
+    
+    self.linesContainerView.frame = self.contentView.bounds;
+    self.solidLinesLayer.frame = self.linesContainerView.bounds;
+    self.mainImageViewBorderLayer.frame = self.mainImageView.frame;
+    self.referImageViewBorderLayer.frame = self.referImageView.frame;
+    [self _renderLinesAndLabels];
+}
+
+- (void)renderWithMainRect:(CGRect)originalMainRect mainImage:(LookinImage *)mainImage referRect:(CGRect)originalReferRect referImage:(LookinImage *)referImage {
+  
