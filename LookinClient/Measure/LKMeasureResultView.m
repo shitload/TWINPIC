@@ -123,4 +123,17 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 }
 
 - (void)renderWithMainRect:(CGRect)originalMainRect mainImage:(LookinImage *)mainImage referRect:(CGRect)originalReferRect referImage:(LookinImage *)referImage {
-  
+    self.originalMainFrame = originalMainRect;
+    self.originalReferFrame = originalReferRect;
+    
+    self.mainImageView.image = mainImage;
+    self.referImageView.image = referImage;
+    
+    CGFloat scaleFactor = [self _calculateScaleFactorWithMainRect:originalMainRect referRect:originalReferRect];
+    
+    // 这里的两个 frame 是稍后真正被 layout 使用的值
+    CGRect mainFrame = [self _adjustRect:originalMainRect withScaleFactor:scaleFactor];
+    CGRect referFrame = [self _adjustRect:originalReferRect withScaleFactor:scaleFactor];
+    
+    CGFloat minX, minY;
+    [self _ge
