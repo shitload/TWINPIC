@@ -151,4 +151,20 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     self.solidLinesLayer.hidden = YES;
     
     // 为了方便，mainFrame 记为 A，referRect 记为 B
-    CGRect r
+    CGRect rectA = self.scaledMainFrame;
+    CGRect rectB = self.scaledReferFrame;
+    
+    // 包裹对方的那个 view 应该被半透明处理，因为此时辅助线基本都落在了被包裹的 view 之外、包裹对方的 view 之内
+    if (CGRectContainsRect(rectA, rectB)) {
+        // A 包裹 B
+        self.mainImageView.alphaValue = .2;
+        self.referImageView.alphaValue = 1;
+
+    } else if (CGRectContainsRect(rectB, rectA)) {
+        // B 包裹 A
+        self.mainImageView.alphaValue = 1;
+        self.referImageView.alphaValue = .2;
+        
+    } else if (CGRectIntersectsRect(rectA, rectB)) {
+        // 两个 view 只有部分是重叠的
+        self.m
