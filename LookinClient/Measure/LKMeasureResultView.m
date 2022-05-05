@@ -136,4 +136,19 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     CGRect referFrame = [self _adjustRect:originalReferRect withScaleFactor:scaleFactor];
     
     CGFloat minX, minY;
-    [self _ge
+    [self _getMinX:&minX minY:&minY maxX:nil maxY:nil fromRectA:mainFrame rectB:referFrame];
+    
+    // 下面两句使得两个 rect 作为整体被移动 origin 至 {0, 0}
+    self.scaledMainFrame = [self _adjustRect:mainFrame withOffsetX:minX offsetY:minY];
+    self.scaledReferFrame = [self _adjustRect:referFrame withOffsetX:minX offsetY:minY];
+    
+    [self setNeedsLayout:YES];
+}
+
+/// 画那些辅助线。调用该方法前，self.scaledMainFrame 和 self.scaledReferFrame 必须已经被正确设置完毕
+- (void)_renderLinesAndLabels {
+    [self _hideAllLabels];
+    self.solidLinesLayer.hidden = YES;
+    
+    // 为了方便，mainFrame 记为 A，referRect 记为 B
+    CGRect r
