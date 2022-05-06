@@ -184,4 +184,18 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     
     CGFloat minY_A = CGRectGetMinY(rectA);
     CGFloat midY_A = CGRectGetMidY(rectA);
-    CGFloat maxY_A =
+    CGFloat maxY_A = CGRectGetMaxY(rectA);
+    CGFloat minY_B = CGRectGetMinY(rectB);
+    CGFloat midY_B = CGRectGetMidY(rectB);
+    CGFloat maxY_B = CGRectGetMaxY(rectB);
+    
+    /** 水平方向的线 START **/
+    NSMutableArray<LKMeasureResultHorLineData *> *horDatas = [NSMutableArray array];
+    
+    if (compare(minX_A, minX_B) == Smaller) {
+        
+        if (compare(maxX_A, minX_B) == Smaller) {
+            // right to left
+            addHor(horDatas, maxX_A, minX_B, midY_A, CGRectGetMinX(self.originalReferFrame) - CGRectGetMaxX(self.originalMainFrame));
+        } else {
+           
