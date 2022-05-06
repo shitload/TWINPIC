@@ -198,4 +198,13 @@ typedef NS_ENUM(NSInteger, CompareResult) {
             // right to left
             addHor(horDatas, maxX_A, minX_B, midY_A, CGRectGetMinX(self.originalReferFrame) - CGRectGetMaxX(self.originalMainFrame));
         } else {
-           
+            // maxX_A >= minX_B
+            if (compare(maxX_A, maxX_B) == Smaller) {
+                // right to right
+                addHor(horDatas, maxX_A, maxX_B, midY_A, CGRectGetMaxX(self.originalReferFrame) - CGRectGetMaxX(self.originalMainFrame));
+            } else if (compare(maxX_A, maxX_B) == Same) {
+                // nothing
+            } else if (compare(maxX_A, maxX_B) == Bigger) {
+                // right to right
+                addHor(horDatas, maxX_B, maxX_A, midY_B, CGRectGetMaxX(self.originalMainFrame) - CGRectGetMaxX(self.originalReferFrame));
+                // left to l
