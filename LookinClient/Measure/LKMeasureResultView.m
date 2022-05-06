@@ -167,4 +167,21 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         
     } else if (CGRectIntersectsRect(rectA, rectB)) {
         // 两个 view 只有部分是重叠的
-        self.m
+        self.mainImageView.alphaValue = .2;
+        self.referImageView.alphaValue = .2;
+    } else {
+        // 两个 view 没有重叠
+        self.mainImageView.alphaValue = 1;
+        self.referImageView.alphaValue = 1;
+    }
+    
+    CGFloat minX_A = CGRectGetMinX(rectA);
+    CGFloat midX_A = CGRectGetMidX(rectA);
+    CGFloat maxX_A = CGRectGetMaxX(rectA);
+    CGFloat minX_B = CGRectGetMinX(rectB);
+    CGFloat midX_B = CGRectGetMidX(rectB);
+    CGFloat maxX_B = CGRectGetMaxX(rectB);
+    
+    CGFloat minY_A = CGRectGetMinY(rectA);
+    CGFloat midY_A = CGRectGetMidY(rectA);
+    CGFloat maxY_A =
