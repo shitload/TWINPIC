@@ -232,4 +232,20 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         
         if (compare(minX_A, maxX_B) == Bigger) {
             // left to right
-            addHor(horDatas, minX_A, maxX_B, midY_A, CGRectGetMinX(self.originalMainFrame) - CGRectGetMaxX(self.origi
+            addHor(horDatas, minX_A, maxX_B, midY_A, CGRectGetMinX(self.originalMainFrame) - CGRectGetMaxX(self.originalReferFrame));
+        } else {
+            // left to left
+            addHor(horDatas, minX_B, minX_A, midY_A, CGRectGetMinX(self.originalMainFrame) - CGRectGetMinX(self.originalReferFrame));
+            
+            if (compare(maxX_A, maxX_B) == Smaller) {
+                // right to right
+                addHor(horDatas, maxX_A, maxX_B, midY_A, CGRectGetMaxX(self.originalReferFrame) - CGRectGetMaxX(self.originalMainFrame));
+            }
+        }
+    } else {
+        NSAssert(NO, @"");
+    }
+    
+    /** 水平方向的线 END **/
+    
+    /** 竖
