@@ -248,4 +248,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     
     /** 水平方向的线 END **/
     
-    /** 竖
+    /** 竖直方向的线 START **/
+    NSMutableArray<LKMeasureResultVerLineData *> *verDatas = [NSMutableArray array];
+    
+    if (compare(minY_A, minY_B) == Smaller) {
+        
+        if (compare(maxY_A, minY_B) == Smaller) {
+            // bottom to top
+            addVer(verDatas, maxY_A, minY_B, midX_A, CGRectGetMinY(self.originalReferFrame) - CGRectGetMaxY(self.originalMainFrame));
+        } else {
+            // maxY_A >= minY_B
+            if (compare(maxY_A, maxY_B) == Smaller) {
+                // bottom to bottom
+                addVer(verDatas, maxY_A, maxY_B, midX_A, CGRectGetMaxY
