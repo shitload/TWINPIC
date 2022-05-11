@@ -294,4 +294,19 @@ typedef NS_ENUM(NSInteger, CompareResult) {
             addVer(verDatas, maxY_B, minY_A, midX_A, CGRectGetMinY(self.originalMainFrame) - CGRectGetMaxY(self.originalReferFrame));
         } else {
             // top to top
-            addVer(verDatas
+            addVer(verDatas, minY_B, minY_A, midX_A, CGRectGetMinY(self.originalMainFrame) - CGRectGetMinY(self.originalReferFrame));
+        
+            if (compare(maxY_A, maxY_B) == Smaller) {
+                // bottom to bottom
+                addVer(verDatas, maxY_A, maxY_B, midX_A, CGRectGetMaxY(self.originalReferFrame) - CGRectGetMaxY(self.originalMainFrame));
+            }
+        }
+    } else {
+        NSAssert(NO, @"");
+    }
+    
+    /** 竖直方向的线 END **/
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGFloat handlerLength = 3;
+    [horDatas enumerateObjectsUsingBlock:^(LKMe
