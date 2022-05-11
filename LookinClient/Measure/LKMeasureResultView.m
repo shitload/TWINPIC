@@ -309,4 +309,12 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGFloat handlerLength = 3;
-    [horDatas enumerateObjectsUsingBlock:^(LKMe
+    [horDatas enumerateObjectsUsingBlock:^(LKMeasureResultHorLineData * _Nonnull data, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGPathMoveToPoint(path, NULL, data.startX, data.y);
+        CGPathAddLineToPoint(path, NULL, data.endX, data.y);
+        
+        // 线段两端的小把手
+        CGPathMoveToPoint(path, NULL, data.startX + .5, data.y - handlerLength);
+        CGPathAddLineToPoint(path, NULL, data.startX + .5, data.y + handlerLength);
+        CGPathMoveToPoint(path, NULL, data.endX - .5, data.y - handlerLength);
+        CGPathAddLineToPoint(path, NULL, data.endX - .5, data.y + handlerLeng
