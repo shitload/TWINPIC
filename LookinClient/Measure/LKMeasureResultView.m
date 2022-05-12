@@ -335,4 +335,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         
         LKTextFieldView *labelView = [self _dequeueAvailableTextField];
         labelView.textField.stringValue = [NSString lookin_stringFromDouble:data.displayValue decimal:2];
-        $(labelView).sizeToFit.height(
+        $(labelView).sizeToFit.height(_labelHeight).midY(data.startY + (data.endY - data.startY) / 2.0).maxX(data.x - 5);
+    }];
+    self.solidLinesLayer.path = path;
+    self.solidLinesLayer.hidden = NO;
+    CGPathRelease(path);
+}
+
+- (NSSize)sizeThatFits:(NSSize)limitedSize {
+    CGFloat minY = MIN(CGRectGetMinY(self.scaledMainFrame), CGRectGetMinY(self.scaledReferFrame));
+    CGFloat maxY = MAX(CGRectGetMaxY(self.scaledMainFrame), CGRectGetMaxY(self.scaledReferFrame));
+    CGFloat height = maxY - minY;
+    NSSize size = NSMakeSize(MeasureViewWidth, height + _verInset * 2);
+    retu
