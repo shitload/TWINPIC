@@ -327,4 +327,12 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         CGPathMoveToPoint(path, NULL, data.x, data.startY);
         CGPathAddLineToPoint(path, NULL, data.x, data.endY);
         
-      
+        // 线段两端的小把手
+        CGPathMoveToPoint(path, NULL, data.x - handlerLength, data.startY + .5);
+        CGPathAddLineToPoint(path, NULL, data.x + handlerLength, data.startY + .5);
+        CGPathMoveToPoint(path, NULL, data.x - handlerLength, data.endY - .5);
+        CGPathAddLineToPoint(path, NULL, data.x + handlerLength, data.endY - .5);
+        
+        LKTextFieldView *labelView = [self _dequeueAvailableTextField];
+        labelView.textField.stringValue = [NSString lookin_stringFromDouble:data.displayValue decimal:2];
+        $(labelView).sizeToFit.height(
