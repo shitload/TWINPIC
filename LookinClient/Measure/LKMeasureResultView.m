@@ -317,4 +317,14 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         CGPathMoveToPoint(path, NULL, data.startX + .5, data.y - handlerLength);
         CGPathAddLineToPoint(path, NULL, data.startX + .5, data.y + handlerLength);
         CGPathMoveToPoint(path, NULL, data.endX - .5, data.y - handlerLength);
-        CGPathAddLineToPoint(path, NULL, data.endX - .5, data.y + handlerLeng
+        CGPathAddLineToPoint(path, NULL, data.endX - .5, data.y + handlerLength);
+        
+        LKTextFieldView *labelView = [self _dequeueAvailableTextField];
+        labelView.textField.stringValue = [NSString lookin_stringFromDouble:data.displayValue decimal:2];
+        $(labelView).sizeToFit.height(_labelHeight).midX(data.startX + (data.endX - data.startX) / 2.0).maxY(data.y - 5);
+    }];
+    [verDatas enumerateObjectsUsingBlock:^(LKMeasureResultVerLineData * _Nonnull data, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGPathMoveToPoint(path, NULL, data.x, data.startY);
+        CGPathAddLineToPoint(path, NULL, data.x, data.endY);
+        
+      
