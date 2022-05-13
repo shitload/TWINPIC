@@ -372,4 +372,20 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 /// 将 rectA 和 rectB 视为一个整体 rect（即取它们的并集），然后获取它的各个值
 - (void)_getMinX:(inout CGFloat *)minX minY:(inout CGFloat *)minY maxX:(inout CGFloat *)maxX maxY:(inout CGFloat *)maxY fromRectA:(CGRect)rectA rectB:(CGRect)rectB {
     if (minX) {
-        *minX = MIN(CGRectGetMinX(rectA), CGRectGetMinX(rect
+        *minX = MIN(CGRectGetMinX(rectA), CGRectGetMinX(rectB));
+    }
+    if (minY) {
+        *minY = MIN(CGRectGetMinY(rectA), CGRectGetMinY(rectB));
+    }
+    if (maxX) {
+        *maxX = MAX(CGRectGetMaxX(rectA), CGRectGetMaxX(rectB));
+    }
+    if (maxY) {
+        *maxY = MAX(CGRectGetMaxY(rectA), CGRectGetMaxY(rectB));
+    }
+}
+
+/// 将 rectA 和 rectB 视为一个整体 rect（即取它们的并集），然后获取它的 width 和 height
+- (void)_getWidth:(inout CGFloat *)width height:(inout CGFloat *)height fromRectA:(CGRect)rectA rectB:(CGRect)rectB {
+    CGFloat minX, minY, maxX, maxY;
+    [self _getMinX:&minX minY:&minY maxX:&maxX maxY:&maxY fromRectA:rectA
