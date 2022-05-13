@@ -359,4 +359,17 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     CGFloat contentHeight;
     [self _getWidth:&contentWidth height:&contentHeight fromRectA:mainRect rectB:referRect];
     
-    CGFloat scaleFactor_x = conte
+    CGFloat scaleFactor_x = contentWidth / maxContentWidth;
+    CGFloat scaleFactor_y = contentHeight / maxContentHeight;
+    CGFloat scaleFactor = MAX(scaleFactor_x, scaleFactor_y);
+    if (scaleFactor <= 0) {
+        scaleFactor = 1;
+        NSAssert(NO, @"");
+    }
+    return scaleFactor;
+}
+
+/// 将 rectA 和 rectB 视为一个整体 rect（即取它们的并集），然后获取它的各个值
+- (void)_getMinX:(inout CGFloat *)minX minY:(inout CGFloat *)minY maxX:(inout CGFloat *)maxX maxY:(inout CGFloat *)maxY fromRectA:(CGRect)rectA rectB:(CGRect)rectB {
+    if (minX) {
+        *minX = MIN(CGRectGetMinX(rectA), CGRectGetMinX(rect
