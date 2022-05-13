@@ -347,4 +347,16 @@ typedef NS_ENUM(NSInteger, CompareResult) {
     CGFloat maxY = MAX(CGRectGetMaxY(self.scaledMainFrame), CGRectGetMaxY(self.scaledReferFrame));
     CGFloat height = maxY - minY;
     NSSize size = NSMakeSize(MeasureViewWidth, height + _verInset * 2);
-    retu
+    return size;
+}
+
+/// 如果按照真实的 frame 渲染肯定是装不下的，所以这里计算缩放的倍率（这个倍率可能小于 1）
+- (CGFloat)_calculateScaleFactorWithMainRect:(CGRect)mainRect referRect:(CGRect)referRect {
+    CGFloat maxContentWidth = MeasureViewWidth - _horInset * 2;
+    CGFloat maxContentHeight = MAX((self.window.frame.size.height - [LKNavigationManager sharedInstance].windowTitleBarHeight) * .8, 200);
+    
+    CGFloat contentWidth;
+    CGFloat contentHeight;
+    [self _getWidth:&contentWidth height:&contentHeight fromRectA:mainRect rectB:referRect];
+    
+    CGFloat scaleFactor_x = conte
