@@ -388,4 +388,29 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 /// 将 rectA 和 rectB 视为一个整体 rect（即取它们的并集），然后获取它的 width 和 height
 - (void)_getWidth:(inout CGFloat *)width height:(inout CGFloat *)height fromRectA:(CGRect)rectA rectB:(CGRect)rectB {
     CGFloat minX, minY, maxX, maxY;
-    [self _getMinX:&minX minY:&minY maxX:&maxX maxY:&maxY fromRectA:rectA
+    [self _getMinX:&minX minY:&minY maxX:&maxX maxY:&maxY fromRectA:rectA rectB:rectB];
+    if (width) {
+        *width = maxX - minX;
+    }
+    if (height) {
+        *height = maxY - minY;
+    }
+}
+
+/// 缩放一个 rect
+- (CGRect)_adjustRect:(CGRect)rect withScaleFactor:(CGFloat)factor {
+    if (factor == 0) {
+        NSAssert(NO, @"");
+        factor = 1;
+    }
+    rect.origin.x /= factor;
+    rect.origin.y /= factor;
+    rect.size.width /= factor;
+    rect.size.height /= factor;
+    return rect;
+}
+
+// 移动一个 rect
+- (CGRect)_adjustRect:(CGRect)rect withOffsetX:(CGFloat)offsetX offsetY:(CGFloat)offsetY {
+    rect.origin.x -= offsetX;
+    rect.origin.y -= off
