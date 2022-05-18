@@ -431,4 +431,18 @@ typedef NS_ENUM(NSInteger, CompareResult) {
         return view.hidden;
     }];
     if (!resultView) {
-        result
+        resultView = [LKTextFieldView labelView];
+        resultView.backgroundColor = LookinColorMake(10, 127, 251);
+        resultView.insets = NSEdgeInsetsMake(0, 3, 0, 3);
+        resultView.textField.textColor = [NSColor whiteColor];
+        resultView.textField.font = NSFontMake(12);
+        resultView.textField.alignment = NSTextAlignmentCenter;
+        resultView.layer.cornerRadius = _labelHeight / 2.0;
+        [self.contentView addSubview:resultView];
+        [self.textFieldViews addObject:resultView];
+    }
+    resultView.hidden = NO;
+    return resultView;
+}
+
+/// 避免直接用 == 符号比较造成的精度问题
