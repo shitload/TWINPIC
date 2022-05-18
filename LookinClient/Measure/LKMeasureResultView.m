@@ -413,4 +413,22 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 // 移动一个 rect
 - (CGRect)_adjustRect:(CGRect)rect withOffsetX:(CGFloat)offsetX offsetY:(CGFloat)offsetY {
     rect.origin.x -= offsetX;
-    rect.origin.y -= off
+    rect.origin.y -= offsetY;
+    return rect;
+}
+
+- (void)_hideAllLabels {
+    [self.textFieldViews enumerateObjectsUsingBlock:^(LKTextFieldView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+        view.hidden = YES;
+    }];
+}
+
+- (LKTextFieldView *)_dequeueAvailableTextField {
+    if (!self.textFieldViews) {
+        self.textFieldViews = [NSMutableArray array];
+    }
+    LKTextFieldView *resultView = [self.textFieldViews lookin_firstFiltered:^BOOL(LKTextFieldView *view) {
+        return view.hidden;
+    }];
+    if (!resultView) {
+        result
