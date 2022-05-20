@@ -446,3 +446,15 @@ typedef NS_ENUM(NSInteger, CompareResult) {
 }
 
 /// 避免直接用 == 符号比较造成的精度问题
+- (CompareResult)_compare:(CGFloat)A with:(CGFloat)B {
+    if (ABS(A - B) < 0.00001) {
+        return Same;
+    }
+    if (A > B) {
+        return Bigger;
+    } else {
+        return Smaller;
+    }
+}
+
+@end
