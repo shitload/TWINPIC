@@ -21,4 +21,17 @@
 - (RACSignal *)addWithClassName:(NSString *)className selName:(NSString *)selName;
 - (void)deleteWithClassName:(NSString *)className selName:(NSString *)selName;
 
-- (void)handleReceivingRecord:(LookinMet
+- (void)handleReceivingRecord:(LookinMethodTraceRecord *)record;
+
+/**
+ @[
+ @{@"class": @"UIViewController", @"sels": @[@"init", @"viewDidAppear:"]},
+ @{@"class": @"UIView", @"sels": @[@"init", @"layoutSubviews"]}
+ ];
+ */
+@property(nonatomic, strong, readonly) NSArray<NSDictionary<NSString *, id> *> *menuData;
+
+@property(nonatomic, copy, readonly) NSArray<LookinMethodTraceRecord *> *records;
+- (void)clearAllRecords;
+
+@end
