@@ -6,4 +6,12 @@
 //  https://lookin.work
 //
 
-#im
+#import "LKBaseView.h"
+
+@class LKMethodTraceDataSource;
+
+@interface LKMethodTraceDetailView : LKBaseView
+
+- (instancetype)initWithDataSource:(LKMethodTraceDataSource *)dataSource;
+
+@end
