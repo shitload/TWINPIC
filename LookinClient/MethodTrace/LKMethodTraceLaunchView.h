@@ -6,4 +6,12 @@
 //  https://lookin.work
 //
 
-#import "LKBaseView.h
+#import "LKBaseView.h"
+
+@interface LKMethodTraceLaunchView : LKBaseView
+
+@property(nonatomic, assign) BOOL showTutorial;
+
+@property(nonatomic, copy) void (^didClickContinue)(void);
+
+@end
