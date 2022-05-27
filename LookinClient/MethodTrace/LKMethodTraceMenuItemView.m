@@ -38,4 +38,9 @@
         self.deleteButton.hidden = YES;
         [self addSubview:self.deleteButton];
         
-        
+        @weakify(self);
+        RAC(self.label, stringValue) = [[[RACSignal combineLatest:@[RACObserve(self, representedAsClass),
+                                                                    RACObserve(self, representedClassName),
+                                                                    RACObserve(self, representedSelName)]]
+                                         map:^id _Nullable(RACTuple * _Nullable value) {
+                                             return ((NSNumber *)value.first).boolValue ? value.second : valu
