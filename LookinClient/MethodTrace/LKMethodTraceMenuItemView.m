@@ -43,4 +43,18 @@
                                                                     RACObserve(self, representedClassName),
                                                                     RACObserve(self, representedSelName)]]
                                          map:^id _Nullable(RACTuple * _Nullable value) {
-                                             return ((NSNumber *)value.first).boolValue ? value.second : valu
+                                             return ((NSNumber *)value.first).boolValue ? value.second : value.third;
+                                         }] doNext:^(id  _Nullable x) {
+                                             @strongify(self);
+                                             [self setNeedsLayout:YES];
+                                         }];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.imageView).sizeToFit.verAlign.x(self.representedAsClass ? 10 : 30);
+    if (!self.deleteButton.hidden) {
+        $(self.deleteButton).sizeToFit.verAlign.right(10);
+        $(self.label).x(
