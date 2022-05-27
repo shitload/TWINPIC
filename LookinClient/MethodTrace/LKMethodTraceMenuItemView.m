@@ -57,4 +57,21 @@
     $(self.imageView).sizeToFit.verAlign.x(self.representedAsClass ? 10 : 30);
     if (!self.deleteButton.hidden) {
         $(self.deleteButton).sizeToFit.verAlign.right(10);
-        $(self.label).x(
+        $(self.label).x(self.imageView.$maxX + 3).toMaxX(self.deleteButton.$x - 10).heightToFit.verAlign;
+    } else {
+        $(self.label).x(self.imageView.$maxX + 3).toRight(3).heightToFit.verAlign;
+    }
+}
+
+- (void)setRepresentedAsClass:(BOOL)representedAsClass {
+    _representedAsClass = representedAsClass;
+    self.imageView.image = representedAsClass ? NSImageMake(@"icon_class"): NSImageMake(@"icon_method");
+    [self setNeedsLayout:YES];
+}
+
+- (void)mouseEntered:(NSEvent *)event {
+    [super mouseEntered:event];
+    self.deleteButton.hidden = NO;
+    [self setNeedsLayout:YES];
+}
+
