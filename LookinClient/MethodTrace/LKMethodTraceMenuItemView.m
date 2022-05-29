@@ -90,4 +90,11 @@
 - (void)updateTrackingAreas {
     [super updateTrackingAreas];
     [self.trackingAreas enumerateObjectsUsingBlock:^(NSTrackingArea * _Nonnull oldArea, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self removeTrackingArea:oldAre
+        [self removeTrackingArea:oldArea];
+    }];
+    
+    NSTrackingArea *newArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:NSEventTypeMouseExited|NSEventTypeMouseEntered|NSTrackingActiveInKeyWindow|NSTrackingInVisibleRect owner:self userInfo:nil];
+    [self addTrackingArea:newArea];
+}
+
+@end
