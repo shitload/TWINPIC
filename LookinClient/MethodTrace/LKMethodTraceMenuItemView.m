@@ -75,3 +75,19 @@
     [self setNeedsLayout:YES];
 }
 
+- (void)mouseExited:(NSEvent *)event {
+    [super mouseExited:event];
+    self.deleteButton.hidden = YES;
+    [self setNeedsLayout:YES];
+}
+
+- (void)_handleDelete {
+    if ([self.delegate respondsToSelector:@selector(methodTraceMenuItemViewDidClickDelete:)]) {
+        [self.delegate methodTraceMenuItemViewDidClickDelete:self];
+    }
+}
+
+- (void)updateTrackingAreas {
+    [super updateTrackingAreas];
+    [self.trackingAreas enumerateObjectsUsingBlock:^(NSTrackingArea * _Nonnull oldArea, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self removeTrackingArea:oldAre
