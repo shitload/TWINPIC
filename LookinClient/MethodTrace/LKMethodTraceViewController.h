@@ -10,4 +10,7 @@
 
 @interface LKMethodTraceViewController : LKBaseViewController
 
--
+- (void)handleToolBarAddButton;
+- (void)handleToolBarRemoveButton;
+
+@end
