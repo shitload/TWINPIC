@@ -1,16 +1,17 @@
+
 //
-//  LKMethodTraceMenuView.h
+//  LKMethodTraceSelectMethodContentView.h
 //  Lookin
 //
 //  Created by Li Kai on 2019/5/24.
 //  https://lookin.work
 //
 
-#import "LKBaseView.h"
+#import "LKPanelContentView.h"
 
 @class LKMethodTraceDataSource;
 
-@interface LKMethodTraceMenuView : LKBaseView
+@interface LKMethodTraceSelectMethodContentView : LKPanelContentView
 
 - (instancetype)initWithDataSource:(LKMethodTraceDataSource *)dataSource;
 
