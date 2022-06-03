@@ -16,4 +16,23 @@
 #import "LKWindow.h"
 #import "LKAppsManager.h"
 #import "LKMethodTraceLaunchView.h"
-#import "LKTu
+#import "LKTutorialManager.h"
+
+@interface LKMethodTraceViewController () <NSSplitViewDelegate>
+
+@property(nonatomic, strong) LKSplitView *splitView;
+
+@property(nonatomic, strong) LKMethodTraceMenuView *menuView;
+@property(nonatomic, strong) LKMethodTraceDetailView *detailView;
+
+@property(nonatomic, strong) LKMethodTraceLaunchView *launchView;
+
+@property(nonatomic, strong) LKMethodTraceDataSource *dataSource;
+
+@end
+
+@implementation LKMethodTraceViewController
+
+- (NSView *)makeContainerView {
+    self.dataSource = [LKMethodTraceDataSource new];
+    [LKNavigati
