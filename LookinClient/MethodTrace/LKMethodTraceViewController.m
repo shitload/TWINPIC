@@ -35,4 +35,16 @@
 
 - (NSView *)makeContainerView {
     self.dataSource = [LKMethodTraceDataSource new];
-    [LKNavigati
+    [LKNavigationManager sharedInstance].activeMethodTraceDataSource = self.dataSource;
+    
+    self.splitView = [[LKSplitView alloc] init];
+    self.splitView.didFinishFirstLayout = ^(LKSplitView *view) {
+        CGFloat totalWidth = view.bounds.size.width;
+        [view setPosition:totalWidth * .3 ofDividerAtIndex:0];
+    };
+    self.splitView.arrangesAllSubviews = NO;
+    self.splitView.vertical = YES;
+    self.splitView.dividerStyle = NSSplitViewDividerStyleThin;
+    self.splitView.delegate = self;
+    
+    self.menuView = [[LKMethodTraceMenuView alloc
