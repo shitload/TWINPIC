@@ -47,4 +47,19 @@
     self.splitView.dividerStyle = NSSplitViewDividerStyleThin;
     self.splitView.delegate = self;
     
-    self.menuView = [[LKMethodTraceMenuView alloc
+    self.menuView = [[LKMethodTraceMenuView alloc] initWithDataSource:self.dataSource];
+    self.detailView = [[LKMethodTraceDetailView alloc] initWithDataSource:self.dataSource];
+
+    [self.splitView addArrangedSubview:self.menuView];
+    [self.splitView addArrangedSubview:self.detailView];
+    
+    self.launchView = [LKMethodTraceLaunchView new];
+    self.launchView.showTutorial = !TutorialMng.methodTrace;
+    @weakify(self);
+    self.launchView.didClickContinue = ^{
+        @strongify(self);
+        [self handleToolBarAddButton];
+    };
+    [self.splitView addSubview:self.launchView];
+    
+    
