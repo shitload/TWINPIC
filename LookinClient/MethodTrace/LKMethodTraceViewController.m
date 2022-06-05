@@ -62,4 +62,23 @@
     };
     [self.splitView addSubview:self.launchView];
     
+    RAC(self.launchView, hidden) = [RACObserve(self.dataSource, menuData) map:^id _Nullable(NSArray *value) {
+        return @(value.count > 0);
+    }];
     
+    return self.splitView;
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    if (self.launchView) {
+        // 每个 window 的 windowTitleBarHeight 居然不一样，这里临时减去 3
+        $(self.launchView).fullFrame.toY([LKNavigationManager sharedInstance].windowTitleBarHeight - 5);
+    }
+}
+
+- (void)handleToolBarAddButton {
+    TutorialMng.methodTrace = YES;
+
+    @weakify(self);
+    [[self.dataSource syncData] subscribeNext:^(id  _Nullable x)
