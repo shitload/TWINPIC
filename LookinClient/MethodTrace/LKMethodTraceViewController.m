@@ -81,4 +81,18 @@
     TutorialMng.methodTrace = YES;
 
     @weakify(self);
-    [[self.dataSource syncData] subscribeNext:^(id  _Nullable x)
+    [[self.dataSource syncData] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        LKMethodTraceSelectMethodContentView *view = [[LKMethodTraceSelectMethodContentView alloc] initWithDataSource:self.dataSource];
+        LKWindow *window = [LKWindow panelWindowWithWidth:400 height:140 contentView:view];
+        view.needExit = ^{
+            [self.view.window endSheet:window];
+        };
+        [self.view.window beginSheet:window completionHandler:nil];
+        
+    } error:^(NSError * _Nullable error) {
+        AlertError(error, self.view.window);
+    }];
+}
+
+- (voi
