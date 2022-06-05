@@ -95,4 +95,23 @@
     }];
 }
 
-- (voi
+- (void)handleToolBarRemoveButton {
+    [self.dataSource clearAllRecords];
+}
+
+- (BOOL)shouldShowConnectionTips {
+    return YES;
+}
+
+#pragma mark - <NSSplitViewDelegate>
+
+- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+    return NO;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex {
+    return proposedPosition;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex {
+    
