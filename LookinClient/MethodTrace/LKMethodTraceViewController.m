@@ -114,4 +114,23 @@
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex {
-    
+    return dividerIndex == 0 ? 100 : 500;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
+    if (dividerIndex == 0) {
+        return 400;
+    }
+    if (dividerIndex == 1) {
+        CGFloat totalWidth = splitView.bounds.size.width;
+        return MAX(totalWidth - 200, 500);
+    }
+    NSAssert(NO, @"");
+    return proposedMaximumPosition;
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view {
+    return NO;
+}
+
+@end
