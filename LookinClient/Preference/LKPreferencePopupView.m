@@ -67,4 +67,28 @@
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex {
     _selectedIndex = selectedIndex;
-    self.messageLabel.stringValue = [self.messages lookin_hasIndex:selectedIndex] ? self.messages[selectedIndex] : @"
+    self.messageLabel.stringValue = [self.messages lookin_hasIndex:selectedIndex] ? self.messages[selectedIndex] : @"";
+    [self.button selectItemAtIndex:selectedIndex];
+    if (self.didChange) {
+        self.didChange(selectedIndex);
+    }
+}
+
+- (void)_handleButton {
+    self.selectedIndex = self.button.indexOfSelectedItem;
+    if (self.didChange) {
+        self.didChange(self.selectedIndex);
+    }
+}
+
+- (void)setButtonX:(CGFloat)buttonX {
+    _buttonX = buttonX;
+    [self setNeedsLayout:YES];
+}
+
+- (void)setIsEnabled:(BOOL)isEnabled {
+    _isEnabled = isEnabled;
+    self.button.enabled = isEnabled;
+}
+
+@end
