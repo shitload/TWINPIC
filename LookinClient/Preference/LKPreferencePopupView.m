@@ -39,3 +39,17 @@
         self.titleLabel.stringValue = title;
         self.titleLabel.font = NSFontMake(IsEnglish ? 13 : 15);
         [self addSubview:self.titleLabel];
+        
+        self.button = [NSPopUpButton new];
+        self.button.font = NSFontMake(IsEnglish ? 13 : 14);
+        self.button.target = self;
+        self.button.action = @selector(_handleButton);
+        [self.button addItemsWithTitles:options];
+        self.button.enabled = self.isEnabled;
+        [self addSubview:self.button];
+        
+        self.messageLabel = [LKLabel new];
+        self.messageLabel.font = NSFontMake(IsEnglish ? 12 : 13);
+        self.messageLabel.textColor = [NSColor secondaryLabelColor];
+        [self addSubview:self.messageLabel];
+        
