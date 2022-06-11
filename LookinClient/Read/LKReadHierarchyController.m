@@ -22,4 +22,12 @@
 }
 
 - (void)hierarchyView:(LKHierarchyView *)view needToShowPreviewOfItem:(LookinDisplayItem *)item {
-    [item enumerateSelfAndAncestors:^(LookinDisplayItem *
+    [item enumerateSelfAndAncestors:^(LookinDisplayItem *item, BOOL *stop) {
+        if (item.noPreview) {
+            item.noPreview = NO;
+        }
+    }];
+    [((LKReadHierarchyDataSource *)self.dataSource).itemDidChangeNoPreview sendNext:nil];
+}
+
+@end
