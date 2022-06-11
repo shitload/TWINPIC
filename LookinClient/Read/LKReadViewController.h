@@ -17,4 +17,6 @@
 @property(nonatomic, strong) LKReadHierarchyDataSource *hierarchyDataSource;
 
 /// 获取当前的 hierarchyView
-- (L
+- (LKHierarchyView *)currentHierarchyView;
+
+@end
