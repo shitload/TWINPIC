@@ -38,4 +38,21 @@ NS_ASSUME_NONNULL_BEGIN
 /// 修改 frame.origin.x，size 不会被改变
 - (ShortCocoa * (^)(CGFloat))x;
 /// 修改 frame 的 midX 位置，size 不会被改变
-- (ShortCocoa * (^)(CGFloat)
+- (ShortCocoa * (^)(CGFloat))midX;
+/// 修改 frame 的 maxX 位置，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))maxX;
+/// 修改 frame.origin.y，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))y;
+/// 修改 frame 的 midY 位置，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))midY;
+/// 修改 frame 的 maxY 位置，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))maxY;
+/// 修改 frame.origin，size 不会被改变
+- (ShortCocoa * (^)(CGPoint))origin;
+/// 修改 frame 的 origin，使得右侧和 superview 的右侧的距离为传入值，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))right;
+///修改 frame 的 origin，使得底部和 superview 的底部的距离为传入值，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))bottom;
+/// 修改 frame 的 origin，使得在 superview 里水平居中，size 不会被改变
+- (ShortCocoa *)horAlign;
+///
