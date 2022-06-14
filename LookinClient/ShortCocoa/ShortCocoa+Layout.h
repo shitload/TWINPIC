@@ -68,4 +68,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 偏移 frame 的 origin，size 不会被改变
 - (ShortCocoa * (^)(CGFloat x, CGFloat y))offset;
-/// 偏移 frame 的 origin.x，size 不
+/// 偏移 frame 的 origin.x，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))offsetX;
+/// 偏移 frame 的 origin.y，size 不会被改变
+- (ShortCocoa * (^)(CGFloat))offsetY;
+
+#pragma mark - to 系列
+
+/// 调整左侧边的位置，其它三条边位置不动
+- (ShortCocoa * (^)(CGFloat))toX;
+/// 调整右侧边的位置，其它三条边位置不动，origin 不会被改变
+- (ShortCocoa * (^)(CGFloat))toMaxX;
+/// 调整顶部边的位置，其它三条边位置不动
+- (ShortCocoa * (^)(CGFloat))toY;
+/// 调整底部边的位置，其它三条边位置不动，origin 不会被改变
+- (ShortCocoa * (^)(CGFloat))toMaxY;
+/// 保持其它三条边位置不动的情况下，仅调整右侧边的位置，使得右侧距离 superview 右侧的距离为传入值，origin 不会被改变
+- (ShortCocoa * (^)(CGFloat))toRight;
+/// 保持其它三条边位置不动的情况下，仅调整底部边的位置，使得底部距离 superview 底部
