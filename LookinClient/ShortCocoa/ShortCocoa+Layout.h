@@ -55,4 +55,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (ShortCocoa * (^)(CGFloat))bottom;
 /// 修改 frame 的 origin，使得在 superview 里水平居中，size 不会被改变
 - (ShortCocoa *)horAlign;
-///
+/// 修改 frame 的 origin，使得在 superview 里垂直居中，size 不会被改变
+- (ShortCocoa *)verAlign;
+/// 修改 frame 的 origin，使得在 superview 里同时保持垂直、水平居中，size 不会被改变
+- (ShortCocoa *)centerAlign;
+/// 修改 frame 使得在水平方向上撑满父元素，即把 x 设置为 0，把 width 设置为 superview/superlayer 的 width
+- (ShortCocoa *)fullWidth;
+/// 修改 frame 使得在竖直方向上撑满父元素，即把 y 设置为 0，把 height 设置为 superview/superlayer 的 height
+- (ShortCocoa *)fullHeight;
+/// 修改 frame 为 superview.bounds 或 superlayer.bounds
+- (ShortCocoa *)fullFrame;
+
+/// 偏移 frame 的 origin，size 不会被改变
+- (ShortCocoa * (^)(CGFloat x, CGFloat y))offset;
+/// 偏移 frame 的 origin.x，size 不
