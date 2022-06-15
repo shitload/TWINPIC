@@ -85,4 +85,28 @@ NS_ASSUME_NONNULL_BEGIN
 - (ShortCocoa * (^)(CGFloat))toMaxY;
 /// 保持其它三条边位置不动的情况下，仅调整右侧边的位置，使得右侧距离 superview 右侧的距离为传入值，origin 不会被改变
 - (ShortCocoa * (^)(CGFloat))toRight;
-/// 保持其它三条边位置不动的情况下，仅调整底部边的位置，使得底部距离 superview 底部
+/// 保持其它三条边位置不动的情况下，仅调整底部边的位置，使得底部距离 superview 底部的距离为传入值，origin 不会被改变
+- (ShortCocoa * (^)(CGFloat))toBottom;
+
+
+#pragma mark - Group Set 系列
+
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整 frame.origin.x
+ @code
+ // 1）布局靠左的 label 会被平移至 x 为 50 的位置
+ // 2）另一个 label 会被平移相同的距离
+ // 3）两个 label 之间的距离不会被改变，它们的 size 也不会被改变
+ $(label1, label2).groupX(50);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))groupX;
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整 frame 的 midX
+ @code
+ // 1）两个 label 会被平移至它们整体的 midX 为 50 的位置
+ // 2）两个 label 之间的距离不会改变，它们的 size 也不会被改变
+ $(label1, label2).groupMidX(50);
+ @endcode
+ */
+- (ShortCoco
