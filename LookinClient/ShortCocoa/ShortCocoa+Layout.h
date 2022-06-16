@@ -150,4 +150,25 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (ShortCocoa * (^)(CGFloat))groupMaxY;
 /**
- 包装了多个对象时，被包装的 view/layer 会
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整 frame.origin
+ @code
+ // 1）两个 label 会被平移至它们整体的左上角 origin 为传入值的位置
+ // 2）两个 label 之间的距离不会被改变，它们的 size 也不会被改变
+ $(label1, label2).groupOrigin(point);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGPoint))groupOrigin;
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整它们右侧距离 superview 右侧的值
+ @code
+ // 1）布局靠右的 label 会被平移至它的右侧和 superview 右侧之间距离为 50 的位置
+ // 2）另一个 label 会被平移相同的距离
+ // 3）两个 label 之间的距离不会被改变，它们的 size 也不会被改变
+ $(label1, label2).groupRight(50);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))groupRight;
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整它们底部距离 superview 底部的值
+ @code
+ // 1）布局靠下的 
