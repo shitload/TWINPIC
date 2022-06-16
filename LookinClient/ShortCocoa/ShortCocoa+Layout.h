@@ -129,4 +129,25 @@ NS_ASSUME_NONNULL_BEGIN
  $(label1, label2).groupY(50);
  @endcode
  */
-- (ShortCocoa * (^)(CGFloat))grou
+- (ShortCocoa * (^)(CGFloat))groupY;
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整 frame 的 midY
+ @code
+ // 1）两个 label 会被平移至它们整体的 midY 为 50 的位置
+ // 2）两个 label 之间的距离不会改变，它们的 size 也不会被改变
+ $(label1, label2).groupMidY(50);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))groupMidY;
+/**
+ 包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整 frame 的 maxX
+ @code
+ // 1）布局靠下的 label 会被平移至 maxY 为 50 的位置
+ // 2）另一个 label 会被平移相同的距离
+ // 3）两个 label 之间的距离不会被改变，它们的 size 也不会被改变
+ $(label1, label2).groupMaxY(50);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))groupMaxY;
+/**
+ 包装了多个对象时，被包装的 view/layer 会
