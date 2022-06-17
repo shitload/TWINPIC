@@ -214,4 +214,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)$groupMidX;
 /// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 frame 的 maxX 值（即被包装的所有对象的 frame 的 maxX 的最大值）
 - (CGFloat)$groupMaxX;
-/// 被包装的所有 view
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 frame 的 minY 值（即被包装的所有对象的 frame 的 y 的最小值）
+- (CGFloat)$groupY;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 midY 值
+- (CGFloat)$groupMidY;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 frame 的 maxY 值（即被包装的所有对象的 frame 的 maxY 的最大值）
+- (CGFloat)$groupMaxY;
+/// 返回一个 CGPoint，值为 {$groupX, $groupY}
+- (CGPoint)$groupOrigin;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 size 值
+- (CGSize)$groupSize;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 width 值
+- (CGFloat)$groupWidth;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 height 值
+- (CGFloat)$groupHeight;
+
+#pragma mark - sizeThatFits 系列
+
+/**
+ 将高度设置为当前自身宽度下 sizeThatFits: 返回的高
