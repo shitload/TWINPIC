@@ -171,4 +171,28 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  包装了多个对象时，被包装的 view/layer 会被看作一个整体来调整它们底部距离 superview 底部的值
  @code
- // 1）布局靠下的 
+ // 1）布局靠下的 label 会被平移至它的底部和 superview 底部之间距离为 50 的位置
+ // 2）另一个 label 会被平移相同的距离
+ // 3）两个 label 之间的距离不会被改变，它们的 size 也不会被改变
+ $(label1, label2).groupBottom(50);
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))groupBottom;
+/**
+ 包装了多个对象时，被包装的 view/layer 会整体水平居中
+ @code
+ // 1）两个 label 会被平移至它们整体的 midX 为 superview 的水平中点位置
+ // 2）两个 label 之间的距离不会改变，它们的 size 也不会被改变
+ $(label1, label2).groupHorAlign;
+ @endcode
+ */
+- (ShortCocoa *)groupHorAlign;
+/**
+ 包装了多个对象时，被包装的 view/layer 会整体垂直居中
+ @code
+ // 1）两个 label 会被平移至它们整体的 midY 为 superview 的垂直中点位置
+ // 2）两个 label 之间的距离不会改变，它们的 size 也不会被改变
+ $(label1, label2).groupVerAlign;
+ @endcode
+ */
+- (ShortCocoa
