@@ -232,4 +232,24 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - sizeThatFits 系列
 
 /**
- 将高度设置为当前自身宽度下 sizeThatFits: 返回的高
+ 将高度设置为当前自身宽度下 sizeThatFits: 返回的高度值，即 [view sizeThatFits:CGSizeMake(CGRectGetWidth(view.bounds), CGFLOAT_MAX)].height
+ @note 支持的被包装对象：UIView(iOS)、NSControl(macOS)
+ */
+- (ShortCocoa *)heightToFit;
+/**
+ 将高度设置为当前自身宽度下 sizeThatFits: 返回的高度值，即 [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGRectGetHeight(view.bounds))].width
+ @note 支持的被包装对象：UIView(iOS)、NSControl(macOS)
+ */
+- (ShortCocoa *)widthToFit;
+
+@end
+
+#if TARGET_OS_IPHONE
+@interface UIView (ShortCocoaLayout)
+#elif TARGET_OS_MAC
+@interface NSView (ShortCocoaLayout)
+#endif
+
+/// 等价于 view.frame.origin.x
+- (CGFloat)$x;
+/// 等价于
