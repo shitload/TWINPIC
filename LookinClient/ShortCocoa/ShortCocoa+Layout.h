@@ -195,4 +195,23 @@ NS_ASSUME_NONNULL_BEGIN
  $(label1, label2).groupVerAlign;
  @endcode
  */
-- (ShortCocoa
+- (ShortCocoa *)groupVerAlign;
+/**
+ 包装了多个对象时，被包装的 view/layer 会整体垂直、水平居中
+ @code
+ // 1）两个 label 会被平移至它们整体的 midX、midY 为 superview 的中点位置
+ // 2）两个 label 之间的距离不会改变，它们的 size 也不会被改变
+ $(label1, label2).groupCenterAlign();
+ @endcode
+ */
+- (ShortCocoa *)groupCenterAlign;
+
+#pragma mark - Group Get 系列
+
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 frame 的 minX 值（即被包装的所有对象的 frame 的 x 的最小值）
+- (CGFloat)$groupX;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 midX 值
+- (CGFloat)$groupMidX;
+/// 被包装的所有 view/layer 会被看作一个整体，该方法返回这个整体的 frame 的 maxX 值（即被包装的所有对象的 frame 的 maxX 的最大值）
+- (CGFloat)$groupMaxX;
+/// 被包装的所有 view
