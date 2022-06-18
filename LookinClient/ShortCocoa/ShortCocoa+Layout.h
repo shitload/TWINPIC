@@ -252,4 +252,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 等价于 view.frame.origin.x
 - (CGFloat)$x;
-/// 等价于
+/// 等价于 CGRectGetMidX(view.frame)
+- (CGFloat)$midX;
+/// 等价于 CGRectGetMaxX(view.frame)
+- (CGFloat)$maxX;
+/// 等价于 view.origin.y
+- (CGFloat)$y;
+/// 等价于 CGRectGetMidY(view.frame)
+- (CGFloat)$midY;
+/// 等价于 CGRectGetMaxY(view.frame)
+- (CGFloat)$maxY;
+/// 等价于 view.frame.size.width
+- (CGFloat)$width;
+/// 等价于 view.frame.size.height
+- (CGFloat)$height;
+/// 等价于 view.frame.size
+- (CGSize)$size;
+
+#if TARGET_OS_IPHONE
+/// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)]
+- (CGSize)$bestSize;
+/// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT
