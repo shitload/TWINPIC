@@ -272,4 +272,28 @@ NS_ASSUME_NONNULL_BEGIN
 #if TARGET_OS_IPHONE
 /// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)]
 - (CGSize)$bestSize;
-/// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT
+/// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)].width
+- (CGFloat)$bestWidth;
+/// 等价于 [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)].height
+- (CGFloat)$bestHeight;
+#endif
+
+@end
+
+@interface CALayer (ShortCocoaLayout)
+
+/// 等价于 layer.frame.origin.x
+- (CGFloat)$x;
+/// 等价于 CGRectGetMidX(layer.frame)
+- (CGFloat)$midX;
+/// 等价于 CGRectGetMaxX(view.frame)
+- (CGFloat)$maxX;
+/// 等价于 view.origin.y
+- (CGFloat)$y;
+/// 等价于 CGRectGetMidY(view.frame)
+- (CGFloat)$midY;
+/// 等价于 CGRectGetMaxY(view.frame)
+- (CGFloat)$maxY;
+/// 等价于 view.frame.size.width
+- (CGFloat)$width;
+/// 等价于 view
