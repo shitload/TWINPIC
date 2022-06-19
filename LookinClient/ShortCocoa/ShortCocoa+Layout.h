@@ -296,4 +296,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)$maxY;
 /// 等价于 view.frame.size.width
 - (CGFloat)$width;
-/// 等价于 view
+/// 等价于 view.frame.size.height
+- (CGFloat)$height;
+/// 等价于 view.frame.size
+- (CGSize)$size;
+
+@end
+
+NS_ASSUME_NONNULL_END
