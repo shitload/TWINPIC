@@ -23,4 +23,23 @@
     [self unpack:[UIView class] do:^(UIView *view, BOOL *stop) {
         [view sizeToFit];
     }];
-#
+#elif TARGET_OS_MAC
+    [self unpack:[NSControl class] do:^(NSControl *control, BOOL *stop) {
+        [control sizeToFit];
+    }];
+#endif
+    return self;
+}
+
+- (ShortCocoa * (^)(CGFloat))width {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGRect rect = view.frame;
+            rect.size.width = CGFloatSnapToPixel(value);
+            view.frame = rect;
+        } classB:[CAL
