@@ -60,4 +60,24 @@
         
         [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
             CGRect rect = view.frame;
-            rect.
+            rect.size.height = CGFloatSnapToPixel(value);
+            view.frame = rect;
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            rect.size.height = CGFloatSnapToPixel(value);
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGSize))size {
+    return ^(CGSize value) {
+        return self.width(value.width).height(value.height);
+    };
+}
+
+- (ShortCocoa * (^)(CGRect))frame {
+    return ^(CGRect value) {
+        return self.origin(value.origin).size(value.size);
+    };
