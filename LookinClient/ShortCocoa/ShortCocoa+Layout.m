@@ -42,4 +42,22 @@
             CGRect rect = view.frame;
             rect.size.width = CGFloatSnapToPixel(value);
             view.frame = rect;
-        } classB:[CAL
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            rect.size.width = CGFloatSnapToPixel(value);
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))height {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGRect rect = view.frame;
+            rect.
