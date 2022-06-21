@@ -116,4 +116,28 @@
             view.frame = rect;
             
         } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
-            CGRect rect = l
+            CGRect rect = layer.frame;
+            rect.origin.y = CGFloatSnapToPixel(value);
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGPoint))origin {
+    return ^(CGPoint value) {
+        return self.x(value.x).y(value.y);
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat, CGFloat))offset {
+    return ^(CGFloat x, CGFloat y) {
+        if (isnan(x)) {
+            NSAssert(NO, @"传入了 NaN");
+            x = 0;
+        }
+        if (isnan(y)) {
+            NSAssert(NO, @"传入了 NaN");
+            y = 0;
+        }
+        [self unpackClassA:[N
