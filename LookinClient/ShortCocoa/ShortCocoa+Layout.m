@@ -140,4 +140,13 @@
             NSAssert(NO, @"传入了 NaN");
             y = 0;
         }
-        [self unpackClassA:[N
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGRect rect = view.frame;
+            rect.origin.x = CGFloatSnapToPixel(CGRectGetMinX(view.frame) + x);
+            rect.origin.y = CGFloatSnapToPixel(CGRectGetMinY(view.frame) + y);
+            view.frame = rect;
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            rect.origin.x = CGFloatSnapToPixel(CGRectGetMinX(layer.frame) + x);
+            rect.origin.y = CGFloatSnapToPixel(CGRectGetMinY(layer.frame) + y);
+       
