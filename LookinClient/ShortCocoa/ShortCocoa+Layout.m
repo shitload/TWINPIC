@@ -149,4 +149,22 @@
             CGRect rect = layer.frame;
             rect.origin.x = CGFloatSnapToPixel(CGRectGetMinX(layer.frame) + x);
             rect.origin.y = CGFloatSnapToPixel(CGRectGetMinY(layer.frame) + y);
-       
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))midX {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGFloat width = CGRectGetWidth(view.bounds);
+            ShortCocoaMake(view).x(value - width / 2);
+            
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat width = CGRectGetWidth(layer.bounds);
+     
