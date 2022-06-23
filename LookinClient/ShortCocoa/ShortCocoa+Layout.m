@@ -167,4 +167,21 @@
             
         } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
             CGFloat width = CGRectGetWidth(layer.bounds);
-     
+            ShortCocoaMake(layer).x(value - width / 2);
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))maxX {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGFloat width = CGRectGetWidth(view.bounds);
+            ShortCocoaMake(view).x(value - width);
+            
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat width = CGRectGetWidth(la
