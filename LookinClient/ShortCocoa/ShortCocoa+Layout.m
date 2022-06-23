@@ -201,4 +201,22 @@
             CGFloat height = CGRectGetHeight(view.bounds);
             ShortCocoaMake(view).y(value - height / 2);
             
-        } classB:[CALayer class] doB:^(CALayer *layer, BOOL 
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat height = CGRectGetHeight(layer.bounds);
+            ShortCocoaMake(layer).y(value - height / 2);
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))maxY {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGFloat height = CGRectGetHeight(view.bounds);
+            ShortCocoaMake(view).y(value - height);
+            
+        } classB:[C
