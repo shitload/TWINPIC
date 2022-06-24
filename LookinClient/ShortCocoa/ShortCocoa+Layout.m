@@ -250,4 +250,23 @@
             }
         }];
         
-        return self
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))bottom {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+#if TARGET_OS_IPHONE
+        [self unpackClassA:[UIView class] doA:^(UIView *view, BOOL *stop) {
+            if (view.superview) {
+                CGFloat superHeight = CGRectGetHeight(view.superview.bounds);
+                ShortCocoaMake(view).maxY(superHeight - value);
+            } else {
+                NSAssert(NO, @"必须存在 superview 才可使用该方法");
+            }
+#elif TARGET_OS_MAC
+        [self unpackClassA:[NSV
