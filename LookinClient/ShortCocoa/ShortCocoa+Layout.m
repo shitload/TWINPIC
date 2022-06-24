@@ -269,4 +269,18 @@
                 NSAssert(NO, @"必须存在 superview 才可使用该方法");
             }
 #elif TARGET_OS_MAC
-        [self unpackClassA:[NSV
+        [self unpackClassA:[NSView class] doA:^(NSView *view, BOOL *stop) {
+            if (view.superview) {
+                CGFloat superHeight = view.superview.bounds.size.height;
+                if (view.superview.isFlipped) {
+                    ShortCocoaMake(view).maxY(superHeight - value);
+                } else {
+                    ShortCocoaMake(view).y(value);
+                }
+            } else {
+                NSAssert(NO, @"必须存在 superview 才可使用该方法");
+            }
+#endif
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            if (layer.superlayer) {
+                if (l
