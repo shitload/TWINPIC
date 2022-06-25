@@ -283,4 +283,20 @@
 #endif
         } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
             if (layer.superlayer) {
-                if (l
+                if (layer.superlayer.contentsAreFlipped) {
+                    CGFloat superHeight = CGRectGetHeight(layer.superlayer.bounds);
+                    ShortCocoaMake(layer).maxY(superHeight - value);
+                } else {
+                    ShortCocoaMake(layer).y(value);
+                }
+            } else {
+                NSAssert(NO, @"必须存在 superlayer 才可使用该方法");
+            }
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa *)horAlign {
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        if (view.superview) 
