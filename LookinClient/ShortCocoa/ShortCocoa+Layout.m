@@ -299,4 +299,17 @@
 
 - (ShortCocoa *)horAlign {
     [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
-        if (view.superview) 
+        if (view.superview) {
+            CGFloat superWidth = CGRectGetWidth(view.superview.bounds);
+            ShortCocoaMake(view).midX(superWidth / 2);
+        } else {
+            NSAssert(NO, @"必须存在 superview 才可使用该方法");
+        }
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        if (layer.superlayer) {
+            CGFloat superWidth = CGRectGetWidth(layer.superlayer.bounds);
+            ShortCocoaMake(layer).midX(superWidth / 2);
+        } else {
+            NSAssert(NO, @"必须存在 superlayer 才可使用该方法");
+        }
+    }];
