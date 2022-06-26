@@ -350,4 +350,25 @@
         if (view.superview) {
             CGFloat superHeight = CGRectGetHeight(view.superview.bounds);
             ShortCocoaMake(view).height(superHeight).y(0);
-       
+        } else {
+            NSAssert(NO, @"必须存在 superview 才可使用该方法");
+        }
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        if (layer.superlayer) {
+            CGFloat superHeight = CGRectGetHeight(layer.superlayer.bounds);
+            ShortCocoaMake(layer).height(superHeight).y(0);
+        } else {
+            NSAssert(NO, @"必须存在 superlayer 才可使用该方法");
+        }
+    }];
+    return self;
+}
+
+- (ShortCocoa *)fullFrame {
+    return self.fullWidth.fullHeight;
+}
+
+- (ShortCocoa * (^)(CGFloat))offsetX {
+    return ^(CGFloat x) {
+        self.offset(x, 0);
+        return 
