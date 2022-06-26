@@ -313,3 +313,18 @@
             NSAssert(NO, @"必须存在 superlayer 才可使用该方法");
         }
     }];
+    return self;
+}
+
+- (ShortCocoa *)verAlign {
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        if (view.superview) {
+            CGFloat superHeight = CGRectGetHeight(view.superview.bounds);
+            ShortCocoaMake(view).midY(superHeight / 2);
+        } else {
+            NSAssert(NO, @"必须存在 superview 才可使用该方法");
+        }
+        
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        if (layer.superlayer) {
+            CGFloat superHeight = CGRectGetHeight(layer.superlayer.bounds);
