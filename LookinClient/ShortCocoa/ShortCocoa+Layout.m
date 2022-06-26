@@ -371,4 +371,34 @@
 - (ShortCocoa * (^)(CGFloat))offsetX {
     return ^(CGFloat x) {
         self.offset(x, 0);
-        return 
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))offsetY {
+    return ^(CGFloat y) {
+        self.offset(0, y);
+        return self;
+    };
+}
+
+#pragma mark - Group Set 系列
+
+- (ShortCocoa * (^)(CGFloat))groupX {
+    return ^(CGFloat value) {
+        self.offsetX(value - self.$groupX);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupMidX {
+    return ^(CGFloat value) {
+        self.offsetX(value - self.$groupMidX);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupMaxX {
+    return ^(CGFloat value) {
+        self.offsetX(value - self.$groupMaxX);
+        return
