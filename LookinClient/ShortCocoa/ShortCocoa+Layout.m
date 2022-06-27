@@ -401,4 +401,31 @@
 - (ShortCocoa * (^)(CGFloat))groupMaxX {
     return ^(CGFloat value) {
         self.offsetX(value - self.$groupMaxX);
-        return
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupY {
+    return ^(CGFloat value) {
+        self.offsetY(value - self.$groupY);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupMidY {
+    return ^(CGFloat value) {
+        self.offsetY(value - self.$groupMidY);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupMaxY {
+    return ^(CGFloat value) {
+        self.offsetY(value - self.$groupMaxY);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGPoint))groupOrigin {
+    return ^(CGPoint value) {
+        self.offset(value.x - self.$group
