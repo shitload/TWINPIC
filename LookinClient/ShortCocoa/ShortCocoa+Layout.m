@@ -428,4 +428,20 @@
 
 - (ShortCocoa * (^)(CGPoint))groupOrigin {
     return ^(CGPoint value) {
-        self.offset(value.x - self.$group
+        self.offset(value.x - self.$groupX, value.y - self.$groupY);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupRight {
+    return ^(CGFloat value) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return self;
+        }
+        
+        __block CGFloat superWidth = 0;
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            superWidth = CGRectGetWidth(view.superview.bounds);
+            *stop = YES;
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            superWidth = CGRe
