@@ -444,4 +444,21 @@
             superWidth = CGRectGetWidth(view.superview.bounds);
             *stop = YES;
         } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
-            superWidth = CGRe
+            superWidth = CGRectGetWidth(layer.superlayer.bounds);
+            *stop = YES;
+        }];
+        self.groupMaxX(superWidth - value);
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))groupBottom {
+    return ^(CGFloat value) {
+#if TARGET_OS_IPHONE
+        CALayer *superlayer;
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinateWithSuperlayer:&superlayer superview:nil]) {
+            return self;
+        }
+        if (superlayer.contentsAreFlipped) {
+            self.groupMaxY(CGRectGetHeight(superlayer.bounds) - value);
+        } else {
