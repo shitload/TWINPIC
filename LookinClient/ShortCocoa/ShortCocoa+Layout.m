@@ -477,4 +477,24 @@
             } else {
                 self.groupY(value);
             }
-        } else if (s
+        } else if (superview) {
+            if (superview.isFlipped) {
+                self.groupMaxY(CGRectGetHeight(superlayer.bounds) - value);
+            } else {
+                self.groupY(value);
+            }
+        }
+        return self;
+#endif
+    };
+}
+
+- (ShortCocoa *)groupHorAlign {
+    if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+        return self;
+    }
+    
+    __block CGFloat superWidth = 0;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        superWidth = CGRectGetWidth(view.superview.bounds);
+       
