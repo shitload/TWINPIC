@@ -497,4 +497,21 @@
     __block CGFloat superWidth = 0;
     [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
         superWidth = CGRectGetWidth(view.superview.bounds);
-       
+        *stop = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        superWidth = CGRectGetWidth(layer.superlayer.bounds);
+        *stop = YES;
+    }];
+    self.groupMidX(superWidth / 2);
+    return self;
+}
+
+- (ShortCocoa *)groupVerAlign {
+    if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+        return self;
+    }
+    
+    __block CGFloat superHeight = 0;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        superHeight = CGRectGetHeight(view.superview.bounds);
+        *stop = Y
