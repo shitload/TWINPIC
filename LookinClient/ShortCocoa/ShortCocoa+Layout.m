@@ -462,3 +462,19 @@
         if (superlayer.contentsAreFlipped) {
             self.groupMaxY(CGRectGetHeight(superlayer.bounds) - value);
         } else {
+            self.groupY(value);
+        }
+        return self;
+#elif TARGET_OS_MAC
+        CALayer *superlayer;
+        NSView *superview;
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinateWithSuperlayer:&superlayer superview:&superview]) {
+            return self;
+        }
+        if (superlayer) {
+            if (superlayer.contentsAreFlipped) {
+                self.groupMaxY(CGRectGetHeight(superlayer.bounds) - value);
+            } else {
+                self.groupY(value);
+            }
+        } else if (s
