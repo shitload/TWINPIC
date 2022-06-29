@@ -514,4 +514,25 @@
     __block CGFloat superHeight = 0;
     [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
         superHeight = CGRectGetHeight(view.superview.bounds);
-        *stop = Y
+        *stop = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        superHeight = CGRectGetHeight(layer.superlayer.bounds);
+        *stop = YES;
+    }];
+    self.groupMidY(superHeight / 2);
+    return self;
+}
+
+- (ShortCocoa *)groupCenterAlign {
+    return self.groupVerAlign.groupHorAlign;
+}
+
+#pragma mark - Group Get 系列
+
+- (CGFloat)$groupX {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    __b
