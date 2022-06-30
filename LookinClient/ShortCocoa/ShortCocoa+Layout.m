@@ -535,4 +535,17 @@
             return 0;
         }
     }
-    __b
+    __block CGFloat minX = 0;
+    __block BOOL hasDeterminedMinX = NO;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        minX = hasDeterminedMinX ? MIN(minX, CGRectGetMinX(view.frame)) : CGRectGetMinX(view.frame);
+        hasDeterminedMinX = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        minX = hasDeterminedMinX ? MIN(minX, CGRectGetMinX(layer.frame)) : CGRectGetMinX(layer.frame);
+        hasDeterminedMinX = YES;
+    }];
+    return minX;
+}
+
+- (CGFloat)$groupMidX {
+    if ([self filteredGet:[NS_UI_View class]
