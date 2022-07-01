@@ -579,4 +579,20 @@
 
 - (CGFloat)$groupY {
     if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
-        if
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    __block CGFloat minY = 0;
+    __block BOOL hasDeterminedMinY = NO;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        minY = hasDeterminedMinY ? MIN(minY, CGRectGetMinY(view.frame)) : CGRectGetMinY(view.frame);
+        hasDeterminedMinY = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        minY = hasDeterminedMinY ? MIN(minY, CGRectGetMinY(layer.frame)) : CGRectGetMinY(layer.frame);
+        hasDeterminedMinY = YES;
+    }];
+    return minY;
+}
+
+- 
