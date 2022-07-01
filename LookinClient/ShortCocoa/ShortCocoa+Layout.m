@@ -548,4 +548,22 @@
 }
 
 - (CGFloat)$groupMidX {
-    if ([self filteredGet:[NS_UI_View class]
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    CGFloat minX = self.$groupX;
+    CGFloat maxX = self.$groupMaxX;
+    CGFloat midX = minX + (maxX - minX) / 2;
+    return midX;
+}
+
+- (CGFloat)$groupMaxX {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    __block CGFloat maxX = 0;
+    __block BO
