@@ -566,4 +566,17 @@
         }
     }
     __block CGFloat maxX = 0;
-    __block BO
+    __block BOOL hasDeterminedMaxX = NO;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        maxX = hasDeterminedMaxX ? MAX(maxX, CGRectGetMaxX(view.frame)) : CGRectGetMaxX(view.frame);
+        hasDeterminedMaxX = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        maxX = hasDeterminedMaxX ? MAX(maxX, CGRectGetMaxX(layer.frame)) : CGRectGetMaxX(layer.frame);
+        hasDeterminedMaxX = YES;
+    }];
+    return maxX;
+}
+
+- (CGFloat)$groupY {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if
