@@ -611,4 +611,15 @@
     if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
         if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
             return 0;
-     
+        }
+    }
+    __block CGFloat maxY = 0;
+    __block BOOL hasDeterminedMaxY = NO;
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+        maxY = hasDeterminedMaxY ? MAX(maxY, CGRectGetMaxY(view.frame)) : CGRectGetMaxY(view.frame);
+        hasDeterminedMaxY = YES;
+    } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+        maxY = hasDeterminedMaxY ? MAX(maxY, CGRectGetMaxY(layer.frame)) : CGRectGetMaxY(layer.frame);
+        hasDeterminedMaxY = YES;
+    }];
+    retur
