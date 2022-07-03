@@ -662,4 +662,24 @@
     }
     CGFloat width = self.$groupWidth;
     CGFloat height = self.$groupHeight;
-    CGSize size = CGSizeMake(widt
+    CGSize size = CGSizeMake(width, height);
+    return size;
+}
+
+#pragma mark - to 系列
+
+- (ShortCocoa * (^)(CGFloat))toX {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGFloat safeValue = value;
+            if (safeValue > CGRectGetMaxX(view.frame)) {
+                safeValue = CGRectGetMaxX(view.frame);
+            }
+            
+            CGRect rect = view.frame;
+            CGFloat width = CGRectGetMaxX(rect) - safeVal
