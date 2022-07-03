@@ -644,4 +644,22 @@
 
 - (CGFloat)$groupHeight {
     if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
-        if (
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    CGFloat maxY = self.$groupMaxY;
+    CGFloat minY = self.$groupY;
+    CGFloat height = maxY - minY;
+    return height;
+}
+
+- (CGSize)$groupSize {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return CGSizeZero;
+        }
+    }
+    CGFloat width = self.$groupWidth;
+    CGFloat height = self.$groupHeight;
+    CGSize size = CGSizeMake(widt
