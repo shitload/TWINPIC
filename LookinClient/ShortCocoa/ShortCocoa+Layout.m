@@ -622,4 +622,26 @@
         maxY = hasDeterminedMaxY ? MAX(maxY, CGRectGetMaxY(layer.frame)) : CGRectGetMaxY(layer.frame);
         hasDeterminedMaxY = YES;
     }];
-    retur
+    return maxY;
+}
+
+- (CGPoint)$groupOrigin {
+    CGPoint origin = CGPointMake(self.$groupX, self.$groupY);
+    return origin;
+}
+
+- (CGFloat)$groupWidth {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (![self allPackedViewsAndLayersAreInTheSameCoordinate]) {
+            return 0;
+        }
+    }
+    CGFloat maxX = self.$groupMaxX;
+    CGFloat minX = self.$groupX;
+    CGFloat width = maxX - minX;
+    return width;
+}
+
+- (CGFloat)$groupHeight {
+    if ([self filteredGet:[NS_UI_View class], [CALayer class], nil].count > 1) {
+        if (
