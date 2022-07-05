@@ -714,4 +714,17 @@
             if (safeValue < CGRectGetMinX(view.frame)) {
                 safeValue = CGRectGetMinX(view.frame);
             }
-        
+            
+            CGRect rect = view.frame;
+            CGFloat width = CGFloatSnapToPixel(safeValue - CGRectGetMinX(rect));
+            rect.size.width = width;
+            view.frame = rect;
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat safeValue = value;
+            if (safeValue < CGRectGetMinX(layer.frame)) {
+                safeValue = CGRectGetMinX(layer.frame);
+            }
+            
+            CGRect rect = layer.frame;
+            CGFloat width = CGFloatSnapToPixel(safeValue - CGRectGetMinX(rect));
+            rect.size.w
