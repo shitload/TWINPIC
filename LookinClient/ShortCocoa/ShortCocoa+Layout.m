@@ -682,4 +682,17 @@
             }
             
             CGRect rect = view.frame;
-            CGFloat width = CGRectGetMaxX(rect) - safeVal
+            CGFloat width = CGRectGetMaxX(rect) - safeValue;
+            rect.size.width = CGFloatSnapToPixel(width);
+            rect.origin.x = CGFloatSnapToPixel(safeValue);
+            view.frame = rect;
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat safeValue = value;
+            if (safeValue > CGRectGetMaxX(layer.frame)) {
+                safeValue = CGRectGetMaxX(layer.frame);
+            }
+            
+            CGRect rect = layer.frame;
+            CGFloat width = CGFloatSnapToPixel(CGRectGetMaxX(rect) - safeValue);
+            rect.size.width = width;
+         
