@@ -747,4 +747,17 @@
                 safeValue = CGRectGetMaxY(view.frame);
             }
             
-            CGRect rect = view.frame
+            CGRect rect = view.frame;
+            CGFloat height = CGRectGetMaxY(rect) - safeValue;
+            rect.size.height = CGFloatSnapToPixel(height);
+            rect.origin.y = CGFloatSnapToPixel(safeValue);
+            view.frame = rect;
+            
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat safeValue = value;
+            if (safeValue > CGRectGetMaxY(layer.frame)) {
+                safeValue = CGRectGetMaxY(layer.frame);
+            }
+            
+            CGRect rect = layer.frame;
+          
