@@ -811,4 +811,18 @@
         
         [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
             CGRect rect = view.frame;
-            CGFloat width = CGFloatSnap
+            CGFloat width = CGFloatSnapToPixel(CGRectGetWidth(view.superview.bounds) - CGRectGetMinX(rect) - value);
+            if (width < 0) {
+                width = 0;
+            }
+            rect.size.width = width;
+            view.frame = rect;
+            
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGRect rect = layer.frame;
+            CGFloat width = CGFloatSnapToPixel(CGRectGetWidth(layer.superlayer.bounds) - CGRectGetMinX(rect) - value);
+            if (width < 0) {
+                width = 0;
+            }
+            rect.size.width = width;
+            layer
