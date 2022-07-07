@@ -793,3 +793,22 @@
                 safeValue = CGRectGetMinY(layer.frame);
             }
             
+            CGRect rect = layer.frame;
+            CGFloat height = safeValue - CGRectGetMinY(rect);
+            rect.size.height = CGFloatSnapToPixel(height);
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))toRight {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+        
+        [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
+            CGRect rect = view.frame;
+            CGFloat width = CGFloatSnap
