@@ -778,4 +778,18 @@
         
         [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View *view, BOOL *stop) {
             CGFloat safeValue = value;
-            if (safeValue < CGRectG
+            if (safeValue < CGRectGetMinY(view.frame)) {
+                safeValue = CGRectGetMinY(view.frame);
+            }
+            
+            CGRect rect = view.frame;
+            CGFloat height = safeValue - CGRectGetMinY(rect);
+            rect.size.height = CGFloatSnapToPixel(height);
+            view.frame = rect;
+            
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            CGFloat safeValue = value;
+            if (safeValue < CGRectGetMinY(layer.frame)) {
+                safeValue = CGRectGetMinY(layer.frame);
+            }
+            
