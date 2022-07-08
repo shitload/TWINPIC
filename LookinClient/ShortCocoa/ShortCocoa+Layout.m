@@ -843,4 +843,19 @@
                 CGFloat maxY = CGRectGetHeight(view.superview.bounds) - value;
                 ShortCocoaMake(view).toMaxY(maxY);
             } else {
-                NSAssert(NO, @"必须存在 supe
+                NSAssert(NO, @"必须存在 superview 才可使用该方法");
+            }
+#elif TARGET_OS_MAC
+        [self unpackClassA:[NSView class] doA:^(NSView *view, BOOL *stop) {
+            if (view.superview) {
+                if (view.superview.isFlipped) {
+                    CGFloat maxY = CGRectGetHeight(view.superview.bounds) - value;
+                    ShortCocoaMake(view).toMaxY(maxY);
+                } else {
+                    ShortCocoaMake(view).toY(value);
+                }
+            } else {
+                NSAssert(NO, @"必须存在 superview 才可使用该方法");
+            }
+#endif
+        } c
