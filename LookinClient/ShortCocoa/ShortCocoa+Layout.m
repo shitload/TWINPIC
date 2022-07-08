@@ -825,4 +825,22 @@
                 width = 0;
             }
             rect.size.width = width;
-            layer
+            layer.frame = rect;
+        }];
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(CGFloat))toBottom {
+    return ^(CGFloat value) {
+        if (isnan(value)) {
+            NSAssert(NO, @"传入了 NaN");
+            value = 0;
+        }
+#if TARGET_OS_IPHONE
+        [self unpackClassA:[UIView class] doA:^(UIView *view, BOOL *stop) {
+            if (view.superview) {
+                CGFloat maxY = CGRectGetHeight(view.superview.bounds) - value;
+                ShortCocoaMake(view).toMaxY(maxY);
+            } else {
+                NSAssert(NO, @"必须存在 supe
