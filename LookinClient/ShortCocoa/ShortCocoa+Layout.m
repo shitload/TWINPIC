@@ -858,4 +858,22 @@
                 NSAssert(NO, @"必须存在 superview 才可使用该方法");
             }
 #endif
-        } c
+        } classB:[CALayer class] doB:^(CALayer *layer, BOOL *stop) {
+            if (layer.superlayer) {
+                if (layer.superlayer.contentsAreFlipped) {
+                    CGFloat maxY = CGRectGetHeight(layer.superlayer.bounds) - value;
+                    ShortCocoaMake(layer).toMaxY(maxY);
+                } else {
+                    ShortCocoaMake(layer).toY(value);
+                }
+            } else {
+                NSAssert(NO, @"必须存在 superlayer 才可使用该方法");
+            }
+        }];
+        return self;
+    };
+}
+
+#pragma mark - sizeThatFits 系列
+
+- (ShortCocoa *
