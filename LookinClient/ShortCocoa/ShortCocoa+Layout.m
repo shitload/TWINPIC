@@ -876,4 +876,19 @@
 
 #pragma mark - sizeThatFits 系列
 
-- (ShortCocoa *
+- (ShortCocoa *)heightToFit {
+#if TARGET_OS_IPHONE
+    [self unpack:[UIView class] do:^(UIView *view, BOOL *stop) {
+#elif TARGET_OS_MAC
+    [self unpack:[NSControl class] do:^(NSControl *view, BOOL *stop) {
+#endif
+        CGFloat width = CGRectGetWidth(view.bounds);
+        CGFloat height = [view sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)].height;
+        ShortCocoaMake(view).height(height);
+    }];
+    return self;
+}
+
+- (ShortCocoa *)widthToFit {
+#if TARGET_OS_IPHONE
+    [self unpack:[UIView class] do:^(UIView *view, BOOL *
