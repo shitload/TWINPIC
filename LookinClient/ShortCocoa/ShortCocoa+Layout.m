@@ -891,4 +891,23 @@
 
 - (ShortCocoa *)widthToFit {
 #if TARGET_OS_IPHONE
-    [self unpack:[UIView class] do:^(UIView *view, BOOL *
+    [self unpack:[UIView class] do:^(UIView *view, BOOL *stop) {
+#elif TARGET_OS_MAC
+    [self unpack:[NSControl class] do:^(NSControl *view, BOOL *stop) {
+#endif
+        CGFloat height = CGRectGetHeight(view.bounds);
+        CGFloat width = [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, height)].width;
+        ShortCocoaMake(view).width(width);
+    }];
+    return self;
+}
+
+#pragma mark - Private
+
+- (CGSize)getBestSize {
+    // 此方法不考虑 self.get 是数组的情况，下面其余 5 个方法也是一样
+    __block CGSize size = CGSizeZero;
+#if TARGET_OS_IPHONE
+    [self unpack:[UIView class] do:^(UIView *view, BOOL *stop) {
+#elif TARGET_OS_MAC
+    [self unpack:[NSCont
