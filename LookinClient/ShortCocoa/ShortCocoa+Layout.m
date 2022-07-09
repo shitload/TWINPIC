@@ -910,4 +910,28 @@
 #if TARGET_OS_IPHONE
     [self unpack:[UIView class] do:^(UIView *view, BOOL *stop) {
 #elif TARGET_OS_MAC
-    [self unpack:[NSCont
+    [self unpack:[NSControl class] do:^(NSControl *view, BOOL *stop) {
+#endif
+        size = [view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+    }];
+    return size;
+}
+
+- (CGFloat)getBestWidth {
+    return self.getBestSize.width;
+}
+
+- (CGFloat)getBestHeight {
+    return self.getBestSize.height;
+}
+
+/**
+ 检查是否所有 view 和 layer 都处于相同的坐标系里（有共同的 superview/superlayer）
+ */
+- (BOOL)allPackedViewsAndLayersAreInTheSameCoordinateWithSuperlayer:(inout CALayer **)superlayerPointer superview:(inout NS_UI_View **)superviewPointer {
+    if (!self.get) {
+        return NO;
+    }
+    __block BOOL validated = YES;
+
+    __block N
