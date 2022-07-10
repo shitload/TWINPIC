@@ -950,4 +950,23 @@
                 *stop = YES;
             }
         } else {
-            supervi
+            superview = view.superview;
+        }
+    } classB:[CALayer class] doB:^(CALayer * _Nonnull layer, BOOL *stop) {
+        if (!layer.superlayer) {
+            validated = NO;
+            NSAssert(NO, @"superlayer 不存在");
+            *stop = YES;
+        }
+        if (superlayer) {
+            if (layer.superlayer != superlayer) {
+                validated = NO;
+                NSAssert(NO, @"包装了多个 CALayer 对象，但它们没有相同的 superlayer");
+                *stop = YES;
+            }
+        } else {
+            superlayer = layer.superlayer;
+        }
+    }];
+
+    if (validated) 
