@@ -934,4 +934,20 @@
     }
     __block BOOL validated = YES;
 
-    __block N
+    __block NS_UI_View *superview = nil;
+    __block CALayer *superlayer = nil;
+
+    [self unpackClassA:[NS_UI_View class] doA:^(NS_UI_View * _Nonnull view, BOOL *stop) {
+        if (!view.superview) {
+            validated = NO;
+            NSAssert(NO, @"superview 不存在");
+            *stop = YES;
+        }
+        if (superview) {
+            if (view.superview != superview) {
+                validated = NO;
+                NSAssert(NO, @"包装了多个 View 对象，但它们没有相同的 superview");
+                *stop = YES;
+            }
+        } else {
+            supervi
