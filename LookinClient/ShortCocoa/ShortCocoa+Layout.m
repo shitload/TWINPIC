@@ -969,4 +969,16 @@
         }
     }];
 
-    if (validated) 
+    if (validated) {
+        if (superview && superlayer && superview.layer != superlayer) {
+            if (!superview.layer) {
+                validated = NO;
+#if TARGET_OS_IPHONE
+                NSAssert(NO, @"同时包装了 View 和 Layer 对象，但其中某些 View 的 layer 属性为 nil");
+#elif TARGET_OS_MAC
+                NSAssert(NO, @"同时包装了 View 和 Layer 对象，但其中某些 View 的 layer 属性为 nil，是否忘记设置 wantsLayer 为 YES？");
+#endif
+            } else if (superview.layer != superlayer) {
+                validated = NO;
+                NSAssert(NO, @"同时包装了 View 和 Layer 对象，但这些 View 和 Layer 没有相同的 superlayer");
+   
