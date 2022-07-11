@@ -981,4 +981,28 @@
             } else if (superview.layer != superlayer) {
                 validated = NO;
                 NSAssert(NO, @"同时包装了 View 和 Layer 对象，但这些 View 和 Layer 没有相同的 superlayer");
-   
+            }
+        }
+    }
+    
+    if (validated) {
+        if (superlayer) {
+            if (superlayerPointer) {
+                *superlayerPointer = superlayer;
+            }
+        }
+        if (superview) {
+            if (superviewPointer) {
+                *superviewPointer = superview;
+            }
+            if (!superlayer) {
+                if (superlayerPointer) {
+                    *superlayerPointer = superview.layer;                    
+                }
+            }
+        }
+    }
+    
+    return validated;
+}
+     
