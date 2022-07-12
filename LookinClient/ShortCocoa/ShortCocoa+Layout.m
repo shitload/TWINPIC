@@ -1006,3 +1006,25 @@
     return validated;
 }
      
+- (BOOL)allPackedViewsAndLayersAreInTheSameCoordinate {
+    return [self allPackedViewsAndLayersAreInTheSameCoordinateWithSuperlayer:nil superview:nil];
+}
+
+- (NSArray *)filteredGet:(Class)aClass, ... {
+    if (!aClass) {
+        return nil;
+    }
+    NSMutableArray<Class> *classes = [NSMutableArray array];;
+    [classes addObject:aClass];
+    
+    va_list args;
+    va_start(args, aClass);
+    id arg;
+    while ((1)) {
+        arg = va_arg(args, id);
+        if (arg) {
+            [classes addObject:arg];
+        } else {
+            // 传入了 nil
+            break;
+        
