@@ -1027,4 +1027,17 @@
         } else {
             // 传入了 nil
             break;
-        
+        }
+    }
+    va_end(args);
+    
+    NSMutableArray *filtered = [NSMutableArray array];
+    id initialGet = self.get;
+    if (ShortCocoaEqualClass(initialGet, NSArray)) {
+        [initialGet enumerateObjectsUsingBlock:^(id  _Nonnull get, NSUInteger idx, BOOL * _Nonnull stop) {
+            [classes enumerateObjectsUsingBlock:^(Class  _Nonnull className, NSUInteger idx, BOOL * _Nonnull innerStop) {
+                if (ShortCocoaEqualClass(get, className)) {
+                    [filtered addObject:get];
+                    *innerStop = YES;
+                }
+      
