@@ -1056,4 +1056,20 @@
 /**
  调整传入值的大小以使其在当前设备上可以像素对齐
  
- @note 假如是一个屏幕 scale 为 2 的设备，当你设置一个 view 的 origin 为 0.7pt 时，则它实际会被渲染为 1.4px，而 1.4px 不是整数，这将导致这个 view 看起来有些模糊，这个现象对于 UILabel 等文字控件的显示尤其明显。而该方法可以把
+ @note 假如是一个屏幕 scale 为 2 的设备，当你设置一个 view 的 origin 为 0.7pt 时，则它实际会被渲染为 1.4px，而 1.4px 不是整数，这将导致这个 view 看起来有些模糊，这个现象对于 UILabel 等文字控件的显示尤其明显。而该方法可以把 0.7 修正为 1.0，从而解决这个问题。
+ @note 数值将被 ceil() 向上取整，比如 scale 为 2 时：0.1=>0.5，1.3=>1.5
+ 
+ @note 这个像素对齐的优化策略来自于 QMUI iOS：
+ https://github.com/QMUI/QMUI_iOS/
+ https://github.com/QMUI/QMUI_iOS/blob/master/QMUIKit/QMUICore/QMUICommonDefines.h
+ */
+CG_INLINE CGFloat CGFloatSnapToPixel(CGFloat rawValue) {
+    if (rawValue == CGFLOAT_MIN || rawValue == CGFLOAT_MAX) {
+        // CGFLOAT_MIN, CGFLOAT_MAX 一般被当做一个标志位来用，所以不对它们进行处理
+        return rawValue;
+    }
+#if TARGET_OS_IPHONE
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+#elif TARGET_OS_MAC
+    CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
+#end
