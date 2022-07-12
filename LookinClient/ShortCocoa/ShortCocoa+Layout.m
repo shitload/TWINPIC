@@ -1040,4 +1040,20 @@
                     [filtered addObject:get];
                     *innerStop = YES;
                 }
-      
+            }];
+        }];
+    } else {
+        [classes enumerateObjectsUsingBlock:^(Class  _Nonnull className, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (ShortCocoaEqualClass(initialGet, className)) {
+                [filtered addObject:initialGet];
+                *stop = YES;
+            }
+        }];
+    }
+    return filtered.count ? filtered : nil;
+}
+
+/**
+ 调整传入值的大小以使其在当前设备上可以像素对齐
+ 
+ @note 假如是一个屏幕 scale 为 2 的设备，当你设置一个 view 的 origin 为 0.7pt 时，则它实际会被渲染为 1.4px，而 1.4px 不是整数，这将导致这个 view 看起来有些模糊，这个现象对于 UILabel 等文字控件的显示尤其明显。而该方法可以把
