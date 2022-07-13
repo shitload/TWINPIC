@@ -1072,4 +1072,33 @@ CG_INLINE CGFloat CGFloatSnapToPixel(CGFloat rawValue) {
     CGFloat screenScale = [[UIScreen mainScreen] scale];
 #elif TARGET_OS_MAC
     CGFloat screenScale = [[NSScreen mainScreen] backingScaleFactor];
-#end
+#endif
+    CGFloat parsedValue = ceil(rawValue * screenScale) / screenScale;
+    return parsedValue;
+}
+
+@end
+
+#if TARGET_OS_IPHONE
+@implementation UIView (ShortCocoaLayout)
+#elif TARGET_OS_MAC
+@implementation NSView (ShortCocoaLayout)
+#endif
+
+- (CGFloat)$x {
+    return ShortCocoaMake(self).$groupX;
+}
+- (CGFloat)$midX {
+    return ShortCocoaMake(self).$groupMidX;
+}
+- (CGFloat)$maxX {
+    return ShortCocoaMake(self).$groupMaxX;
+}
+- (CGFloat)$y {
+    return ShortCocoaMake(self).$groupY;
+}
+- (CGFloat)$midY {
+    return ShortCocoaMake(self).$groupMidY;
+}
+- (CGFloat)$maxY {
+    ret
