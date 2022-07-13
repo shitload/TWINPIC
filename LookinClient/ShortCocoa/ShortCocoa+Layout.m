@@ -1129,4 +1129,31 @@ CG_INLINE CGFloat CGFloatSnapToPixel(CGFloat rawValue) {
 @implementation CALayer (ShortCocoaLayout)
 
 - (CGFloat)$x {
-    return ShortCocoaMake(self).$gro
+    return ShortCocoaMake(self).$groupX;
+}
+- (CGFloat)$midX {
+    return ShortCocoaMake(self).$groupMidX;
+}
+- (CGFloat)$maxX {
+    return ShortCocoaMake(self).$groupMaxX;
+}
+- (CGFloat)$y {
+    return ShortCocoaMake(self).$groupY;
+}
+- (CGFloat)$midY {
+    return ShortCocoaMake(self).$groupMidY;
+}
+- (CGFloat)$maxY {
+    return ShortCocoaMake(self).$groupMaxY;
+}
+- (CGFloat)$width {
+    return ShortCocoaMake(self).$groupWidth;
+}
+- (CGFloat)$height {
+    return ShortCocoaMake(self).$groupHeight;
+}
+- (CGSize)$size {
+    return ShortCocoaMake(self).$groupSize;
+}
+
+@end
