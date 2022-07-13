@@ -1101,4 +1101,32 @@ CG_INLINE CGFloat CGFloatSnapToPixel(CGFloat rawValue) {
     return ShortCocoaMake(self).$groupMidY;
 }
 - (CGFloat)$maxY {
-    ret
+    return ShortCocoaMake(self).$groupMaxY;
+}
+- (CGFloat)$width {
+    return ShortCocoaMake(self).$groupWidth;
+}
+- (CGFloat)$height {
+    return ShortCocoaMake(self).$groupHeight;
+}
+- (CGSize)$size {
+    return ShortCocoaMake(self).$groupSize;
+}
+#if TARGET_OS_IPHONE
+- (CGSize)$bestSize {
+    return ShortCocoaMake(self).getBestSize;
+}
+- (CGFloat)$bestWidth {
+    return ShortCocoaMake(self).getBestWidth;
+}
+- (CGFloat)$bestHeight {
+    return ShortCocoaMake(self).getBestHeight;
+}
+#endif
+
+@end
+
+@implementation CALayer (ShortCocoaLayout)
+
+- (CGFloat)$x {
+    return ShortCocoaMake(self).$gro
