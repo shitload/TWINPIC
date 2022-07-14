@@ -30,4 +30,14 @@
     };
 }
 
-- (ShortCocoa * (^)(ShortCo
+- (ShortCocoa * (^)(ShortCocoaFont))font {
+    return ^(ShortCocoaFont value) {
+        id UI_or_NS_Font = [ShortCocoaHelper fontFromShortCocoaFont:value];
+        if (self.cachedAttrString.length) {
+            [self.cachedAttrString addAttribute:NSFontAttributeName value:UI_or_NS_Font range:NSMakeRange(0, self.cachedAttrString.length)];
+            
+        } else {
+#if TARGET_OS_IPHONE
+            if (UI_or_NS_Font) {
+                [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
+                    obj.titleLabel.font 
