@@ -14,4 +14,20 @@
     return ^(ShortCocoaColor color) {
         id UI_or_NS_Color = [ShortCocoaHelper colorFromShortCocoaColor:color];
         if (self.cachedAttrString.length) {
-            [self.cachedAttrString addAttribute:NSForegroundColorAttributeName value:
+            [self.cachedAttrString addAttribute:NSForegroundColorAttributeName value:UI_or_NS_Color range:NSMakeRange(0, self.cachedAttrString.length)];
+            
+        } else {
+#if TARGET_OS_IPHONE
+            UIColor *textColor = [ShortCocoaHelper colorFromShortCocoaColor:color];
+            [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
+                [obj setTitleColor:textColor forState:UIControlStateNormal];
+            } classB:[UILabel class] doB:^(UILabel * _Nonnull obj, BOOL *stop) {
+                [obj setTextColor:textColor];
+            }];
+#endif
+        }
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(ShortCo
