@@ -100,4 +100,12 @@
 
 - (ShortCocoa * (^)(NSLineBreakMode))lineBreakMode {
     return ^(NSLineBreakMode mode) {
-        if (self.cac
+        if (self.cachedAttrString.length) {
+            NSMutableParagraphStyle *paraStyle = [ShortCocoaHelper paragraphStyleForAttributedString:self.cachedAttrString];
+            paraStyle.lineBreakMode = mode;
+            [self.cachedAttrString addAttribute:NSParagraphStyleAttributeName value:paraStyle.copy range:NSMakeRange(0, self.cachedAttrString.length)];
+        } else {
+#if TARGET_OS_IPHONE
+            [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
+                obj.titleLabel.lineBreakMode = mode;
+            } cla
