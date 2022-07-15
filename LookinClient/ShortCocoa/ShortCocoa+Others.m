@@ -40,4 +40,30 @@
 #if TARGET_OS_IPHONE
             if (UI_or_NS_Font) {
                 [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
-                    obj.titleLabel.font 
+                    obj.titleLabel.font = UI_or_NS_Font;
+                } classB:[UILabel class] doB:^(UILabel * _Nonnull obj, BOOL *stop) {
+                    obj.font = UI_or_NS_Font;
+                }];
+            }
+#elif TARGET_OS_MAC
+            
+#endif
+        }
+        return self;
+    };
+}
+
+- (NSArray *)array {
+    id selfGet = self.get;
+    if (!selfGet) {
+        return nil;
+    }
+    if ([selfGet isKindOfClass:[NSArray class]]) {
+        return selfGet;
+    }
+    return @[selfGet];
+}
+
+- (ShortCocoa *)textAlignLeft {
+    self.textAlign(NSTextAlignmentLeft);
+    return s
