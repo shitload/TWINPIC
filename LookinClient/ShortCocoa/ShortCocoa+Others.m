@@ -66,4 +66,22 @@
 
 - (ShortCocoa *)textAlignLeft {
     self.textAlign(NSTextAlignmentLeft);
-    return s
+    return self;
+}
+
+- (ShortCocoa *)textAlignCenter {
+    self.textAlign(NSTextAlignmentCenter);
+    return self;
+}
+
+- (ShortCocoa *)textAlignRight {
+    self.textAlign(NSTextAlignmentRight);
+    return self;
+}
+
+- (ShortCocoa * (^)(NSTextAlignment alignment))textAlign {
+    return ^(NSTextAlignment alignment) {
+        if (self.cachedAttrString.length) {
+            NSMutableParagraphStyle *paraStyle = [ShortCocoaHelper paragraphStyleForAttributedString:self.cachedAttrString];
+            paraStyle.alignment = alignment;
+            [self.cachedAttrString addAttribute:NSParagraphStyleAttributeName value:para
