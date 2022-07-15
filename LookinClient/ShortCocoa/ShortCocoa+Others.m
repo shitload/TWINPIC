@@ -84,4 +84,20 @@
         if (self.cachedAttrString.length) {
             NSMutableParagraphStyle *paraStyle = [ShortCocoaHelper paragraphStyleForAttributedString:self.cachedAttrString];
             paraStyle.alignment = alignment;
-            [self.cachedAttrString addAttribute:NSParagraphStyleAttributeName value:para
+            [self.cachedAttrString addAttribute:NSParagraphStyleAttributeName value:paraStyle.copy range:NSMakeRange(0, self.cachedAttrString.length)];
+        } else {
+#if TARGET_OS_IPHONE
+            [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
+                obj.titleLabel.textAlignment = alignment;
+            } classB:[UILabel class] doB:^(UILabel * _Nonnull obj, BOOL *stop) {
+                obj.textAlignment = alignment;
+            }];
+#endif
+        }
+        return self;
+    };
+}
+
+- (ShortCocoa * (^)(NSLineBreakMode))lineBreakMode {
+    return ^(NSLineBreakMode mode) {
+        if (self.cac
