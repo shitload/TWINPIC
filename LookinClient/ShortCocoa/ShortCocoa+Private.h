@@ -53,4 +53,16 @@ NS_ASSUME_NONNULL_BEGIN
 #if TARGET_OS_IPHONE
 
 /// 将 ShortCocoaColor 转换为 UIColor
-+ (nullable UIColor *)colorFromShortC
++ (nullable UIColor *)colorFromShortCocoaColor:(nullable ShortCocoaColor)obj;
+/// 将 ShortCocoaImage 转换为 UIImage
++ (nullable UIImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj;
+/// 将 ShortCocoaFont 转换为 UIFont
++ (nullable UIFont *)fontFromShortCocoaFont:(nullable ShortCocoaFont)obj;
+
+#elif TARGET_OS_MAC
+
+/// 将 ShortCocoaColor 转换为 NSColor
++ (nullable NSColor *)colorFromShortCocoaColor:(nullable ShortCocoaColor)obj;
+/// 将 ShortCocoaImage 转换为 NSImage
++ (nullable NSImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj;
+/// 将 ShortCocoaFont 转换为
