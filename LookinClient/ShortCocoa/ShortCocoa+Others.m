@@ -108,4 +108,13 @@
 #if TARGET_OS_IPHONE
             [self unpackClassA:[UIButton class] doA:^(UIButton * _Nonnull obj, BOOL *stop) {
                 obj.titleLabel.lineBreakMode = mode;
-            } cla
+            } classB:[UILabel class] doB:^(UILabel * _Nonnull obj, BOOL *stop) {
+                obj.lineBreakMode = mode;
+            }];
+#endif
+        }
+        return self;
+    };
+}
+
+@end
