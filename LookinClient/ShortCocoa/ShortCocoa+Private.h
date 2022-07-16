@@ -38,3 +38,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ShortCocoaHelper : NSObject
 
+// 获取 string 的 NSParagraphStyle，如果不存在则创建一个新的
++ (NSMutableParagraphStyle *)paragraphStyleForAttributedString:(NSAttributedString *)string;
+
+/// 将 ShortCocoaQuad 转换为 @[@10, @20, @30, @40] 这样的数组
++ (nullable NSArray<NSNumber *> *)fourNumbersFromShortCocoaQuad:(nullable ShortCocoaQuad)obj;
+
+/**
+ 将 ShortCocoaString 转换为 NSMutableAttributedString
+ @note 如果传入参数不合法则返回 nil
+ */
++ (nullable NSMutableAttributedString *)attrStringFromShortCocoaString:(nullable ShortCocoaString)obj;
+
+#if TARGET_OS_IPHONE
+
+/// 将 ShortCocoaColor 转换为 UIColor
++ (nullable UIColor *)colorFromShortC
