@@ -32,3 +32,18 @@
         }];
     } else {
         BOOL shouldStop;
+        if (ShortCocoaEqualClass(self.get, classA)) {
+            if (handlerA) {
+                handlerA(self.get, &shouldStop);
+            }
+        } else if (ShortCocoaEqualClass(self.get, classB)) {
+            if (handlerB) {
+                handlerB(self.get, &shouldStop);
+            }
+        }
+    }
+}
+
+static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
+- (NSMutableAttributedString *)cachedAttrString {
+    NSMutableAttributedString *string = objc_getAssociatedObject(self, &kAssociatedObjectKey_ShortCocoaCac
