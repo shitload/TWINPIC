@@ -16,4 +16,19 @@
 
 - (void)unpackClassA:(Class)classA doA:(void (^)(id, BOOL *))handlerA classB:(Class)classB doB:(void (^)(id, BOOL *))handlerB {
     if (!self.get) {
-        re
+        return;
+    }
+    if (ShortCocoaEqualClass(self.get, NSArray)) {
+        [self.get enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (ShortCocoaEqualClass(obj, classA)) {
+                if (handlerA) {
+                    handlerA(obj, stop);
+                }
+            } else if (ShortCocoaEqualClass(obj, classB)) {
+                if (handlerB) {
+                    handlerB(obj, stop);
+                }
+            }
+        }];
+    } else {
+        BOOL shouldStop;
