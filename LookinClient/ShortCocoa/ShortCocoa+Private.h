@@ -65,4 +65,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSColor *)colorFromShortCocoaColor:(nullable ShortCocoaColor)obj;
 /// 将 ShortCocoaImage 转换为 NSImage
 + (nullable NSImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj;
-/// 将 ShortCocoaFont 转换为
+/// 将 ShortCocoaFont 转换为 NSFont
++ (nullable NSFont *)fontFromShortCocoaFont:(nullable ShortCocoaFont)obj;
+
+#endif
+
+@end
+
+NS_ASSUME_NONNULL_END
