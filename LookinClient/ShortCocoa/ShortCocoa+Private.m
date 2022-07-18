@@ -46,4 +46,21 @@
 
 static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
 - (NSMutableAttributedString *)cachedAttrString {
-    NSMutableAttributedString *string = objc_getAssociatedObject(self, &kAssociatedObjectKey_ShortCocoaCac
+    NSMutableAttributedString *string = objc_getAssociatedObject(self, &kAssociatedObjectKey_ShortCocoaCachedAttrStringKey);
+    if (!string) {
+        string = [ShortCocoaHelper attrStringFromShortCocoaString:self.get];
+        [self setCachedAttrString:string];
+    }
+    return string;
+}
+- (void)setCachedAttrString:(NSMutableAttributedString *)cachedAttrString {
+    objc_setAssociatedObject(self, &kAssociatedObjectKey_ShortCocoaCachedAttrStringKey, cachedAttrString, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+@end
+
+@implementation ShortCocoaHelper
+
++ (NSMutableParagraphStyle *)paragraphStyleForAttributedString:(NSAttributedString *)string {
+    NSRange effectiveRange;
+    NSParagr
