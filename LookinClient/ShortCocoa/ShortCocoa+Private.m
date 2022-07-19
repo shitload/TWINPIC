@@ -102,4 +102,21 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
                 
             } else if (numbers.count == 3) {
                 // @[@20, @30, @40]
-                return @[numbers[0], numbers[1], num
+                return @[numbers[0], numbers[1], numbers[2], numbers[1]];
+                
+            } else if (numbers.count == 4) {
+                // @[@20, @30, @40, @50]
+                return numbers;
+            }
+        }
+    }
+    NSAssert(NO, @"传入的参数无法识别，支持的参数列表请参看 ShortCocoaQuad 的注释");
+    return nil;
+}
+
++ (NSMutableAttributedString *)attrStringFromShortCocoaString:(ShortCocoaString)obj {
+    __block NSMutableAttributedString *string = nil;
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        string = [[NSMutableAttributedString alloc] initWithString:obj];
+        
+    } else if (ShortCocoaEqualClass(obj, NSAttributedStri
