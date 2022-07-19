@@ -87,4 +87,19 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         [(NSArray *)obj enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (!ShortCocoaEqualClass(obj, NSNumber)) {
                 isValid = NO;
-   
+                *stop = YES;
+            }
+        }];
+        if (isValid) {
+            NSArray<NSNumber *> *numbers = obj;
+            if (numbers.count == 1) {
+                // @[@20]
+                return @[numbers[0], numbers[0], numbers[0], numbers[0]];
+                
+            } else if (numbers.count == 2) {
+                // @[@20, @30]
+                return @[numbers[0], numbers[1], numbers[0], numbers[1]];
+                
+            } else if (numbers.count == 3) {
+                // @[@20, @30, @40]
+                return @[numbers[0], numbers[1], num
