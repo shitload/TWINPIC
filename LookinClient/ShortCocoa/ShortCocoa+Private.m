@@ -76,4 +76,15 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
 + (NSArray<NSNumber *> *)fourNumbersFromShortCocoaQuad:(ShortCocoaQuad)obj {
     if (ShortCocoaEqualClass(obj, NSNumber)) {
         // @20
-        r
+        return @[obj, obj, obj, obj];
+    } else if (ShortCocoaEqualClass(obj, NSString)) {
+        // @"12, 14, 15, 17"、@"13" 这种
+        NSArray<NSNumber *> *numbers = [self numberArrayFromString:obj];
+        return [self fourNumbersFromShortCocoaQuad:numbers];
+        
+    } else if (ShortCocoaEqualClass(obj, NSArray)) {
+        __block BOOL isValid = YES;
+        [(NSArray *)obj enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (!ShortCocoaEqualClass(obj, NSNumber)) {
+                isValid = NO;
+   
