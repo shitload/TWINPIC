@@ -63,4 +63,17 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
 
 + (NSMutableParagraphStyle *)paragraphStyleForAttributedString:(NSAttributedString *)string {
     NSRange effectiveRange;
-    NSParagr
+    NSParagraphStyle *existingParaStyle = [string attribute:NSParagraphStyleAttributeName atIndex:0 longestEffectiveRange:&effectiveRange inRange:NSMakeRange(0, string.length)];
+    NSMutableParagraphStyle *newParaStyle = nil;
+    if (existingParaStyle && effectiveRange.length == string.length) {
+        newParaStyle = [existingParaStyle mutableCopy];
+    } else {
+        newParaStyle = [[NSMutableParagraphStyle alloc] init];
+    }
+    return newParaStyle;
+}
+
++ (NSArray<NSNumber *> *)fourNumbersFromShortCocoaQuad:(ShortCocoaQuad)obj {
+    if (ShortCocoaEqualClass(obj, NSNumber)) {
+        // @20
+        r
