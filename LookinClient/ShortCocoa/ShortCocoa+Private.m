@@ -119,4 +119,16 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
     if (ShortCocoaEqualClass(obj, NSString)) {
         string = [[NSMutableAttributedString alloc] initWithString:obj];
         
-    } else if (ShortCocoaEqualClass(obj, NSAttributedStri
+    } else if (ShortCocoaEqualClass(obj, NSAttributedString)) {
+        string = [obj mutableCopy];
+        
+    } else if (ShortCocoaEqualClass(obj, NSNumber)) {
+        string = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", obj]];
+        
+    } else if (ShortCocoaEqualClass(obj, NSArray)) {
+        [obj enumerateObjectsUsingBlock:^(id  _Nonnull comp, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (ShortCocoaEqualClass(comp, NSString)) {
+                if (!string) {
+                    string = [[NSMutableAttributedString alloc] init];
+                }
+  
