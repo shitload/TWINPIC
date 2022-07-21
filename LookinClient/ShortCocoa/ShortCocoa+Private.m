@@ -161,4 +161,19 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
     if (!obj) {
         return nil;
     }
-    if (ShortCocoaEqualClass
+    if (ShortCocoaEqualClass(obj, UIColor)) {
+        // UIColor
+        return obj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        // @"red" 这种表意字符串
+        NSDictionary *dict = [self colorStringDictionary];
+        if (dict[obj]) {
+            return dict[obj];
+        }
+        // @"122, 33, 344" 这种字符串
+        NSArray *array = [self numberArrayFromString:obj];
+        if (array.count == 3 || array.count == 4) {
+            // 如果没有 alpha 值，则默认为 1（即不透明）
+            CGFloat alpha = (array.count == 4) ? [array[3] floatValue] : 1;
+            CGFloat r = [
