@@ -142,4 +142,23 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
                 
             } else if (ShortCocoaEqualClass(comp, NSNumber)) {
                 if (!string) {
-       
+                    string = [[NSMutableAttributedString alloc] init];
+                }
+                NSAttributedString *append = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", comp]];
+                [string appendAttributedString:append];
+            }
+        }];
+    } else if (ShortCocoaEqualClass(obj, ShortCocoa)) {
+        string = ((ShortCocoa *)obj).cachedAttrString;
+    }
+    
+    return string;
+}
+
+#if TARGET_OS_IPHONE
+
++ (nullable UIColor *)colorFromShortCocoaColor:(ShortCocoaColor)obj {
+    if (!obj) {
+        return nil;
+    }
+    if (ShortCocoaEqualClass
