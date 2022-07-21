@@ -131,4 +131,15 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
                 if (!string) {
                     string = [[NSMutableAttributedString alloc] init];
                 }
-  
+                NSAttributedString *append = [[NSAttributedString alloc] initWithString:comp];
+                [string appendAttributedString:append];
+                
+            } else if (ShortCocoaEqualClass(comp, NSAttributedString)) {
+                if (!string) {
+                    string = [[NSMutableAttributedString alloc] init];
+                }
+                [string appendAttributedString:comp];
+                
+            } else if (ShortCocoaEqualClass(comp, NSNumber)) {
+                if (!string) {
+       
