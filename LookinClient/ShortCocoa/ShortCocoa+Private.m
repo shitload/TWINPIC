@@ -210,4 +210,16 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
     if (ShortCocoaEqualClass(obj, NSNumber)) {
         // @12
         CGFloat fontSize = [obj doubleValue];
-        UIFont *fontObj 
+        UIFont *fontObj = [UIFont systemFontOfSize:fontSize];
+        return fontObj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        // @"12"
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *number = [numberFormatter numberFromString:obj];
+        CGFloat fontSize = [number doubleValue];
+        UIFont *fontObj = [UIFont systemFontOfSize:fontSize];
+        return fontObj;
+    }
+    NSAssert(NO, @"传入的字体参数无法识别，支持的参数类型为：1）UIFont 对象。    2）字符串或 NSNumber，
