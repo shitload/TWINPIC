@@ -222,4 +222,25 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         UIFont *fontObj = [UIFont systemFontOfSize:fontSize];
         return fontObj;
     }
-    NSAssert(NO, @"传入的字体参数无法识别，支持的参数类型为：1）UIFont 对象。    2）字符串或 NSNumber，
+    NSAssert(NO, @"传入的字体参数无法识别，支持的参数类型为：1）UIFont 对象。    2）字符串或 NSNumber，比如 @\"15\"、@15 等价于 [UIFont systemFontOfSize:15]");
+    return nil;
+}
+
+#elif TARGET_OS_MAC
+
++ (nullable NSColor *)colorFromShortCocoaColor:(ShortCocoaColor)obj {
+    if (!obj) {
+        return nil;
+    }
+    if (ShortCocoaEqualClass(obj, NSColor)) {
+        // NSColor
+        return obj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        // @"red" 这种表意字符串
+        NSDictionary *dict = [self colorStringDictionary];
+        if (dict[obj]) {
+            return dict[obj];
+        }
+        // @"122, 33, 344" 这种字符串
+        NSArray *array = [self numberArrayFromString:obj];
