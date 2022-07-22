@@ -192,4 +192,22 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
 }
 
 + (nullable UIImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj {
-    if (!obj || ShortCocoaEqualClass(
+    if (!obj || ShortCocoaEqualClass(obj, UIImage)) {
+        return obj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        return [UIImage imageNamed:obj];
+    }
+    NSAssert(NO, @"传入的图片参数无法识别，支持的参数类型为：1）UIImage 对象。   2）NSString，比如 @\"icon\" 等价于 [UIImage imageNamed:@\"icon\"]");
+    return nil;
+}
+
++ (UIFont *)fontFromShortCocoaFont:(ShortCocoaFont)obj {
+    if (ShortCocoaEqualClass(obj, UIFont)) {
+        // UIFont
+        return obj;
+    }
+    if (ShortCocoaEqualClass(obj, NSNumber)) {
+        // @12
+        CGFloat fontSize = [obj doubleValue];
+        UIFont *fontObj 
