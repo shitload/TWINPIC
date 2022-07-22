@@ -176,4 +176,20 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         if (array.count == 3 || array.count == 4) {
             // 如果没有 alpha 值，则默认为 1（即不透明）
             CGFloat alpha = (array.count == 4) ? [array[3] floatValue] : 1;
-            CGFloat r = [
+            CGFloat r = [array[0] floatValue];
+            CGFloat g = [array[1] floatValue];
+            CGFloat b = [array[2] floatValue];
+            return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:alpha];
+        }
+        // Hex 字符串
+        UIColor *finalColor = [self colorFromHexString:obj];
+        if (finalColor) {
+            return finalColor;
+        }
+    }
+    NSAssert(NO, @"传入的颜色参数无法识别，支持的参数列表请参看 ShortCocoaColor 的注释");
+    return nil;
+}
+
++ (nullable UIImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj {
+    if (!obj || ShortCocoaEqualClass(
