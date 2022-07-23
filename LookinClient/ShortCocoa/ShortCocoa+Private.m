@@ -258,4 +258,24 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
             return finalColor;
         }
     }
-    NSAssert(NO, @"传入的
+    NSAssert(NO, @"传入的颜色参数无法识别，支持的参数列表请参看 ShortCocoaColor 的注释");
+    return nil;
+}
+
++ (nullable NSImage *)imageFromShortCocoaImage:(nullable ShortCocoaImage)obj {
+    if (!obj || ShortCocoaEqualClass(obj, NSImage)) {
+        return obj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        return [NSImage imageNamed:obj];
+    }
+    NSAssert(NO, @"传入的图片参数无法识别，支持的参数类型为：1）NSImage 对象。   2）NSString，比如 @\"icon\" 等价于 [NSImage imageNamed:@\"icon\"]");
+    return nil;
+}
+
++ (NSFont *)fontFromShortCocoaFont:(ShortCocoaFont)obj {
+    if (ShortCocoaEqualClass(obj, NSFont)) {
+        // UIFont
+        return obj;
+    }
+    if (ShortCocoa
