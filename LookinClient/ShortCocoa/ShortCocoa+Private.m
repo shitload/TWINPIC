@@ -278,4 +278,16 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         // UIFont
         return obj;
     }
-    if (ShortCocoa
+    if (ShortCocoaEqualClass(obj, NSNumber)) {
+        // @12
+        CGFloat fontSize = [obj doubleValue];
+        NSFont *fontObj = [NSFont systemFontOfSize:fontSize];
+        return fontObj;
+    }
+    if (ShortCocoaEqualClass(obj, NSString)) {
+        // @"12"
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *number = [numberFormatter numberFromString:obj];
+        CGFloat fontSize = [number doubleValue];
+        NSFont *fontObj = [NSFont systemFontOfSi
