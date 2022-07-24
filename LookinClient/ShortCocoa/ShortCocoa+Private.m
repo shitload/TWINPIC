@@ -290,4 +290,22 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         NSNumber *number = [numberFormatter numberFromString:obj];
         CGFloat fontSize = [number doubleValue];
-        NSFont *fontObj = [NSFont systemFontOfSi
+        NSFont *fontObj = [NSFont systemFontOfSize:fontSize];
+        return fontObj;
+    }
+    NSAssert(NO, @"传入的字体参数无法识别，支持的参数类型为：1）NSFont 对象。    2）字符串或 NSNumber，比如 @\"15\"、@15 等价于 [NSFont systemFontOfSize:15]");
+    return nil;
+}
+
+#endif
+
+#pragma mark - Private
+
+/// ShortCocoaColor 支持类似 @"red" 这种表意字符串，这里定义了具体的支持列表以及对应的色值
++ (NSDictionary *)colorStringDictionary {
+    static NSDictionary<NSString *, id> *ShortCocoaLiteralColorDict;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+#if TARGET_OS_IPHONE
+        ShortCocoaLiteralColorDict = @{
+                           
