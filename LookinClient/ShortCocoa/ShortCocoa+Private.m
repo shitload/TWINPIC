@@ -321,4 +321,9 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         ShortCocoaLiteralColorDict = @{
                                        @"clear": [NSColor clearColor],
                                        @"white": [NSColor whiteColor],
-                
+                                       @"black": [NSColor blackColor],
+                                       @"gray": [NSColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1],
+                                       @"red": [NSColor colorWithRed:250/255.0 green:58/255.0 blue:58/255.0 alpha:1],
+                                       @"green": [NSColor colorWithRed:159/255.0 green:214/255.0 blue:97/255.0 alpha:1],
+                                       @"blue": [NSColor colorWithRed:49/255.0 green:189/255.0 blue:243/255.0 alpha:1],
+                                       @"yellow": [NSColor colorWi
