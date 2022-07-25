@@ -313,4 +313,12 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
                                        @"black": [UIColor blackColor],
                                        @"gray": [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1],
                                        @"red": [UIColor colorWithRed:250/255.0 green:58/255.0 blue:58/255.0 alpha:1],
-                                       @"green": [UIColor colorWithRed:159/255.0 green:214
+                                       @"green": [UIColor colorWithRed:159/255.0 green:214/255.0 blue:97/255.0 alpha:1],
+                                       @"blue": [UIColor colorWithRed:49/255.0 green:189/255.0 blue:243/255.0 alpha:1],
+                                       @"yellow": [UIColor colorWithRed:255/255.0 green:207/255.0 blue:71/255.0 alpha:1]
+                                       };
+#elif TARGET_OS_MAC
+        ShortCocoaLiteralColorDict = @{
+                                       @"clear": [NSColor clearColor],
+                                       @"white": [NSColor whiteColor],
+                
