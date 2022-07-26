@@ -341,4 +341,17 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
 + (NSColor *)colorFromHexString:(NSString *)hexString {
 #endif
     CGFloat (^getColorComponent)(NSString *string, NSUInteger start, NSUInteger length) = ^CGFloat(NSString *string, NSUInteger start, NSUInteger length) {
-        NSString *substring = [string substringWi
+        NSString *substring = [string substringWithRange: NSMakeRange(start, length)];
+        NSString *fullHex = length == 2 ? substring : [NSString stringWithFormat: @"%@%@", substring, substring];
+        unsigned hexComponent;
+        [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
+        return hexComponent / 255.0;
+    };
+    
+    
+    NSString *colorString = [[hexString stringByReplacingOccurrencesOfString: @"#" withString: @""] uppercaseString];
+    CGFloat alpha, red, blue, green;
+    switch ([colorString length]) {
+        case 3: // #RGB
+            alpha = 1.0f;
+  
