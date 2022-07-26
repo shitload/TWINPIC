@@ -326,4 +326,19 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
                                        @"red": [NSColor colorWithRed:250/255.0 green:58/255.0 blue:58/255.0 alpha:1],
                                        @"green": [NSColor colorWithRed:159/255.0 green:214/255.0 blue:97/255.0 alpha:1],
                                        @"blue": [NSColor colorWithRed:49/255.0 green:189/255.0 blue:243/255.0 alpha:1],
-                                       @"yellow": [NSColor colorWi
+                                       @"yellow": [NSColor colorWithRed:255/255.0 green:207/255.0 blue:71/255.0 alpha:1]
+                                       };
+#endif
+    });
+    return ShortCocoaLiteralColorDict;
+}
+
+
+/// 将 Hex 格式的字符串转换为 UIColor
+#if TARGET_OS_IPHONE
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+#elif TARGET_OS_MAC
++ (NSColor *)colorFromHexString:(NSString *)hexString {
+#endif
+    CGFloat (^getColorComponent)(NSString *string, NSUInteger start, NSUInteger length) = ^CGFloat(NSString *string, NSUInteger start, NSUInteger length) {
+        NSString *substring = [string substringWi
