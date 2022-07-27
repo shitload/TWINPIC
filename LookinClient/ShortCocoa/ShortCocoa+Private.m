@@ -354,4 +354,16 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
     switch ([colorString length]) {
         case 3: // #RGB
             alpha = 1.0f;
-  
+            red = getColorComponent(colorString, 0, 1);
+            green = getColorComponent(colorString, 1, 1);
+            blue  = getColorComponent(colorString, 2, 1);
+            break;
+        case 4: // #ARGB
+            alpha = getColorComponent(colorString, 0, 1);
+            red   = getColorComponent(colorString, 1, 1);
+            green = getColorComponent(colorString, 2, 1);
+            blue  = getColorComponent(colorString, 3, 1);
+            break;
+        case 6: // #RRGGBB
+            alpha = 1.0f;
+       
