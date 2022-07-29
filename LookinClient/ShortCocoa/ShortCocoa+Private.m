@@ -379,4 +379,20 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         default:
             return nil;
     }
-#if TARGET_OS_IP
+#if TARGET_OS_IPHONE
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+#elif TARGET_OS_MAC
+    return [NSColor colorWithRed:red green:green blue:blue alpha:alpha];
+#endif
+}
+
+/// 将类似 @"12, 13, 14" 这种字符串转换为 @[@12, @13, @14] 这种数组
++ (NSArray<NSNumber *> *)numberArrayFromString:(NSString *)string {
+    if (!string.length) {
+        return nil;
+    }
+    // 去除字符串首尾的空白字符
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // 支持的分隔符
+    NSString *separator = @",";
+    NSArray<NSString *> *components = [st
