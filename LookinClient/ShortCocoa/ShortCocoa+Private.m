@@ -366,4 +366,17 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
             break;
         case 6: // #RRGGBB
             alpha = 1.0f;
-       
+            red   = getColorComponent(colorString, 0, 2);
+            green = getColorComponent(colorString, 2, 2);
+            blue  = getColorComponent(colorString, 4, 2);
+            break;
+        case 8: // #AARRGGBB
+            alpha = getColorComponent(colorString, 0, 2);
+            red   = getColorComponent(colorString, 2, 2);
+            green = getColorComponent(colorString, 4, 2);
+            blue  = getColorComponent(colorString, 6, 2);
+            break;
+        default:
+            return nil;
+    }
+#if TARGET_OS_IP
