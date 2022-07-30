@@ -395,4 +395,17 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
     string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     // 支持的分隔符
     NSString *separator = @",";
-    NSArray<NSString *> *components = [st
+    NSArray<NSString *> *components = [string componentsSeparatedByString:separator];
+    
+    NSMutableArray<NSNumber *> *numbers = [NSMutableArray array];
+    [components enumerateObjectsUsingBlock:^(NSString * _Nonnull string, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *number = [numberFormatter numberFromString:string];
+        
+        if (number != nil) {
+            [numbers addObject:number];
+        }
+    }];
+    if (numbers.count) {
+    
