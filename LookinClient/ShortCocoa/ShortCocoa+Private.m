@@ -408,4 +408,9 @@ static char kAssociatedObjectKey_ShortCocoaCachedAttrStringKey;
         }
     }];
     if (numbers.count) {
-    
+        return numbers;
+    }
+    return nil;
+}
+
+@end
