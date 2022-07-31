@@ -30,4 +30,29 @@ NS_ASSUME_NONNULL_BEGIN
  $(@"abc").attrString;
  @endcode
  */
-- (nullabl
+- (nullable NSAttributedString *)attrString;
+
+/**
+ 将被包装对象转换为 NSMutableAttributedString 并返回
+ 
+ @code
+ // => [[NSMutableAttributedString alloc] initWithString:@"abc"]
+ $(@"abc").mAttrString;
+ @endcode
+ */
+- (nullable NSMutableAttributedString *)mAttrString;
+
+/**
+ 在开头添加字符串
+ 
+ @note 传入参数支持 ShortCocoa, NSString, NSAttributedString, NSNumber，详见 ShortCocoaString
+ @code
+ $(@"bc").prepend(@"a").string; // => @"abc"
+ @endcode
+ */
+- (ShortCocoa * (^)(_Nullable ShortCocoaString))prepend;
+
+/**
+ 在指定位置添加字符串
+ 
+ @note 传入参数支持 ShortCocoa, NSString, NSAttributedString
