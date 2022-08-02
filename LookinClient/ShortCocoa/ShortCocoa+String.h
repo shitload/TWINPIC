@@ -55,4 +55,25 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  在指定位置添加字符串
  
- @note 传入参数支持 ShortCocoa, NSString, NSAttributedString
+ @note 传入参数支持 ShortCocoa, NSString, NSAttributedString, NSNumber，详见 ShortCocoaString
+ @code
+ $(@"ac").insert(@"b", 1).string; // => @"abc"
+ @endcode
+ */
+- (ShortCocoa * (^)(_Nullable ShortCocoaString, NSUInteger location))insert;
+
+/**
+ 在末尾添加字符串
+ 
+ @note 传入参数支持 ShortCocoa, NSString, NSAttributedString, NSNumber，详见 ShortCocoaString
+ @code
+ $(@"ab").add(@"c").string; // => @"abc"
+ @endcode
+ */
+- (ShortCocoa * (^)(_Nullable ShortCocoaString))add;
+
+/**
+ 在末尾添加一张图片
+ 
+ @note 图片传入值支持 UIImage 或 NSString(图片名字)，详见 ShortCocoaImage
+ @note 通过 baselineOffset 调整图片的上下偏移（值越大则图片越靠上），通过 marginLeft 和 marginRight 调整图片左右的间距
