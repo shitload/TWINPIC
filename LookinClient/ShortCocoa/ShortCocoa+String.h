@@ -77,3 +77,27 @@ NS_ASSUME_NONNULL_BEGIN
  
  @note 图片传入值支持 UIImage 或 NSString(图片名字)，详见 ShortCocoaImage
  @note 通过 baselineOffset 调整图片的上下偏移（值越大则图片越靠上），通过 marginLeft 和 marginRight 调整图片左右的间距
+ @attention 内部实现是通过 NSTextAttachment 的原理添加图片
+ 
+ @code
+ // 末尾添加 image 图片，图片的 baselineOffset 为 2，距离左侧文字距离为 3，距离右侧文字距离为 4
+ $(@"abc").addImage(image, 2, 3, 4);
+ @endcode
+ */
+- (ShortCocoa * (^)(_Nullable ShortCocoaImage image, CGFloat baselineOffset, CGFloat marginLeft, CGFloat marginRight))addImage;
+
+/**
+ 在末尾增加一段长度为 width 的空白图片，一般用来精确调整字符之间的间距
+ */
+- (ShortCocoa * (^)(CGFloat width))addSpace;
+
+/**
+ 设置行高
+ 
+ @note 具体实现是添加一个 NSParagraphStyle 并设置它的 minimumLineHeight/maximumLineHeight
+ 
+ @code
+ $(@"abc").lineHeight(30).attrString;
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))lineHe
