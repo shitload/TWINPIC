@@ -328,3 +328,71 @@
         [self unpack:[UILabel class] do:^(UILabel * _Nonnull label, BOOL *stop) {
             label.numberOfLines = maxValue;
         }];
+        return self;
+    };
+}
+     
+- (ShortCocoa * (^)(id))text {
+    return ^(id string) {
+        [self unpackClassA:[UILabel class] doA:^(UILabel * _Nonnull obj, BOOL *stop) {
+            if (!string) {
+                obj.text = nil;
+                obj.attributedText = nil;
+            } else if (ShortCocoaEqualClass(string, NSString)) {
+                obj.text = string;
+            } else if (ShortCocoaEqualClass(string, NSAttributedString)) {
+                obj.attributedText = string;
+            } else if (ShortCocoaEqualClass(string, NSNumber)) {
+                obj.text = [NSString stringWithFormat:@"%@", string];
+            } else {
+                NSAssert(NO, @"传入的 string 不是 NSString、NSAttributedString 或 NSNumber");
+            }
+            
+        } classB:[UIButton class] doB:^(UIButton * _Nonnull obj, BOOL *stop) {
+            if (!string) {
+                [obj setTitle:nil forState:UIControlStateNormal];
+                [obj setAttributedTitle:nil forState:UIControlStateNormal];
+            } else if (ShortCocoaEqualClass(string, NSString)) {
+                [obj setAttributedTitle:nil forState:UIControlStateNormal];
+                [obj setTitle:string forState:UIControlStateNormal];
+            } else if (ShortCocoaEqualClass(string, NSAttributedString)) {
+                [obj setTitle:nil forState:UIControlStateNormal];
+                [obj setAttributedTitle:string forState:UIControlStateNormal];
+            } else if (ShortCocoaEqualClass(string, NSNumber)) {
+                [obj setAttributedTitle:nil forState:UIControlStateNormal];
+                [obj setTitle:[NSString stringWithFormat:@"%@", string] forState:UIControlStateNormal];
+            } else {
+                NSAssert(NO, @"传入的 string 不是 NSString、NSAttributedString 或 NSNumber");
+            }
+        }];
+        return self;
+    };
+}
+
+#endif
+     
+#pragma mark - Private
+
+- (BOOL)isVisibleView:(NS_UI_View *)view {
+#if TARGET_OS_IPHONE
+    return view && !view.hidden && view.superview && view.alpha >= 0.01;
+#elif TARGET_OS_MAC
+    return view && !view.hidden && view.superview && view.alphaValue >= 0.01;
+#endif
+}         
+
+- (BOOL)isVisibleLayer:(CALayer *)layer {
+    return layer && !layer.hidden && layer.superlayer && layer.opacity >= 0.01;
+}
+
+- (BOOL)isVisibleViewOrLayer:(id)object {
+    if (ShortCocoaEqualClass(object, NS_UI_View)) {
+        return [self isVisibleView:object];
+    } else if (ShortCocoaEqualClass(object, CALayer)) {
+        return [self isVisibleLayer:object];
+    } else {
+        return NO;
+    }
+}
+
+@end
