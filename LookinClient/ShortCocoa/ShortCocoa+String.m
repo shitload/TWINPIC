@@ -145,3 +145,10 @@
     UIGraphicsBeginImageContext(CGSizeMake(width, 1));
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+#elif TARGET_OS_MAC
+    NSImage *image = [[NSImage alloc] initWithSize:NSMakeSize(width, 1)];
+#endif
+    return [self attributedStringWithImage:image baselineOffset:0 leftMargin:0 rightMargin:0];
+}
+    
+@end
