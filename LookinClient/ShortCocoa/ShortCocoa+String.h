@@ -100,4 +100,30 @@ NS_ASSUME_NONNULL_BEGIN
  $(@"abc").lineHeight(30).attrString;
  @endcode
  */
-- (ShortCocoa * (^)(CGFloat))lineHe
+- (ShortCocoa * (^)(CGFloat))lineHeight;
+
+/**
+ 添加 NSBaselineOffsetAttributeName
+ 
+ @code
+ // => 等价于 [addAttributes:@{NSBaselineOffsetAttributeName: @2} range:NSMakeRange(0, @"abc".length)]
+ $(@"abc").baselineOffset(2).attrString;
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))baselineOffset;
+
+/**
+ 添加 NSBaselineOffsetAttributeName (NSUnderlineStyleSingle)
+ 
+ @code
+ // => 等价于 [addAttributes:@{NSBaselineOffsetAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange(0, @"abc".length)]
+ $(@"abc").strikethrough.attrString;
+ @endcode
+ */
+- (ShortCocoa *)strikethrough;
+
+/**
+ 添加 NSKernAttributeName
+ 
+ @code
+ // => 等价于 [ad
