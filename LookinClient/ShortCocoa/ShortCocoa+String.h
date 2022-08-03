@@ -126,4 +126,22 @@ NS_ASSUME_NONNULL_BEGIN
  添加 NSKernAttributeName
  
  @code
- // => 等价于 [ad
+ // => 等价于 [addAttributes:@{NSKernAttributeName: @2} range:NSMakeRange(0, @"abc".length)]
+ $(@"abc").kern(2).attrString;
+ @endcode
+ */
+- (ShortCocoa * (^)(CGFloat))kern;
+
+/**
+ 添加 NSKernAttributeName
+ 
+ @code
+ // => 等价于 [addAttributes:@{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)} range:NSMakeRange(0, @"abc".length)]
+ $(@"abc").underline.attrString;
+ @endcode
+ */
+- (ShortCocoa *)underline;
+
+@end
+
+NS_ASSUME_NONNULL_END
