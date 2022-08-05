@@ -83,4 +83,8 @@ _61,_62,_63,N,...) N
 9,8,7,6,5,4,3,2,1,0
 
 /**
- 如果传入 Class 则返回该 Class 的一个实例，否则直接将传入的参数返
+ 如果传入 Class 则返回该 Class 的一个实例，否则直接将传入的参数返回
+ */
+id ShortCocoaMakeInstance(id object);
+
+NS_ASSUME_NONNULL_END
