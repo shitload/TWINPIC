@@ -26,4 +26,9 @@
 @property(nonatomic, strong, readonly) RACSubject *updateAll_ErrorSignal;
 
 - (void)updateAfterModifyingDisplayItem:(LookinStaticDisplayItem *)displayItem;
-/// updateAfterModifyingDisplayItem 的更新进度，data 是 RACTwoTuple<N
+/// updateAfterModifyingDisplayItem 的更新进度，data 是 RACTwoTuple<NSNumber *>，分别为已经收到的图像数量、总的图像数量
+@property(nonatomic, strong, readonly) RACSubject *modifyingUpdateProgressSignal;
+/// updateAfterModifyingDisplayItem 遇到了错误，data 为 NSError
+@property(nonatomic, strong, readonly) RACSubject *modifyingUpdateErrorSignal;
+
+@end
