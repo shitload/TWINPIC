@@ -19,4 +19,13 @@
     [((LKStaticHierarchyDataSource *)self.dataSource).itemDidChangeNoPreview sendNext:nil];
 }
 
-- (void)hierarchyView:(LKHierarchyView *)view needToShowPreviewOfI
+- (void)hierarchyView:(LKHierarchyView *)view needToShowPreviewOfItem:(LookinDisplayItem *)item {
+    [item enumerateSelfAndAncestors:^(LookinDisplayItem *item, BOOL *stop) {
+        if (item.noPreview) {
+            item.noPreview = NO;
+        }
+    }];
+    [((LKStaticHierarchyDataSource *)self.dataSource).itemDidChangeNoPreview sendNext:nil];
+}
+
+@end
