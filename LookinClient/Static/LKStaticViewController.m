@@ -38,4 +38,18 @@
 @property(nonatomic, strong) LKRedTipsView *tooLargeToSyncScreenshotTipsView;
 @property(nonatomic, strong) LKTipsView *userConfigNoPreviewTipsView;
 @property(nonatomic, strong) LKTipsView *noPreviewTipView;
-@property(nonatomic, stro
+@property(nonatomic, strong) LKTipsView *tutorialTipView;
+@property(nonatomic, strong) LKTipsView *delayReloadTipView;
+
+@property(nonatomic, strong) LKDashboardViewController *dashboardController;
+@property(nonatomic, strong) LKStaticHierarchyController *hierarchyController;
+@property(nonatomic, strong) LKConsoleViewController *consoleController;
+@property(nonatomic, strong) LKMeasureController *measureController;
+
+@end
+
+@implementation LKStaticViewController
+
+- (NSView *)makeContainerView {
+    self.mainSplitView = [LKSplitView new];
+    self.mainSplitView.didFinishFirstLayout = 
