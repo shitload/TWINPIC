@@ -26,4 +26,16 @@
 #import "LKPreferenceManager.h"
 #import "LKMeasureController.h"
 @import AppCenter;
-@import AppCenterAna
+@import AppCenterAnalytics;
+
+@interface LKStaticViewController () <NSSplitViewDelegate>
+
+@property(nonatomic, strong) LKSplitView *mainSplitView;
+@property(nonatomic, strong) LKSplitView *rightSplitView;
+@property(nonatomic, strong) LKBaseView *splitTopView;
+
+@property(nonatomic, strong) LKTipsView *imageSyncTipsView;
+@property(nonatomic, strong) LKRedTipsView *tooLargeToSyncScreenshotTipsView;
+@property(nonatomic, strong) LKTipsView *userConfigNoPreviewTipsView;
+@property(nonatomic, strong) LKTipsView *noPreviewTipView;
+@property(nonatomic, stro
