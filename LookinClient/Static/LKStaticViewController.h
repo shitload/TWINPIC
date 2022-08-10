@@ -26,4 +26,17 @@
 
 #pragma mark - Tutorials
 
-- (v
+- (void)showQuickSelectionTutorialTips;
+@property(nonatomic, assign) BOOL isShowingQuickSelectTutorialTips;
+
+- (void)showMoveWithSpaceTutorialTips;
+@property(nonatomic, assign) BOOL isShowingMoveWithSpaceTutorialTips;
+
+@property(nonatomic, assign) BOOL isShowingDoubleClickTutorialTips;
+
+- (void)showNoPreviewTutorialTips;
+
+- (void)removeTutorialTips;
+
+
+@end
