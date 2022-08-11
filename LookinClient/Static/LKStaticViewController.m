@@ -67,4 +67,15 @@
     [super setView:view];
     
     LKPreferenceManager *preferenceManager = [LKPreferenceManager mainManager];
-    [preferenceManager.isMeasuring subscr
+    [preferenceManager.isMeasuring subscribe:self action:@selector(_handleToggleMeasure:) relatedObject:nil];
+    
+    LKStaticHierarchyDataSource *dataSource = [LKStaticHierarchyDataSource sharedInstance];
+    
+    self.hierarchyController = [[LKStaticHierarchyController alloc] initWithDataSource:dataSource];
+    [self addChildViewController:self.hierarchyController];
+    [self.mainSplitView addArrangedSubview:self.hierarchyController.view];
+    
+    self.rightSplitView = [LKSplitView new];
+    self.rightSplitView.arrangesAllSubviews = YES;
+    self.rightSplitView.vertical = NO;
+    self.rightSplitView.divide
