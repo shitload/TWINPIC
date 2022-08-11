@@ -52,4 +52,19 @@
 
 - (NSView *)makeContainerView {
     self.mainSplitView = [LKSplitView new];
-    self.mainSplitView.didFinishFirstLayout = 
+    self.mainSplitView.didFinishFirstLayout = ^(LKSplitView *view) {
+        CGFloat x = MIN(MAX(350, view.bounds.size.width * .3), 700);
+        [view setPosition:x ofDividerAtIndex:0];
+    };
+    self.mainSplitView.arrangesAllSubviews = NO;
+    self.mainSplitView.vertical = YES;
+    self.mainSplitView.dividerStyle = NSSplitViewDividerStyleThin;
+    self.mainSplitView.delegate = self;
+    return self.mainSplitView;
+}
+
+- (void)setView:(NSView *)view {
+    [super setView:view];
+    
+    LKPreferenceManager *preferenceManager = [LKPreferenceManager mainManager];
+    [preferenceManager.isMeasuring subscr
