@@ -78,4 +78,16 @@
     self.rightSplitView = [LKSplitView new];
     self.rightSplitView.arrangesAllSubviews = YES;
     self.rightSplitView.vertical = NO;
-    self.rightSplitView.divide
+    self.rightSplitView.dividerStyle = NSSplitViewDividerStyleThin;
+    self.rightSplitView.delegate = self;
+    [self.mainSplitView addArrangedSubview:self.rightSplitView];
+    
+    self.splitTopView = [LKBaseView new];
+    [self.rightSplitView addArrangedSubview:self.splitTopView];
+    
+    _viewsPreviewController = [[LKPreviewController alloc] initWithDataSource:dataSource];
+    self.viewsPreviewController.staticViewController = self;
+    [self.splitTopView addSubview:self.viewsPreviewController.view];
+    [self addChildViewController:self.viewsPreviewController];
+    
+    self.dashboardContr
