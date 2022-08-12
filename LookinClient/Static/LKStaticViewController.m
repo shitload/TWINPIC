@@ -101,4 +101,16 @@
     
     self.imageSyncTipsView = [LKTipsView new];
     self.imageSyncTipsView.hidden = YES;
-    [self.view a
+    [self.view addSubview:self.imageSyncTipsView];
+    
+    self.delayReloadTipView = [LKTipsView new];
+    self.delayReloadTipView.hidden = YES;
+    [self.view addSubview:self.delayReloadTipView];
+    
+    self.tooLargeToSyncScreenshotTipsView = [LKRedTipsView new];
+    self.tooLargeToSyncScreenshotTipsView.image = NSImageMake(@"icon_info");
+    self.tooLargeToSyncScreenshotTipsView.title = NSLocalizedString(@"Image is too large to be displayed.", nil);
+    self.tooLargeToSyncScreenshotTipsView.hidden = YES;
+    [self.view addSubview:self.tooLargeToSyncScreenshotTipsView];
+    
+    self.noPreviewTipV
