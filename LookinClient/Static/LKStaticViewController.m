@@ -123,4 +123,12 @@
     [self.view addSubview:self.noPreviewTipView];
     
     self.userConfigNoPreviewTipsView = [LKTipsView new];
-    self.userConfigNoPreviewT
+    self.userConfigNoPreviewTipsView.image = NSImageMake(@"icon_hide");
+    self.userConfigNoPreviewTipsView.title = NSLocalizedString(@"The screenshot is not displayed due to the config in iOS App.", nil);
+    self.userConfigNoPreviewTipsView.buttonText = NSLocalizedString(@"Details", nil);
+    self.userConfigNoPreviewTipsView.target = self;
+    self.userConfigNoPreviewTipsView.clickAction = @selector(_handleUserConfigNoPreviewTipView);
+    self.userConfigNoPreviewTipsView.hidden = YES;
+    [self.view addSubview:self.userConfigNoPreviewTipsView];
+    
+    self.progressView = 
