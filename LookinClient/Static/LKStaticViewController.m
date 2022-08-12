@@ -113,4 +113,14 @@
     self.tooLargeToSyncScreenshotTipsView.hidden = YES;
     [self.view addSubview:self.tooLargeToSyncScreenshotTipsView];
     
-    self.noPreviewTipV
+    self.noPreviewTipView = [LKTipsView new];
+    self.noPreviewTipView.image = NSImageMake(@"icon_hide");
+    self.noPreviewTipView.title = NSLocalizedString(@"The screenshot of selected item is not displayed.", nil);
+    self.noPreviewTipView.buttonText = NSLocalizedString(@"Display", nil);
+    self.noPreviewTipView.target = self;
+    self.noPreviewTipView.clickAction = @selector(_handleNoPreviewTipView);
+    self.noPreviewTipView.hidden = YES;
+    [self.view addSubview:self.noPreviewTipView];
+    
+    self.userConfigNoPreviewTipsView = [LKTipsView new];
+    self.userConfigNoPreviewT
