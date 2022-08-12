@@ -90,4 +90,15 @@
     [self.splitTopView addSubview:self.viewsPreviewController.view];
     [self addChildViewController:self.viewsPreviewController];
     
-    self.dashboardContr
+    self.dashboardController = [[LKDashboardViewController alloc] initWithStaticDataSource:dataSource];
+    [self.splitTopView addSubview:self.dashboardController.view];
+    [self addChildViewController:self.dashboardController];
+    
+    self.measureController = [[LKMeasureController alloc] initWithDataSource:dataSource];
+    self.measureController.view.hidden = YES;
+    [self.splitTopView addSubview:self.measureController.view];
+    [self addChildViewController:self.measureController];
+    
+    self.imageSyncTipsView = [LKTipsView new];
+    self.imageSyncTipsView.hidden = YES;
+    [self.view a
