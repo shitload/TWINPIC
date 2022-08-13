@@ -155,4 +155,12 @@
         @strongify(self);
         BOOL showTips = (![item appropriateScreenshot] && item.doNotFetchScreenshotReason == LookinDoNotFetchScreenshotForUserConfig);
         self.userConfigNoPreviewTipsView.hidden = !showTips;
-        [sel
+        [self.view setNeedsLayout:YES];
+    }];
+    
+    [[[RACSignal merge:@[RACObserve(dataSource, selectedItem), dataSource.itemDidChangeNoPreview]] skip:1] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        LookinDisplayItem *item = dataSource.selectedItem;
+        BOOL shouldShowNoPreviewTip = item.inNoPreviewHierarchy && item.doNotFetchScreenshotReason != LookinDoNotFetchScreenshotForUserConfig;
+        if (shouldShowNoPreviewTip || !self.noPreviewTipView.hidden) {
+            self.noPreviewTipView.title = [NSString stringWithFormat:NSLocalizedString(@"The screen
