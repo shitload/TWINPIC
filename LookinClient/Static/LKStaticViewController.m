@@ -131,4 +131,16 @@
     self.userConfigNoPreviewTipsView.hidden = YES;
     [self.view addSubview:self.userConfigNoPreviewTipsView];
     
-    self.progressView = 
+    self.progressView = [LKProgressIndicatorView new];
+    [self.view addSubview:self.progressView];
+    
+    @weakify(self);
+    [RACObserve(dataSource, selectedItem) subscribeNext:^(LookinDisplayItem *item) {
+        @strongify(self);
+        BOOL showTips = (![item appropriateScreenshot] && item.doNotFetchScreenshotReason == LookinDoNotFetchScreenshotForTooLarge);
+        BOOL shouldHide = !showTips;
+        if (self.tooLargeToSyncScreenshotTipsView.hidden == shouldHide) {
+            return;
+        }
+        self.tooLargeToSyncScreenshotTipsView.hidden = shouldHide;
+        
