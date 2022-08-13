@@ -163,4 +163,19 @@
         LookinDisplayItem *item = dataSource.selectedItem;
         BOOL shouldShowNoPreviewTip = item.inNoPreviewHierarchy && item.doNotFetchScreenshotReason != LookinDoNotFetchScreenshotForUserConfig;
         if (shouldShowNoPreviewTip || !self.noPreviewTipView.hidden) {
-            self.noPreviewTipView.title = [NSString stringWithFormat:NSLocalizedString(@"The screen
+            self.noPreviewTipView.title = [NSString stringWithFormat:NSLocalizedString(@"The screenshot of selected %@ is not displayed.", nil), item.title];
+            self.noPreviewTipView.bindingObject = item;
+            self.noPreviewTipView.hidden = !shouldShowNoPreviewTip;
+            [self.view setNeedsLayout:YES];
+        }
+    }];
+    
+    [RACObserve([LKAppsManager sharedInstance], inspectingApp) subscribeNext:^(LKInspectableApp *app) {
+        @strongify(self);
+        if (app) {
+            [self.imageSyncTipsView setImageByDeviceType:app.appInfo.deviceType];
+            [self.delayReloadTipView setImageByDeviceType:app.appInfo.deviceType];
+        }
+    }];
+    
+    LKStaticAsy
