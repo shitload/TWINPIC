@@ -143,4 +143,16 @@
             return;
         }
         self.tooLargeToSyncScreenshotTipsView.hidden = shouldHide;
-        
+        if (shouldHide) {
+            [self.tooLargeToSyncScreenshotTipsView endAnimation];
+        } else {
+            [self.tooLargeToSyncScreenshotTipsView startAnimation];
+        }
+        [self.view setNeedsLayout:YES];
+    }];
+    
+    [RACObserve(dataSource, selectedItem) subscribeNext:^(LookinDisplayItem *item) {
+        @strongify(self);
+        BOOL showTips = (![item appropriateScreenshot] && item.doNotFetchScreenshotReason == LookinDoNotFetchScreenshotForUserConfig);
+        self.userConfigNoPreviewTipsView.hidden = !showTips;
+        [sel
