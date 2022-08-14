@@ -199,4 +199,17 @@
         }
     }];
     [updateMng.modifyingUpdateErrorSignal subscribeNext:^(NSError *error) {
-        @st
+        @strongify(self);
+        self.imageSyncTipsView.hidden = YES;
+        [self.progressView resetToZero];
+        AlertError(error, self.view.window);
+    }];
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    $(self.dashboardController.view).width(DashboardViewWidth).right(0).fullHeight;
+    $(self.measureController.view).width(MeasureViewWidth).right(DashboardHorInset).fullHeight;
+    $(self.viewsPreviewController.view).fullFrame;
+    
+    CGFloat windowTitleHeight = [LKNavigationManager sharedInstance].windowTitl
