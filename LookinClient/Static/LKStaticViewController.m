@@ -188,4 +188,15 @@
         NSUInteger received = ((NSNumber *)x.first).integerValue;
         NSUInteger total = MAX(1, ((NSNumber *)x.second).integerValue);
         CGFloat progress = (CGFloat)received / total;
-  
+        if (progress >= 1) {
+            [self.progressView finishWithCompletion:nil];
+            self.imageSyncTipsView.hidden = YES;
+        } else {
+            [self.progressView animateToProgress:MAX(progress, .2) duration:.1];
+            self.imageSyncTipsView.hidden = NO;
+            self.imageSyncTipsView.title = [NSString stringWithFormat:NSLocalizedString(@"Updating screenshots… %@ / %@", nil), @(received), @(total)];
+            [self.view setNeedsLayout:YES];
+        }
+    }];
+    [updateMng.modifyingUpdateErrorSignal subscribeNext:^(NSError *error) {
+        @st
