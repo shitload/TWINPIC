@@ -244,4 +244,23 @@
         if (self.consoleController.view.superview) {
             [self.rightSplitView removeArrangedSubview:self.consoleController.view];
         } else {
-            NSAssert(NO,
+            NSAssert(NO, @"");
+        }
+    }
+    
+    self.consoleController.isControllerShowing = showConsole;
+}
+
+- (LKHierarchyView *)currentHierarchyView {
+    return self.hierarchyController.hierarchyView;
+}
+
+- (void)showDelayReloadTipWithSeconds:(NSInteger)seconds {
+    self.delayReloadTipView.title = [NSString stringWithFormat:NSLocalizedString(@"Will reload in %@ seconds…", nil), @(seconds)];
+    self.delayReloadTipView.hidden = NO;
+    [self.view setNeedsLayout:YES];
+}
+
+- (void)removeDelayReloadTip {
+    self.delayReloadTipView.hidden = YES;
+    [self.view setNeedsLayout:YES]
