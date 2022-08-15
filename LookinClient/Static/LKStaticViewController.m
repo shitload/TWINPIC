@@ -233,4 +233,15 @@
             self.consoleController = [[LKConsoleViewController alloc] initWithHierarchyDataSource:[LKStaticHierarchyDataSource sharedInstance]];
             [self addChildViewController:self.consoleController];
         }
-        [self.rightSpli
+        [self.rightSplitView addArrangedSubview:self.consoleController.view];
+        
+        if (self.consoleController.view.bounds.size.height < 20) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.rightSplitView setPosition:(self.rightSplitView.bounds.size.height - 150) ofDividerAtIndex:0];
+            });
+        }
+    } else {
+        if (self.consoleController.view.superview) {
+            [self.rightSplitView removeArrangedSubview:self.consoleController.view];
+        } else {
+            NSAssert(NO,
