@@ -218,4 +218,19 @@
 
     __block CGFloat tipsY = windowTitleHeight + 10;
     [$(self.connectionTipsView, self.imageSyncTipsView, self.tooLargeToSyncScreenshotTipsView, self.noPreviewTipView, self.userConfigNoPreviewTipsView, self.tutorialTipView, self.delayReloadTipView).visibles.array enumerateObjectsUsingBlock:^(LKTipsView *tipsView, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat midX = self.hierarchyController.view.$width + (self.viewsPreviewController.view.$width - DashboardViewWidth) / 
+        CGFloat midX = self.hierarchyController.view.$width + (self.viewsPreviewController.view.$width - DashboardViewWidth) / 2.0;
+        $(tipsView).sizeToFit.y(tipsY).midX(midX);
+        tipsY = tipsView.$maxY + 5;
+    }];
+}
+
+- (void)setShowConsole:(BOOL)showConsole {
+    _showConsole = showConsole;
+    if (showConsole) {
+        [MSACAnalytics trackEvent:@"Launch Console"];
+        
+        if (!self.consoleController) {
+            self.consoleController = [[LKConsoleViewController alloc] initWithHierarchyDataSource:[LKStaticHierarchyDataSource sharedInstance]];
+            [self addChildViewController:self.consoleController];
+        }
+        [self.rightSpli
