@@ -212,4 +212,10 @@
     $(self.measureController.view).width(MeasureViewWidth).right(DashboardHorInset).fullHeight;
     $(self.viewsPreviewController.view).fullFrame;
     
-    CGFloat windowTitleHeight = [LKNavigationManager sharedInstance].windowTitl
+    CGFloat windowTitleHeight = [LKNavigationManager sharedInstance].windowTitleBarHeight;
+    
+    $(self.progressView).fullWidth.height(3).y(windowTitleHeight);
+
+    __block CGFloat tipsY = windowTitleHeight + 10;
+    [$(self.connectionTipsView, self.imageSyncTipsView, self.tooLargeToSyncScreenshotTipsView, self.noPreviewTipView, self.userConfigNoPreviewTipsView, self.tutorialTipView, self.delayReloadTipView).visibles.array enumerateObjectsUsingBlock:^(LKTipsView *tipsView, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat midX = self.hierarchyController.view.$width + (self.viewsPreviewController.view.$width - DashboardViewWidth) / 
