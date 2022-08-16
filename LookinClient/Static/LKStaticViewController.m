@@ -284,4 +284,18 @@
     TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
     self.isShowingDoubleClickTutorialTips = YES;
     [self _initTutorialTipsIfNeeded];
-    self.tutorialTipView.title = NSLocalizedString(@"You can do
+    self.tutorialTipView.title = NSLocalizedString(@"You can double-click screenshot to expand or collapse it", nil);
+    [self.view setNeedsLayout:YES];
+}
+
+- (void)showQuickSelectionTutorialTips {
+    TutorialMng.quickSelection = YES;
+    TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+    self.isShowingQuickSelectTutorialTips = YES;
+    [self _initTutorialTipsIfNeeded];
+    self.tutorialTipView.title = NSLocalizedString(@"While holding \"Command\" key, you can directly select a screenshot without expanding its superview first", nil);
+    [self.view setNeedsLayout:YES];
+}
+
+- (void)showMoveWithSpaceTutorialTips {
+    TutorialMn
