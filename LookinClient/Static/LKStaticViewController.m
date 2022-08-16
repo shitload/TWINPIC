@@ -263,4 +263,25 @@
 
 - (void)removeDelayReloadTip {
     self.delayReloadTipView.hidden = YES;
-    [self.view setNeedsLayout:YES]
+    [self.view setNeedsLayout:YES];
+}
+
+#pragma mark - Tutorial
+
+- (void)viewDidAppear {
+    [super viewDidAppear];
+    if (TutorialMng.hasAlreadyShowedTipsThisLaunch) {
+        return;
+    }
+    if (!TutorialMng.doubleClick) {
+        [self _showDoubleClickTutorialTips];
+        return;
+    }
+}
+
+- (void)_showDoubleClickTutorialTips {
+    TutorialMng.doubleClick = YES;
+    TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+    self.isShowingDoubleClickTutorialTips = YES;
+    [self _initTutorialTipsIfNeeded];
+    self.tutorialTipView.title = NSLocalizedString(@"You can do
