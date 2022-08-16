@@ -298,4 +298,16 @@
 }
 
 - (void)showMoveWithSpaceTutorialTips {
-    TutorialMn
+    TutorialMng.moveWithSpace = YES;
+    TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+    self.isShowingMoveWithSpaceTutorialTips = YES;
+    [self _initTutorialTipsIfNeeded];
+    self.tutorialTipView.title = NSLocalizedString(@"You can move screenshots by holding \"Space\" key and left mouse button", nil);
+    [self.view setNeedsLayout:YES];
+}
+
+- (void)showNoPreviewTutorialTips {
+    TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+    TutorialMng.togglePreview = YES;
+    [self _initTutorialTipsIfNeeded];
+    self.tutorialTipView.title = NSLocalizedString(@"You can hide a sc
