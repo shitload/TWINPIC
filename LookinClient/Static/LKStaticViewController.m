@@ -310,4 +310,21 @@
     TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
     TutorialMng.togglePreview = YES;
     [self _initTutorialTipsIfNeeded];
-    self.tutorialTipView.title = NSLocalizedString(@"You can hide a sc
+    self.tutorialTipView.title = NSLocalizedString(@"You can hide a screenshot in its right-click menu", nil);
+    [self.view setNeedsLayout:YES];
+}
+
+- (void)removeTutorialTips {
+    if (self.tutorialTipView) {
+        [self.tutorialTipView removeFromSuperview];
+        self.tutorialTipView = nil;
+        [self.view setNeedsLayout:YES];
+    }
+    self.isShowingQuickSelectTutorialTips = NO;
+    self.isShowingMoveWithSpaceTutorialTips = NO;
+    self.isShowingDoubleClickTutorialTips = NO;
+}
+
+- (void)_initTutorialTipsIfNeeded {
+    if (!self.tutorialTipView) {
+        self.t
