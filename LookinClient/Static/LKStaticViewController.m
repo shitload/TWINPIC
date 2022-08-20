@@ -327,4 +327,20 @@
 
 - (void)_initTutorialTipsIfNeeded {
     if (!self.tutorialTipView) {
-        self.t
+        self.tutorialTipView = [LKTipsView new];
+        self.tutorialTipView.image = NSImageMake(@"Icon_Inspiration_small");
+        self.tutorialTipView.buttonText = NSLocalizedString(@"Do not show again", nil);
+        @weakify(self);
+        self.tutorialTipView.didClick = ^(LKTipsView *tipsView) {
+            @strongify(self);
+            [tipsView removeFromSuperview];
+            [self.view setNeedsLayout:YES];
+        };
+        [self.view addSubview:self.tutorialTipView];
+    }
+    self.tutorialTipView.hidden = NO;
+}
+
+#pragma mark - <NSSplitViewDelegate>
+
+- (BOOL)split
