@@ -343,4 +343,18 @@
 
 #pragma mark - <NSSplitViewDelegate>
 
-- (BOOL)split
+- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+    return NO;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex {
+    if (splitView == self.mainSplitView) {
+        return HierarchyMinWidth;
+    } else {
+        return splitView.bounds.size.height * .3;
+    }
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
+    if (splitView == self.mainSplitView) {
+  
