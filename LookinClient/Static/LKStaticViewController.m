@@ -357,4 +357,20 @@
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
     if (splitView == self.mainSplitView) {
-  
+        return MAX(splitView.bounds.size.width - DashboardViewWidth - 100, HierarchyMinWidth);
+    } else {
+        return splitView.bounds.size.height - 50;
+    }
+}
+
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
+    [self.view setNeedsLayout:YES];
+}
+
+#pragma mark - Event Handler
+
+- (void)_handleNoPreviewTipView {
+    [self.hierarchyController hierarchyView:nil needToShowPreviewOfItem:self.noPreviewTipView.bindingObject];
+    
+    if (!TutorialMng.togglePreview) {
+        NSView *selectedRowView = [self.hierarchyController currentSelectedRowVie
