@@ -373,4 +373,22 @@
     [self.hierarchyController hierarchyView:nil needToShowPreviewOfItem:self.noPreviewTipView.bindingObject];
     
     if (!TutorialMng.togglePreview) {
-        NSView *selectedRowView = [self.hierarchyController currentSelectedRowVie
+        NSView *selectedRowView = [self.hierarchyController currentSelectedRowView];
+        if (!selectedRowView) {
+            return;
+        }
+        [TutorialMng showPopoverOfView:selectedRowView text:@"你可在右键菜单里再次隐藏它的图像" learned:^{
+            TutorialMng.togglePreview = YES;
+            TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+        }];
+    }
+}
+
+- (void)_handleUserConfigNoPreviewTipView {
+    [LKHelper openCustomConfigWebsite];
+}
+
+- (void)_handleToggleMeasure:(LookinMsgActionParams *)param {
+    BOOL isMeasuring = param.boolValue;
+    self.dashboardController.view.hidden = isMeasuring;
+    self.measureControlle
