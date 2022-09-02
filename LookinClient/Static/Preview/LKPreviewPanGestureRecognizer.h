@@ -16,4 +16,11 @@ typedef NS_ENUM(NSUInteger, PreviewPanGesturePurpose) {
 @interface LKPreviewPanGestureRecognizer : NSPanGestureRecognizer
 
 /**
- 默认为 PreviewPanGes
+ 默认为 PreviewPanGesturePurposeRotate
+ */
+@property(nonatomic, assign) PreviewPanGesturePurpose purpose;
+
+@property(nonatomic, assign) CGPoint initialRotation;
+@property(nonatomic, assign) NSPoint initialTranslation;
+
+@end
