@@ -6,4 +6,15 @@
 //  https://lookin.work
 //
 
-#import "L
+#import "LKWindowController.h"
+#import "LKMenuPopoverAppsListController.h"
+
+@class LKStaticViewController;
+
+@interface LKStaticWindowController : LKWindowController
+
+@property(nonatomic, strong, readonly) LKStaticViewController *viewController;
+
+- (void)popupAllInspectableAppsWithSource:(MenuPopoverAppsListControllerEventSource)source;
+
+@end
