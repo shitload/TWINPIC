@@ -286,3 +286,179 @@
     
     [self popupAllInspectableAppsWithSource:MenuPopoverAppsListControllerEventSourceAppButton];
 }
+
+- (void)_handleSetting:(NSButton *)button {
+    NSPopover *popover = [[NSPopover alloc] init];
+    popover.behavior = NSPopoverBehaviorTransient;
+    popover.animates = NO;
+    popover.contentSize = NSMakeSize(IsEnglish ? 270 : 350, 200);
+    popover.contentViewController = [[LKMenuPopoverSettingController alloc] initWithPreferenceManager:[LKPreferenceManager mainManager]];
+    [popover showRelativeToRect:NSMakeRect(0, 0, button.bounds.size.width, button.bounds.size.height) ofView:button preferredEdge:NSRectEdgeMaxY];
+}
+
+- (void)_handleConsole {
+    self.viewController.showConsole = !self.viewController.showConsole;
+}
+
+- (void)_handleFreeRotation {
+    BOOL boolValue = [LKPreferenceManager mainManager].freeRotation.currentBOOLValue;
+    [[LKPreferenceManager mainManager].freeRotation setBOOLValue:!boolValue ignoreSubscriber:nil];
+}
+
+#pragma mark - Others
+
+- (void)_showUSBLowSpeedTipsIfNeeded {
+    if (TutorialMng.hasAlreadyShowedTipsThisLaunch || TutorialMng.USBLowSpeed) {
+        return;
+    }
+    if (!InspectingApp || InspectingApp.appInfo.deviceType == LookinAppInfoDeviceSimulator || [LKStaticHierarchyDataSource sharedInstance].flatItems.count < 170) {
+        return;
+    }
+    
+    TutorialMng.hasAlreadyShowedTipsThisLaunch = YES;
+    [[LKTutorialManager sharedInstance] showPopoverOfView:self.toolbarItemsMap[LKToolBarIdentifier_Reload].view text:NSLocalizedString(@"Inspecting via USB is slower than inspecting a Xcode simulator.", nil) learned:^{
+        [LKTutorialManager sharedInstance].USBLowSpeed = YES;
+    }];
+}
+
+#pragma mark - <LKAppMenuManagerDelegate>
+
+- (void)appMenuManagerDidSelectReload {    
+    if (self.isFetchingHierarchy) {
+        return;
+    }
+    if (self.isSyncingScreenshots) {
+        NSError *error = LookinErrorMake(NSLocalizedString(@"Cannot reload at this time", NIL), NSLocalizedString(@"Please wait until current sync is completed. You can get sync progress in the upper-left corner of this window.", nil));
+        [[NSAlert alertWithError:error] beginSheetModalForWindow:self.window completionHandler:nil];
+        return;
+    }
+    [self _handleReload];
+}
+
+- (void)appMenuManagerDidSelectDimension {
+    LKPreferenceManager *manager = [LKPreferenceManager mainManager];
+    if (manager.previewDimension.currentIntegerValue == LookinPreviewDimension2D) {
+        [manager.previewDimension setIntegerValue:LookinPreviewDimension3D ignoreSubscriber:nil];
+    } else {
+        [manager.previewDimension setIntegerValue:LookinPreviewDimension2D ignoreSubscriber:nil];
+    }
+}
+
+- (void)appMenuManagerDidSelectZoomIn {
+    LKPreferenceManager *manager = [LKPreferenceManager mainManager];
+    double currentScale = manager.previewScale.currentDoubleValue;
+    double targetScale = MIN(MAX(currentScale + 0.1, LookinPreviewMinScale), LookinPreviewMaxScale);
+    [manager.previewScale setDoubleValue:targetScale ignoreSubscriber:nil];
+}
+
+- (void)appMenuManagerDidSelectZoomOut {
+    LKPreferenceManager *manager = [LKPreferenceManager mainManager];
+    double currentScale = manager.previewScale.currentDoubleValue;
+    double targetScale = MIN(MAX(currentScale - 0.1, LookinPreviewMinScale), LookinPreviewMaxScale);
+    [manager.previewScale setDoubleValue:targetScale ignoreSubscriber:nil];
+}
+
+- (void)appMenuManagerDidSelectDecreaseInterspace {
+    LKPreferenceManager *manager = [LKPreferenceManager mainManager];
+    double currentValue = manager.zInterspace.currentDoubleValue;
+    double newValue = currentValue - 0.1;
+    newValue = MIN(MAX(newValue, LookinPreviewMinZInterspace), LookinPreviewMaxZInterspace);
+    [manager.zInterspace setDoubleValue:newValue ignoreSubscriber:nil];
+}
+
+- (void)appMenuManagerDidSelectIncreaseInterspace {
+    LKPreferenceManager *manager = [LKPreferenceManager mainManager];
+    double currentValue = manager.zInterspace.currentDoubleValue;
+    double newValue = currentValue + 0.1;
+    newValue = MIN(MAX(newValue, LookinPreviewMinZInterspace), LookinPreviewMaxZInterspace);
+    [manager.zInterspace setDoubleValue:newValue ignoreSubscriber:nil];
+}
+
+- (void)appMenuManagerDidSelectExpansionIndex:(NSUInteger)index {    
+    [[LKStaticHierarchyDataSource sharedInstance] adjustExpansionByIndex:index referenceDict:nil selectedItem:nil];
+
+    if (!TutorialMng.hasAlreadyShowedTipsThisLaunch && !TutorialMng.quickSelection && index <= 1) {
+        [self.viewController showQuickSelectionTutorialTips];
+    }
+}
+
+- (void)appMenuManagerDidSelectExport {
+    LKExportManager *exportManager = [LKExportManager sharedInstance];
+    LookinHierarchyInfo *hierarchyInfo = [LKStaticHierarchyDataSource sharedInstance].rawHierarchyInfo;
+    
+    __block NSString *fileName;
+    __block NSData *exportedData = nil;
+    
+    LKExportAccessoryView *accessoryView = [LKExportAccessoryView new];
+    $(accessoryView).sizeToFit;
+    [RACObserve([LKPreferenceManager mainManager], preferredExportCompression) subscribeNext:^(NSNumber *num) {
+        CGFloat compression = num.doubleValue;
+        exportedData = [exportManager dataFromHierarchyInfo:hierarchyInfo imageCompression:compression fileName:&fileName];
+        accessoryView.dataSize = exportedData.length;
+    }];
+    
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    panel.accessoryView = accessoryView;
+    [panel setNameFieldStringValue:fileName];
+    [panel setAllowsOtherFileTypes:NO];
+    [panel setAllowedFileTypes:@[@"lookin"]];
+    [panel setExtensionHidden:YES];
+    [panel setCanCreateDirectories:YES];
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+        if (result == NSModalResponseOK) {
+            NSString *path = [[panel URL] path];
+            NSError *writeError;
+            if (!exportedData) {
+                NSAssert(NO, @"LookinClient - write fail, no data");
+                return;
+            }
+            BOOL writeSucc = [exportedData writeToFile:path options:0 error:&writeError];
+            if (!writeSucc) {
+                NSLog(@"LookinClient - write fail:%@", writeError);
+            }
+        }
+    }];
+    
+    [MSACAnalytics trackEvent:@"Export Document"];
+}
+
+- (void)appMenuManagerDidSelectOpenInNewWindow {
+    LookinHierarchyInfo *newHierarchyInfo = [LKStaticHierarchyDataSource sharedInstance].rawHierarchyInfo.copy;
+    LookinHierarchyFile *file = [LookinHierarchyFile new];
+    file.serverVersion = newHierarchyInfo.serverVersion;
+    file.hierarchyInfo = newHierarchyInfo;
+    [[LKNavigationManager sharedInstance] showReaderWithHierarchyFile:file title:nil];
+    
+    [MSACAnalytics trackEvent:@"Open New Window"];
+
+}
+
+- (void)appMenuManagerDidSelectFilter {
+    [[self.viewController currentHierarchyView] activateSearchBar];
+}
+
+- (void)appMenuManagerDidSelectDelayReload {
+    [self.removeDelayReloadCounting_Signal sendNext:nil];
+
+    __block NSUInteger seconds = 5;
+    [self.viewController showDelayReloadTipWithSeconds:seconds];
+    @weakify(self);
+    [[[[RACSignal interval:1 onScheduler:[RACScheduler scheduler]] takeUntil:self.removeDelayReloadCounting_Signal] deliverOnMainThread] subscribeNext:^(NSDate * _Nullable x) {
+        @strongify(self);
+        seconds--;
+        if (seconds <= 0) {
+            [self.removeDelayReloadCounting_Signal sendNext:nil];
+            [self appMenuManagerDidSelectReload];
+        } else {
+            [self.viewController showDelayReloadTipWithSeconds:seconds];
+        }
+    }];
+    
+    [MSACAnalytics trackEvent:@"Delay Reload"];
+}
+
+- (void)appMenuManagerDidSelectMethodTrace {
+    [[LKNavigationManager sharedInstance] showMethodTrace];
+}
+
+@end
