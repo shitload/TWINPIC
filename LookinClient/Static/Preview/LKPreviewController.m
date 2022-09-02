@@ -548,3 +548,178 @@
     _isKeyingDownCommand = isKeyingDownCommand;
     
     if (isKeyingDownCommand && self.view.window.isKeyWindow) {
+        [self.dataSource.preferenceManager.isQuickSelecting setBOOLValue:YES ignoreSubscriber:nil];
+    } else {
+        [self.dataSource.preferenceManager.isQuickSelecting setBOOLValue:NO ignoreSubscriber:nil];
+    }
+}
+
+- (void)setIsKeyingDownSpace:(BOOL)isKeyingDownSpace {
+    _isKeyingDownSpace = isKeyingDownSpace;
+    
+    [self.view.window invalidateCursorRectsForView:self.view];
+    if (self.isKeyingDownSpace) {
+        self.doubleClickRecognizer.enabled = NO;
+        self.rightClickRecognizer.enabled = NO;
+    } else {
+        self.doubleClickRecognizer.enabled = YES;
+        self.rightClickRecognizer.enabled = YES;
+    }
+}
+
+- (void)setIsKeyingDownOption:(BOOL)isKeyingDownOption {
+    _isKeyingDownOption = isKeyingDownOption;
+    
+    BOOL shouldStartMeasure;
+    if (isKeyingDownOption && self.dataSource.selectedItem && [self.view.window isKeyWindow]) {
+        shouldStartMeasure = YES;
+    } else {
+        shouldStartMeasure = NO;
+    }
+    [self.dataSource.preferenceManager.isMeasuring setValue:@(shouldStartMeasure) ignoreSubscriber:nil userInfo:@(YES)];
+}
+
+- (void)didResetCursorRectsInPreviewStageView:(LKPreviewStageView *)view {
+    if (self.isKeyingDownSpace) {
+        [view addCursorRect:self.view.bounds cursor:[NSCursor openHandCursor]];
+    }
+}
+
+- (void)_hierarchyInfoDidChange {
+    LookinHierarchyInfo *currentInfo = self.dataSource.rawHierarchyInfo;
+    if (!currentInfo) {
+        NSAssert(NO, @"");
+        return;
+    }
+    
+    self.previewView.appScreenSize = CGSizeMake(currentInfo.appInfo.screenWidth, currentInfo.appInfo.screenHeight);
+    
+    LookinHierarchyInfo *prevInfo = [self lookin_getBindObjectForKey:@"prevRawHierarchyInfo"];
+    [self lookin_bindObject:currentInfo forKey:@"prevRawHierarchyInfo"];
+    if (!prevInfo) {
+        return;
+    }
+    CGFloat prevWidth = prevInfo.appInfo.screenWidth;
+    CGFloat prevHeight = prevInfo.appInfo.screenHeight;
+    CGFloat currentWidth = currentInfo.appInfo.screenWidth;
+    CGFloat currentHeight = currentInfo.appInfo.screenHeight;
+    
+    if (prevWidth == currentWidth && prevHeight == currentHeight) {
+        // 内容尺寸没有变化
+        return;
+    }
+    /// iOS App 尺寸变化，重置 Scale
+    [self.dataSource.preferenceManager.previewScale setDoubleValue:LKInitialPreviewScale ignoreSubscriber:nil];
+}
+
+#pragma mark - <NSMenuDelegate>
+
+- (NSMenu *)_makeRightClickMenu {
+    NSMenu *menu = [NSMenu new];
+    menu.autoenablesItems = NO;
+    menu.delegate = self;
+    [menu addItem:({
+        NSMenuItem *item = [NSMenuItem new];
+        item.target = self;
+        item.action = @selector(_handleExpandRecursively:);
+        item.title = NSLocalizedString(@"Expand recursively", nil);
+        item;
+    })];
+    [menu addItem:({
+        NSMenuItem *item = [NSMenuItem new];
+        item.target = self;
+        item.action = @selector(_handleCollapseChildren:);
+        item.title = NSLocalizedString(@"Collapse children", nil);
+        item;
+    })];
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItem:({
+        NSMenuItem *item = [NSMenuItem new];
+        item.enabled = YES;
+        item.target = self;
+        item.action = @selector(_handleCancelPreview:);
+        item.title = NSLocalizedString(@"Hide screenshot this time", nil);
+        item;
+    })];
+    [menu addItem:({
+        NSMenuItem *item = [NSMenuItem new];
+        item.enabled = YES;
+        item.target = self;
+        item.action = @selector(_handleExportScreenshot:);
+        item.title = NSLocalizedString(@"Export screenshot…", nil);
+        item;
+    })];
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItem:({
+        NSMenuItem *item = [NSMenuItem new];
+        item.target = self;
+        item.action = @selector(_handleHideScreenshotForever);
+        item.title = NSLocalizedString(@"Hide screenshot forever…", nil);
+        item;
+    })];
+    return menu;
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    LookinDisplayItem *displayItem = self.rightClickingDisplayItem;
+    if (!displayItem) {
+        return;
+    }
+    NSMenuItem *item_expand = [menu itemAtIndex:0];
+    NSMenuItem *item_collapse = [menu itemAtIndex:1];
+//    NSMenuItem *item_cancelPreview = [menu itemAtIndex:3];
+    NSMenuItem *item_export = [menu itemAtIndex:4];
+    
+    // 设置“全部展开”和“全部收起”的 enabled
+    if (displayItem.isExpandable) {
+        item_expand.enabled = YES;
+        item_collapse.enabled = YES;
+    } else {
+        item_expand.enabled = NO;
+        item_collapse.enabled = NO;
+    }
+    
+    item_export.enabled = !!displayItem.groupScreenshot;
+}
+
+- (void)menuDidClose:(NSMenu *)menu {
+    // 按住 cmd 键激活右键菜单，然后松开 cmd，然后关闭菜单，这时 eventMonitor 不会捕捉到 cmd 被松开，所以要在这里弥补一下
+    if ([NSEvent modifierFlags] & NSEventModifierFlagCommand) {
+        self.isKeyingDownCommand = YES;
+    } else {
+        self.isKeyingDownCommand = NO;
+    }
+}
+
+- (void)_handleExpandRecursively:(NSMenuItem *)menuItem {
+    LookinDisplayItem *item = self.rightClickingDisplayItem;
+    NSAssert(item, @"");
+    [self.dataSource expandItemsRootedByItem:item];
+}
+
+- (void)_handleCollapseChildren:(NSMenuItem *)menuItem {
+    LookinDisplayItem *item = self.rightClickingDisplayItem;
+    NSAssert(item, @"");
+    [self.dataSource collapseAllChildrenOfItem:item];
+}
+
+- (void)_handleCancelPreview:(NSMenuItem *)menuItem {
+    [LKTutorialManager sharedInstance].togglePreview = YES;
+    
+    LookinDisplayItem *item = self.rightClickingDisplayItem;
+    item.noPreview = YES;
+    [self.dataSource.itemDidChangeNoPreview sendNext:nil];
+}
+
+- (void)_handleExportScreenshot:(NSMenuItem *)menuItem {
+    LookinDisplayItem *item = self.rightClickingDisplayItem;
+    [LKExportManager exportScreenshotWithDisplayItem:item];
+}
+
+- (void)_handleHideScreenshotForever {
+    [LKHelper openCustomConfigWebsite];
+}
+
+@end
