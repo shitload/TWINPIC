@@ -14,4 +14,6 @@
 
 - (instancetype)initWithDataSource:(LKHierarchyDataSource *)dataSource;
 
-@property(nonatomic, weak) LKStaticViewController *staticVi
+@property(nonatomic, weak) LKStaticViewController *staticViewController;
+
+@end
