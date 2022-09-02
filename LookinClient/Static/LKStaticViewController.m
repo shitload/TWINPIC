@@ -391,4 +391,23 @@
 - (void)_handleToggleMeasure:(LookinMsgActionParams *)param {
     BOOL isMeasuring = param.boolValue;
     self.dashboardController.view.hidden = isMeasuring;
-    self.measureControlle
+    self.measureController.view.hidden = !isMeasuring;
+}
+
+#pragma mark - Others
+
+- (LKStaticWindowController *)_staticWindowController {
+    NSWindowController *windowController = self.view.window.windowController;
+    if ([windowController isKindOfClass:[LKStaticWindowController class]]) {
+        return (LKStaticWindowController *)windowController;
+    } else {
+        NSAssert(NO, @"");
+        return nil;
+    }
+}
+
+- (BOOL)shouldShowConnectionTips {
+    return YES;
+}
+
+@end
