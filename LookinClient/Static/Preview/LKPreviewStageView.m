@@ -23,4 +23,15 @@
         [self removeTrackingArea:oldArea];
     }];
     
-    NSTrackingArea *newArea = [[NSTrackingArea alloc] initWithRect:self.bounds
+    NSTrackingArea *newArea = [[NSTrackingArea alloc] initWithRect:self.bounds options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow|NSTrackingInVisibleRect owner:self userInfo:nil];
+    [self addTrackingArea:newArea];
+}
+
+- (void)resetCursorRects {
+    [super resetCursorRects];
+    if ([self.delegate respondsToSelector:@selector(didResetCursorRectsInPreviewStageView:)]) {
+        [self.delegate didResetCursorRectsInPreviewStageView:self];
+    }
+}
+
+@end
