@@ -20,4 +20,8 @@ typedef NS_ENUM(NSInteger, MenuPopoverAppsListControllerEventSource) {
 
 - (instancetype)initWithApps:(NSArray<LKInspectableApp *> *)apps source:(MenuPopoverAppsListControllerEventSource)source;
 
-@property(nonatomic, copy) void (^didSelectApp)(LKInspec
+@property(nonatomic, copy) void (^didSelectApp)(LKInspectableApp *app);
+
+- (NSSize)bestSize;
+
+@end
