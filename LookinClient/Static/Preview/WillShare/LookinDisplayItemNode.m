@@ -254,3 +254,14 @@
         property == LookinDisplayItemProperty_SoloScreenshot ||
         property == LookinDisplayItemProperty_GroupScreenshot ||
         property == LookinDisplayItemProperty_IsSelected ||
+        property == LookinDisplayItemProperty_IsHovered ||
+        property == LookinDisplayItemProperty_AvoidSyncScreenshot) {
+        [self _renderImageAndColor];
+    }
+    
+    if (property == LookinDisplayItemProperty_None || property == LookinDisplayItemProperty_DisplayingInHierarchy || property == LookinDisplayItemProperty_InHiddenHierarchy) {
+        [self _renderVisibility];
+    }
+}
+
+@end
