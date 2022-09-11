@@ -34,4 +34,14 @@
         _insets = NSEdgeInsetsMake(9, 18, 35, 14);
         _titleMarginBottom = 3;
         _subtitleMarginBottom = 5;
-        _appViewInterSpace = 1
+        _appViewInterSpace = 1;
+        
+        NSString *title = nil;
+        NSString *subtitle = nil;
+        if (source == MenuPopoverAppsListControllerEventSourceReloadButton || source == MenuPopoverAppsListControllerEventSourceNoConnectionTips) {
+            title = NSLocalizedString(@"Connection lost", nil);
+            if (apps.count == 0) {
+                subtitle = NSLocalizedString(@"And no inspectable app was found", nil);
+            } else if (apps.count == 1) {
+                subtitle = NSLocalizedString(@"Click the screenshot below to Change App", nil);
+            } else
