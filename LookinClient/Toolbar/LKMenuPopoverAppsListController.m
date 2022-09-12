@@ -55,4 +55,17 @@
                 } else {
                     title = [NSString stringWithFormat:NSLocalizedString(@"%@ active apps were found", nil), @(apps.count)];
                 }
-                subtitle = NSLocalizedString(@"
+                subtitle = NSLocalizedString(@"Click the screenshot below to inspect", nil);
+            } else {
+                title = NSLocalizedString(@"No inspectable app was found", nil);
+            }
+        } else {
+            NSAssert(NO, @"");
+        }
+        
+        if (apps.count) {
+            self.appViews = [apps.rac_sequence map:^id _Nullable(LKInspectableApp *app) {
+                LKLaunchAppView *view = [LKLaunchAppView new];
+                view.compactLayout = YES;
+                view.app = app;
+                [view addTarget:self clickAction:@selector(handleClickAppView:)];
