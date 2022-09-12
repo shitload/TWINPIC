@@ -44,4 +44,15 @@
                 subtitle = NSLocalizedString(@"And no inspectable app was found", nil);
             } else if (apps.count == 1) {
                 subtitle = NSLocalizedString(@"Click the screenshot below to Change App", nil);
-            } else
+            } else {
+                subtitle = [NSString stringWithFormat:NSLocalizedString(@"Other %@ apps were found", nil), @(apps.count)];
+            }
+            
+        } else if (source == MenuPopoverAppsListControllerEventSourceAppButton) {
+            if (apps.count) {
+                if (apps.count == 1) {
+                    title = NSLocalizedString(@"1 active app was found", nil);
+                } else {
+                    title = [NSString stringWithFormat:NSLocalizedString(@"%@ active apps were found", nil), @(apps.count)];
+                }
+                subtitle = NSLocalizedString(@"
