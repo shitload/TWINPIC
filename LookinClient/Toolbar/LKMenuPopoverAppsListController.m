@@ -96,4 +96,21 @@
         self.tutorialControl.layer.cornerRadius = 4;
         self.tutorialControl.label.stringValue = NSLocalizedString(@"Can't see your app ?", nil);
         self.tutorialControl.label.textColor = [NSColor linkColor];
-        self.tutorialCont
+        self.tutorialControl.label.font = NSFontMake(12);
+        self.tutorialControl.adjustAlphaWhenClick = YES;
+        [self.tutorialControl addTarget:self clickAction:@selector(_handleTutorial)];
+        [self.view addSubview:self.tutorialControl];
+    }
+    return self;
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    
+    CGFloat y = _insets.top;
+    if (self.titleLabel) {
+        $(self.titleLabel).fullWidth.heightToFit.y(y);
+        y = self.titleLabel.$maxY + _titleMarginBottom;
+    }
+    if (self.subtitleLabel) {
+        $(self.subtitleLabel).fullWidth.height
