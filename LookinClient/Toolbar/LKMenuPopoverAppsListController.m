@@ -69,3 +69,20 @@
                 view.compactLayout = YES;
                 view.app = app;
                 [view addTarget:self clickAction:@selector(handleClickAppView:)];
+                [self.view addSubview:view];
+                return view;
+            }].array;
+        }
+        
+        if (title.length) {
+            self.titleLabel = [LKLabel new];
+            self.titleLabel.alignment = NSTextAlignmentCenter;
+            self.titleLabel.font = NSFontMake(14);
+            self.titleLabel.textColor = [NSColor labelColor];
+            self.titleLabel.stringValue = title;
+            [self.view addSubview:self.titleLabel];
+        }
+    
+        if (subtitle.length) {
+            self.subtitleLabel = [LKLabel new];
+            self.s
