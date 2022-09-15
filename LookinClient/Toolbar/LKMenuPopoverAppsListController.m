@@ -85,4 +85,15 @@
     
         if (subtitle.length) {
             self.subtitleLabel = [LKLabel new];
-            self.s
+            self.subtitleLabel.alignment = NSTextAlignmentCenter;
+            self.subtitleLabel.font = NSFontMake(12);
+            self.subtitleLabel.textColor = [NSColor labelColor];
+            self.subtitleLabel.stringValue = subtitle;
+            [self.view addSubview:self.subtitleLabel];
+        }
+        
+        self.tutorialControl = [LKTextControl new];
+        self.tutorialControl.layer.cornerRadius = 4;
+        self.tutorialControl.label.stringValue = NSLocalizedString(@"Can't see your app ?", nil);
+        self.tutorialControl.label.textColor = [NSColor linkColor];
+        self.tutorialCont
