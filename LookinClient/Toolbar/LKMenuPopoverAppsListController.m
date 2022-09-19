@@ -127,4 +127,26 @@
     
         $(self.tutorialControl).sizeToFit.horAlign.offsetX(3).bottom(10);
     } else {
-        $(self.tutor
+        $(self.tutorialControl).sizeToFit.horAlign.offsetX(3);
+        if (self.subtitleLabel.isVisible) {
+            $(self.tutorialControl).y(y);
+        } else {
+            $(self.tutorialControl).y(y + 8);
+        }
+        $(self.titleLabel, self.subtitleLabel, self.tutorialControl).visibles.groupVerAlign;
+    }
+    
+}
+
+- (void)handleClickAppView:(LKLaunchAppView *)view {
+    LKInspectableApp *app = view.app;
+    if (self.didSelectApp) {
+        self.didSelectApp(app);
+    }
+}
+
+- (NSSize)bestSize {
+    if (self.appViews.count <= 0) {
+        return NSMakeSize(245, 80);
+    }
+    __blo
