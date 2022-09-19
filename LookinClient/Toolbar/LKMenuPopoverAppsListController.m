@@ -113,4 +113,18 @@
         y = self.titleLabel.$maxY + _titleMarginBottom;
     }
     if (self.subtitleLabel) {
-        $(self.subtitleLabel).fullWidth.height
+        $(self.subtitleLabel).fullWidth.heightToFit.y(y);
+        y = self.subtitleLabel.$maxY + _subtitleMarginBottom;
+    }
+    
+    if (self.appViews.count) {
+        __block CGFloat posX = 0;
+        [self.appViews enumerateObjectsUsingBlock:^(LKLaunchAppView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            $(obj).sizeToFit.x(posX).y(y);
+            posX = obj.$maxX + self->_appViewInterSpace;
+        }];
+        $(self.appViews).groupHorAlign;
+    
+        $(self.tutorialControl).sizeToFit.horAlign.offsetX(3).bottom(10);
+    } else {
+        $(self.tutor
