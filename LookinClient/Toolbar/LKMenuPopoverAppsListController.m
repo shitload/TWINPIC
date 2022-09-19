@@ -149,4 +149,15 @@
     if (self.appViews.count <= 0) {
         return NSMakeSize(245, 80);
     }
-    __blo
+    __block CGFloat width = _insets.left + _insets.right + (self.appViews.count - 1) * _appViewInterSpace;
+    __block CGFloat appViewMaxHeight = 0;
+    [self.appViews enumerateObjectsUsingBlock:^(LKLaunchAppView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSSize size = [view sizeThatFits:NSSizeMax];
+        width += size.width;
+        appViewMaxHeight = MAX(appViewMaxHeight, size.height);
+    }];
+    
+    CGFloat height = _insets.top + _insets.bottom + appViewMaxHeight;
+    if (self.titleLabel) {
+        NSSize titleSize = [self.titleLabel sizeThatFits:NSSizeMax];
+      
