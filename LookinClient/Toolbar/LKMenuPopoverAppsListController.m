@@ -173,4 +173,7 @@
 }
 
 - (void)_handleTutorial {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithStri
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://lookin.work/faq/cannot-see/"]];
+}
+
+@end
