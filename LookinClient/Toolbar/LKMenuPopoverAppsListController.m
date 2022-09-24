@@ -160,4 +160,17 @@
     CGFloat height = _insets.top + _insets.bottom + appViewMaxHeight;
     if (self.titleLabel) {
         NSSize titleSize = [self.titleLabel sizeThatFits:NSSizeMax];
-      
+        height += titleSize.height + _titleMarginBottom;
+        width = MAX(width, titleSize.width + _insets.left + _insets.right);
+    }
+    if (self.subtitleLabel) {
+        NSSize subtitleSize = [self.subtitleLabel sizeThatFits:NSSizeMax];
+        height += subtitleSize.height + _subtitleMarginBottom;
+        width = MAX(width, subtitleSize.width + _insets.left + _insets.right);
+    }
+    
+    return NSMakeSize(width, height);
+}
+
+- (void)_handleTutorial {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithStri
