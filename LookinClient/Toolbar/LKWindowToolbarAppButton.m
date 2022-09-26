@@ -19,3 +19,22 @@
 
 @property(nonatomic, assign) CGFloat appImageWidth;
 @property(nonatomic, copy) NSArray<NSNumber *> *spaces;
+
+@end
+
+@implementation LKWindowToolbarAppButton
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+    if (self = [super initWithFrame:frameRect]) {
+        self.title = @"";
+        self.appImageWidth = 14;
+        self.spaces = @[@7, @3, @3, @4, @1];
+        
+        self.appImageView = [NSImageView new];
+        self.appImageView.wantsLayer = YES;
+        self.appImageView.layer.cornerRadius = 2;
+        self.appImageView.layer.masksToBounds = YES;
+        [self addSubview:self.appImageView];
+        
+        self.appNameLabel = [LKLabel new];
+        self.appNameLabel.
