@@ -37,4 +37,16 @@
         [self addSubview:self.appImageView];
         
         self.appNameLabel = [LKLabel new];
-        self.appNameLabel.
+        self.appNameLabel.textColors = LKColorsCombine(LookinColorMake(65, 65, 65), [NSColor labelColor]);
+        [self addSubview:self.appNameLabel];
+        
+        self.sepImageView = [NSImageView new];
+        self.sepImageView.image = NSImageMake(@"icon_go_forward");
+        self.sepImageView.image.template = YES;
+        [self addSubview:self.sepImageView];
+        
+        self.deviceImageView = [NSImageView new];
+        [self addSubview:self.deviceImageView];
+        
+        self.deviceLabel = [LKLabel new];
+        self.deviceLabel.textColors = LKColorsCombine(LookinColorMak
