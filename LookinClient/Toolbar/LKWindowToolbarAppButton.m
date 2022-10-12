@@ -49,4 +49,15 @@
         [self addSubview:self.deviceImageView];
         
         self.deviceLabel = [LKLabel new];
-        self.deviceLabel.textColors = LKColorsCombine(LookinColorMak
+        self.deviceLabel.textColors = LKColorsCombine(LookinColorMake(65, 65, 65), [NSColor labelColor]);
+        self.deviceLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        [self addSubview:self.deviceLabel];
+    }
+    return self;
+}
+
+- (void)layout {
+    [super layout];
+    $(self.appImageView).width(self.appImageWidth).height(self.appImageWidth).x([self.spaces[0] doubleValue]).verAlign.offsetY(-.5);
+    $(self.appNameLabel).sizeToFit.verAlign.x(self.appImageView.$maxX + [self.spaces[1] doubleValue]).offsetY(-1);
+    $(self.sepImageView).sizeToFit.verAlign.x(self.appNameLabel.$maxX + [s
