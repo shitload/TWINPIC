@@ -60,4 +60,16 @@
     [super layout];
     $(self.appImageView).width(self.appImageWidth).height(self.appImageWidth).x([self.spaces[0] doubleValue]).verAlign.offsetY(-.5);
     $(self.appNameLabel).sizeToFit.verAlign.x(self.appImageView.$maxX + [self.spaces[1] doubleValue]).offsetY(-1);
-    $(self.sepImageView).sizeToFit.verAlign.x(self.appNameLabel.$maxX + [s
+    $(self.sepImageView).sizeToFit.verAlign.x(self.appNameLabel.$maxX + [self.spaces[2] doubleValue]).offsetY(-.5);
+    $(self.deviceImageView).sizeToFit.x(self.sepImageView.$maxX + [self.spaces[3] doubleValue]).verAlign;
+    $(self.deviceLabel).sizeToFit.verAlign.x(self.deviceImageView.$maxX + [self.spaces[4] doubleValue]).toMaxX(self.$width).offsetY(-1);
+}
+
+- (void)setAppInfo:(LookinAppInfo *)appInfo {
+    _appInfo = appInfo;
+    
+    if (appInfo) {
+        $(self.appImageView, self.appNameLabel, self.sepImageView, self.deviceImageView, self.deviceLabel).show;
+        self.image = nil;
+        
+      
