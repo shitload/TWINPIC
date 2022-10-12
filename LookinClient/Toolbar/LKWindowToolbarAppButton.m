@@ -72,4 +72,18 @@
         $(self.appImageView, self.appNameLabel, self.sepImageView, self.deviceImageView, self.deviceLabel).show;
         self.image = nil;
         
-      
+        NSImage *appIcon = appInfo.appIcon;
+        if (!appIcon) {
+            appIcon = NSImageMake(@"Icon_EmptyProject");
+        }
+        self.appImageView.image = appIcon;
+        
+        self.appNameLabel.stringValue = appInfo.appName;
+        
+        self.deviceLabel.stringValue = [NSString stringWithFormat:@"%@ (%@)", appInfo.deviceDescription, appInfo.osDescription];
+        
+        NSImage *deviceIcon = nil;
+        switch (appInfo.deviceType) {
+            case LookinAppInfoDeviceSimulator:
+                deviceIcon = NSImageMake(@"icon_simulator_small");
+ 
