@@ -100,4 +100,23 @@
         self.deviceImageView.image = deviceIcon;
         
     } else {
-        $(self.appImageView, self.appNameLabel, self.sepImageView, self.deviceImageView, sel
+        $(self.appImageView, self.appNameLabel, self.sepImageView, self.deviceImageView, self.deviceLabel).hide;
+        self.image = NSImageMake(@"icon_app");
+    }
+    [self setNeedsLayout:YES];
+}
+
+- (NSSize)sizeThatFits:(NSSize)size {
+    __block CGFloat width = 0;
+    
+    [self.spaces enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        width += [obj doubleValue];
+    }];
+    
+    width += self.appImageWidth + self.appNameLabel.bestWidth  + self.sepImageView.bestWidth + self.deviceImageView.bestWidth + self.deviceLabel.bestWidth;
+    
+    size.width = width;
+    return size;
+}
+
+@end
