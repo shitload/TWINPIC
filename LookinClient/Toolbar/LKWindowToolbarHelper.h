@@ -14,4 +14,29 @@ extern NSToolbarItemIdentifier const LKToolBarIdentifier_Rotation;
 extern NSToolbarItemIdentifier const LKToolBarIdentifier_Setting;
 extern NSToolbarItemIdentifier const LKToolBarIdentifier_Reload;
 extern NSToolbarItemIdentifier const LKToolBarIdentifier_App;
-extern NSToolbarItemIdentifier const LKToolBarIden
+extern NSToolbarItemIdentifier const LKToolBarIdentifier_AppInReadMode;
+extern NSToolbarItemIdentifier const LKToolBarIdentifier_Console;
+extern NSToolbarItemIdentifier const LKToolBarIdentifier_Add;
+extern NSToolbarItemIdentifier const LKToolBarIdentifier_Remove;
+extern NSToolbarItemIdentifier const LKToolBarIdentifier_Measure;
+
+@class LKPreferenceManager, LookinAppInfo;
+
+@interface LKWindowToolbarHelper : NSObject
+
++ (instancetype)sharedInstance;
+
+/**
+ 通过一下 identifier 创建的 toolBarItem 需要业务自己设置点击 action:
+ - Reload
+ - App
+ - Expansion
+ - DynamicMode
+ - StaticMode
+ - RemoteSelect
+ - Add
+ - Remove
+ - Setting
+ - Change
+ */
+- (NSToolbarItem
