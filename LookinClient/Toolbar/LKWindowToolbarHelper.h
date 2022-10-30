@@ -39,4 +39,9 @@ extern NSToolbarItemIdentifier const LKToolBarIdentifier_Measure;
  - Setting
  - Change
  */
-- (NSToolbarItem
+- (NSToolbarItem *)makeToolBarItemWithIdentifier:(NSToolbarItemIdentifier)identifier preferenceManager:(LKPreferenceManager *)manager;
+
+/// 请使用该方法初始化 AppInReadMode 这个 item
+- (NSToolbarItem *)makeAppInReadModeItemWithAppInfo:(LookinAppInfo *)appInfo;
+
+@end
