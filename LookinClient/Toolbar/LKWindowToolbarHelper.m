@@ -38,4 +38,18 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
-    static LK
+    static LKWindowToolbarHelper *instance = nil;
+    dispatch_once(&onceToken,^{
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (NSToolbarItem *)makeToolBarItemWithIdentifier:(NSToolbarItemIdentifier)identifier preferenceManager:(LKPreferenceManager *)manager {
+    NSAssert(![identifier isEqualToString:LKToolBarIdentifier_AppInReadMode], @"请使用 makeAppInReadModeItemWithAppInfo: 方法");
+    
+    if ([identifier isEqualToString:LKToo
