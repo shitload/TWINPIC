@@ -52,4 +52,16 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 - (NSToolbarItem *)makeToolBarItemWithIdentifier:(NSToolbarItemIdentifier)identifier preferenceManager:(LKPreferenceManager *)manager {
     NSAssert(![identifier isEqualToString:LKToolBarIdentifier_AppInReadMode], @"请使用 makeAppInReadModeItemWithAppInfo: 方法");
     
-    if ([identifier isEqualToString:LKToo
+    if ([identifier isEqualToString:LKToolBarIdentifier_Measure]) {
+        NSImage *image = NSImageMake(@"icon_measure");
+        image.template = YES;
+        
+        NSButton *button = [NSButton new];
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        [button setButtonType:NSButtonTypePushOnPushOff];
+        button.target = self;
+        button.action = @selector(_handleToggleMeasureButton:);
+        [button lookin_bindObject:manager forKey:@"manager"];
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdent
