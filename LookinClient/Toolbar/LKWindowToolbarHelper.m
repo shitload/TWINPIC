@@ -94,4 +94,13 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
     }
     
     if ([identifier isEqualToString:LKToolBarIdentifier_Dimension]) {
-     
+        NSImage *image_2d = NSImageMake(@"icon_2d");
+        image_2d.template = YES;
+        NSImage *image_3d = NSImageMake(@"icon_3d");
+        image_3d.template = YES;
+        
+        NSSegmentedControl *control = [NSSegmentedControl segmentedControlWithImages:@[image_2d, image_3d] trackingMode:NSSegmentSwitchTrackingSelectOne target:self action:@selector(_handleDimension:)];
+        [control lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
+        control.segmentDistribution = NSSegmentDistributionFillEqually;
+        
+        NSToolbarItem *item = [[NSToolbarI
