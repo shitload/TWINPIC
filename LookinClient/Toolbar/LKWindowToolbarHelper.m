@@ -64,4 +64,19 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         button.action = @selector(_handleToggleMeasureButton:);
         [button lookin_bindObject:manager forKey:@"manager"];
         
-        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdent
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Measure];
+        item.label = NSLocalizedString(@"Measure", nil);
+        item.view = button;
+        item.minSize = NSMakeSize(48, 34);
+
+        [manager.isMeasuring subscribe:self action:@selector(_handleMeasureDidChange:) relatedObject:button sendAtOnce:YES];
+        
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Rotation]) {
+        NSImage *image = NSImageMake(@"icon_rotation");
+        image.template = YES;
+        
+        NSButton *button = [NSButton new];
+        [button setImage:image]
