@@ -79,4 +79,19 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         image.template = YES;
         
         NSButton *button = [NSButton new];
-        [button setImage:image]
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        [button setButtonType:NSButtonTypePushOnPushOff];
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Rotation];
+        item.label = NSLocalizedString(@"Free Rotation", nil);
+        item.view = button;
+        item.minSize = NSMakeSize(48, 34);
+
+        [manager.freeRotation subscribe:self action:@selector(_handleFreeRotationDidChange:) relatedObject:button sendAtOnce:YES];
+        
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Dimension]) {
+     
