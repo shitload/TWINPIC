@@ -116,4 +116,14 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
     if ([identifier isEqualToString:LKToolBarIdentifier_Scale]) {
         double scale = manager.previewScale.currentDoubleValue;
         
-        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdent
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Scale];
+        LKWindowToolbarScaleView *scaleView = [LKWindowToolbarScaleView new];
+        scaleView.slider.minValue = LookinPreviewMinScale;
+        scaleView.slider.maxValue = LookinPreviewMaxScale;
+        scaleView.slider.doubleValue = scale;
+        scaleView.slider.target = self;
+        scaleView.slider.action = @selector(_handleScaleSlider:);
+        scaleView.increaseButton.target = self;
+        scaleView.increaseButton.action = @selector(_handleScaleIncreaseButton:);
+        scaleView.decreaseButton.target = self;
+        scal
