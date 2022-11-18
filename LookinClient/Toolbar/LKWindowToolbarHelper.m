@@ -103,4 +103,17 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         [control lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
         control.segmentDistribution = NSSegmentDistributionFillEqually;
         
-        NSToolbarItem *item = [[NSToolbarI
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Dimension];
+        item.label = @"2D / 3D";
+        item.view = control;
+        item.minSize = NSMakeSize(90, 34);
+
+        [manager.previewDimension subscribe:self action:@selector(_handleDimensionDidChange:) relatedObject:control sendAtOnce:YES];
+
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Scale]) {
+        double scale = manager.previewScale.currentDoubleValue;
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdent
