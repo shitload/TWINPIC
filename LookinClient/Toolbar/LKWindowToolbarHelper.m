@@ -126,4 +126,13 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         scaleView.increaseButton.target = self;
         scaleView.increaseButton.action = @selector(_handleScaleIncreaseButton:);
         scaleView.decreaseButton.target = self;
-        scal
+        scaleView.decreaseButton.action = @selector(_handleScaleDecreaseButton:);
+        [scaleView.slider lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
+        [scaleView.increaseButton lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
+        [scaleView.decreaseButton lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
+        
+        item.label = NSLocalizedString(@"Zoom", nil);
+        item.view = scaleView;
+        item.minSize = NSMakeSize(160, 34);
+        
+        [manager.previewScale subscrib
