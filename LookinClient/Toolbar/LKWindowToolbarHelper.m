@@ -149,4 +149,19 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         button.bezelStyle = NSBezelStyleTexturedRounded;
         [button lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
         
-        NSToolbarItem *item = [[NSToolbarItem allo
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Setting];
+        item.view = button;
+        item.minSize = NSMakeSize(48, 34);
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Reload]) {
+        NSImage *image = NSImageMake(@"icon_reload");
+        image.template = YES;
+        
+        NSButton *button = [NSButton new];
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Reload];
+        item
