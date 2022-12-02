@@ -135,4 +135,18 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         item.view = scaleView;
         item.minSize = NSMakeSize(160, 34);
         
-        [manager.previewScale subscrib
+        [manager.previewScale subscribe:self action:@selector(_handlePreviewScaleDidChange:) relatedObject:scaleView.slider sendAtOnce:YES];
+        
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Setting]) {
+        NSImage *image = NSImageMake(@"icon_setting");
+        image.template = YES;
+        
+        NSButton *button = [NSButton new];
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        [button lookin_bindObjectWeakly:manager forKey:Key_BindingPreferenceManager];
+        
+        NSToolbarItem *item = [[NSToolbarItem allo
