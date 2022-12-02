@@ -164,4 +164,18 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         button.bezelStyle = NSBezelStyleTexturedRounded;
         
         NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Reload];
-        item
+        item.label = NSLocalizedString(@"Reload", nil);
+        item.view = button;
+        item.minSize = NSMakeSize(68, 34);
+        return item;
+    }
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_App]) {
+        LKWindowToolbarAppButton *button = [LKWindowToolbarAppButton new];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_App];
+        item.label = NSLocalizedString(@"Select App", nil);
+        item.view = button;
+        
+    
