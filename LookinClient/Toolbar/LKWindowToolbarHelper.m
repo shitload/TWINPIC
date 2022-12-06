@@ -220,4 +220,23 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         item.minSize = NSMakeSize(48, 34);
         return item;
     }
- 
+    
+    if ([identifier isEqualToString:LKToolBarIdentifier_Remove]) {
+        NSImage *image = NSImageMake(@"icon_delete");
+        image.template = YES;
+        
+        NSButton *button = [NSButton new];
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Remove];
+        item.view = button;
+        item.minSize = NSMakeSize(48, 34);
+        return item;
+    }
+    
+    NSAssert(NO, @"");
+    return nil;
+}
+
+- (NSTool
