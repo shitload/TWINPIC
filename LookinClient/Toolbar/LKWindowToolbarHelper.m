@@ -191,4 +191,17 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         return item;
     }
     
-    if ([identifier isEqualToString:LKToolBarIdentifie
+    if ([identifier isEqualToString:LKToolBarIdentifier_Console]) {
+        NSImage *image = NSImageMake(@"icon_console");
+        image.template = YES;
+
+        NSButton *button = [NSButton new];
+        [button setImage:image];
+        button.bezelStyle = NSBezelStyleTexturedRounded;
+        [button setButtonType:NSButtonTypePushOnPushOff];
+        
+        NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_Console];
+        item.label = NSLocalizedString(@"Console", nil);
+        item.view = button;
+        item.minSize = NSMakeSize(48, 34);
+    
