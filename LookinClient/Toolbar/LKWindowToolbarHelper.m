@@ -178,4 +178,17 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
         item.label = NSLocalizedString(@"Select App", nil);
         item.view = button;
         
+        [[RACObserve([LKAppsManager sharedInstance], inspectingApp) takeUntil:item.rac_willDeallocSignal] subscribeNext:^(LKInspectableApp *app) {
+            button.appInfo = app.appInfo;
+            if (app) {
+                item.minSize = NSMakeSize(button.bestWidth + 6, 34);
+                item.maxSize = item.minSize;
+            } else {
+                item.minSize = NSMakeSize(42, 34);
+                item.maxSize = item.minSize;
+            }
+        }];
+        return item;
+    }
     
+    if ([identifier isEqualToString:LKToolBarIdentifie
