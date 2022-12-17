@@ -239,4 +239,19 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
     return nil;
 }
 
-- (NSTool
+- (NSToolbarItem *)makeAppInReadModeItemWithAppInfo:(LookinAppInfo *)appInfo {
+    LKWindowToolbarAppButton *button = [LKWindowToolbarAppButton new];
+    button.bezelStyle = NSBezelStyleTexturedRounded;
+    [button lookin_bindObject:appInfo forKey:Key_BindingAppInfo];
+    button.appInfo = appInfo;
+    
+    NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:LKToolBarIdentifier_AppInReadMode];
+    item.label = @"iOS App";
+    item.view = button;
+    item.minSize = NSMakeSize(button.bestWidth + 6, 34);
+    
+    item.maxSize = item.minSize;
+    return item;
+}
+
+- (void)_handleD
