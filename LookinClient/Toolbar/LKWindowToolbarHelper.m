@@ -266,4 +266,12 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 }
 
 - (void)_handleScaleIncreaseButton:(NSButton *)button {
-    LK
+    LKPreferenceManager *manager = [button lookin_getBindObjectForKey:Key_BindingPreferenceManager];
+    double currentScale = manager.previewScale.currentDoubleValue;
+    double targetScale = MIN(MAX(currentScale + 0.1, LookinPreviewMinScale), LookinPreviewMaxScale);
+    [manager.previewScale setDoubleValue:targetScale ignoreSubscriber:nil];
+}
+
+- (void)_handleScaleDecreaseButton:(NSButton *)button {
+    LKPreferenceManager *manager = [button lookin_getBindObjectForKey:Key_BindingPreferenceManager];
+    double currentScale = manager.previewScale.curre
