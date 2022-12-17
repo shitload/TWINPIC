@@ -254,4 +254,16 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
     return item;
 }
 
-- (void)_handleD
+- (void)_handleDimension:(NSSegmentedControl *)control {
+    LKPreferenceManager *manager = [control lookin_getBindObjectForKey:Key_BindingPreferenceManager];
+    NSUInteger index = control.selectedSegment;
+    [manager.previewDimension setIntegerValue:index ignoreSubscriber:self];
+}
+
+- (void)_handleScaleSlider:(NSSlider *)slider {
+    LKPreferenceManager *manager = [slider lookin_getBindObjectForKey:Key_BindingPreferenceManager];
+    [manager.previewScale setDoubleValue:slider.doubleValue ignoreSubscriber:self];
+}
+
+- (void)_handleScaleIncreaseButton:(NSButton *)button {
+    LK
