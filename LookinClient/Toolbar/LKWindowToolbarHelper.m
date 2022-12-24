@@ -274,4 +274,17 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 
 - (void)_handleScaleDecreaseButton:(NSButton *)button {
     LKPreferenceManager *manager = [button lookin_getBindObjectForKey:Key_BindingPreferenceManager];
-    double currentScale = manager.previewScale.curre
+    double currentScale = manager.previewScale.currentDoubleValue;
+    double targetScale = MIN(MAX(currentScale - 0.1, LookinPreviewMinScale), LookinPreviewMaxScale);
+    [manager.previewScale setDoubleValue:targetScale ignoreSubscriber:nil];
+}
+
+- (void)_handlePreviewScaleDidChange:(LookinMsgActionParams *)param {
+    NSSlider *slider = param.relatedObject;
+    CGFloat scale = param.doubleValue;
+    slider.doubleValue = scale;
+}
+
+- (void)_handleDimensionDidChange:(LookinMsgActionParams *)param {
+    LookinPreviewDimension newDimension = param.integerValue;
+    NSSegmentedControl *control = 
