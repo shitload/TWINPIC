@@ -287,4 +287,16 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 
 - (void)_handleDimensionDidChange:(LookinMsgActionParams *)param {
     LookinPreviewDimension newDimension = param.integerValue;
-    NSSegmentedControl *control = 
+    NSSegmentedControl *control = param.relatedObject;
+    control.selectedSegment = newDimension;
+}
+
+- (void)_handleFreeRotationDidChange:(LookinMsgActionParams *)param {
+    NSButton *button = param.relatedObject;
+    BOOL boolValue = param.boolValue;
+    button.state = boolValue ? NSControlStateValueOn : NSControlStateValueOff;
+}
+
+- (void)_handleToggleMeasureButton:(NSButton *)button {
+    LKPreferenceManager *manager = [button lookin_getBindObjectForKey:@"manager"];
+    [manager.isMeasuring setBOOLValue:((button.state == NSControlStateValueOn) ? YES : NO) ignoreSubsc
