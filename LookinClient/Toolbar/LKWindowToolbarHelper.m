@@ -299,4 +299,13 @@ static NSString * const Key_BindingAppInfo = @"AppInfo";
 
 - (void)_handleToggleMeasureButton:(NSButton *)button {
     LKPreferenceManager *manager = [button lookin_getBindObjectForKey:@"manager"];
-    [manager.isMeasuring setBOOLValue:((button.state == NSControlStateValueOn) ? YES : NO) ignoreSubsc
+    [manager.isMeasuring setBOOLValue:((button.state == NSControlStateValueOn) ? YES : NO) ignoreSubscriber:self];
+}
+
+- (void)_handleMeasureDidChange:(LookinMsgActionParams *)param {
+    NSButton *button = param.relatedObject;
+    BOOL boolValue = param.boolValue;
+    button.state = boolValue ? NSControlStateValueOn : NSControlStateValueOff;
+}
+
+@end
