@@ -12,4 +12,6 @@
 
 @property(nonatomic, strong, readonly) NSSlider *slider;
 @property(nonatomic, strong, readonly) NSButton *decreaseButton;
-@property
+@property(nonatomic, strong, readonly) NSButton *increaseButton;
+
+@end
