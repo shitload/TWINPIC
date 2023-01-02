@@ -47,4 +47,24 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
         _togglePreview = [userDefaults boolForKey:Key_TogglePreview];
         _quickSelection = [userDefaults boolForKey:Key_QuickSelection];
         _moveWithSpace = [userDefaults boolForKey:Key_MoveWithSpace];
-        _doubleClick = [userDefaults boolForKey:Ke
+        _doubleClick = [userDefaults boolForKey:Key_DoubleClick];
+        _copyTitle = [userDefaults boolForKey:Key_CopyTitle];
+        _eventsHandler = [userDefaults boolForKey:Key_EventsHandler];
+    }
+    return self;
+}
+
+- (void)setMethodTrace:(BOOL)methodTrace {
+    if (_methodTrace == methodTrace) {
+        return;
+    }
+    _methodTrace = methodTrace;
+    [[NSUserDefaults standardUserDefaults] setBool:methodTrace forKey:Key_MethodTrace];
+}
+
+- (void)setUSBLowSpeed:(BOOL)USBLowSpeed {
+    if (_USBLowSpeed == USBLowSpeed) {
+        return;
+    }
+    _USBLowSpeed = USBLowSpeed;
+    [[NSUserDefaults standardUse
