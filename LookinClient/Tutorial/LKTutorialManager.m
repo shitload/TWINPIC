@@ -34,4 +34,17 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
     return instance;
 }
 
-+ (id)allocWithZone:(struct _NSZone
++ (id)allocWithZone:(struct _NSZone *)zone{
+    return [self sharedInstance];
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
+        _methodTrace = [userDefaults boolForKey:Key_MethodTrace];
+        _USBLowSpeed = [userDefaults boolForKey:Key_USBLowSpeed];
+        _togglePreview = [userDefaults boolForKey:Key_TogglePreview];
+        _quickSelection = [userDefaults boolForKey:Key_QuickSelection];
+        _moveWithSpace = [userDefaults boolForKey:Key_MoveWithSpace];
+        _doubleClick = [userDefaults boolForKey:Ke
