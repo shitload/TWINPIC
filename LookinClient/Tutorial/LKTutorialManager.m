@@ -86,4 +86,22 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
     [[NSUserDefaults standardUserDefaults] setBool:quickSelection forKey:Key_QuickSelection];
 }
 
-- (void)
+- (void)setMoveWithSpace:(BOOL)moveWithSpace {
+    if (_moveWithSpace == moveWithSpace) {
+        return;
+    }
+    _moveWithSpace = moveWithSpace;
+    [[NSUserDefaults standardUserDefaults] setBool:moveWithSpace forKey:Key_MoveWithSpace];
+}
+
+- (void)setDoubleClick:(BOOL)doubleClick {
+    if (_doubleClick == doubleClick) {
+        return;
+    }
+    _doubleClick = doubleClick;
+    [[NSUserDefaults standardUserDefaults] setBool:doubleClick forKey:Key_DoubleClick];
+}
+
+- (void)setCopyTitle:(BOOL)copyTitle {
+    if (_copyTitle == copyTitle) {
+   
