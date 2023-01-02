@@ -67,4 +67,23 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
         return;
     }
     _USBLowSpeed = USBLowSpeed;
-    [[NSUserDefaults standardUse
+    [[NSUserDefaults standardUserDefaults] setBool:USBLowSpeed forKey:Key_USBLowSpeed];
+}
+
+- (void)setTogglePreview:(BOOL)togglePreview {
+    if (_togglePreview == togglePreview) {
+        return;
+    }
+    _togglePreview = togglePreview;
+    [[NSUserDefaults standardUserDefaults] setBool:togglePreview forKey:Key_TogglePreview];
+}
+
+- (void)setQuickSelection:(BOOL)quickSelection {
+    if (_quickSelection == quickSelection) {
+        return;
+    }
+    _quickSelection = quickSelection;
+    [[NSUserDefaults standardUserDefaults] setBool:quickSelection forKey:Key_QuickSelection];
+}
+
+- (void)
