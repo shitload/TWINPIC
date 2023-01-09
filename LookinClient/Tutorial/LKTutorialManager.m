@@ -134,4 +134,17 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
 
 #pragma mark - <NSPopoverDelegate>
 
-- (void)popoverDid
+- (void)popoverDidClose:(NSNotification *)notification {
+    NSPopover *popover = notification.object;
+    if (![popover isKindOfClass:[NSPopover class]]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    NSViewController *vc = popover.contentViewController;
+    if (![vc isKindOfClass:[LKTutorialPopoverController class]]) {
+        NSAssert(NO, @"");
+        return;
+    }
+    LKTutorialPopoverController *tutorialVC = (LKTutorialPopoverController *)vc;
+    if (tutorialVC.hasClickedCloseButton || (CurrentTime - tutorialVC.showTimestamp > 1.8)) {
+        if (tutorial
