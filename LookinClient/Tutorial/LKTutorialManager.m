@@ -104,4 +104,19 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
 
 - (void)setCopyTitle:(BOOL)copyTitle {
     if (_copyTitle == copyTitle) {
-   
+        return;
+    }
+    _copyTitle = copyTitle;
+    [[NSUserDefaults standardUserDefaults] setBool:copyTitle forKey:Key_CopyTitle];
+}
+
+- (void)setEventsHandler:(BOOL)eventsHandler {
+    if (_eventsHandler == eventsHandler) {
+        return;
+    }
+    _eventsHandler = eventsHandler;
+    [[NSUserDefaults standardUserDefaults] setBool:eventsHandler forKey:Key_EventsHandler];
+}
+
+- (void)showPopoverOfView:(NSView *)view text:(NSString *)text learned:(void (^)(void))learnedBlock {
+    NSPopover *popover = [[N
