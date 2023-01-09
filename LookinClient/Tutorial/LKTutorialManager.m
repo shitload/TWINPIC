@@ -119,4 +119,19 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
 }
 
 - (void)showPopoverOfView:(NSView *)view text:(NSString *)text learned:(void (^)(void))learnedBlock {
-    NSPopover *popover = [[N
+    NSPopover *popover = [[NSPopover alloc] init];
+    
+    LKTutorialPopoverController *vc = [[LKTutorialPopoverController alloc] initWithText:text popover:popover];
+    vc.learnedBlock = learnedBlock;
+    popover.delegate = self;
+    popover.animates = YES;
+    popover.behavior = NSPopoverBehaviorTransient;
+    popover.contentSize = [vc contentSize];
+    popover.contentViewController = vc;
+    [popover showRelativeToRect:NSMakeRect(0, 0, view.bounds.size.width, view.bounds.size.height) ofView:view preferredEdge:NSRectEdgeMaxY];
+    vc.showTimestamp = CurrentTime;
+}
+
+#pragma mark - <NSPopoverDelegate>
+
+- (void)popoverDid
