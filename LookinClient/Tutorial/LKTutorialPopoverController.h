@@ -19,4 +19,6 @@
 /// 在点击了 closeButton 后，该属性会被置为 YES
 @property(nonatomic, assign) BOOL hasClickedCloseButton;
 
-@p
+@property(nonatomic, copy) void (^learnedBlock)(void);
+
+@end
