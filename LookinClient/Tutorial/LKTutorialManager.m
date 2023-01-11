@@ -147,4 +147,10 @@ static NSString * const Key_EventsHandler = @"Tut_EventsHandler";
     }
     LKTutorialPopoverController *tutorialVC = (LKTutorialPopoverController *)vc;
     if (tutorialVC.hasClickedCloseButton || (CurrentTime - tutorialVC.showTimestamp > 1.8)) {
-        if (tutorial
+        if (tutorialVC.learnedBlock) {
+            tutorialVC.learnedBlock();
+        }
+    }
+}
+
+@end
