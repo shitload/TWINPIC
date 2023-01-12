@@ -67,4 +67,13 @@
     CGFloat labelMaxWidth = maxWidth - imageWidth - _insets.left - _insets.right - _labelMarginLeft;
     NSSize labelSize = [self.label sizeThatFits:NSMakeSize(labelMaxWidth, CGFLOAT_MAX)];
     
-    NSSize size = NSMakeSize(imageWidth + _insets.left + _insets.right + labelSize.width + _l
+    NSSize size = NSMakeSize(imageWidth + _insets.left + _insets.right + labelSize.width + _labelMarginLeft, labelSize.height + 60);
+    return size;
+}
+
+- (void)_handleCloseButton {
+    self.hasClickedCloseButton = YES;
+    [self.popover close];
+}
+
+@end
