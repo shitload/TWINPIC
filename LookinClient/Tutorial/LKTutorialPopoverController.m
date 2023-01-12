@@ -40,4 +40,19 @@
     
     self.imageView = [NSImageView new];
     self.imageView.image = NSImageMake(@"Icon_Inspiration");
-    [containerV
+    [containerView addSubview:self.imageView];
+    
+    self.label = [LKLabel new];
+    self.label.font = NSFontMake(13);
+    [containerView addSubview:self.label];
+
+    self.closeButton = [NSButton lk_normalButtonWithTitle:NSLocalizedString(@"Do not show again", nil) target:self action:@selector(_handleCloseButton)];
+    [containerView addSubview:self.closeButton];
+    
+    return containerView;
+}
+
+- (void)viewDidLayout {
+    [super viewDidLayout];
+    $(self.imageView).sizeToFit.x(_insets.left);
+    $(self.label).x(self.imageView.$maxX + _labelMarginLeft).toRight(_in
