@@ -20,4 +20,24 @@
 
 @implementation LKTutorialPopoverController {
     NSEdgeInsets _insets;
-    CGFloat _labelMarginL
+    CGFloat _labelMarginLeft;
+}
+
+- (instancetype)initWithText:(NSString *)text popover:(NSPopover *)popover {
+    if (self = [self initWithContainerView:nil]) {
+        _insets = NSEdgeInsetsMake(12, 8, 10, 8);
+        _labelMarginLeft = 5;
+        
+        self.label.stringValue = text;
+        
+        self.popover = popover;
+    }
+    return self;
+}
+
+- (NSView *)makeContainerView {
+    NSView *containerView = [super makeContainerView];
+    
+    self.imageView = [NSImageView new];
+    self.imageView.image = NSImageMake(@"Icon_Inspiration");
+    [containerV
