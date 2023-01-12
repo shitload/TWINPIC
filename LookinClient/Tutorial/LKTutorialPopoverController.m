@@ -55,4 +55,16 @@
 - (void)viewDidLayout {
     [super viewDidLayout];
     $(self.imageView).sizeToFit.x(_insets.left);
-    $(self.label).x(self.imageView.$maxX + _labelMarginLeft).toRight(_in
+    $(self.label).x(self.imageView.$maxX + _labelMarginLeft).toRight(_insets.right).heightToFit.y(_insets.top);
+    $(self.imageView).midY(self.label.$midY - 1);
+    $(self.closeButton).sizeToFit.horAlign.bottom(_insets.bottom);
+}
+
+- (NSSize)contentSize {
+    CGFloat imageWidth = self.imageView.image.size.width;
+
+    CGFloat maxWidth = 400;
+    CGFloat labelMaxWidth = maxWidth - imageWidth - _insets.left - _insets.right - _labelMarginLeft;
+    NSSize labelSize = [self.label sizeThatFits:NSMakeSize(labelMaxWidth, CGFLOAT_MAX)];
+    
+    NSSize size = NSMakeSize(imageWidth + _insets.left + _insets.right + labelSize.width + _l
