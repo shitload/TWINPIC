@@ -5,4 +5,17 @@
 /* Class = "NSMenuItem"; title = "Quit Lookin"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit Lookin";
 
-/* Cla
+/* Class = "NSMenuItem"; title = "About Lookin"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Lookin";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Preferences…";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Hide Lookin"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Lo
