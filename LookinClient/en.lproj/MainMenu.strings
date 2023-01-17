@@ -18,4 +18,10 @@
 "Kd2-mp-pUS.title" = "Show All";
 
 /* Class = "NSMenuItem"; title = "Hide Lookin"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide Lo
+"Olw-nP-bQN.title" = "Hide Lookin";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSMenu"; title = "Lookin"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Lookin";
