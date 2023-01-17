@@ -110,3 +110,66 @@
 "You can click \"Pause\" button near the bottom-left corner in Xcode to pause your iOS app, and input in Xcode console like the contents below:\nexpr [((%@ *)%@) %@]" = "可尝试点击 Xcode 左下角的暂停按钮使 iOS App 进入断点状态，然后在 Xcode 右下角的控制台输入类似以下格式的命令：\nexpr [((%@ *)%@) %@]";
 "Lookin doesn't support invoking methods with arguments yet." = "Lookin 暂不支持包含参数的方法调用";
 "Lookin doesn't support this syntax yet. Please input a method or property name." = "暂不支持该语法，请直接输入要调用的方法名";
+
+"The request is discarded due to a newer same request." = "已有相同请求发出，该请求被中止";
+"iOS App" = "iOS 项目";
+
+"Current version of Lookin app is too low." = "当前 Lookin 版本过低";
+"Fail to inspect this iOS app due to a version problem." = "无法查看该 iOS App";
+"Please update LookinServer.framework linked with target iOS App to a newer version. Visit the website below to get detailed instructions:\nhttps://lookin.work/faq/server-version-too-low/" = "该 iOS App 内嵌的 LookinServer.framework 版本过低，请升级。可至以下网页获得更多帮助：\nhttps://lookin.work/faq/server-version-too-low/";
+"Find solution…" = "查看解决方案…";
+"Target iOS app is linked with a higher version LookinServer.framework. Please click \"Lookin\"-\"Check for Updates\" near the top-left corner or visit https://lookin.work to update your Lookin app." = "无法查看嵌入了更高版本 LookinServer.framework 的目标 iOS App，请在左上角的 “Lookin” 菜单中点击 “检查更新” 或访问 https://lookin.work 来升级到最新版。";
+"Unable to inspect this iOS App. Current version of Lookin app is too low." = "当前 Lookin 版本过低\n无法查看该 App";
+"The version of LookinServer linked with this iOS App is too low." = "该 iOS App 内嵌的 LookinServer 版本过低";
+
+"Could not Move to Applications Folder" = "无法移动到“应用程序”文件夹中";
+"Do Not Move" = "不移动";
+"Some features might not be available if you choose not to." = "如果不移动，Lookin 的一些功能可能无法正常使用。";
+"Move to Applications Folder (Recommended)" = "移动到“应用程序”文件夹中（推荐）";
+"Move Lookin to Applications folder in your Home folder?" = "是否要把 Lookin 移动到你的个人文件夹里的“应用程序”文件夹中？";
+"Move Lookin to Applications folder?" = "是否要把 Lookin 移动到“应用程序”文件夹中？";
+"Note that this will require an administrator password." = "\n本操作需要你输入管理员密码。";
+"This will keep your Downloads folder uncluttered." = "这样做能让你的“下载”文件夹保持整洁。";
+
+"Your comments or suggestions" = "你的意见或建议：";
+"Your email (optional)" = "你的邮箱等联系方式（可不填）：";
+"Our email: lookin@lookin.work" = "你亦可直接邮件给我们：lookin@lookin.work";
+"Send" = "发送";
+"The content is empty." = "内容不能为空";
+"Please do not exceed %@ characters" = "内容请勿超过 %@ 字";
+"Please do not exceed %@ characters about your email address." = "联系方式请勿超过 %@ 字";
+"Your feedback was sent successfully." = "发送成功";
+"Failed to send your feedback" = "发送失败";
+"Please try later or directly send a mail to us: lookin@lookin.work" = "请稍后再试，或直接给我们发送邮件：lookin@lookin.work";
+
+"The method was invoked successfully and no value was returned." = "成功执行了该方法（该方法无返回值）";
+"Failed to search related methods: " = "无法搜索相关方法，错误原因：";
+"Click to invoke methods below and get the return value." = "可点击调用下列方法并获取返回值";
+
+"Other…" = "自定义颜色…";
+"The layout of selected view is not affected by this constraint." = "当前 view 的布局未使用该约束";
+"Open Image with Preview…" = "使用“预览”打开该图片…";
+"The feature is not available in current mode." = "无法在当前模式下使用该功能";
+"You must connect Lookin with target iOS app before using this feature." = "必须和当前查看的 iOS app 实时连接上才可使用该功能";
+"Operation failed. The image property value of selected UIImageView is nil." = "操作失败，当前 UIImageView 的 image 属性似乎为 nil";
+"Export screenshot…" = "导出图像…";
+"Inherits from" = "继承自";
+"No Filter Results" = "无搜索结果";
+"CancelSearch" = "取 消";
+"Will reload in %@ seconds…" = "将在 %@ 秒后自动刷新…";
+"Measure" = "测距";
+"Hover on a layer" = "移动鼠标到某个图层上";
+"to measure between it and selected %@." = "以测量它与当前选中的 %@ 在屏幕上的距离";
+"Invalid Size" = "无法测距";
+"Selected %@'s %@ is less than or equal to 0." = "当前选中的 %@ 的 %@ 小于或等于 0";
+"shortcut: holding \"option\" key" = "测距功能快捷键：按住 option 键";
+"Failed to open the document." = "无法打开该文档";
+"The document was created by a Lookin app with too old version. Current Lookin app version is %@, but the document version is %@." = "该文档由一个版本过旧的 Lookin 创建。当前 Lookin 软件版本号：%@，要打开的文档版本号：%@";
+"Current Lookin app is too old to open this document. Current Lookin app version is %@, but the document version is %@." = "当前 Lookin 版本过旧，无法打开该文档。当前 Lookin 版本号：%@，要打开的文档版本号：%@";
+"The file type is not supported." = "不支持该文档的文件类型";
+"Filter" = "搜索";
+"Only available since macOS 10.14" = "仅 macOS 10.14 及之后的系统支持更改外观";
+"The operation failed because target iOS app has entered to the background state." = "操作失败，因为 iOS app 被退出到了后台";
+"The modification seems to have no effect." = "修改似乎没有生效";
+"After modifying successfully by Lookin, the value seems to be recovered by the code in your iOS app. For example, modifying \"frame\" of a view may trigger \"layoutSubviews\", and \"layoutSubviews\" may modify the value again." = "该属性值被 Lookin 成功修改之后，似乎又触发了你的 iOS app 里的相关业务逻辑把值改回去了。比如修改某个 view 的 frame 可能触发 layoutSubviews，而 layoutSubviews 又恢复了原本的 frame 值。";
+"Version" = "当前版本";
