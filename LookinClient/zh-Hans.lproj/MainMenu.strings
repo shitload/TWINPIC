@@ -12,4 +12,22 @@
 "IFz-p9-h1r.title" = "关于 Lookin";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "KZS-d6-qTN"; */
-"KZS-d6-qTN.title
+"KZS-d6-qTN.title" = "窗口";
+
+"1Xd-pd-BoU.title" = "帮助";
+
+"hKi-sf-16D.title" = "编辑";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "SgI-Kf-8kY"; */
+"SgI-Kf-8kY.title" = "缩放";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "UnO-Ic-dbw"; */
+"UnO-Ic-dbw.title" = "窗口";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "XNQ-bk-Zmh"; */
+"XNQ-bk-Zmh.title" = "偏好设置…";
+
+/* Class = "NSMenuItem"; title = "Hide Lookin"; ObjectID = "dfQ-f5-8Pi"; */
+"dfQ-f5-8Pi.title" = "隐藏 Lookin";
+
+/* Class = "NSMenuItem"; title = "Quit Lookin"; ObjectID = "hnm-1g-JSb";
